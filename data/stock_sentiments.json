@@ -4014,6 +4014,13 @@
           "segment": "in_depth_analysis",
           "note": "Up 127% since end-2023 but trading like speculative asset not hedge; failed protection in March inflation crisis (\u221214% while S&P \u22128%); take profits; seasonal/cycle analysis warns of 2-3 month pullback.",
           "closing_price": 429.89
+        },
+        {
+          "date": "2026-07-23",
+          "sentiment": "buy",
+          "segment": "garden_variety_pullbacks",
+          "note": "Cramer recommends every investor hold gold as hedge against economic chaos; physical bullion preferred, but GLD ETF is acceptable alternative for portfolio protection.",
+          "closing_price": 371.52
         }
       ],
       "sector": "",
