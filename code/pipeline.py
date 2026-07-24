@@ -3305,13 +3305,18 @@ def _process_episode(ep: dict, args) -> dict:
     n_sections = len(analysis.get("sections", []))
     print(f"  Sections: {n_sections}  Stocks: {n_stocks}")
 
-    # A real episode always names stocks. Sections-but-no-stocks means the model
-    # returned a structurally valid but empty result (this happened on 2026-07-17,
-    # which then sent a "0 stocks" email and marked itself processed, so it never
-    # retried). Treat it as a failure so the next run picks it up again.
-    if n_sections and not n_stocks:
+    # A no-picks night is real: Cramer runs "teaching" / game-plan episodes with
+    # sections but zero stock mentions (e.g. 2026-07-23's how-to-handle-a-selloff
+    # lesson). Those flow through as a normal — if empty — episode and get their own
+    # email. Only a *completely* empty analysis (no sections AND no stocks) signals a
+    # broken fetch/analysis; treat that as a failure so the next run retries it.
+    # Tradeoff: a model glitch that drops all stocks on a real picks episode will now
+    # send an empty email and mark itself processed rather than retrying (the
+    # 2026-07-17 empty-result incident that the old sections-but-no-stocks guard was
+    # built for). Accepted so genuine teaching episodes stop looping as failures.
+    if not n_sections and not n_stocks:
         raise RuntimeError(
-            f"analysis returned {n_sections} sections but 0 stocks — "
+            "analysis returned 0 sections and 0 stocks — "
             "treating as a failed analysis so it retries next run"
         )
 
@@ -3619,7 +3624,8 @@ def main() -> None:
         date_str = ep_summary["date_str"]
         n_stocks = len(ep_summary["analysis"].get("stocks", []))
         dt = datetime.fromisoformat(date_str)
-        subject = f"Mad Money — {dt.strftime('%a %b %-d')} · {n_stocks} stocks"
+        picks_label = f"{n_stocks} stocks" if n_stocks else "teaching episode (no picks)"
+        subject = f"Mad Money — {dt.strftime('%a %b %-d')} · {picks_label}"
 
         ep_tickers = {s.get("ticker", "").upper() for s in ep_summary["analysis"].get("stocks", [])}
         brother_hits = ep_tickers & BROTHER_TICKERS
