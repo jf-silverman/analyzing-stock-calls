@@ -3239,6 +3239,13 @@ def _cookie_age_days() -> int | None:
 # whether to go further back. At one episode per weeknight, a year is ~250 runs.
 BACKFILL_STOP_DATE = "2025-01-01"
 
+# A real ~43-min Mad Money episode transcribes to ~50KB+ of text. Even a light
+# "teaching"/fundamentals night (few or no stock picks) still carries a full
+# transcript. Anything far below this means captions weren't ready yet or the
+# fetch was truncated — not a genuine no-picks episode — so we retry rather than
+# analyze (and mark processed) a stub. Set low enough to never flag a real episode.
+MIN_TRANSCRIPT_CHARS = 5000
+
 
 def resync_transcripts(threshold: float = 0.6) -> list[tuple[str, float]]:
     """Repair episodes whose DB transcript_text drifted from the on-disk file.
@@ -3293,7 +3300,17 @@ def _process_episode(ep: dict, args) -> dict:
     video_id = ep["id"]
     print("  Fetching transcript...")
     date_str, snippets, transcript_text = fetch_transcript(video_id, ep.get("upload_date", ""))
-    print(f"  Date: {date_str}  Lines: {len(snippets)}")
+    print(f"  Date: {date_str}  Lines: {len(snippets)}  Chars: {len(transcript_text)}")
+
+    # A stub transcript means captions weren't ready or the fetch was truncated —
+    # not a no-picks episode. Fail so it retries next run instead of being analyzed
+    # and marked processed with next to no content. See MIN_TRANSCRIPT_CHARS.
+    if len(transcript_text) < MIN_TRANSCRIPT_CHARS:
+        raise RuntimeError(
+            f"transcript is only {len(transcript_text)} chars "
+            f"(< {MIN_TRANSCRIPT_CHARS}) — captions likely not ready yet; "
+            "treating as a failed fetch so it retries next run"
+        )
 
     if args.backend == "claude-code":
         print("  Analyzing with claude CLI (Claude Code subscription)...")
