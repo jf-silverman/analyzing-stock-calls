@@ -587,6 +587,13 @@
           "segment": "in_depth_analysis",
           "note": "Listed as exemplary high-quality growth stock for children's long-term portfolios; paired with dividend stocks to balance growth and income.",
           "closing_price": 186.5
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "$250B financing guarantee to OpenAI mirrors dangerous 2000 vendor-financing model; even strong balance sheet offers no protection if customers default like telecom suppliers then.",
+          "closing_price": 196.51
         }
       ],
       "sector": "Technology",
@@ -2155,6 +2162,14 @@
           "segment": "opening_commentary",
           "note": "Aerospace/industrial play; scoop up on weakness; benefits from data center infrastructure buildout indirectly.",
           "closing_price": null
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "mild_buy",
+          "segment": "in_depth",
+          "note": "Strong quarter with beat and raised guidance; backlog and margins expanding; charitable trust holds but much harder to recommend after 145% run; valuations stretched.",
+          "price_level": 245,
+          "closing_price": 245.75
         }
       ],
       "sector": "Industrials",
@@ -7169,6 +7184,13 @@
           "segment": "opening_commentary",
           "note": "5% rally on beaten-down quarter unjustified\u2014no guidance raise, consumer pressure unabated; trust dumped stock; expect stall-out as no earnings bump forward; global competition mounting.",
           "closing_price": 43.06
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Just okay stock; turnaround efforts underway but heavy competition limits upside; sold from charitable trust because Cramer won't own 'just okay' positions.",
+          "closing_price": 42.14
         }
       ],
       "sector": "Consumer Cyclical",
@@ -7845,6 +7867,13 @@
           "segment": "opening_commentary",
           "note": "Cybersecurity solution directly addresses AI agent rogue risk; traders ignored play despite fundamental relevance to OpenAI/Hugging Face incident.",
           "closing_price": 188.42
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Incredible stock; open model cyber security with George Kurtz leadership strongest in field; own it despite short-term Microsoft competition noise.",
+          "closing_price": 180.11
         }
       ],
       "sector": "Technology",
@@ -10481,6 +10510,13 @@
           "segment": "opening_commentary",
           "note": "Triple-play (CPUs for AI agents, foundries, chip packaging); national treasure; reports this week\u2014want stock to sell off so we can add to position.",
           "closing_price": 97.06
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Buying aggressively for charitable trust; CPUs gaining on GPUs, CEO's packaging expertise from Cadence strong signal, foundry space bottleneck gives competitive moat.",
+          "closing_price": 91.67
         }
       ],
       "sector": "Technology",
@@ -13929,6 +13965,13 @@
           "segment": "ipo_market_analysis",
           "note": "Second-largest 2026 deal; spiked from $185 IPO to $386, now $221 after disappointing gross margins; validates stay-away-from-hot-IPOs warning; avoid buying newly public stocks at inflated prices.",
           "closing_price": 221.27
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cloud Strike endorsement of AI inference speed is positive, but Cramer not buying tech sector right now; Intel preferred alternative with better long-term prospects.",
+          "closing_price": 188.61
         }
       ],
       "sector": "Technology",
@@ -16795,6 +16838,19 @@
           "segment": "lightning_round",
           "note": "Caller Chris from NY presents high-risk infrastructure play down significantly; positioned as potential next Nebius (speculative turnaround story). 'Something good could happen.' Allowed as small-position speculation.",
           "closing_price": null
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "in_depth",
+          "note": "Crown jewel of breakup; massive installed base on commercial aircraft, defense/space upside, trades at discount to RTX/LMT; incredible buying opportunity on pullback.",
+          "price_level": 210
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Not a stock Cramer wants to own; 4% yield with no growth profile insufficient for current environment; need growth, not dividend traps."
         }
       ],
       "sector": "",
@@ -18923,6 +18979,14 @@
           "segment": "interview",
           "note": "Best-in-class credit card: smaller card base but cardholders spend more; charges fees for access to rewards. Flying since early June on 200-day MA breakout. MACD bullish. Strong while market weak. Friday earnings likely lights-out but stock historically sells off then rallies between quarters; 10:30-11am good entry.",
           "closing_price": 350.79
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "in_depth",
+          "note": "Q2 beat with Gen Z +40% spending growth; reinvesting excess earnings into business shows management conviction; down 13% from ATH creates entry opportunity.",
+          "price_level": 238,
+          "closing_price": 335.39
         }
       ],
       "sector": "Financial Services",
@@ -25589,6 +25653,13 @@
           "segment": "interview",
           "note": "CEO Jordan reports solid Q, loan growth strong, credit quality excellent, regional economy booming across Sunbelt. Every dip has been buying opportunity.",
           "closing_price": 24.94
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Regional bank terrific stock at inexpensive valuation; outperforming sector and trading below intrinsic value.",
+          "closing_price": 25.48
         }
       ],
       "sector": "Financial Services",
@@ -26216,6 +26287,13 @@
           "segment": "opening_commentary",
           "note": "Highest-profile growth stock; can feel 1999-like on valuation but has huge revenues; will make significant money; lead underwriter Goldman benefiting.",
           "closing_price": 136.08
+        },
+        {
+          "date": "2026-07-27",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Not a charitable trust buy but hold if you believe in Elon; space exploration tech has Elon's successful track record; avoid trading in and out.",
+          "closing_price": 113.5
         }
       ],
       "sector": "Industrials",
@@ -30492,6 +30570,18 @@
           "segment": "in_depth_analysis",
           "note": "Recommended for young children; alternative to Mattel; allows kids to own shares in toy companies they understand and use.",
           "closing_price": 82.0
+        }
+      ]
+    },
+    "CRH": {
+      "company": "CRH",
+      "mentions": [
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Diversified aggregates/materials with connected portfolio (roads/asphalt/water infrastructure); positioned for reshoring, data center, semiconductor fabs; down 18% YTD despite 80% long-term gains.",
+          "closing_price": 102.86
         }
       ]
     }
