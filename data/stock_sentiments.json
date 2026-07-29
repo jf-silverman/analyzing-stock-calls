@@ -16718,13 +16718,6 @@
           "segment": "lightning_round",
           "note": "Space stock referenced in context of current news cycle. Cramer doesn't know ticker or company name; will research and follow up.",
           "closing_price": null
-        },
-        {
-          "date": "2026-06-04",
-          "sentiment": "wait_hold_neutral",
-          "segment": "lightning_round",
-          "note": "100% speculation on recent regulatory approval; only appropriate as small speculative allocation, not as core portfolio holding or primary position.",
-          "closing_price": null
         }
       ],
       "sector": "",
@@ -30473,6 +30466,20 @@
           "segment": "lightning_round",
           "note": "Not a stock Cramer wants to own; 4% yield with no growth profile insufficient for current environment; need growth, not dividend traps.",
           "closing_price": 29.46
+        }
+      ]
+    },
+    "MNKD": {
+      "company": "MannKind Corporation",
+      "sector": "",
+      "style": "",
+      "mentions": [
+        {
+          "date": "2026-06-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "100% speculation on recent regulatory approval; only appropriate as small speculative allocation, not as core portfolio holding or primary position.",
+          "closing_price": 3.52
         }
       ]
     }
