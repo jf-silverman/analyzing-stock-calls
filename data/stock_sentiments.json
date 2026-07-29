@@ -16735,13 +16735,6 @@
         },
         {
           "date": "2026-07-27",
-          "sentiment": "buy",
-          "segment": "in_depth",
-          "note": "Crown jewel of breakup; massive installed base on commercial aircraft, defense/space upside, trades at discount to RTX/LMT; incredible buying opportunity on pullback.",
-          "closing_price": null
-        },
-        {
-          "date": "2026-07-27",
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Not a stock Cramer wants to own; 4% yield with no growth profile insufficient for current environment; need growth, not dividend traps.",
@@ -30464,6 +30457,20 @@
           "segment": "interview",
           "note": "Diversified aggregates/materials with connected portfolio (roads/asphalt/water infrastructure); positioned for reshoring, data center, semiconductor fabs; down 18% YTD despite 80% long-term gains.",
           "closing_price": 102.86
+        }
+      ]
+    },
+    "HONA": {
+      "company": "Honeywell Aerospace Inc.",
+      "sector": "",
+      "style": "",
+      "mentions": [
+        {
+          "date": "2026-07-27",
+          "sentiment": "buy",
+          "segment": "in_depth",
+          "note": "Crown jewel of breakup; massive installed base on commercial aircraft, defense/space upside, trades at discount to RTX/LMT; incredible buying opportunity on pullback.",
+          "closing_price": 210.83
         }
       ]
     }

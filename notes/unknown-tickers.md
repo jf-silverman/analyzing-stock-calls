@@ -1,6 +1,6 @@
 # Unknown Tickers — Manual Review Queue
 
-**23 mention(s)** are stored under a placeholder ticker (`????` / `???`) — Haiku heard a company but could not identify its symbol. These are excluded from the website until they are resolved.
+**22 mention(s)** are stored under a placeholder ticker (`????` / `???`) — Haiku heard a company but could not identify its symbol. These are excluded from the website until they are resolved.
 
 > **Generated file — do not edit by hand.**
 >
@@ -47,7 +47,6 @@ Re-run the generator afterwards and the row disappears on its own.
 | 2026-06-04 | `????` | lightning_round | 36:00 | wait_hold_neutral | 100% speculation on recent regulatory approval; only appropriate as small speculative allocation, not as core portfolio holding or primary position. | [watch](https://youtu.be/2KJ4PtpX3Wk?t=2160) |
 | 2026-06-10 | `????` | lightning_round | 37:00 | wait_hold_neutral | Data center infrastructure play (caller Claire, TN); conflicting signals—executive resignation vs insider buying—prevent clear call; requires research. | [watch](https://youtu.be/PSHvy4EAT1g?t=2220) |
 | 2026-07-01 | `???` | lightning_round | 36:55 | sell_avoid | Power supplier to AI data centers with Tennessee Valley Authority backing and $1B liquidity; too speculative for Cramer; prefers GE as safer alternative to power-to-AI theme. | [watch](https://youtu.be/McE90rfiEIg?t=2215) |
-| 2026-07-27 | `????` | in_depth | — | buy | Crown jewel of breakup; massive installed base on commercial aircraft, defense/space upside, trades at discount to RTX/LMT; incredible buying opportunity on pullback. | [episode](https://youtu.be/X1IiA8TXHnQ) |
 | 2026-07-27 | `????` | lightning_round | 36:47 | sell_avoid | Not a stock Cramer wants to own; 4% yield with no growth profile insufficient for current environment; need growth, not dividend traps. | [watch](https://youtu.be/X1IiA8TXHnQ?t=2207) |
 
-_2 row(s) show no timestamp — that episode has no redirect pages on disk (they are only generated when an Overcast ID or audio URL is found), so the link points at the start of the episode._
+_1 row(s) show no timestamp — that episode has no redirect pages on disk (they are only generated when an Overcast ID or audio URL is found), so the link points at the start of the episode._
