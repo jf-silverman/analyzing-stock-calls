@@ -1545,6 +1545,7 @@ _SEGMENT_ALIASES = {
     "mag7_earnings":         "in_depth_analysis",
     "mag7_analysis":         "in_depth_analysis",
     "software_opportunities": "in_depth_analysis",
+    "interview_abridge":     "interview",
 }
 
 # The 6 segment values the prompt documents; anything else is a one-off custom
@@ -2981,6 +2982,20 @@ def is_unknown_ticker(ticker: str | None) -> bool:
     return bool(t) and set(t) == {"?"}
 
 
+def _secs_from_link(s: str) -> int | None:
+    """Recover start-seconds from a section link in either shape we emit: a
+    `?t=SECONDS` query (YouTube / redirect pages) or an Overcast universal link
+    `overcast.fm/+ID/M:SS` (or H:MM:SS). Returns None if neither is present."""
+    if (m := re.search(r"[?&]t=(\d+)", s)):
+        return int(m.group(1))
+    if (m := re.search(r"overcast\.fm/\+[\w-]+/([\d:]+)", s)):
+        secs = 0
+        for p in (int(x) for x in m.group(1).split(":")):
+            secs = secs * 60 + p
+        return secs
+    return None
+
+
 def _section_index(date_str: str) -> dict[str, list[tuple[str, int]]]:
     """Map segment -> [(section title, start_seconds)] for one episode date.
 
@@ -2999,12 +3014,14 @@ def _section_index(date_str: str) -> dict[str, list[tuple[str, int]]]:
     if summary.exists():
         html = summary.read_text(errors="replace")
         for href, label in re.findall(r"<h3><a href=\"([^\"]+)\">(.*?)</a></h3>", html, re.S):
-            m = re.search(r"[?&]t=(\d+)", href)
-            if not m:
+            secs = _secs_from_link(href)
+            if secs is None:
                 continue
-            # "▶ In-Depth: Costco (COST) [29:31]" -> "In-Depth: Costco (COST)"
-            title = re.sub(r"\s*\[[\d:]+\]\s*$", "", label.replace("▶", "")).strip()
-            _add(re.sub(r"\s+", " ", title), int(m.group(1)))
+            # "🎙 In-Depth: Costco (COST) [29:31]" -> "In-Depth: Costco (COST)"
+            # (older summaries led with ▶; strip whatever marker/emoji leads it)
+            title = re.sub(r"\s*\[[\d:]+\]\s*$", "", label).strip()
+            title = re.sub(r"^[^\w(]+", "", title)
+            _add(re.sub(r"\s+", " ", title), secs)
         if out:
             return out
 
@@ -3017,14 +3034,8 @@ def _section_index(date_str: str) -> dict[str, list[tuple[str, int]]]:
         title_m = re.search(r"<h1>(.*?)</h1>", page_html, re.S)
         title = re.sub(r"\s+", " ", title_m.group(1)).strip() if title_m else page.stem
 
-        # Two link shapes: overcast.fm/+ID/M:SS (or H:MM:SS) and overcast://...&t=SECONDS
-        secs = None
-        if (m := re.search(r"[?&]t=(\d+)", page_html)):
-            secs = int(m.group(1))
-        elif (m := re.search(r"overcast\.fm/\+[\w-]+/([\d:]+)", page_html)):
-            secs = 0
-            for p in (int(x) for x in m.group(1).split(":")):
-                secs = secs * 60 + p
+        # Two link shapes: overcast.fm/+ID/M:SS (or H:MM:SS) and ...?t=SECONDS
+        secs = _secs_from_link(page_html)
         if secs is not None:
             _add(title, secs)
 
