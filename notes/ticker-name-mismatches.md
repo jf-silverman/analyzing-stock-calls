@@ -10,8 +10,8 @@ symbol does Yahoo return for the company name we stored? A different symbol back
 means the call is sitting on the wrong company; the same symbol means our name is
 merely informal.
 
-That settles **5 of 53**. It cannot settle the other
-**48**, because Yahoo's search only matches *current legal* names — it
+That settles **6 of 53**. It cannot settle the other
+**47**, because Yahoo's search only matches *current legal* names — it
 returns nothing for "Snapchat", "Burlington Coat Factory" or "D-Wave Systems"
 exactly as it returns nothing for a caption garble. Those need the transcript.
 
@@ -55,7 +55,7 @@ Confirm against the transcript before changing anything.
 _None._
 
 
-## 2. Undecidable without the transcript — 48 ticker(s)
+## 2. Undecidable without the transcript — 47 ticker(s)
 
 Yahoo's search recognises neither name, so there is no evidence either way. This
 bucket genuinely mixes both problems: harmless old names ("Burlington Coat
@@ -97,7 +97,7 @@ exactly the way "D-Wave Systems" vs "D-Wave Quantum" do. Sorted hint-first.
 | `THO` | **Tenneco (Thomas Oil)** | THOR Industries, Inc. | **no** | **✗** / yes | 2026-06-23 · opening_commentary · [0:17](https://youtu.be/TW-oqAAfZDY?t=17) |
 | `TMPO` | **Tempest AI** | Tempo Automation Holdings, Inc. | **no** | **✗** / yes | 2026-03-27 · lightning_round · [35:00](https://youtu.be/aK5g9aWVbWU?t=2100) |
 | `VDV` | **Verdiv** | Vanguard Developed Markets ex-U | **no** | **✗** / **✗** | 2026-03-27 · lightning_round · [35:00](https://youtu.be/aK5g9aWVbWU?t=2100) |
-| `PAYX` | **Paychecks** | Paychex, Inc. | ~ | **✗** / yes | 2026-03-25 · interview · [14:50](https://youtu.be/V9apPO6VXII?t=890) / [45:30](https://youtu.be/V9apPO6VXII?t=2730)<br>2026-03-26 · macro_morass_analysis · [episode](https://youtu.be/LPnGGW9Dm48)<br>2026-03-30 · opening_commentary · [0:17](https://youtu.be/HZv54NYleAs?t=17)<br>2026-06-30 · interview · [16:19](https://youtu.be/FIMYXMYOpzg?t=979) / [36:48](https://youtu.be/FIMYXMYOpzg?t=2208) |
+| `PAYX` | **Paychecks** | Paychex, Inc. | ~ | **✗** / yes | 2026-03-25 · interview · [14:50](https://youtu.be/V9apPO6VXII?t=890) / [45:30](https://youtu.be/V9apPO6VXII?t=2730)<br>2026-03-26 · macro_morass_analysis · [episode](https://youtu.be/LPnGGW9Dm48)<br>2026-03-30 · opening_commentary · [0:17](https://youtu.be/HZv54NYleAs?t=17)<br>2026-06-30 · interview · [16:31](https://youtu.be/FIMYXMYOpzg?t=991) / [36:57](https://youtu.be/FIMYXMYOpzg?t=2217) |
 | `SNAP` | **Snapchat** | Snap Inc. | ~ | yes / yes | 2026-04-01 · opening_commentary · [0:17](https://youtu.be/6dJehtsavKU?t=17)<br>2026-04-28 · lightning_round · [35:35](https://youtu.be/Lgj13qHO9bE?t=2135)<br>2026-06-16 · opening_commentary · [0:17](https://youtu.be/2XCGYERvEzg?t=17) |
 | `BTC` | **Bitcoin** | Grayscale Bitcoin Mini Trust (B | ~ | **✗** / yes | 2026-03-02 · closing_commentary · [40:25](https://youtu.be/FiJ8qLa09no?t=2425)<br>2026-04-24 · lightning_round · [37:08](https://youtu.be/i3xD9jEIuDg?t=2228) |
 | `HBAN` | **Huntington Bancorp** | Huntington Bancshares Incorpora | ~ | **✗** / yes | 2026-01-16 · lightning_round · [episode](https://youtu.be/3qf_h8DXLyY)<br>2026-04-10 · am_i_diversified · [episode](https://youtu.be/6tmhL98Xa1g) |
@@ -112,16 +112,15 @@ exactly the way "D-Wave Systems" vs "D-Wave Quantum" do. Sorted hint-first.
 | `FWONK` | **Liberty Media Formula One** | Liberty Media Corporation - Ser | ~ | yes / yes | 2026-03-06 · in_depth_analysis · [17:27](https://youtu.be/OLHPn2XxtzQ?t=1047) / [28:14](https://youtu.be/OLHPn2XxtzQ?t=1694) |
 | `KRMN` | **Karman Space & Defense** | Karman Holdings Inc. | ~ | **✗** / yes | 2026-01-05 · lightning_round · [36:40](https://youtu.be/k4bEI8CxAgQ?t=2200) |
 | `NRGV` | **Energy Storage Company** | Energy Vault Holdings, Inc. | ~ | yes / yes | 2026-05-15 · lightning_round · [36:39](https://youtu.be/JIQheuNzaAI?t=2199) |
-| `PRIM` | **Primary Energy Holdings (infrastructure services)** | Primoris Services Corporation | ~ | **✗** / yes | 2026-03-10 · lightning_round · [36:00](https://youtu.be/SA2ZUqpSEss?t=2160) |
-| `QBTS` | **D-Wave Systems** | D-Wave Quantum Inc. | ~ | **✗** / yes | 2026-06-01 · lightning_round · [36:24](https://youtu.be/oHrBBaAh4Jc?t=2184) |
+| `QBTS` | **D-Wave Systems** | D-Wave Quantum Inc. | ~ | **✗** / yes | 2026-06-01 · lightning_round · [36:06](https://youtu.be/oHrBBaAh4Jc?t=2166) |
 | `RAL` | **Reliant** | Ralliant Corporation | ~ | yes / yes | 2026-06-05 · lightning_round · [36:00](https://youtu.be/LDtdnZddg-k?t=2160) |
 | `SATL` | **Satalogic Inc.** | Satellogic Inc. | ~ | yes / yes | 2026-01-28 · lightning_round · [episode](https://youtu.be/UxsosXoIT9E) |
 | `SGHC` | **Supergroup** | Super Group (SGHC) Limited | ~ | yes / yes | 2026-04-13 · interview · [29:50](https://youtu.be/ZJNO3IbjSDg?t=1790) |
 | `TEM` | **Tempest AI** | Tempus AI, Inc. | ~ | yes / yes | 2026-02-06 · opening_commentary · [0:03](https://youtu.be/xpEBYrOyHPE?t=3) |
-| `TKR` | **Timkin** | Timken Company (The) | ~ | yes / yes | 2026-06-04 · interview · [10:28](https://youtu.be/2KJ4PtpX3Wk?t=628) / [29:00](https://youtu.be/2KJ4PtpX3Wk?t=1740) |
+| `TKR` | **Timkin** | Timken Company (The) | ~ | yes / yes | 2026-06-04 · interview · [10:28](https://youtu.be/2KJ4PtpX3Wk?t=628) / [29:43](https://youtu.be/2KJ4PtpX3Wk?t=1783) |
 
 
-## 3. Name variants — 5 ticker(s), cosmetic only
+## 3. Name variants — 6 ticker(s), cosmetic only
 
 Yahoo maps our stored name back to the *same* symbol, so the ticker is correct
 and no price history is affected. Our name is just informal ("Snapchat"),
@@ -132,6 +131,7 @@ renamed-companies note in CLAUDE.md.
 
 | Ticker | We stored it as | Yahoo's name | Said? sym/name | Where — date · segment · time |
 |--------|-----------------|--------------|----------------|-------------------------------|
+| `CMG` | **Chipotle** | Chipotle Mexican Grill, Inc. | yes / yes | 2025-12-31 · in_depth_analysis · [10:28](https://youtu.be/xuWprgXUOlM?t=628)<br>2026-01-27 · opening_commentary · [episode](https://youtu.be/VqOMrFKSevs)<br>2026-01-30 · opening_commentary · [episode](https://youtu.be/LmFPOWVLnwo)<br>2026-02-03 · interview · [9:57](https://youtu.be/ZVTZc0j4hDY?t=597) / [23:38](https://youtu.be/ZVTZc0j4hDY?t=1418)<br>2026-03-06 · opening_commentary · [0:22](https://youtu.be/OLHPn2XxtzQ?t=22) / [10:00](https://youtu.be/OLHPn2XxtzQ?t=600)<br>2026-03-17 · opening_commentary · [0:17](https://youtu.be/5l7fzwpaiiQ?t=17)<br>2026-03-27 · opening_commentary · [0:17](https://youtu.be/aK5g9aWVbWU?t=17)<br>2026-04-17 · interview · [13:03](https://youtu.be/HYRppgkEDXc?t=783)<br>2026-04-24 · opening_commentary · [0:17](https://youtu.be/i3xD9jEIuDg?t=17)<br>2026-06-29 · opening_commentary · [0:17](https://youtu.be/oYqPlJRTd9o?t=17) / [10:46](https://youtu.be/oYqPlJRTd9o?t=646) / [27:06](https://youtu.be/oYqPlJRTd9o?t=1626) / [33:06](https://youtu.be/oYqPlJRTd9o?t=1986) |
 | `ELAN` | **Elanco** | Elanco Animal Health Incorporat | **✗** / yes | 2026-02-24 · interview · [27:00](https://youtu.be/g09PyNhWRws?t=1620)<br>2026-06-02 · lightning_round · [36:57](https://youtu.be/dVzjXBscDRc?t=2217) |
 | `DD` | **DuPont** | DuPont de Nemours, Inc. | **✗** / yes | 2026-02-06 · opening_commentary · [0:03](https://youtu.be/xpEBYrOyHPE?t=3) |
 | `FDS` | **FactSet** | FactSet Research Systems Inc. | **✗** / yes | 2026-02-23 · in_depth_analysis · [episode](https://youtu.be/Ij0nyL7Z2vc) |
@@ -139,7 +139,7 @@ renamed-companies note in CLAUDE.md.
 | `WOOF` | **Petco** | Petco Health and Wellness Compa | yes / yes | 2026-06-05 · opening_commentary · [0:17](https://youtu.be/LDtdnZddg-k?t=17) |
 
 
-_Checked 806 tickers with a stored company name. Tickers Yahoo does not
+_Checked 810 tickers with a stored company name. Tickers Yahoo does not
 recognise at all (hallucinated, private, OTC) are not listed here — see the
 'Hallucinated tickers' note in CLAUDE.md._
 
