@@ -575,20 +575,6 @@
           "closing_price": 212.06
         },
         {
-          "date": "2026-07-24",
-          "sentiment": "buy",
-          "segment": "opening_commentary",
-          "note": "Teaching example on position management: chipmaker with secular AI tailwinds worth owning long-term; mitigate volatility by trading around core (scale up/down incrementally at 5% intervals) rather than trading outright.",
-          "closing_price": 206.84
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Listed as exemplary high-quality growth stock for children's long-term portfolios; paired with dividend stocks to balance growth and income.",
-          "closing_price": 186.5
-        },
-        {
           "date": "2026-07-27",
           "sentiment": "caution_concern",
           "segment": "opening_commentary",
@@ -2168,7 +2154,6 @@
           "sentiment": "mild_buy",
           "segment": "in_depth",
           "note": "Strong quarter with beat and raised guidance; backlog and margins expanding; charitable trust holds but much harder to recommend after 145% run; valuations stretched.",
-          "price_level": 245,
           "closing_price": 245.75
         }
       ],
@@ -3972,13 +3957,6 @@
           "segment": "opening_commentary",
           "note": "Largest position in travel trust. Own long-term, don't trade. Brand strength allows pass-through of higher memory costs to carriers. Benefits from Alphabet AI spending. Excellent company making fortunes.",
           "closing_price": 327.74
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "strong_buy",
-          "segment": "in_depth_analysis",
-          "note": "Cramer got 'religion' on Apple ~20 years ago via daughters' preferences (iPod\u2192iPhone\u2192Mac ecosystem); ecosystem lock-in, convenience, and status created generational wealth; exemplifies learning from teenage consumer trends.",
-          "closing_price": 271.86
         }
       ],
       "sector": "Technology",
@@ -4050,13 +4028,6 @@
           "segment": "in_depth_analysis",
           "note": "Up 127% since end-2023 but trading like speculative asset not hedge; failed protection in March inflation crisis (\u221214% while S&P \u22128%); take profits; seasonal/cycle analysis warns of 2-3 month pullback.",
           "closing_price": 429.89
-        },
-        {
-          "date": "2026-07-23",
-          "sentiment": "buy",
-          "segment": "garden_variety_pullbacks",
-          "note": "Cramer recommends every investor hold gold as hedge against economic chaos; physical bullion preferred, but GLD ETF is acceptable alternative for portfolio protection.",
-          "closing_price": 371.52
         }
       ],
       "sector": "",
@@ -4392,13 +4363,6 @@
           "segment": "opening_commentary",
           "note": "Earnings beat masked by $6B negative free cash flow and $85B equity dilution; Google Cloud 82% growth offset by core search weakness amid AI transition.",
           "closing_price": 342.09
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "strong_buy",
-          "segment": "in_depth_analysis",
-          "note": "Daughters taught Cramer about Google's indispensability for research and information; showed Cramer how essential Google had become as digital infrastructure; exemplifies learning investment insights from teenagers' behavior.",
-          "closing_price": 313.0
         }
       ],
       "sector": "Communication Services",
@@ -5211,13 +5175,6 @@
           "segment": "opening_commentary",
           "note": "Called 'rotten fruit'\u2014still coasting on merchant-of-computing narrative from week ago; unclear if rally justified by fundamentals.",
           "closing_price": 681.31
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Discussed via Facebook/Instagram ecosystem; daughters migrated from Facebook to Instagram (which Meta acquired); ads work because they feel like helpful links; exemplifies social media platform wealth creation.",
-          "closing_price": 660.09
         }
       ],
       "sector": "Communication Services",
@@ -7258,13 +7215,6 @@
           "segment": "lightning_round",
           "note": "Even McDonald's is getting hit \u2014 the whole fast-food group is very challenged.",
           "closing_price": 278.25
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Recommended as obvious fast-food stock for children; household name teaches consumption-based investing logic.",
-          "closing_price": 305.63
         }
       ],
       "sector": "Consumer Cyclical",
@@ -7614,13 +7564,6 @@
           "segment": "opening_commentary",
           "note": "Consumer staples counterintuitive strength amid higher rates and inflation; pricing power and brand dominance offsetting macro headwinds.",
           "closing_price": 149.13
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "wait_hold_neutral",
-          "segment": "in_depth_analysis",
-          "note": "Cited as dividend aristocrat with 25+ years of consecutive dividend increases; exemplary consumer packaged goods company; featured in Cramer's Investing Club portfolio.",
-          "closing_price": 143.31
         }
       ],
       "sector": "Consumer Defensive",
@@ -9054,13 +8997,6 @@
           "segment": "opening_commentary",
           "note": "Consumer staples rally; benefiting from pricing power despite higher rates and inflation pressure on consumer goods.",
           "closing_price": 108.88
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Recommended as solid company behind Kleenex; staple household product kids recognize; pairs consumer familiarity with reliable dividend-paying business model.",
-          "closing_price": 100.89
         }
       ],
       "sector": "Consumer Defensive",
@@ -12539,13 +12475,6 @@
           "segment": "in_depth_analysis",
           "note": "CEO Ynon Kreiz buying shares; stock sells at 11x earnings; toy business out of favor but bottoming; insider conviction provides strong buy signal.",
           "closing_price": 14.9
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Recommended for young children as first stock purchase; teaches ownership through a toy company they know and play with.",
-          "closing_price": 19.84
         }
       ],
       "sector": "Consumer Cyclical",
@@ -12701,13 +12630,6 @@
           "segment": "opening_commentary",
           "note": "Cramer expects SpaceX acquisition sooner rather than later; Mag 7 rotation from profitable free cash flow to profitability-unproven CapEx spending.",
           "closing_price": 420.6
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Listed as exemplary high-quality growth stock for children's long-term portfolios; represents forward-looking technology and manufacturing innovation.",
-          "closing_price": 449.72
         }
       ],
       "sector": "Consumer Cyclical",
@@ -14548,13 +14470,6 @@
           "segment": "opening_commentary",
           "note": "Once-consistent grower delivered a weak quarter and severely punished holders; lacks control over its own destiny versus tech.",
           "closing_price": 138.49
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "wait_hold_neutral",
-          "segment": "in_depth_analysis",
-          "note": "Cited alongside P&G as dividend aristocrat; established consumer brand suitable for teaching dividend reinvestment and compounding over long time horizons.",
-          "closing_price": 143.52
         }
       ],
       "sector": "Consumer Defensive",
@@ -14626,13 +14541,6 @@
           "segment": "opening_commentary",
           "note": "Blowout quarter and $3B cost-cut announcement sparked 8.5% rally and food-stock following, but structural headwinds (GOP-1, rising costs, shallow growth) persist; gains ephemeral.",
           "closing_price": 37.77
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Retroactively praised as dividend stock Cramer's family should have bought instead of failed National Video; household brand (Cheerios) teaches consumer familiarity for kids' investing.",
-          "closing_price": 46.5
         }
       ],
       "sector": "Consumer Defensive",
@@ -16609,13 +16517,6 @@
           "segment": "opening_commentary",
           "note": "Microcosm of higher-end travel market; strong consumer holding should yield good quarter. Fresh start under new CEO Josh Silverman.",
           "closing_price": 103.08
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Recommended for children to buy; theme parks + streaming library create strong value proposition; natural entry point for kids who love Disney experiences.",
-          "closing_price": 113.77
         }
       ],
       "sector": "Communication Services",
@@ -16833,24 +16734,18 @@
           "closing_price": null
         },
         {
-          "date": "2026-07-21",
-          "sentiment": "buy_on_pullback",
-          "segment": "lightning_round",
-          "note": "Caller Chris from NY presents high-risk infrastructure play down significantly; positioned as potential next Nebius (speculative turnaround story). 'Something good could happen.' Allowed as small-position speculation.",
-          "closing_price": null
-        },
-        {
           "date": "2026-07-27",
           "sentiment": "buy",
           "segment": "in_depth",
           "note": "Crown jewel of breakup; massive installed base on commercial aircraft, defense/space upside, trades at discount to RTX/LMT; incredible buying opportunity on pullback.",
-          "price_level": 210
+          "closing_price": null
         },
         {
           "date": "2026-07-27",
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
-          "note": "Not a stock Cramer wants to own; 4% yield with no growth profile insufficient for current environment; need growth, not dividend traps."
+          "note": "Not a stock Cramer wants to own; 4% yield with no growth profile insufficient for current environment; need growth, not dividend traps.",
+          "closing_price": null
         }
       ],
       "sector": "",
@@ -18109,13 +18004,6 @@
           "segment": "opening_commentary",
           "note": "Could have first strong quarter in very long time.",
           "closing_price": 34.21
-        },
-        {
-          "date": "2025-12-31",
-          "sentiment": "strong_buy",
-          "segment": "in_depth_analysis",
-          "note": "Cramer's vegetarian daughters were devoted users; he recommended from low hundreds to 2000+ based on their genuine enthusiasm and organic positioning; exemplifies following teenage consumer trends to uncover winners.",
-          "closing_price": 37.0
         }
       ],
       "sector": "Consumer Cyclical",
@@ -18985,7 +18873,6 @@
           "sentiment": "buy",
           "segment": "in_depth",
           "note": "Q2 beat with Gen Z +40% spending growth; reinvesting excess earnings into business shows management conviction; down 13% from ATH creates entry opportunity.",
-          "price_level": 238,
           "closing_price": 335.39
         }
       ],
@@ -30462,6 +30349,13 @@
       "style": "",
       "mentions": [
         {
+          "date": "2026-07-21",
+          "sentiment": "buy_on_pullback",
+          "segment": "lightning_round",
+          "note": "Caller Chris from NY presents high-risk infrastructure play down significantly; positioned as potential next Nebius (speculative turnaround story). 'Something good could happen.' Allowed as small-position speculation.",
+          "closing_price": 4.65
+        },
+        {
           "date": "2026-07-22",
           "sentiment": "buy",
           "segment": "closing_commentary",
@@ -30558,18 +30452,6 @@
           "segment": "in_depth_analysis",
           "note": "IPO upsized twice on massive speculative demand, but company is years from profitability with $515.6M annual loss on $30.9M revenue. Valued at $15B+ on pure speculation; only risk capital you can afford to lose entirely.",
           "closing_price": 60.38
-        }
-      ]
-    },
-    "HAS": {
-      "company": "Hasbro",
-      "mentions": [
-        {
-          "date": "2025-12-31",
-          "sentiment": "buy",
-          "segment": "in_depth_analysis",
-          "note": "Recommended for young children; alternative to Mattel; allows kids to own shares in toy companies they understand and use.",
-          "closing_price": 82.0
         }
       ]
     },
