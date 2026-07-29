@@ -16725,13 +16725,6 @@
           "segment": "lightning_round",
           "note": "100% speculation on recent regulatory approval; only appropriate as small speculative allocation, not as core portfolio holding or primary position.",
           "closing_price": null
-        },
-        {
-          "date": "2026-06-10",
-          "sentiment": "wait_hold_neutral",
-          "segment": "lightning_round",
-          "note": "Data center infrastructure play (caller Claire, TN); conflicting signals\u2014executive resignation vs insider buying\u2014prevent clear call; requires research.",
-          "closing_price": null
         }
       ],
       "sector": "",
@@ -22297,6 +22290,13 @@
           "segment": "lightning_round",
           "note": "Just downgraded but Cramer stays long; upgraded because it's up so much, not due to fundamentals. Good company, hold position.",
           "closing_price": 134.11
+        },
+        {
+          "date": "2026-06-10",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Data center infrastructure play (caller Claire, TN); conflicting signals\u2014executive resignation vs insider buying\u2014prevent clear call; requires research.",
+          "closing_price": 93.88
         }
       ],
       "sector": "Industrials",

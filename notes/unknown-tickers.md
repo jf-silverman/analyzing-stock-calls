@@ -1,6 +1,6 @@
 # Unknown Tickers — Manual Review Queue
 
-**20 mention(s)** are stored under a placeholder ticker (`????` / `???`) — Haiku heard a company but could not identify its symbol. These are excluded from the website until they are resolved.
+**19 mention(s)** are stored under a placeholder ticker (`????` / `???`) — Haiku heard a company but could not identify its symbol. These are excluded from the website until they are resolved.
 
 > **Generated file — do not edit by hand.**
 >
@@ -45,4 +45,3 @@ Re-run the generator afterwards and the row disappears on its own.
 | 2026-05-28 | `????` | opening_commentary | 0:17 | mild_buy | Pure-play drone manufacturer; third of Cramer's top-three picks in sector; upside if selected by Pentagon for supplier stakes; pick one or two from group. | [watch](https://youtu.be/G_nPvcsM8LA?t=17) |
 | 2026-06-03 | `????` | lightning_round | 35:19 | wait_hold_neutral | Space stock referenced in context of current news cycle. Cramer doesn't know ticker or company name; will research and follow up. | [watch](https://youtu.be/hNHRqIXUT0o?t=2119) |
 | 2026-06-04 | `????` | lightning_round | 36:40 | wait_hold_neutral | 100% speculation on recent regulatory approval; only appropriate as small speculative allocation, not as core portfolio holding or primary position. | [watch](https://youtu.be/2KJ4PtpX3Wk?t=2200) |
-| 2026-06-10 | `????` | lightning_round | 37:00 | wait_hold_neutral | Data center infrastructure play (caller Claire, TN); conflicting signals—executive resignation vs insider buying—prevent clear call; requires research. | [watch](https://youtu.be/PSHvy4EAT1g?t=2220) |
