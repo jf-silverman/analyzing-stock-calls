@@ -139,10 +139,11 @@ def _ticker_display(ticker: str, date_str: str) -> str:
 
 USER_HOLDINGS = {
     "ARM", "AEVA", "INTC", "CRWV", "BE", "AUR", "ABSI", "PWR", "RVMD", "LRCX",
-    "GNRC", "LIN", "NEE", "ABNB", "MP", "NUE", "GOOGL", "VXUS", "QUBT", "COST",
-    "NET", "MRNA", "ARKK", "GLD", "CRSP", "NVDA", "MRVL", "MU", "AMZN", "CRWD",
-    "TWLO", "QS", "AAPL", "QBTS", "SHOP", "BEAM", "LLY", "SNOW", "RDDT", "VCX",
-    "LITE", "FPS", "VRT", "FSLR", "GILT", "RVI", "ONDS", "HAWK", "IRDM",
+    "GNRC", "LIN", "NEE", "ABNB", "MP", "NUE", "GOOGL", "QUBT", "COST", "NET",
+    "MRNA", "ARKK", "CRSP", "NVDA", "MRVL", "MU", "AMZN", "CRWD", "TWLO", "QS",
+    "AAPL", "QBTS", "SHOP", "BEAM", "LLY", "SNOW", "RDDT", "LITE", "FPS", "VRT",
+    "FSLR", "GILT", "RVI", "ONDS", "HAWK", "IRDM", "AXP", "CAH", "HON", "OSCR",
+    "RKLB", "SKHY",
 }
 
 SENTIMENT_COLORS = {
