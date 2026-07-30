@@ -1550,6 +1550,13 @@
           "segment": "closing_commentary",
           "note": "Championed by Cramer since 2008; now down significantly. Well-positioned for AgentForce AI and customer adoption but market indifferent to growth story. $50B buyback insufficient to overcome hardware-favoring narrative. Good company, not good enough for Street without higher growth.",
           "closing_price": 170.06
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Enterprise software rally; stock shot up from 146 to 189 following ServiceNow strength; shows no quit momentum.",
+          "closing_price": 188.38
         }
       ],
       "sector": "Technology",
@@ -1684,6 +1691,14 @@
           "segment": "in_depth_analysis",
           "note": "17% revenue growth; 17% DTC SSS (vs 8.5% expected); 25-cent earnings beat; brand on fire; CEO Patrice Louvet's execution stellar on women's apparel and accessories expansion; near all-time highs.",
           "closing_price": 376.23
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "Luxury repositioning working; earnings doubled in 3 years, margins expanded 500bps to 69.9%; international growth strong (Asia 20% SSS); buy ahead of earnings despite macro headwinds; 21x forward earnings justified.",
+          "price_level": 375,
+          "closing_price": 375.68
         }
       ],
       "sector": "Consumer Cyclical",
@@ -5234,6 +5249,13 @@
           "segment": "opening_commentary",
           "note": "Called 'rotten fruit'\u2014still coasting on merchant-of-computing narrative from week ago; unclear if rally justified by fundamentals.",
           "closing_price": 681.31
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Earnings miss with 2.4B legal contingencies; weak guidance; narrowed capex slightly raising it; stock killed after hours; needs more rigor in AI spend and WhatsApp monetization.",
+          "closing_price": 585.61
         }
       ],
       "sector": "Communication Services",
@@ -6026,6 +6048,13 @@
           "segment": "opening_commentary",
           "note": "City analyst report contradicts realist concerns about Copilot and Azure; stock jumped 3%. Cramer taking abstract view over fears of anthropic client switching.",
           "closing_price": 395.63
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Clean earnings beat after close; Azure cloud revenue accelerated to 43% YoY (fastest in 4 years); Copilot 30M paid seats; free cash flow solid; trusts management.",
+          "closing_price": 390.54
         }
       ],
       "sector": "Technology",
@@ -6254,6 +6283,13 @@
           "segment": "interview",
           "note": "AI control tower managing enterprise AI chaos; 98% renewal rate, longer contract terms, consumption-based pricing adoption; Jensen Wong endorsement validates platform as enterprise AI operating system.",
           "closing_price": 95.46
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Software rally initiated by strong Q2 quarter and CEO Bill McDermott appearance on show; stock rallying and triggering broader software sector momentum.",
+          "closing_price": 115.76
         }
       ],
       "sector": "Technology",
@@ -6900,6 +6936,13 @@
           "segment": "closing_commentary",
           "note": "Crashed from $638 to $227 (2.5 years). Under attack from Canva/Figma (low-end design) and Claude/ChatGPT (high-end productivity). Hunting both CEO and CFO (Narayen retiring, CFO departed June 15)\u2014massive transition risk. Hard to invest in leadership vacuum.",
           "closing_price": 227.16
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Monster move from 190 to 263 despite CEO/CFO departures; market recognizes strong fundamentals even with leadership turnover.",
+          "closing_price": 263.43
         }
       ],
       "sector": "Technology",
@@ -8603,6 +8646,13 @@
           "segment": "in_depth_analysis",
           "note": "Core holding for 5 years, up 360%; revenue CAGR 25% to $65.2B; EPS growth to $24.21. Retatrutide breakthrough (70 lb weight loss potential), gene therapy for cholesterol (VERVE-102), three vaccine acquisitions ($3.8B), CVS PBM deal expanding access. CEO David Ricks excellent steward. 'Biggest drug of all time' potential; sticking with Lilly for long haul.",
           "closing_price": 1078.78
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "Own-don't-trade philosophy; great business with great drugs; owned for years and will hold for years; classic long-term compounder.",
+          "closing_price": 1210.02
         }
       ],
       "sector": "Healthcare",
@@ -13703,6 +13753,14 @@
           "segment": "lightning_round",
           "note": "Data center speculative play being margined out; wait for better prices; not far off but professionals still selling.",
           "closing_price": 294.11
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "buy_on_pullback",
+          "segment": "interview",
+          "note": "Q2 revenue miss blamed on timing (orders delayed to H2), full-year guidance raised; 34\u201336% Q3 growth expected; strong pipeline/backlog; unlike 1999, all capacity utilized; stock appears unfairly punished.",
+          "price_level": 223,
+          "closing_price": 223.04
         }
       ],
       "sector": "Industrials",
@@ -16829,6 +16887,12 @@
           "segment": "lightning_round",
           "note": "Space stock referenced in context of current news cycle. Cramer doesn't know ticker or company name; will research and follow up.",
           "closing_price": null
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer not impressed; caller down 30% since May; recovery timeline too long."
         }
       ],
       "sector": "",
@@ -18087,6 +18151,13 @@
           "segment": "opening_commentary",
           "note": "Could have first strong quarter in very long time.",
           "closing_price": 34.21
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Q2 beat; same-store sales guidance raised from flat to low single digits; momentum into Q3; high-protein menu innovation strong; efficiency equipment driving transactions; margins beat despite inflation underpricing.",
+          "closing_price": 34.24
         }
       ],
       "sector": "Consumer Cyclical",
@@ -21439,6 +21510,13 @@
           "segment": "opening_commentary",
           "note": "Blue Halo $4.1B acquisition risk as Pentagon satellite contract faces rebid; question whether company overpaid without that contract and if stock overvalued; long-time Cramer favorite but need clarity.",
           "closing_price": 229.8
+        },
+        {
+          "date": "2026-07-29",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Defense sector too controversial and tough; Cramer unwilling to stick neck in that lion's den despite pullback.",
+          "closing_price": 142.12
         }
       ],
       "sector": "Industrials",
@@ -30649,6 +30727,29 @@
           "segment": "lightning_round",
           "note": "Caller Betsy notes CEO Jim Conroy departure caused collapse; down 92.7% YTD ('in the toilet'). Management matters in retail; poor performance and leadership departure signal deterioration, not opportunity.",
           "closing_price": 158.62
+        }
+      ]
+    },
+    "ALBS": {
+      "company": "AsterLabs",
+      "mentions": [
+        {
+          "date": "2026-07-29",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Fundamentals unchanged despite 50% decline; pure sentiment-driven selloff; company still executing well; buying opportunity."
+        }
+      ]
+    },
+    "MMYT": {
+      "company": "MakeMyTrip",
+      "mentions": [
+        {
+          "date": "2026-07-29",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cramer passes due to insufficient knowledge; will research before recommending.",
+          "closing_price": 57.15
         }
       ]
     }
