@@ -703,6 +703,13 @@
           "segment": "in_depth_analysis",
           "note": "Caller Adam held since 2001, asking about buying more. Cramer: 3% yield is magical level for HD. Buy more at 20x earnings. Fed won't cut rates\u2014higher discount rates make dividend yield more valuable in current environment.",
           "closing_price": 309.71
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Rates likely to rise, not fall; near-term environment unfavorable despite strong fundamentals. Be patient; own if you have it, but not the time to buy now.",
+          "closing_price": 333.35
         }
       ],
       "sector": "Consumer Cyclical",
@@ -3547,6 +3554,13 @@
           "segment": "lightning_round",
           "note": "Unexpected positive; Cramer planning deep-dive piece on tech transformation; sees turnaround potential; contrarian opportunity.",
           "closing_price": 8.82
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Margin selloff (down 33% in July despite strong fundamentals) created best entry point. QNX in 275M cars (22 of 23 autonomous makers), robotics partnership with Nvidia. Secure communications: 75% government contracts. Strong cash generation.",
+          "closing_price": 8.44
         }
       ],
       "sector": "Technology",
@@ -4031,6 +4045,13 @@
           "segment": "interview",
           "note": "Apple's $600B 4-year manufacturing commitment focused on supply chain integration (glass, semiconductors, rare earths) rather than cost arbitrage; CEO Tim Cook emphasizes innovation-driven partnerships like Corning collaboration create irreplicable competitive advantages.",
           "closing_price": 273.08
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Earnings beat diluted by tariff rebates; services and Americas weaker; margin pressure from memory costs. Stock hit despite strong iPhone sales; profit-taking likely after July run.",
+          "closing_price": 333.43
         }
       ],
       "sector": "Technology",
@@ -4822,6 +4843,13 @@
           "segment": "in_depth_analysis",
           "note": "Down 44% YoY but cheapest since 2022 at 19x earnings; strong buyback fortress ($27B remaining authorization, $12.5B annual FCF); build small position, add pyramid-style on weakness.",
           "closing_price": 67.6
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy_on_pullback",
+          "segment": "opening_commentary",
+          "note": "Down 22% YTD; caller asked if should sell. Cramer: don't sell down here, stock will bounce. Hold existing position; wait for better risk-reward.",
+          "closing_price": 73.17
         }
       ],
       "sector": "Communication Services",
@@ -5264,6 +5292,13 @@
           "segment": "opening_commentary",
           "note": "Bottom line miss (though $2.4B legal contingencies skewed results); guidance soft; capex raised slightly. Holding position but need more rigorous spend discipline and WhatsApp monetization strategy.",
           "closing_price": 585.61
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Not firing on all cylinders per Cramer; mixed earnings results relative to tech peers.",
+          "closing_price": 539.03
         }
       ],
       "sector": "Communication Services",
@@ -5758,6 +5793,13 @@
           "segment": "opening_commentary",
           "note": "Called 'dead money'\u2014spending portions on AI with no visible return yet; borrowing without clear data center ROI path forward.",
           "closing_price": 254.96
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "AWS growth 37% (up from 26% last quarter), operating income up 43% YoY; cloud margin expansion reflects AI monetization. Caught fire in after-hours; momentum continuing.",
+          "closing_price": 235.5
         }
       ],
       "sector": "Consumer Cyclical",
@@ -6063,6 +6105,13 @@
           "segment": "opening_commentary",
           "note": "Clean top and bottom line beat; Azure revenue growth accelerated to 43% YoY (fastest in 4 years); Copilot at 30M paid seats; solid free cash flow generation despite data center capex. Trusted management executing well.",
           "closing_price": 390.54
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Terrific quarter reported; stock soared higher. Cloud infrastructure business (similar to Amazon AWS) continues to drive value.",
+          "closing_price": 451.1
         }
       ],
       "sector": "Technology",
@@ -6633,6 +6682,12 @@
           "segment": "in_depth_analysis",
           "note": "Crashed 25% on guidance miss; corporate IT budgets squeezed by cybersecurity, hardware, AI token priorities; mainframe and consulting sales weak; cannot buy even on weakness; weakness persistent.",
           "closing_price": 217.07
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Quantum computing breakthroughs (RCS, materials physics, algorithmic verification) validate long-term strategy. Near-term: capex deferrals (40% already closing), semiconductor costs elevated. EPS impact 2028-29; $1T value by 2030s."
         }
       ],
       "sector": "Technology",
@@ -7160,6 +7215,13 @@
           "segment": "opening_commentary",
           "note": "Parabolic move with 100%+ YTD return. Sell half position immediately; expects this stock to get 'really smashed' in correction.",
           "closing_price": 376.99
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Come down so much due to data center margin selloff; Cramer thinks right level to buy. Blesses the stock; part of data center complex dragged down unfairly.",
+          "closing_price": 249.06
         }
       ],
       "sector": "Technology",
@@ -10600,6 +10662,14 @@
           "note": "Cramer buying for Chapel Trust on all dips; reported great quarter and solid forecast but stock cratered from $142 (end-June) to $86; AI spending won't collapse; long-term turnaround story being destroyed by post-parabolic unwinding despite fundamentals.",
           "price_level": 86,
           "closing_price": 86.3
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Excellent earnings (multi-year CPU demand, foundry strength, packaging division) but crushed by hedge fund margin selling. Fundamentals remain strong; margin selling now abating creates buying opportunity.",
+          "price_level": 93,
+          "closing_price": 91.13
         }
       ],
       "sector": "Technology",
@@ -12613,6 +12683,13 @@
           "segment": "in_depth_analysis",
           "note": "Outperforming Home Depot due to DIY customer exposure; still pressured by weak housing market but doing better than expected given environment.",
           "closing_price": 216.84
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Doing better than Home Depot in rate-rising environment; company benefits from higher rates better than competitors.",
+          "closing_price": 210.08
         }
       ],
       "sector": "Consumer Cyclical",
@@ -16909,6 +16986,12 @@
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Cramer doesn't care for this stock; expects recovery to take too long. Avoid."
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Regional bank doing incredibly well. Overbought on good quarter; wait for pullback if considering entry. If you own it, do not sell."
         }
       ],
       "sector": "",
@@ -17530,6 +17613,13 @@
           "segment": "opening_commentary",
           "note": "CEO Brian Nickel turnaround in progress; new protein drink portfolio. Rotation knocked stock to 100; rare buyable dislocation despite ongoing work.",
           "closing_price": 102.11
+        },
+        {
+          "date": "2026-07-30",
+          "sentiment": "strong_buy",
+          "segment": "closing_commentary",
+          "note": "CEO Brian Nickels executing Chipotle playbook: restore coffee-house experience, simplify menu, rigorous service benchmarks. Domestic SSS +7.9%, earnings guidance raised. Broke out of trading range; Cramer sees 'much higher' ahead.",
+          "closing_price": 105.85
         }
       ],
       "sector": "Consumer Cyclical",
@@ -30766,6 +30856,64 @@
           "segment": "lightning_round",
           "note": "60% market share in OTAA (online travel agency) in India but Cramer needs to do homework first; avoiding recommendation until research complete.",
           "closing_price": 57.15
+        }
+      ]
+    },
+    "MJAK": {
+      "company": "Jersey Mike Subs",
+      "mentions": [
+        {
+          "date": "2026-07-30",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "IPO weak debut ($22 \u2192 $21.63) creates buying opportunity. Exceptional franchise model: 3,378 locations (99% franchised), 20+ years same-store sales growth, $724M revenue (16% CAGR), EBITDA margin 47%. Growth runway 3,300 \u2192 15,000 stores. CEO Charlie Morrison (Wingstop success).",
+          "price_level": 21.63
+        }
+      ]
+    },
+    "HEI": {
+      "company": "Heico",
+      "mentions": [
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "One of Cramer's absolute favorite aerospace plays. Buy right here. Aerospace down on oil concerns, which Cramer finds illogical.",
+          "closing_price": 354.17
+        }
+      ]
+    },
+    "FBA": {
+      "company": "Bending Spoons",
+      "mentions": [
+        {
+          "date": "2026-07-30",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Really good software company; good idea despite software sector headwinds from contagion selling."
+        }
+      ]
+    },
+    "AMC": {
+      "company": "AMC Theaters",
+      "mentions": [
+        {
+          "date": "2026-07-30",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Spec play; caller noted record Q2 results and free cash flow, but Cramer says not his thing. Okay if you want spec, but requires good movies to work.",
+          "closing_price": 2.77
+        }
+      ]
+    },
+    "ESTL": {
+      "company": "Establishment Labs",
+      "mentions": [
+        {
+          "date": "2026-07-30",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Plastic surgery (Motiva implants, local anesthesia, 1-hour recovery). Cramer defers to another analyst; doesn't know the stock well enough to make a call."
         }
       ]
     }
