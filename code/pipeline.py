@@ -2986,30 +2986,35 @@ def build_name_mismatch_report(write: bool = True) -> list[dict]:
             if not items:
                 out.append("\n_None._\n")
                 return
+            def _ctx(r):
+                # Raw transcript quote near where the ticker was discussed — often
+                # enough to identify the real company without opening the episode.
+                return _transcript_context(r, transcripts_by_date, loc_cache) or "—"
+
             if suggest_col == "hint":
                 out.append("\n| Ticker | We stored it as | Yahoo's name | Similar? "
-                           "| Said? sym/name | Where — date · segment · time |")
+                           "| Said? sym/name | Where — date · segment · time | Transcript context |")
                 out.append("|--------|-----------------|--------------|----------|"
-                           "----------------|-------------------------------|")
+                           "----------------|-------------------------------|--------------------|")
                 for r in items:
                     out.append(f"| `{r['ticker']}` | **{r['company']}** | {r['actual']} "
-                               f"| {'~' if r.get('related') else '**no**'} | {_intx(r)} | {_where(r)} |")
+                               f"| {'~' if r.get('related') else '**no**'} | {_intx(r)} | {_where(r)} | {_ctx(r)} |")
             elif suggest_col:
                 out.append("\n| Ticker | We stored it as | That name is probably "
-                           "| But this symbol is | Said? sym/name | Where — date · segment · time |")
+                           "| But this symbol is | Said? sym/name | Where — date · segment · time | Transcript context |")
                 out.append("|--------|-----------------|----------------------|"
-                           "--------------------|----------------|-------------------------------|")
+                           "--------------------|----------------|-------------------------------|--------------------|")
                 for r in items:
                     out.append(f"| `{r['ticker']}` | **{r['company']}** | `{r['suggest']}` "
-                               f"| {r['actual']} | {_intx(r)} | {_where(r)} |")
+                               f"| {r['actual']} | {_intx(r)} | {_where(r)} | {_ctx(r)} |")
             else:
                 out.append("\n| Ticker | We stored it as | Yahoo's name "
-                           "| Said? sym/name | Where — date · segment · time |")
+                           "| Said? sym/name | Where — date · segment · time | Transcript context |")
                 out.append("|--------|-----------------|--------------|"
-                           "----------------|-------------------------------|")
+                           "----------------|-------------------------------|--------------------|")
                 for r in items:
                     out.append(f"| `{r['ticker']}` | **{r['company']}** | {r['actual']} "
-                               f"| {_intx(r)} | {_where(r)} |")
+                               f"| {_intx(r)} | {_where(r)} | {_ctx(r)} |")
             out.append("")
 
         _table(
@@ -3173,6 +3178,81 @@ def _mention_locations(mentions, idx_cache: dict | None = None) -> str:
             loc = f"[episode](https://youtu.be/{vid})" if vid else "—"
         cells.append(f"{date_str} · {seg_label} · {loc}")
     return "<br>".join(cells) if cells else "—"
+
+
+def _line_at_secs(lines: list[str], target: int) -> int | None:
+    """Index of the last transcript line whose [M:SS]/[H:MM:SS] stamp is at/before
+    `target` seconds — i.e. what was being said at that moment. None if unparseable."""
+    best = None
+    for i, ln in enumerate(lines):
+        m = re.match(r"\[([\d:]+)\]", ln)
+        if not m:
+            continue
+        secs = 0
+        for p in m.group(1).split(":"):
+            secs = secs * 60 + int(p)
+        if secs <= target:
+            best = i
+        else:
+            break
+    return best
+
+
+def _transcript_context(row: dict, transcripts_by_date: dict, idx_cache: dict,
+                        width: int = 160) -> str:
+    """A short raw-transcript quote showing where a flagged ticker was discussed, so a
+    reviewer can often identify the real company without opening the episode.
+
+    Location strategy, most trustworthy first:
+      1. the line where the *ticker* was spoken verbatim ("ask you about DX, Dynex"),
+      2. else the line sharing the most distinctive words with the stored company name
+         (survives caption garbles — one shared word is enough),
+      3. else the segment's opening line, found via _section_index timing — the only
+         handle left for a full garble, which is exactly where a quote helps most.
+    Returns '' when no transcript or no anchor is found. Advisory, read-only."""
+    company, ticker = row.get("company", ""), row.get("ticker", "")
+    name_tokens: set[str] = set()
+    for nm in (_name_aliases(company) or [company]):
+        name_tokens |= _name_tokens(nm)
+    tkr = "" if is_unknown_ticker(ticker) else (ticker or "").strip().lower()
+
+    def _clean(s: str) -> str:
+        s = re.sub(r"^\[[\d:]+\]\s*", "", s.strip())   # drop the [M:SS] stamp
+        s = re.sub(r"^>>\s*", "", s)                    # drop a speaker marker
+        return re.sub(r"\s+", " ", s)
+
+    for date_str, seg, _vid in row.get("mentions", []):
+        tx = transcripts_by_date.get(date_str, "")
+        if not tx:
+            continue
+        lines = tx.splitlines()
+        toks = [set(re.sub(r"[^a-z0-9]+", " ", ln.lower()).split()) for ln in lines]
+
+        pick = None
+        if tkr:
+            pick = next((i for i, w in enumerate(toks) if tkr in w), None)
+        if pick is None and name_tokens:
+            best = 0
+            for i, w in enumerate(toks):
+                sc = len(name_tokens & w)
+                if sc > best:
+                    best, pick = sc, i
+        if pick is None:
+            if date_str not in idx_cache:
+                idx_cache[date_str] = _section_index(date_str)
+            cands = idx_cache[date_str].get(_norm_segment(seg or ""), [])
+            if cands:
+                pick = _line_at_secs(lines, min(secs for _t, secs in cands))
+
+        if pick is not None:
+            window = " ".join(_clean(l) for l in lines[pick:pick + 2] if l.strip())
+            window = window.replace("|", "\\|").strip()
+            if not window:
+                continue
+            if len(window) > width:
+                window = window[:width].rstrip() + "…"
+            return f"…{window}…"
+    return ""
 
 
 def build_unknown_ticker_report(write: bool = True) -> str:
