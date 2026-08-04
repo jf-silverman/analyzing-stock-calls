@@ -1,6 +1,8 @@
-# Mad Money — Stock Lookup, Analytics, and Nightly Pipeline
+# Analyzing Stock Calls — Does Jim Cramer Beat the Market?
 
-A self-initiated end-to-end data project: scrape YouTube transcripts, extract structured stock calls with an LLM, track forward returns in a relational database, and surface the analytics on a fully client-side website — all running automatically every weekday night.
+A self-initiated, end-to-end data project that turns six months of CNBC's *Mad Money* into a structured, fact-checked dataset — one that doesn't exist anywhere else — and a live analytics site, then uses it to answer a question its usual coverage settles with anecdotes: **do Jim Cramer's stock calls actually beat the market, and can you tell the good calls from the bad ones in advance?**
+
+Every weeknight it automatically scrapes the latest episode, uses an LLM to turn a messy hour of television into structured stock calls, cross-checks every ticker and price against market data, recomputes the analytics, and publishes. Just as much of the work goes into *distrusting* the data — catching mis-transcribed tickers, look-ahead-biased model features, and my own too-good-to-be-true results — as into generating it.
 
 **Live site:** [jf-silverman.github.io/analyzing-stock-calls/stocks.html](https://jf-silverman.github.io/analyzing-stock-calls/stocks.html)
 
@@ -8,9 +10,11 @@ A self-initiated end-to-end data project: scrape YouTube transcripts, extract st
 
 ## The Question
 
-Jim Cramer makes dozens of stock picks per episode of Mad Money. Most coverage of his calls is anecdotal. Does his conviction level actually predict accuracy? Does segment matter — is he sharper in his carefully prepared Opening Commentary than in the rapid-fire Lightning Round? Which sectors does he call best?
+Jim Cramer makes dozens of stock picks per episode of Mad Money, and most coverage of his record is anecdotal. Does his conviction level actually predict accuracy? Does segment matter — is he sharper in his prepared Opening Commentary than in the rapid-fire Lightning Round? Which sectors does he call best? Would following his buy calls have beaten an index fund?
 
-This project builds the infrastructure to answer those questions rigorously, from raw YouTube audio to a queryable analytics dashboard.
+Underneath those runs a second question I kept turning on my own work: **can you trust the answer?** Speech-to-text mangles tickers, a naïve median can flip the sign of an "edge," and a single feature can smuggle tomorrow's price into a backtest. So a large part of the project is adversarial toward its own conclusions — validating every symbol against market data, pressure-testing each finding against a benchmark, and documenting what I deliberately *didn't* do and why.
+
+This builds the infrastructure to answer all of that rigorously, from raw YouTube audio to a queryable analytics dashboard.
 
 ---
 
@@ -26,6 +30,7 @@ This project builds the infrastructure to answer those questions rigorously, fro
 | **SQL querying & aggregation** | Complex queries for win rates by sentiment/segment/sector/market cap; median return calculations; benchmark-relative performance; confidence interval computation |
 | **Client-side web development** | GitHub Pages site (`docs/stocks.html`) — fully static, no backend; Chart.js time-scale charts with sentiment markers; async live price fetching; dynamic filter UI; per-ticker JSON shards fetched on demand |
 | **Analytics & data storytelling** | Win-rate and median-return comparisons across 1,100+ tickers, 6+ months, and 5 sentiment categories; pipeline-generated hero text that auto-updates each night |
+| **Analytical skepticism — checking my own work** | Treats every result as suspect until it survives scrutiny: excluded a look-ahead-biased feature that scored a fake 0.745 AUC, rebuilt a model's target after finding the label circular, rejected a tempting bulk "cleanup" that testing showed would delete 508 correct rows, and traced a headline "edge" to a single sector before believing it. Every top-line stat ships with the caveat that it all sits inside one ~6-month AI-driven bull market |
 | **Backtesting & benchmark methodology** | 60-day hold backtest of every buy call, each benchmarked against the S&P 500 / Nasdaq over its *own* matching window. Uses **paired per-call excess returns** — the naive "median of returns minus median of index returns" is invalid because different calls land in different market windows, and it can flip the sign of the result (NVDA reads as a loser by that method and a winner when paired correctly). Models a realistic "sell when he downgrades" variant, and rejects the tempting "drop the calls he later soured on" filter as lookahead bias |
 | **Predictive modeling** | scikit-learn logistic regression predicting which "buy on pullback" calls never pull back — 0.76 AUC / 77% accuracy, cross-validated with **grouped folds** (by ticker *and* by call date) so a stock can't leak across the split. Systematically tested volatility, fundamentals, valuation, market-regime (VIX/SPY) and analyst features; all failed to beat a single point-in-time momentum feature on n≈100. Caught and excluded **lookahead-biased features** (yfinance's `52WeekChange` embeds today's price and scored a fake 0.745 AUC), and rebuilt the target after discovering the original label was circular — it was derived from beta, which was also the model's strongest input |
 | **Data quality engineering** | Speech-to-text mangles company names ("Newor" &rarr; Nucor, "Sanders" &rarr; SanDisk), so the LLM picks a plausible-but-wrong ticker and the call silently inherits an unrelated company's price history. Built a Yahoo-arbitrated validator that runs at ingest and flags every symbol/company disagreement with a suggested correction. The matcher compares **token sets, not similarity ratios** — "Blackstone" and "BlackRock" score 0.74 on difflib, so no threshold can both accept `Lam Research` / `Lam Research Corporation` and reject that pair. 31 assertions in both directions |
@@ -54,7 +59,7 @@ Buying every buy call and holding 60 days, each call benchmarked against the ind
 | **Median** return | **+1.0%** | +3.7% | +8.3% |
 | Calls that beat the index | — | **48%** | **43%** |
 
-- **The mean and the median disagree — and the median is the honest one.** By the average he beats the S&P by 5 points; by the typical call he *loses* to it, and beats it less than half the time. The average is carried by a thin tail: the **top 5% of calls returned ~+106%**, while the other 95% averaged +2.9% (median −0.1%).
+- **The mean and the median disagree — and here the median is the one that matches reality.** By the average he beats the S&P by 5 points; by the typical call he *loses* to it, and beats it less than half the time. The average is carried by a thin tail: the **top 5% of calls returned ~+106%**, while the other 95% averaged +2.9% (median −0.1%).
 - **Nearly all of his edge was one sector.** His AI-complex buy calls beat the S&P by **~+10 points per call** (70% rose). Everything else *trailed* the index by ~4.5 points. Take AI out and his stock picking added nothing.
 - **He picked the right sector and then mistimed it.** He was *more* bullish on AI than elsewhere (Strong Buy on 18% of AI calls vs. 10%), but hedged with "buy on pullback" ~2× as often — and **that dip never came ~38% of the time** (buying anyway returned a ~+31% median). Acting on his later downgrades cut the mean return from +8.0% to +5.0%.
 - **His bearish calls are good — except on AI.** Across all Caution/Sell calls the stock fell 54% of the time (median −1.3%, 4 points below the index). On AI names the same calls *rose*. AI takes 6 of the 10 worst bearish calls to follow, but only 3 of the 10 best.
