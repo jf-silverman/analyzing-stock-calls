@@ -17,6 +17,13 @@ except ImportError:
 
 DB_PATH = Path(__file__).parent.parent / "data" / "mad_money.db"
 
+# Aggregate analytics (Analytics tab: sentiment scorecard, segment/sector/market-cap,
+# buy-call backtest, edge source) only count mentions on/after this date, so the
+# partial pre-2026 history the nightly backfill is still walking into doesn't skew a
+# single-regime story. Raw per-ticker history (Search/Episodes tabs) is NOT floored.
+# Revisit — likely drop — once all of Dec 2025 is captured.
+ANALYTICS_START_DATE = "2026-01-01"
+
 
 def get_connection():
     """Get a database connection."""
@@ -141,7 +148,7 @@ def _create_views(c):
     #   days_since_mention             — how many calendar days ago this mention was
     #   price_latest / price_latest_date — most recent price we have for this ticker
     c.execute("DROP VIEW IF EXISTS forward_returns")
-    c.execute("""
+    c.execute(f"""
         CREATE VIEW forward_returns AS
         WITH base AS (
             SELECT
@@ -165,6 +172,7 @@ def _create_views(c):
             JOIN episodes ep ON ep.id = m.episode_id
             WHERE ep.is_fundamentals = 0
               AND m.closing_price IS NOT NULL AND m.closing_price > 0
+              AND m.date >= '{ANALYTICS_START_DATE}'   -- see ANALYTICS_START_DATE
         )
         SELECT
             b.*,
@@ -633,8 +641,9 @@ def _buy_backtest_rows(conn, voo_prices: dict, qqq_prices: dict | None = None,
         FROM mentions m JOIN episodes e ON e.id = m.episode_id
         LEFT JOIN stocks s ON s.ticker = m.ticker
         WHERE m.closing_price IS NOT NULL AND m.closing_price > 0
+          AND m.date >= ?                       -- ANALYTICS_START_DATE floor
         ORDER BY m.date
-    """)
+    """, (ANALYTICS_START_DATE,))
     mentions = [dict(r) for r in c.fetchall()]
 
     c.execute("SELECT ticker, date, close FROM daily_prices ORDER BY ticker, date")
