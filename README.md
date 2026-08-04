@@ -2,7 +2,7 @@
 
 A self-initiated end-to-end data project: scrape YouTube transcripts, extract structured stock calls with an LLM, track forward returns in a relational database, and surface the analytics on a fully client-side website — all running automatically every weekday night.
 
-**Live site:** [jf-silverman.github.io/yt-words/stocks.html](https://jf-silverman.github.io/yt-words/stocks.html)
+**Live site:** [jf-silverman.github.io/analyzing-stock-calls/stocks.html](https://jf-silverman.github.io/analyzing-stock-calls/stocks.html)
 
 ---
 
