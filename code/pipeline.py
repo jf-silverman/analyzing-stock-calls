@@ -1214,6 +1214,10 @@ def rebuild_ticker_shards() -> None:
     if removed:
         print(f"Removed {removed} stale shard(s).")
 
+    # Regenerate the header's price-fallback file from current daily_prices (does not
+    # re-fetch; run --refresh-prices first to pull fresh closes).
+    _write_latest_prices_json()
+
     print(f"Wrote {len(stocks)} ticker shards + index.json to {TICKER_DATA_DIR}")
 
 
@@ -1226,6 +1230,79 @@ def update_all_prices() -> None:
     stocks = db.get("stocks", {})
     write_price_files(stocks)
     print(f"Done. Price files written to {TICKER_DATA_DIR}")
+
+
+def _write_latest_prices_json() -> None:
+    """Write docs/data/latest_prices.json = {TICKER: [close, 'YYYY-MM-DD']} from the
+    most recent daily_prices row per ticker.
+
+    The site header reads this as its price fallback: Yahoo's v8 endpoint sends no
+    CORS headers, so the browser's live fetch is blocked and a card would otherwise
+    show whatever close was last baked into its shard. One small file, regenerated
+    nightly (and on --rebuild-shards), keeps every card's header current without
+    rewriting ~900 shards each run. Its name ends in `_prices.json`, so the stale-
+    shard pruner in _write_ticker_shards() already skips it."""
+    from db import get_connection
+    conn = get_connection()
+    rows = conn.execute("""
+        SELECT ticker, close, date FROM daily_prices
+        WHERE (ticker, date) IN (
+            SELECT ticker, MAX(date) FROM daily_prices GROUP BY ticker
+        )
+    """).fetchall()
+    out = {r["ticker"]: [round(r["close"], 2), r["date"]] for r in rows}
+    TICKER_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (TICKER_DATA_DIR / "latest_prices.json").write_text(
+        json.dumps(out, separators=(",", ":")))
+    print(f"  latest_prices.json written ({len(out)} tickers) → {TICKER_DATA_DIR}")
+
+
+def refresh_latest_prices(chunk_size: int = 150) -> int:
+    """Refresh the most-recent close for every ticker already in daily_prices (i.e.
+    proven to exist on Yahoo), skipping placeholder and currently-private tickers.
+
+    Batched via yfinance.download — Yahoo returns many tickers per HTTP request, so
+    ~900 tickers costs only a handful of calls (far lighter than one v8 request each).
+    Upserts each ticker's latest non-NaN close into daily_prices. Returns the number
+    of tickers whose close was written. Call _write_latest_prices_json() afterward to
+    publish the result to the site."""
+    import yfinance as yf
+    from db import get_connection
+    conn = get_connection()
+    today = date.today().isoformat()
+    tickers = [r["ticker"] for r in
+               conn.execute("SELECT DISTINCT ticker FROM daily_prices").fetchall()]
+    tickers = [t for t in tickers
+               if not is_unknown_ticker(t) and not _is_private(t, today)]
+    if not tickers:
+        return 0
+    print(f"  Refreshing latest close for {len(tickers)} ticker(s) (batched)…")
+    updated = 0
+    for i in range(0, len(tickers), chunk_size):
+        chunk = tickers[i:i + chunk_size]
+        try:
+            df = yf.download(chunk, period="5d", progress=False,
+                             threads=True, auto_adjust=False)
+        except Exception as e:
+            print(f"    chunk {i // chunk_size + 1} failed: {e}")
+            continue
+        # Single-ticker downloads return flat columns; multi-ticker a column MultiIndex.
+        closes = df["Close"] if "Close" in df.columns else df
+        for t in chunk:
+            try:
+                s = (closes[t] if (hasattr(closes, "columns") and t in closes.columns)
+                     else closes).dropna()
+            except Exception:
+                continue
+            if s.empty:
+                continue
+            last_date = s.index[-1].strftime("%Y-%m-%d")
+            last_close = round(float(s.iloc[-1]), 2)
+            upsert_daily_prices(t, [{"date": last_date, "close": last_close}])
+            updated += 1
+        print(f"    {min(i + chunk_size, len(tickers))}/{len(tickers)}…")
+    print(f"  Refreshed latest close for {updated} ticker(s)")
+    return updated
 
 
 def _update_db_closing_price(ticker: str, date: str, segment: str, price: float) -> None:
@@ -3489,6 +3566,9 @@ def main() -> None:
                         help="Rebuild all per-ticker JSON shards in docs/data/ from stock_sentiments.json")
     parser.add_argument("--update-prices", action="store_true",
                         help="Fetch/refresh daily price history files for all active tickers in docs/data/")
+    parser.add_argument("--refresh-prices", action="store_true",
+                        help="Refresh the latest close for every valid ticker (batched Yahoo) and "
+                             "rewrite docs/data/latest_prices.json — the site header's price fallback")
     parser.add_argument("--fetch-sectors", action="store_true",
                         help="Batch-fetch sector/style from Yahoo Finance for all tickers and rebuild shards")
     parser.add_argument("--mark-fundamentals", metavar="DATE[,DATE,...]",
@@ -3525,6 +3605,11 @@ def main() -> None:
 
     if args.update_prices:
         update_all_prices()
+        return
+
+    if args.refresh_prices:
+        refresh_latest_prices()
+        _write_latest_prices_json()
         return
 
     if args.fetch_sectors:
@@ -3628,6 +3713,18 @@ def main() -> None:
     # gets no email of its own (only the one-line note on tonight's).
     archive_set = summaries + ([backfill_summary] if backfill_summary else [])
     dates = [s["date_str"] for s in archive_set]
+
+    # Refresh every valid ticker's latest close so the site header shows a current
+    # price (not just the tickers mentioned tonight). Batched, so it's a light Yahoo
+    # hit; written to the single latest_prices.json the header reads. Best-effort —
+    # a rate-limited night just leaves yesterday's file in place.
+    if not args.dry_run:
+        print("\nRefreshing latest prices for all tickers…")
+        try:
+            refresh_latest_prices()
+            _write_latest_prices_json()
+        except Exception as e:
+            print(f"  Price refresh skipped: {e}")
 
     # Push redirect pages to GitHub Pages (needed before email so links are live)
     if not args.dry_run:
