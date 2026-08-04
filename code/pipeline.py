@@ -101,7 +101,7 @@ RULES_FILE = ROOT / "prompts" / "mad_money_rules.md"
 CNBC_CHANNEL_ID = "UCrp_UI8XtuYfpiqluWLD7Lw"
 MAD_MONEY_RSS = "https://feeds.simplecast.com/TkQfZXMD"
 OVERCAST_PODCAST_URL = "https://overcast.fm/itunes147247199/"
-GITHUB_PAGES_BASE = "https://jf-silverman.github.io/yt-words"
+GITHUB_PAGES_BASE = "https://jf-silverman.github.io/analyzing-stock-calls"
 
 GMAIL_FROM = "joelfsilverman@gmail.com"
 GMAIL_TO = "joelfsilverman@gmail.com"
@@ -2308,7 +2308,7 @@ def _inject_backfill_note(html: str, note: tuple | None) -> str:
     except Exception:
         pretty = date_str
     picks = f"{n} pick{'' if n == 1 else 's'}"
-    site = "https://jf-silverman.github.io/yt-words/stocks.html"
+    site = "https://jf-silverman.github.io/analyzing-stock-calls/stocks.html"
     row = (
         '<p style="font:13px -apple-system,Helvetica,Arial,sans-serif;color:#666;'
         'border-top:1px solid #e5e5e5;padding-top:10px;margin:20px 0 0;">'
