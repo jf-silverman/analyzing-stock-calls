@@ -424,7 +424,7 @@ def analyze_with_claude_code(date_str: str, transcript_text: str) -> dict:
     without --setting-sources "" it would pick up CLAUDE.md, skills and hooks and behave
     unpredictably.
     """
-    import subprocess, os
+    import subprocess, os, time
 
     user_message = f"Episode date: {date_str}\n\nTranscript:\n{transcript_text}"
     system_prompt = RULES_FILE.read_text()
@@ -433,35 +433,57 @@ def analyze_with_claude_code(date_str: str, transcript_text: str) -> dict:
     # claude.ai subscription login, causing "connectors disabled" errors.
     env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
 
-    result = subprocess.run(
-        [
-            _claude_bin(), "-p", user_message,
-            "--system-prompt", system_prompt,
-            "--model", ANALYSIS_MODEL,
-            "--tools", "",
-            "--setting-sources", "",
-            "--strict-mcp-config",
-            "--disable-slash-commands",
-            "--no-session-persistence",
-        ],
-        capture_output=True, text=True, env=env, timeout=900,
-    )
+    argv = [
+        _claude_bin(), "-p", user_message,
+        "--system-prompt", system_prompt,
+        "--model", ANALYSIS_MODEL,
+        "--tools", "",
+        "--setting-sources", "",
+        "--strict-mcp-config",
+        "--disable-slash-commands",
+        "--no-session-persistence",
+    ]
 
-    if result.returncode != 0:
-        # Report BOTH streams. `claude -p` writes its failure reason (usage limit,
-        # auth expiry, model refusal) to *stdout*, so reporting only stderr produced
-        # an empty explanation and a nightly run that failed for no visible reason.
-        detail = "\n".join(filter(None, [
-            f"stderr: {result.stderr.strip()}" if result.stderr.strip() else "",
-            f"stdout: {result.stdout.strip()[:2000]}" if result.stdout.strip() else "",
-        ])) or "(both stdout and stderr were empty)"
-        raise RuntimeError(f"claude CLI failed (rc={result.returncode}):\n{detail}")
+    # Retry transient failures: the claude CLI occasionally drops the connection
+    # mid-response ("API Error: Connection closed mid-response") or returns truncated
+    # JSON, which sank whole nights (2026-07-21, 2026-08-03). Usage-limit/auth errors
+    # also surface as rc!=0 and will simply exhaust the retries and raise — acceptable,
+    # since those are real failures worth an email.
+    max_attempts = 3
+    last_err = ""
+    for attempt in range(1, max_attempts + 1):
+        try:
+            result = subprocess.run(argv, capture_output=True, text=True,
+                                    env=env, timeout=900)
+        except subprocess.TimeoutExpired:
+            last_err = "timed out after 900s"
+        else:
+            if result.returncode == 0:
+                raw = result.stdout.strip()
+                if raw.startswith("```"):
+                    raw = raw.split("\n", 1)[1].rsplit("```", 1)[0].strip()
+                try:
+                    return json.loads(raw)
+                except json.JSONDecodeError as e:
+                    last_err = f"invalid/truncated JSON ({e}); head: {raw[:200]}"
+            else:
+                # Report BOTH streams. `claude -p` writes its failure reason (usage
+                # limit, auth expiry, model refusal) to *stdout*, so reporting only
+                # stderr produced an empty explanation and a run that failed for no
+                # visible reason.
+                detail = "\n".join(filter(None, [
+                    f"stderr: {result.stderr.strip()}" if result.stderr.strip() else "",
+                    f"stdout: {result.stdout.strip()[:2000]}" if result.stdout.strip() else "",
+                ])) or "(both stdout and stderr were empty)"
+                last_err = f"rc={result.returncode}:\n{detail}"
 
-    raw = result.stdout.strip()
-    if raw.startswith("```"):
-        raw = raw.split("\n", 1)[1].rsplit("```", 1)[0].strip()
+        if attempt < max_attempts:
+            wait = 5 * attempt
+            print(f"    claude CLI attempt {attempt}/{max_attempts} failed "
+                  f"({last_err.splitlines()[0][:90]}); retrying in {wait}s…")
+            time.sleep(wait)
 
-    return json.loads(raw)
+    raise RuntimeError(f"claude CLI failed after {max_attempts} attempts — {last_err}")
 
 
 # ── 4. Sentiment JSON update ───────────────────────────────────────────────────
