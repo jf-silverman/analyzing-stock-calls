@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /yt-words/data/
+Disallow: /analyzing-stock-calls/data/

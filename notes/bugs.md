@@ -162,7 +162,7 @@ Interactive pushes kept succeeding, which masked the problem — the backlog onl
 when a manual push happened to sweep the stranded commits along.
 
 **Fix:**
-1. Remote switched to SSH (`git@github.com:jf-silverman/yt-words.git`). The existing
+1. Remote switched to SSH (`git@github.com:jf-silverman/analyzing-stock-calls.git`). The existing
    `~/.ssh/id_ed25519` is already registered with GitHub and has **no passphrase**, so it
    works headless. One `git remote set-url` covers both worktrees (shared `.git`).
 2. `commit_and_push()` now prints a loud `!!!!` banner on push failure, including the
