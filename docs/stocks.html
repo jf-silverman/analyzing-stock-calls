@@ -1466,9 +1466,9 @@ function renderEpCal() {
   }
   pop.innerHTML = `
     <div class="cal-head">
-      <button class="cal-nav" onclick="stepEpMonth(-1)" ${prevOk ? '' : 'disabled'} title="Previous month">&#8249;</button>
+      <button class="cal-nav" onclick="stepEpMonth(-1, event)" ${prevOk ? '' : 'disabled'} title="Previous month">&#8249;</button>
       <span class="cal-title">${epCalMonth.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</span>
-      <button class="cal-nav" onclick="stepEpMonth(1)" ${nextOk ? '' : 'disabled'} title="Next month">&#8250;</button>
+      <button class="cal-nav" onclick="stepEpMonth(1, event)" ${nextOk ? '' : 'disabled'} title="Next month">&#8250;</button>
     </div>
     <div class="cal-grid">
       ${['S','M','T','W','T','F','S'].map(d => `<div class="cal-dow">${d}</div>`).join('')}
@@ -1480,7 +1480,12 @@ function renderEpCal() {
     </div>`;
 }
 
-function stepEpMonth(delta) {
+function stepEpMonth(delta, evt) {
+  // renderEpCal() replaces the popup's innerHTML, detaching the button we just
+  // clicked. If this click reaches the document handler its target is no longer
+  // in the DOM, so .closest('.cal-wrap') returns null and the popup closes. Stop
+  // it here so stepping months keeps the calendar open.
+  if (evt) evt.stopPropagation();
   epCalMonth = new Date(epCalMonth.getFullYear(), epCalMonth.getMonth() + delta, 1);
   renderEpCal();
 }
