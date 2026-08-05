@@ -505,13 +505,24 @@ def fetch_closing_price(ticker: str, date_str: str) -> float | None:
         return None
 
 
-def fetch_price_history(ticker: str, days: int = 180) -> list[dict]:
-    """Fetch daily closing prices for the past `days` days from Yahoo Finance.
-    Returns [{date, close}, ...] sorted oldest-first, empty list on error."""
+def fetch_price_history(ticker: str, start: str | None = None, days: int = 180) -> list[dict]:
+    """Fetch daily closing prices from Yahoo Finance, split-adjusted, oldest-first.
+
+    Fetches from `start` (YYYY-MM-DD) when given, otherwise the past `days` days.
+    Yahoo returns split-adjusted closes across the whole requested range, so a
+    single full-range fetch is internally consistent through any split. That is
+    why write_price_files OVERWRITES the shard from this rather than merging with
+    older archived points: merging stitched pre-split prices onto post-split ones
+    and produced fake overnight cliffs (CRWD's 4:1 split on 2026-01-05 showed as
+    a -75% day, $453 -> $114). Returns [] on error.
+    """
     try:
         end = datetime.now(timezone.utc)
-        start = end - timedelta(days=days)
-        p1 = int(start.timestamp())
+        if start:
+            start_dt = datetime.strptime(start, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        else:
+            start_dt = end - timedelta(days=days)
+        p1 = int(start_dt.timestamp())
         p2 = int(end.timestamp())
         url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
                f"?interval=1d&period1={p1}&period2={p2}")
@@ -580,19 +591,21 @@ def write_price_files(stocks: dict, only: set[str] | None = None) -> None:
         return
     print(f"  Fetching daily price history for {len(targets)} ticker(s)…")
     for i, ticker in enumerate(targets, 1):
-        hist = fetch_price_history(ticker)
+        # Fetch from ~2 weeks before this ticker's earliest mention through today,
+        # in one split-adjusted call, and OVERWRITE. Fetching the full window
+        # (rather than a rolling 180 days merged with an archive) keeps early-year
+        # context as the calendar advances AND stays split-consistent — a split
+        # re-scales all prior closes, and only a single fresh fetch reflects that.
+        mdates = [m.get("date") for m in stocks[ticker].get("mentions", []) if m.get("date")]
+        start = None
+        if mdates:
+            start = (date.fromisoformat(min(mdates)) - timedelta(days=14)).isoformat()
+        hist = fetch_price_history(ticker, start=start)
         if hist:
-            existing = _load_price_archive(ticker)
-            merged = _merge_prices(existing, hist)
-            _save_price_archive(ticker, merged)
-            upsert_daily_prices(ticker, merged)
-            # Write the FULL accumulated history to the docs shard, not just the
-            # rolling 180-day `hist`. fetch_price_history only reaches back 180
-            # days, so as the calendar advances that window rolls past Jan 1 and
-            # the site's purple daily-price bars lose their early-year context.
-            # `merged` carries everything we've ever archived (back to Dec 2025).
+            _save_price_archive(ticker, hist)       # archive = the clean full fetch
+            upsert_daily_prices(ticker, hist)        # INSERT OR REPLACE rescales split rows
             (TICKER_DATA_DIR / f"{ticker}_prices.json").write_text(
-                json.dumps(merged, separators=(",", ":"))
+                json.dumps(hist, separators=(",", ":"))
             )
         if i % 20 == 0:
             print(f"    {i}/{len(targets)} done")
