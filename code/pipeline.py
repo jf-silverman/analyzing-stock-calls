@@ -586,8 +586,13 @@ def write_price_files(stocks: dict, only: set[str] | None = None) -> None:
             merged = _merge_prices(existing, hist)
             _save_price_archive(ticker, merged)
             upsert_daily_prices(ticker, merged)
+            # Write the FULL accumulated history to the docs shard, not just the
+            # rolling 180-day `hist`. fetch_price_history only reaches back 180
+            # days, so as the calendar advances that window rolls past Jan 1 and
+            # the site's purple daily-price bars lose their early-year context.
+            # `merged` carries everything we've ever archived (back to Dec 2025).
             (TICKER_DATA_DIR / f"{ticker}_prices.json").write_text(
-                json.dumps(hist, separators=(",", ":"))
+                json.dumps(merged, separators=(",", ":"))
             )
         if i % 20 == 0:
             print(f"    {i}/{len(targets)} done")
