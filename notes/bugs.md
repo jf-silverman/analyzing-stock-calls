@@ -50,6 +50,55 @@ python3 code/pipeline.py --rebuild-shards
 
 ## Open
 
+### BUG-015 — Stock splits corrupt accumulated price history (reactive fix shipped; proactive detection still needed)
+**Discovered:** 2026-08-04 (CRWD chart "looked wrong")
+**Symptom:** A ticker's daily-price line showed a fake overnight cliff — CRWD's 4:1
+split on 2026-01-05 rendered as a **-75% day** ($453 → $114); MLI's 2:1 the same.
+Separately, several *mention* closing prices were left at pre-split (unadjusted)
+levels (CRWD `2026-06-17` stored $682.96 vs. a $170.74 close), which also skewed
+the sentiment triangles, the mention tables, and the backtest returns.
+**Root cause:** `write_price_files` fetched a rolling 180-day window and *merged*
+it into `data/daily_prices/{T}.json` via `_merge_prices`, which keys by date and
+never re-adjusts existing points. Yahoo adjusts *its* history for splits, but our
+merged archive stitched pre-split closes (captured before the split) onto
+post-split closes (captured after) into one series → the cliff. Mention
+`closing_price` is fetched once at ingest and likewise never re-adjusted.
+**Reactive fix (shipped 2026-08-04):** `fetch_price_history` now takes a start
+date; `write_price_files` fetches the full range from ~2 weeks before each
+ticker's earliest mention through today in **one split-adjusted call** and
+*overwrites* the shard/archive/DB (no merge). A single full-range fetch is
+internally split-consistent, so it self-heals each actively-mentioned ticker on
+the next nightly run. Also re-fetched the known split tickers and snapped 9
+mismatched mention prices to the authoritative daily close, then `--rebuild-shards`.
+**Still open — proactive split handling.** The current fix is passive: a split is
+only corrected the next time that ticker is fetched, and *only* the daily-price
+series self-heals — a stale **mention `closing_price`** is never revisited once
+stored, so a split in a ticker that stops being mentioned would leave its triangles
+and backtest returns wrong indefinitely. We should actively detect splits and
+re-adjust. Options to weigh:
+- Pull Yahoo's split events (the chart API returns `events.splits`, or use
+  `yfinance`'s `.splits`) and, on any new split, re-fetch that ticker's full
+  history *and* rescale every stored mention `closing_price` by the split ratio.
+- A nightly guard: for each mentioned ticker, compare stored mention
+  `closing_price` against `daily_prices` for the same date (the check used to find
+  these 9 rows — `abs(mp-dc)/dc > 0.05`) and auto-correct/flag drift.
+- Simplest: periodically re-run the mention-vs-daily-close reconciliation and
+  `--rebuild-shards`, treating `daily_prices` as the source of truth.
+**Detect drift manually meanwhile:**
+```bash
+# mentions whose stored close disagrees >5% with the split-adjusted daily close
+python3 - <<'PY'
+import sqlite3; c=sqlite3.connect('data/mad_money.db')
+for r in c.execute('''select m.ticker,e.date,m.closing_price,dp.close
+  from mentions m join episodes e on e.id=m.episode_id
+  join daily_prices dp on dp.ticker=m.ticker and dp.date=e.date
+  where m.closing_price is not null and dp.close>0
+    and abs(m.closing_price-dp.close)/dp.close>0.05'''): print(r)
+PY
+```
+
+---
+
 ### BUG-007 — Nightly `git push` can fail silently, leaving episodes committed locally but not on origin
 **Discovered:** 2026-07-20  
 **Symptom:** The 2026-07-15 and 2026-07-16 episodes had been committed to local `main` by the cron but were never pushed — `main` sat 2 commits ahead of `origin/main` for days, so the redirect pages and site data for those nights were **not live** even though the run "succeeded" and the email went out. Found by chance while merging a feature branch up.  
