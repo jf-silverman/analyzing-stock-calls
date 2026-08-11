@@ -2486,6 +2486,42 @@ def send_failure_notice(failures: list[dict], mode: str = "smtp") -> None:
     send_email(body, f"⚠️ Mad Money pipeline failed — {len(failures)} episode(s)", mode=mode)
 
 
+def send_rerun_notice(reruns: list[dict], mode: str = "smtp") -> None:
+    """Email a short note when discovered episode(s) were re-runs of prior ones.
+
+    CNBC re-airs older (often fundamentals/teaching) episodes under a fresh
+    video_id. The transcript is identical to one already analyzed, so the pipeline
+    skips re-analysis — but staying silent would look like a missed night. This
+    points back to the date each re-run first aired: its original email and the
+    site's Episodes tab already hold the analysis, so there's nothing to redo.
+    """
+    episodes_tab = f"{GITHUB_PAGES_BASE}/stocks.html"
+    rows = "".join(
+        f"<tr>"
+        f"<td style='padding:6px 12px 6px 0;'>{html_lib.escape(r['title'] or r['video_id'])}</td>"
+        f"<td style='padding:6px 0;white-space:nowrap;'>first ran "
+        f"<strong>{html_lib.escape(r['prior_date'])}</strong></td>"
+        f"</tr>"
+        for r in reruns
+    )
+    n = len(reruns)
+    lead = ("A re-aired episode was found" if n == 1
+            else f"{n} re-aired episodes were found")
+    body = f"""\
+<html><body style="font-family:-apple-system,Helvetica,Arial,sans-serif;font-size:14px;color:#1a1a1a;">
+  <h2 style="margin:0 0 4px;font-size:17px;">Mad Money — re-run detected</h2>
+  <p style="margin:0 0 16px;color:#555;">
+    {lead}. The transcript matches an episode already analyzed, so nothing was
+    re-processed. The original analysis is in that date's email and on the
+    <a href="{episodes_tab}">Episodes tab</a> — pick the date below.
+  </p>
+  <table style="border-collapse:collapse;font-size:13px;">{rows}</table>
+</body></html>"""
+    subject = (f"↩️ Mad Money re-run — see {reruns[0]['prior_date']}" if n == 1
+               else f"↩️ Mad Money — {n} re-runs")
+    send_email(body, subject, mode=mode)
+
+
 # ── 9. Git commit + push ──────────────────────────────────────────────────────
 
 PAGES_BRANCH = "main"   # GitHub Pages publishes from main
@@ -3600,6 +3636,62 @@ def resync_transcripts(threshold: float = 0.6) -> list[tuple[str, float]]:
     return fixed
 
 
+class DuplicateEpisode(Exception):
+    """Raised when a discovered episode's transcript matches one already analyzed.
+
+    Carries `prior_date` — the date the identical transcript first ran — so the
+    caller can skip re-analysis and point the operator back to that episode.
+    """
+    def __init__(self, prior_date: str):
+        self.prior_date = prior_date
+        super().__init__(f"transcript already analyzed on {prior_date}")
+
+
+def _normalize_transcript(text: str) -> str:
+    """Lowercased word tokens joined by single spaces — punctuation/whitespace-agnostic."""
+    return " ".join(re.findall(r"\w+", (text or "").lower()))
+
+
+def _find_prior_transcript_date(transcript_text: str, exclude_date: str = "") -> str | None:
+    """Return the most-recent prior episode date whose transcript matches this one.
+
+    A re-aired ("re-run") episode gets a brand-new YouTube video_id and upload
+    date, but its auto-captions come from the same audio, so the transcript is
+    (near-)identical to an episode we already analyzed. Detecting that lets the
+    pipeline skip a pointless re-analysis and just point back to the original date.
+
+    Matches on normalized text: exact, or — to tolerate the odd caption re-encode —
+    normalized length within 2% and a >=0.97 similarity ratio. The length prefilter
+    keeps the expensive ratio to the one or two real candidates.
+    """
+    import difflib
+    from db import get_connection
+
+    sig = _normalize_transcript(transcript_text)
+    if not sig:
+        return None
+    n = len(sig)
+    conn = get_connection()
+    rows = conn.execute(
+        "SELECT date, transcript_text FROM episodes "
+        "WHERE transcript_text IS NOT NULL ORDER BY date DESC"
+    ).fetchall()
+    conn.close()
+    for r in rows:
+        if r["date"] == exclude_date:
+            continue
+        other = _normalize_transcript(r["transcript_text"])
+        if not other:
+            continue
+        if other == sig:
+            return r["date"]
+        m = len(other)
+        if abs(m - n) / max(n, m) <= 0.02 and \
+                difflib.SequenceMatcher(None, sig, other).ratio() >= 0.97:
+            return r["date"]
+    return None
+
+
 def _process_episode(ep: dict, args) -> dict:
     """Fetch, analyze, persist and generate artifacts for one episode.
 
@@ -3622,6 +3714,16 @@ def _process_episode(ep: dict, args) -> dict:
             f"(< {MIN_TRANSCRIPT_CHARS}) — captions likely not ready yet; "
             "treating as a failed fetch so it retries next run"
         )
+
+    # Re-runs: CNBC re-airs older (often "fundamentals"/teaching) episodes under a
+    # fresh video_id. The transcript is identical to one we already analyzed, so
+    # re-running Haiku just spends tokens to reproduce an existing episode — worse,
+    # it would file the same picks under a new date. Detect the duplicate and bail
+    # with the original date so the caller can skip and point back to it.
+    prior_date = _find_prior_transcript_date(transcript_text, exclude_date=date_str)
+    if prior_date:
+        print(f"  Transcript matches {prior_date} — re-run, skipping analysis")
+        raise DuplicateEpisode(prior_date)
 
     if args.backend == "claude-code":
         print("  Analyzing with claude CLI (Claude Code subscription)...")
@@ -3890,6 +3992,7 @@ def main() -> None:
 
     summaries = []
     failures: list[dict] = []
+    reruns: list[dict] = []
     processed = load_processed()
 
     for ep in episodes:
@@ -3897,6 +4000,17 @@ def main() -> None:
         print(f"\n── Processing {video_id} ──")
         try:
             summary = _process_episode(ep, args)
+        except DuplicateEpisode as dup:
+            # A re-aired episode: no new analysis, but mark it processed so it
+            # doesn't re-discover every night, and note it for the re-run email.
+            print(f"  Skipping {video_id}: re-run of {dup.prior_date}")
+            reruns.append({
+                "video_id": video_id,
+                "title": ep.get("title", ""),
+                "prior_date": dup.prior_date,
+            })
+            processed.append({"video_id": video_id, "date": dup.prior_date})
+            continue
         except Exception as e:
             # Don't let one bad episode (e.g. captions not ready yet) block the
             # rest of the queue — skip it and leave it unprocessed for next run.
@@ -3930,22 +4044,42 @@ def main() -> None:
                 processed.append({"video_id": bf["id"], "date": backfill_summary["date_str"]})
                 n = len(backfill_summary["analysis"].get("stocks", []))
                 backfill_note = (backfill_summary["date_str"], n)
+            except DuplicateEpisode as dup:
+                print(f"  Backfill skipped: re-run of {dup.prior_date}")
+                reruns.append({
+                    "video_id": bf["id"],
+                    "title": bf.get("title", ""),
+                    "prior_date": dup.prior_date,
+                })
+                processed.append({"video_id": bf["id"], "date": dup.prior_date})
             except Exception as e:
                 print(f"  Backfill skipped: {e}")
 
+    # A re-aired episode carries no new picks; email a short note pointing back to
+    # the date it originally ran (its email + the site's Episodes tab hold the
+    # analysis) so a re-run night isn't mistaken for a missed one.
+    if reruns and not args.dry_run:
+        try:
+            send_rerun_notice(reruns, mode=args.email_mode)
+        except Exception as e:
+            print(f"  Could not send re-run notice: {e}")
+
     if not summaries:
-        print("\nNo episodes processed successfully — nothing to email.")
         if not args.dry_run:
-            save_processed(processed)
-            # Every discovered episode failed. Say so out loud — see
-            # send_failure_notice() for why silence here is dangerous.
-            try:
-                send_failure_notice(failures, mode=args.email_mode)
-            except Exception as e:
-                print(f"  Could not send failure notice: {e}")
-        # Non-zero so launchd/CI records the run as failed even if the notice
-        # itself could not be delivered.
-        sys.exit(1)
+            save_processed(processed)   # record re-runs + failures so neither re-discovers
+            # A run that discovered only re-runs is a *success* — nothing broke,
+            # the note already went out. Only genuine failures warrant the failure
+            # notice and the non-zero exit that flags the night as failed.
+            if failures:
+                print("\nNo episodes processed successfully — every one failed.")
+                try:
+                    send_failure_notice(failures, mode=args.email_mode)
+                except Exception as e:
+                    print(f"  Could not send failure notice: {e}")
+                sys.exit(1)
+            print("\nNo new episodes — discovered only re-run(s)." if reruns
+                  else "\nNo episodes processed successfully — nothing to email.")
+        return
 
     # The backfilled episode publishes and archives exactly like a new one — it just
     # gets no email of its own (only the one-line note on tonight's).
