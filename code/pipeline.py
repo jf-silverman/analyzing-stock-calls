@@ -415,6 +415,28 @@ def _claude_bin() -> str:
     )
 
 
+_AUTH_ERROR_MARKERS = (
+    "oauth session expired",
+    "could not be refreshed",
+    "not logged in",
+    "failed to authenticate",
+    "please run /login",
+    "invalid api key",
+    "authentication_error",
+)
+
+
+def _is_auth_error(msg: str) -> bool:
+    """True if a claude CLI failure string is an auth problem (login needed).
+
+    These do not recover on retry — the OAuth token only refreshes via an
+    interactive `claude` sign-in — so callers fail fast and the failure email
+    tells the operator exactly what to do instead of burning retries.
+    """
+    low = (msg or "").lower()
+    return any(m in low for m in _AUTH_ERROR_MARKERS)
+
+
 def analyze_with_claude_code(date_str: str, transcript_text: str) -> dict:
     """Analyze using the claude CLI (Claude Code subscription — no API credits).
 
@@ -446,9 +468,13 @@ def analyze_with_claude_code(date_str: str, transcript_text: str) -> dict:
 
     # Retry transient failures: the claude CLI occasionally drops the connection
     # mid-response ("API Error: Connection closed mid-response") or returns truncated
-    # JSON, which sank whole nights (2026-07-21, 2026-08-03). Usage-limit/auth errors
-    # also surface as rc!=0 and will simply exhaust the retries and raise — acceptable,
-    # since those are real failures worth an email.
+    # JSON, which sank whole nights (2026-07-21, 2026-08-03).
+    #
+    # Auth failures are the exception: an expired OAuth session or a logged-out CLI
+    # (2026-08-10: "OAuth session expired and could not be refreshed") cannot recover
+    # by retrying — the token only refreshes via an interactive `claude` login. So we
+    # break out of the retry loop immediately on an auth error, which both avoids
+    # ~15s of pointless backoff and lets the failure email name the real fix sooner.
     max_attempts = 3
     last_err = ""
     for attempt in range(1, max_attempts + 1):
@@ -476,6 +502,11 @@ def analyze_with_claude_code(date_str: str, transcript_text: str) -> dict:
                     f"stdout: {result.stdout.strip()[:2000]}" if result.stdout.strip() else "",
                 ])) or "(both stdout and stderr were empty)"
                 last_err = f"rc={result.returncode}:\n{detail}"
+
+        if _is_auth_error(last_err):
+            print("    claude CLI not authenticated — run `claude` and sign in "
+                  "(no retry: an expired OAuth session cannot refresh unattended)")
+            raise RuntimeError(f"claude CLI not authenticated — {last_err}")
 
         if attempt < max_attempts:
             wait = 5 * attempt
@@ -1212,6 +1243,61 @@ def _sync_mentions_from_db(stocks: dict) -> None:
     # Prune tickers that have been fully deleted from the DB
     for ticker in [t for t, e in stocks.items() if not e.get("mentions")]:
         del stocks[ticker]
+
+
+RECONCILE_MARKER = DATA_DIR / "last_reconcile.json"
+RECONCILE_EVERY_DAYS = 14
+_RECONCILE_TOL = 0.05   # snap a mention close to the daily close if off by >5%
+
+
+def reconcile_mention_prices(tol: float = _RECONCILE_TOL) -> list[dict]:
+    """Snap mention closing_price values to the authoritative split-adjusted daily close.
+
+    BUG-015 (option 3): daily_prices is refetched split-adjusted each night, but a
+    mention's stored closing_price is written once at ingest and never revisited, so
+    a stock split leaves its triangles/backtest returns on stale pre-split prices.
+    This treats daily_prices as source of truth and corrects any mention that has
+    drifted >tol from the daily close on its own date. Returns the corrected rows.
+
+    Does not fetch anything — it only reconciles the two stores we already have, so
+    it is cheap enough to run on a schedule. Caller rebuilds shards afterward.
+    """
+    from db import get_connection
+    conn = get_connection()
+    drifted = conn.execute(
+        """
+        SELECT m.id AS mid, e.date AS d, m.ticker AS t,
+               m.closing_price AS mp, dp.close AS dc
+        FROM mentions m
+        JOIN episodes e     ON e.id = m.episode_id
+        JOIN daily_prices dp ON dp.ticker = m.ticker AND dp.date = e.date
+        WHERE m.closing_price IS NOT NULL AND dp.close > 0
+          AND ABS(m.closing_price - dp.close) / dp.close > ?
+        """,
+        (tol,),
+    ).fetchall()
+    fixed = []
+    for r in drifted:
+        conn.execute("UPDATE mentions SET closing_price=? WHERE id=?", (r["dc"], r["mid"]))
+        fixed.append({"ticker": r["t"], "date": r["d"],
+                      "old": r["mp"], "new": r["dc"]})
+    if fixed:
+        conn.commit()
+    conn.close()
+    return fixed
+
+
+def _reconcile_due() -> bool:
+    """True if the bi-weekly price reconciliation hasn't run in RECONCILE_EVERY_DAYS."""
+    try:
+        last = json.loads(RECONCILE_MARKER.read_text()).get("date", "")
+        return (date.today() - date.fromisoformat(last)).days >= RECONCILE_EVERY_DAYS
+    except Exception:
+        return True   # never run / unreadable marker → due
+
+
+def _mark_reconciled() -> None:
+    RECONCILE_MARKER.write_text(json.dumps({"date": date.today().isoformat()}))
 
 
 def rebuild_ticker_shards() -> None:
@@ -2368,14 +2454,30 @@ def send_failure_notice(failures: list[dict], mode: str = "smtp") -> None:
         f"</tr>"
         for f in failures
     )
+    # An auth failure won't self-heal on the next run (the OAuth token only
+    # refreshes via an interactive `claude` login), so when that's the cause,
+    # replace the "next run will retry" reassurance with an action banner.
+    auth_failed = any(_is_auth_error(f.get("error", "")) for f in failures)
+    if auth_failed:
+        banner = (
+            '<p style="margin:0 0 16px;padding:12px 14px;background:#fff4f4;'
+            'border:1px solid #f3c2c2;border-radius:6px;color:#b3261e;">'
+            '<strong>Action needed:</strong> the Claude Code CLI is signed out '
+            '(OAuth session expired). It will <em>not</em> recover on its own — '
+            'run <code>claude</code> in a terminal and sign in, then re-run tonight '
+            'with <code>python3 code/pipeline.py --email-mode smtp</code>.</p>'
+        )
+    else:
+        banner = (
+            '<p style="margin:0 0 16px;color:#555;">'
+            f'{len(failures)} episode(s) were discovered but every one failed. Nothing '
+            'was written to the database and nothing was published; they stay '
+            'unprocessed and the next run will retry them.</p>'
+        )
     body = f"""\
 <html><body style="font-family:-apple-system,Helvetica,Arial,sans-serif;font-size:14px;color:#1a1a1a;">
   <h2 style="margin:0 0 4px;font-size:17px;">Mad Money pipeline — no episodes processed</h2>
-  <p style="margin:0 0 16px;color:#555;">
-    {len(failures)} episode(s) were discovered but every one failed. Nothing was written
-    to the database and nothing was published; they stay unprocessed and the next run
-    will retry them.
-  </p>
+  {banner}
   <table style="border-collapse:collapse;font-size:13px;">{rows}</table>
   <p style="margin:20px 0 0;color:#555;font-size:13px;">
     Log: <code>/tmp/mad_money_cron.log</code>
@@ -3689,6 +3791,10 @@ def main() -> None:
     parser.add_argument("--refresh-prices", action="store_true",
                         help="Refresh the latest close for every valid ticker (batched Yahoo) and "
                              "rewrite docs/data/latest_prices.json — the site header's price fallback")
+    parser.add_argument("--reconcile-prices", action="store_true",
+                        help="Snap mention closing prices to the split-adjusted daily close "
+                             "(BUG-015) and rebuild shards. Runs automatically every "
+                             f"{RECONCILE_EVERY_DAYS} days on the nightly run.")
     parser.add_argument("--fetch-sectors", action="store_true",
                         help="Batch-fetch sector/style from Yahoo Finance for all tickers and rebuild shards")
     parser.add_argument("--mark-fundamentals", metavar="DATE[,DATE,...]",
@@ -3730,6 +3836,18 @@ def main() -> None:
     if args.refresh_prices:
         refresh_latest_prices()
         _write_latest_prices_json()
+        return
+
+    if args.reconcile_prices:
+        fixed = reconcile_mention_prices()
+        if fixed:
+            print(f"Reconciled {len(fixed)} mention price(s) to the daily close:")
+            for f in fixed:
+                print(f"  {f['ticker']:6} {f['date']}  {f['old']} → {f['new']}")
+            rebuild_ticker_shards()
+        else:
+            print("No mention prices drifted from the daily close — nothing to fix.")
+        _mark_reconciled()
         return
 
     if args.fetch_sectors:
@@ -3845,6 +3963,25 @@ def main() -> None:
             _write_latest_prices_json()
         except Exception as e:
             print(f"  Price refresh skipped: {e}")
+
+    # Every ~2 weeks, reconcile mention prices against the split-adjusted daily
+    # close and rebuild shards (BUG-015 option 3). daily_prices is refetched
+    # split-adjusted nightly, so this is what carries a split through to the stored
+    # mention prices that feed the triangles and backtests. Best-effort and gated on
+    # a marker file so it runs on one night per fortnight; the rebuilt shards ride
+    # out on the same commit_and_push below.
+    if not args.dry_run and _reconcile_due():
+        print(f"\nBi-weekly price reconciliation (every {RECONCILE_EVERY_DAYS}d)…")
+        try:
+            fixed = reconcile_mention_prices()
+            if fixed:
+                print(f"  Corrected {len(fixed)} mention price(s); rebuilding shards…")
+                rebuild_ticker_shards()
+            else:
+                print("  No drift found.")
+            _mark_reconciled()
+        except Exception as e:
+            print(f"  Reconciliation skipped: {e}")
 
     # Push redirect pages to GitHub Pages (needed before email so links are live)
     if not args.dry_run:
