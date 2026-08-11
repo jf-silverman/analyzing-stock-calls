@@ -2389,6 +2389,16 @@ function renderAnalytics(d) {
             to fit the pullback-prediction model; <span class="bop-predicted">predicted</span> = a call added
             after the model was trained, scored live from its trailing 20-day pre-call return. The percentage
             is the model's estimated probability the stock avoids a 5% pullback within 60 days.</div>
+          <p style="margin:10px 0 0"><strong>How the live predictions are holding up (as of 2026-08-11):</strong>
+            the 0.76 AUC above is <em>cross-validated on the training data</em>. On the actual
+            <span class="bop-predicted">predicted</span> calls whose 60-day windows have since closed, the model
+            is <strong>doing worse than chance out-of-sample — AUC ≈ 0.31 on n = 14</strong>. (Raw accuracy looks
+            higher only because the model predicts "a dip will come" on nearly everything and dips usually do;
+            AUC, which measures whether the probabilities actually rank outcomes, is the number that matters, and
+            it's below the 0.50 coin-flip line.) That sample is small and every miss so far leans the same way —
+            beaten-down names it tagged as "will dip" that then stopped falling — so we're <strong>leaving the
+            model frozen and waiting for more completed windows</strong> (≈30 by mid-September) before judging it.
+            Until then, treat a high live probability like this as suggestive, not proven.</p>
         </div>
         <div style="margin:14px 0 10px;font-size:12.5px">
           <label>Filter by note:
