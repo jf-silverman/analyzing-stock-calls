@@ -70,12 +70,15 @@ ticker's earliest mention through today in **one split-adjusted call** and
 internally split-consistent, so it self-heals each actively-mentioned ticker on
 the next nightly run. Also re-fetched the known split tickers and snapped 9
 mismatched mention prices to the authoritative daily close, then `--rebuild-shards`.
-**Still open — proactive split handling.** The current fix is passive: a split is
-only corrected the next time that ticker is fetched, and *only* the daily-price
-series self-heals — a stale **mention `closing_price`** is never revisited once
-stored, so a split in a ticker that stops being mentioned would leave its triangles
-and backtest returns wrong indefinitely. We should actively detect splits and
-re-adjust. Options to weigh:
+**Proactive handling — option 3 implemented (2026-08-11).** The nightly run now
+reconciles mention `closing_price` against the split-adjusted daily close every
+`RECONCILE_EVERY_DAYS` (14) days, gated on `data/last_reconcile.json`, and rebuilds
+shards when it corrects anything (`reconcile_mention_prices()` + `_reconcile_due()`
+in pipeline.py). Manual: `python3 code/pipeline.py --reconcile-prices`. This treats
+`daily_prices` (refetched split-adjusted nightly) as source of truth, so a split on
+a still-mentioned ticker now propagates to its stored mention prices within a
+fortnight instead of never. Options 1–2 (Yahoo split events / nightly per-row guard)
+left as possible future upgrades:
 - Pull Yahoo's split events (the chart API returns `events.splits`, or use
   `yfinance`'s `.splits`) and, on any new split, re-fetch that ticker's full
   history *and* rescale every stored mention `closing_price` by the split ratio.
