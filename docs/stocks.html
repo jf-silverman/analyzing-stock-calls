@@ -317,7 +317,6 @@
     .bop-rarity-row .rarity-pct { width: 40px; text-align: right; font-family: monospace; font-weight: 700; color: #24292f; }
     .bop-star { color: #bf8700; cursor: help; font-weight: 700; }
     .bop-training { color: #8b949e; font-style: italic; }
-    .bop-predicted { color: #0969da; font-weight: 700; }
     .bop-details { display: none; margin-top: 10px; font-size: 12px; color: #444; line-height: 1.6; font-weight: 400; }
     .bop-caveat { display: block; margin-top: 6px; padding: 7px 10px; background: #fff8e6;
                   border-left: 3px solid #d4a72c; border-radius: 4px; font-size: 12px; color: #573f00; }
@@ -1782,7 +1781,6 @@ function renderAnalytics(d) {
   const bopNever = bs.never_triggered || {};
   const bopNT = bopNever.strategy_a_if_bought_anyway || {};
   const bopRarity = bs.rarity || {};
-  const bopModel = bop.model;
   const bopBeatsPct = bopBeats.pct || 0;
   const bopNeverOf = (bopNever.n || 0) + (bopBeats.n || 0) +
     (bs.triggered_but_insufficient_b_data || 0) + (bs.excluded_downgraded_before_dip || 0);
@@ -1834,10 +1832,6 @@ function renderAnalytics(d) {
         <div class="sub">${bopBeats.count ?? 0} of ${bopBeats.n ?? 0} comparable calls</div>
       </div>
     </div>`;
-
-  // Base rate to beat = majority-class accuracy ("always predict it pulls back").
-  const bopBaseRate = bopModel && bopModel.base_rate_never_pct != null
-    ? Math.round(100 - bopModel.base_rate_never_pct) : null;
 
   // ── Buy-call backtest ────────────────────────────────────────────────────
   const bt = d.buy_backtest || null;
@@ -2354,19 +2348,18 @@ function renderAnalytics(d) {
               and if you'd bought those anyway on the call date, you'd have averaged
               <strong>${bopNT.mean_pct ?? '—'}%</strong> with a <strong>${bopNT.win_rate_pct ?? '—'}% win rate</strong>.
               Waiting for a discount that never comes is the real cost of this strategy.</li>
-            ${bopModel ? `<li>The stocks that never pull back aren't random — they walked in with strong
-              recent momentum. A model using just the trailing 20-day pre-call return predicts which
-              calls <strong>avoid a ${bopModel.pullback_pct}% pullback over the next 60 days</strong> with
-              <strong>${bopModel.cv_auc.toFixed(2)} AUC</strong> (${Math.round(bopModel.cv_accuracy*100)}%
-              accuracy vs. a ${bopBaseRate}% base rate, cross-validated by ticker) — enough of an edge to
-              flag "just buy this one now" candidates going forward.
-              <span class="bop-caveat"><strong>Big caveat:</strong> all of this is measured inside a single
-              six-month stretch (Jan–Jul 2026) of an unusually strong, AI-driven bull market — the S&amp;P 500
-              rose 9.9% while the average pullback call returned +21% over 60 days, and roughly a third of
-              these calls sit in the AI hardware complex (semiconductors, semi equipment, and computer
-              hardware). "Momentum keeps running and never gives you a dip" is exactly what a melt-up looks
-              like. In a flat or falling tape the signal could weaken or invert, and this run may not
-              repeat — treat the model as a read on <em>this</em> regime, not a law.</span></li>` : ''}
+            <li>The stocks that never pulled back weren't random — <em>in this sample</em> they walked in
+              with stronger trailing 20-day momentum. I tried to turn that into a forward prediction: train a
+              model on the earlier calls, then test it on later ones it had never seen. It <strong>did no better
+              than a coin flip out of sample</strong> — AUC ≈ 0.3–0.4 across both 30- and 60-day windows, below
+              the 0.50 line, with every miss leaning the same way (beaten-down names it tagged "will dip" that
+              then stopped falling). So there is deliberately <strong>no live "chance it won't dip" number here</strong>:
+              the pattern is real in-sample but doesn't predict, and publishing a probability that fails its own
+              held-out test would be worse than publishing nothing.
+              <span class="bop-caveat"><strong>Caveat that cuts either way:</strong> everything on this panel sits
+              inside one six-month AI-led melt-up (Jan–Jul 2026) — the S&amp;P 500 rose 9.9%, the average pullback
+              call returned +21% over 60 days, and dips were rare. "Momentum keeps running and never gives you a
+              dip" describes the <em>regime</em> as much as any individual stock.</span></li>
           </ul>
         </div>
         ${bopCardsHtml}
@@ -2375,30 +2368,18 @@ function renderAnalytics(d) {
             pullback (volatility-scaled threshold via beta / market cap) and buying then, each held
             for its own 60 days.</p>
           <p style="margin:0 0 8px">The <strong>Threshold</strong> column is that volatility-scaled dip size —
-            it governs where Strategy B "buys the dip." The <strong>prediction model is separate</strong>: it
-            targets a single fixed 5% pullback and estimates the probability the stock never drops that far
-            within 60 days, from one input — the trailing 20-day pre-call return. (An earlier version keyed the
-            prediction off beta, but beta also sets the strategy threshold, which made that model partly
-            circular; the fixed 5% definition removes that.)</p>
+            it governs where Strategy B "buys the dip."</p>
           <div><span class="bop-star">*</span> = Cramer made another call on this ticker within 60 days of the
             buy-on-pullback call (hover the asterisk for details).</div>
           <div><span class="bop-training" style="font-style:normal;color:#8b949e">excluded</span> = a real pullback occurred, but Cramer downgraded to
             hold/sell <em>before</em> the dip was reached, so buying it would contradict his own updated
             view — dropped from the Strategy B averages above.</div>
-          <div><span class="bop-training">used for training</span> = this call was part of the data used
-            to fit the pullback-prediction model; <span class="bop-predicted">predicted</span> = a call added
-            after the model was trained, scored live from its trailing 20-day pre-call return. The percentage
-            is the model's estimated probability the stock avoids a 5% pullback within 60 days.</div>
-          <p style="margin:10px 0 0"><strong>How the live predictions are holding up (as of 2026-08-11):</strong>
-            the 0.76 AUC above is <em>cross-validated on the training data</em>. On the actual
-            <span class="bop-predicted">predicted</span> calls whose 60-day windows have since closed, the model
-            is <strong>doing worse than chance out-of-sample — AUC ≈ 0.31 on n = 14</strong>. (Raw accuracy looks
-            higher only because the model predicts "a dip will come" on nearly everything and dips usually do;
-            AUC, which measures whether the probabilities actually rank outcomes, is the number that matters, and
-            it's below the 0.50 coin-flip line.) That sample is small and every miss so far leans the same way —
-            beaten-down names it tagged as "will dip" that then stopped falling — so we're <strong>leaving the
-            model frozen and waiting for more completed windows</strong> (≈30 by mid-September) before judging it.
-            Until then, treat a high live probability like this as suggestive, not proven.</p>
+          <p style="margin:10px 0 0"><strong>Why there's no "chance it won't dip" column:</strong> I built a
+            model (trailing-20-day-return → probability the stock avoids a 5% pullback in the next 60 days) and
+            tested it on held-out later calls. It came in below chance out of sample (AUC ≈ 0.3–0.4 across 30-
+            and 60-day windows), so the live prediction was removed — the pattern is real in-sample but doesn't
+            generalize. The descriptive Strategy A vs. B comparison above stands on its own; only the
+            forward prediction was pulled.</p>
         </div>
         <div style="margin:14px 0 10px;font-size:12.5px">
           <label>Filter by note:
@@ -2417,7 +2398,6 @@ function renderAnalytics(d) {
               <th style="text-align:right">Dip Date</th>
               <th style="text-align:right">A Return</th>
               <th style="text-align:right">B Return</th>
-              <th style="text-align:right">P(No 5% Pullback)</th>
               <th>Note</th>
             </tr></thead>
             <tbody></tbody>
@@ -2763,15 +2743,6 @@ function renderAnalytics(d) {
       noteSelect.appendChild(opt);
     });
 
-    function fmtPrediction(r) {
-      const p = r.never_trigger_prediction;
-      if (!p) return '—';
-      if (p.status === 'training') return '<span class="bop-training">used for training</span>';
-      if (p.status === 'predicted') return `<span class="bop-predicted">${p.prob_never_trigger_pct}% no-dip</span>`;
-      if (p.status === 'insufficient_data') return '<span class="ret-null">insufficient data</span>';
-      return '<span class="ret-null">model not trained</span>';
-    }
-
     function renderBopRows() {
       const noteFilter = noteSelect.value;
       const rows = noteFilter ? calls.filter(r => r.noteLabel === noteFilter) : calls;
@@ -2789,7 +2760,6 @@ function renderAnalytics(d) {
           <td style="text-align:right;font-family:monospace">${r.dip_date || '—'}</td>
           <td style="text-align:right">${retFmt(r.strategy_a_return_pct)}</td>
           <td style="text-align:right">${retFmt(r.strategy_b_return_pct)}</td>
-          <td style="text-align:right">${fmtPrediction(r)}</td>
           <td style="font-size:11.5px;${r.noteLabel==='(comparable)'?'':'color:#8b949e;font-style:italic'}">${r.noteLabel}</td>
         </tr>`;
       }).join('');
