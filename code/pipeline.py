@@ -1807,7 +1807,7 @@ _CHART_MARKERS = {
     "strong_buy":        ("^", "#1a7f37", 95),
     "buy":               ("^", "#2da44e", 90),
     "mild_buy":          ("^", "#2da44e", 90),
-    "buy_on_pullback":   ("*", "#1f6feb", 150),   # star reads smaller, so size up
+    "buy_on_pullback":   ("s", "#1f6feb", 70),    # square (matches site's 'rect')
     "wait_hold_neutral": ("o", "#8b949e", 55),
     "caution_concern":   ("v", "#f0a030", 90),
     "sell_avoid":        ("v", "#d03030", 90),
@@ -2009,7 +2009,7 @@ def _generate_price_chart_png(ticker: str) -> bytes | None:
         legend_elements = [
             plt.Line2D([0], [0], marker="^", color="w", markerfacecolor="#1a7f37", markersize=8, label="Strong Buy"),
             plt.Line2D([0], [0], marker="^", color="w", markerfacecolor="#2da44e", markersize=8, label="Buy / Mild Buy"),
-            plt.Line2D([0], [0], marker="*", color="w", markerfacecolor="#1f6feb", markersize=11, label="Buy on Pullback"),
+            plt.Line2D([0], [0], marker="s", color="w", markerfacecolor="#1f6feb", markersize=8, label="Buy on Pullback"),
             plt.Line2D([0], [0], marker="o", color="w", markerfacecolor="#8b949e", markersize=7, label="Wait / Hold"),
             plt.Line2D([0], [0], marker="v", color="w", markerfacecolor="#f0a030", markersize=8, label="Caution"),
             plt.Line2D([0], [0], marker="v", color="w", markerfacecolor="#d03030", markersize=8, label="Sell"),
