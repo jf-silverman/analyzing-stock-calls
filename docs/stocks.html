@@ -389,7 +389,7 @@
     </div>
     <div id="chart-guide-pane" style="display:none;background:#f6f8fa;border:1px solid #d0d7de;border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:13px;color:#24292f;line-height:1.6">
       <strong>Reading the chart</strong>
-      <p style="margin:8px 0 6px">Each point on the blue line is the closing price on an episode date — the day Cramer made that call. Points are shaped and colored by sentiment: <span style="color:#1a7f37">▲ Strong Buy</span>, <span style="color:#2da44e">▲ Buy / Mild Buy</span>, <span style="color:#8b949e">● Wait / Hold</span>, <span style="color:#f0a030">▼ Caution</span>, and <span style="color:#d03030">▼ Sell</span>. <span style="color:#1f6feb">★ Buy on Pullback</span> gets its own blue star rather than a green triangle on purpose — it's a "wait for a dip" call, so a green "buy here" marker on that exact date would misread the timing. Hovering a point shows the date, price, sentiment, and Cramer's note.</p>
+      <p style="margin:8px 0 6px">Each point on the blue line is the closing price on an episode date — the day Cramer made that call. Points are shaped and colored by sentiment: <span style="color:#1a7f37">▲ Strong Buy</span>, <span style="color:#2da44e">▲ Buy / Mild Buy</span>, <span style="color:#8b949e">● Wait / Hold</span>, <span style="color:#f0a030">▼ Caution</span>, and <span style="color:#d03030">▼ Sell</span>. <span style="color:#1f6feb">■ Buy on Pullback</span> gets its own blue square rather than a green triangle on purpose — it's a "wait for a dip" call, so a green "buy here" marker on that exact date would misread the timing. Hovering a point shows the date, price, sentiment, and Cramer's note.</p>
       <p style="margin:0 0 6px">The <span style="color:rgba(130,80,223,0.9)">■ light purple bars</span> are the full daily closing price history, giving context between episode dates. Use the <em>From / 30d / 90d / To now</em> controls to zoom into a specific window.</p>
       <strong>% Days Right After Call vs. % Right (Analytics tab)</strong>
       <p style="margin:8px 0 6px"><strong>% Days Right After Call</strong> (shown below each ticker's chart) measures how consistently the stock moved in the direction Cramer predicted — day by day. For each call, every trading day from that call until the next call (or until the latest available daily price for the most recent call) is checked: was the closing price above the call-day price (for buy calls) or below it (for sell calls)? The percentage is the share of those days where the answer is yes. It's broken out by <strong>Buy calls</strong> and <strong>Sell calls</strong> separately, plus a <strong>Combined</strong> figure blending both — splitting them out keeps a ticker with lopsided coverage (mostly buy calls, say) from having its sell-call accuracy averaged away. Neutral calls (Wait / Hold) are excluded from all three — only bullish and bearish calls count. The gray <strong>(Nc)</strong> next to Buy calls / Sell calls is the number of individual calls behind that percentage, separate from <strong>(Nd)</strong>, the number of trading days tallied — every call counts toward the stat no matter how few days passed before Cramer's next call on that stock, so a fast reversal doesn't quietly disappear from the record.</p>
@@ -531,22 +531,23 @@ const SENTIMENT_ORDER = [
 
 // Marker spec for the per-ticker timing charts (search cards). Color carries the
 // buy→sell scale; shape carries direction so it survives grayscale. Buy & Mild Buy
-// collapse to one medium green. Buy on Pullback is a BLUE STAR on purpose: these
+// collapse to one medium green. Buy on Pullback is a BLUE SQUARE on purpose: these
 // charts are about *timing*, and a green marker on a specific date reads as "buy
 // here" — which a wait-for-the-dip call explicitly is not. (Chart.js rotates the
-// 'triangle' style 180° for the bearish down-triangle.)
+// 'triangle' style 180° for the bearish down-triangle. 'rect' is used, not 'star',
+// because 'star' is a stroke-only glyph that Chart.js won't fill with a color.)
 const CHART_MARKER = {
   strong_buy:        { style: 'triangle', color: '#1a7f37', rot: 0 },
   buy:               { style: 'triangle', color: '#2da44e', rot: 0 },
   mild_buy:          { style: 'triangle', color: '#2da44e', rot: 0 },
-  buy_on_pullback:   { style: 'star',     color: '#1f6feb', rot: 0 },
+  buy_on_pullback:   { style: 'rect',     color: '#1f6feb', rot: 0 },
   wait_hold_neutral: { style: 'circle',   color: '#8b949e', rot: 0 },
   caution_concern:   { style: 'triangle', color: '#f0a030', rot: 180 },
   sell_avoid:        { style: 'triangle', color: '#d03030', rot: 180 },
 };
 const chartMarker = s => CHART_MARKER[s] || { style: 'circle', color: '#8b949e', rot: 0 };
 const chartMarkerRadius = (style, hover) =>
-  style === 'star' ? (hover ? 11 : 8) : style === 'circle' ? (hover ? 7 : 5) : (hover ? 10 : 7);
+  style === 'rect' ? (hover ? 9 : 6) : style === 'circle' ? (hover ? 7 : 5) : (hover ? 10 : 7);
 
 function sentimentBadge(s) {
   const color = SENTIMENT_COLORS[s] || '#8b949e';
@@ -943,7 +944,7 @@ function renderChart(ticker, entry) {
       <button class="czoom-btn" data-dur="90d" onclick="setChartZoom('${ticker}',this)">90d</button>
       <button class="czoom-btn czoom-active" data-dur="all" onclick="setChartZoom('${ticker}',this)">To now</button>
     </div>
-    <div style="line-height:1.9"><span style="color:#1a7f37">▲</span> Strong Buy &nbsp; <span style="color:#2da44e">▲</span> Buy / Mild Buy &nbsp; <span style="color:#1f6feb">★</span> Buy on Pullback &nbsp; <span style="color:#8b949e">●</span> Wait / Hold &nbsp; <span style="color:#f0a030">▼</span> Caution &nbsp; <span style="color:#d03030">▼</span> Sell &nbsp; <span style="display:inline-block;width:10px;height:10px;background:rgba(130,80,223,0.35);border:1px solid rgba(130,80,223,0.5);border-radius:2px;vertical-align:middle"></span> Daily price &nbsp; <span style="display:inline-block;width:20px;border-top:1.5px dashed #0969da;vertical-align:middle"></span> Price at Last Call</div>
+    <div style="line-height:1.9"><span style="color:#1a7f37">▲</span> Strong Buy &nbsp; <span style="color:#2da44e">▲</span> Buy / Mild Buy &nbsp; <span style="color:#1f6feb">■</span> Buy on Pullback &nbsp; <span style="color:#8b949e">●</span> Wait / Hold &nbsp; <span style="color:#f0a030">▼</span> Caution &nbsp; <span style="color:#d03030">▼</span> Sell &nbsp; <span style="display:inline-block;width:10px;height:10px;background:rgba(130,80,223,0.35);border:1px solid rgba(130,80,223,0.5);border-radius:2px;vertical-align:middle"></span> Daily price &nbsp; <span style="display:inline-block;width:20px;border-top:1.5px dashed #0969da;vertical-align:middle"></span> Price at Last Call</div>
   </div>${edgeBadge}<div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>`;
 }
 
