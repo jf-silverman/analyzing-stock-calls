@@ -658,6 +658,20 @@
           "segment": "closing_commentary",
           "note": "Peaked out after 2025 bubble run; institutional money rotating to non-chip, non-data-center growth; current valuation reflects bubble dynamics.",
           "closing_price": 177.72
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Chips hold value via CUDA software upgrades, not commodity depreciation; A100s from 2020 still worth original price with contracts through 2029; defended vs. bear thesis on semiconductor obsolescence.",
+          "closing_price": 225.3
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Part of Mag 7/semis cohort with giant runs, now indigestible; future prospects 'murky.' Chapel Trust holding but Cramer less enthusiastic than before due to massive spending competition and expensive valuation.",
+          "closing_price": 176.29
         }
       ],
       "sector": "Technology",
@@ -1820,6 +1834,13 @@
           "segment": "in_depth_analysis",
           "note": "Up 31% in July; enterprise software rebound play after AI displacement fears; down 50% from 2024 peak. Wait for earnings later this month; could roar if numbers impress.",
           "closing_price": 165.05
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Silverlake acquisition talks drive stock up 18% today and 60% from July lows; SaaS apocalypse thesis proved wrong; financial planning software remains essential.",
+          "closing_price": 206.45
         }
       ],
       "sector": "Technology",
@@ -3152,6 +3173,13 @@
           "segment": "opening_commentary",
           "note": "Industrial gas producing rocket fuel for SpaceX; performed nicely; beneficiary of space and data center buildout.",
           "closing_price": 509.16
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "CEO Sanjie Blomba bought $1M own stock last week; Chapel Trust holding. $10B project backlog (all-time high), $7B in 15-25yr contracts. Resilient mosaic of customers (35%+ healthcare/food/electronics). Aerospace/space opportunity: rocket fuel, satellite propulsion, 3D-printed engines; 75%+ of US launches fueled by Linde.",
+          "closing_price": 416.99
         }
       ],
       "sector": "Basic Materials",
@@ -4087,6 +4115,13 @@
           "segment": "opening_commentary",
           "note": "Key to unlocking data center recovery; reckless $300B spending with OpenAI has soured bond market (CDS spike); once Oracle shows discipline (forced by bondholders), hyperscalers cut CapEx and recovery begins.",
           "closing_price": 188.65
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "in_depth_analysis",
+          "note": "Disappointed on earnings; revenue and margin light; cloud growth 33% at low end of 3-month-old guidance (red flag). CDS tripled since September (highest since 2008 crisis). Bloomberg report on OpenAI data center delays (Oracle denied) crystallizes execution risk. Better bets exist for data center story.",
+          "closing_price": 184.92
         }
       ],
       "sector": "Technology",
@@ -4896,6 +4931,13 @@
           "segment": "closing_commentary",
           "note": "Sole winner of AI race; bubble burst two months ago for all but Google; Google won by executing and integrating AI into products effectively.",
           "closing_price": 306.57
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Only big tech 'winning' in AI race; spent enough on search (paying Apple $20B/year default) to keep competitors out; can likely pay for Gemini as default AI too; money well spent.",
+          "closing_price": 308.22
         }
       ],
       "sector": "Communication Services",
@@ -5508,6 +5550,14 @@
           "segment": "opening_commentary",
           "note": "Chip supplier alongside Nvidia; will get plenty of business even after CapEx discipline returns; not destroyed by data center rebalancing.",
           "closing_price": 341.3
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Reported healthy beat and strong guidance; stock crashed 11.4% on CFO margin commentary (full-rack systems) \u2014 market overreaction. CEO Hock Tan perfect track record; genuine buying opportunity after 20-point decline; Chapel Trust holding.",
+          "price_level": 180,
+          "closing_price": 339.81
         }
       ],
       "sector": "Technology",
@@ -5834,6 +5884,21 @@
           "segment": "closing_commentary",
           "note": "Peaked out after massive run; institutional money rotated away to sustainable growth areas; current state reflects valuation stretched.",
           "closing_price": 657.15
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Hold despite 24% YTD decline; WhatsApp monetization and potential cloud business pivot could significantly change value proposition; upside surprise possible.",
+          "closing_price": 594.97
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Trades 22x next year earnings (cheap for quality); up 11% YTD; ~$100B capex next year on power/data centers creates execution risk; at risk if cuts spending vs. OpenAI.",
+          "price_level": 22,
+          "closing_price": 647.51
         }
       ],
       "sector": "Communication Services",
@@ -6377,6 +6442,21 @@
           "segment": "opening_commentary",
           "note": "E-commerce platform is more than AWS; consumer-facing business enjoys massive tailwind from inflation decline and spending resurgence.",
           "closing_price": 226.76
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "One of top five stocks to own at CNBC Investing Club meeting; Cramer's top conviction pick; strong competitive moat and growth vectors.",
+          "closing_price": 265.13
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "buy_on_pullback",
+          "segment": "opening_commentary",
+          "note": "Chapel Trust holding; up only 1.5% YTD despite scale; strategy 'spend to defend' vs. 'spend to win'; massive AWS capex on semis/data centers questionable ROI; wait for pullback.",
+          "price_level": 1.5,
+          "closing_price": 222.54
         }
       ],
       "sector": "Consumer Cyclical",
@@ -6710,6 +6790,14 @@
           "segment": "opening_commentary",
           "note": "Once Oracle shows discipline and hyperscalers cut CapEx, Microsoft will 'to the moon'; positioned to thrive in orderly CapEx reduction and market recovery.",
           "closing_price": 476.39
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Up 13% YTD; unassailable B2B position but requires massive Azure capex race vs. Google/Amazon; buying nuclear power from Constellation Energy (Three Mile Island) for premium clean energy.",
+          "price_level": 13,
+          "closing_price": 474.82
         }
       ],
       "sector": "Technology",
@@ -7347,6 +7435,14 @@
           "segment": "opening_commentary",
           "note": "Parabolic move in oil; time to take gains and lock in profits.",
           "closing_price": 47.48
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Caller Fernando bought at $26, asks if should add. Cramer immediate sell: 'Sell it before you hang up for me.' Clear negative; energy complex pressured.",
+          "price_level": 26,
+          "closing_price": 35.25
         }
       ],
       "sector": "Energy",
@@ -8461,6 +8557,14 @@
           "segment": "opening_commentary",
           "note": "Consumer staples counterintuitive strength amid higher rates and inflation; pricing power and brand dominance offsetting macro headwinds.",
           "closing_price": 149.13
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Cramer's favorite 'tech stock' \u2014 uses AI (supply chains, digital twins), doesn't make it. Down 13% YTD at 20x earnings with 2.9% yield; new CEO coming; technology users getting bargains not makers.",
+          "price_level": 20,
+          "closing_price": 145.13
         }
       ],
       "sector": "Consumer Defensive",
@@ -10393,6 +10497,13 @@
           "segment": "opening_commentary",
           "note": "CEO Chuck Robbins to detail strategy tomorrow; no immediate verdict; overnight earnings pending.",
           "closing_price": 123.88
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Strong quarter results on all line items; stock decline due to low-ball guidance (UPOD strategy), not disappointing fundamentals; multi-billion-dollar hyperscaler orders and networking business strong; excellent buying opportunity.",
+          "closing_price": 113.47
         }
       ],
       "sector": "Technology",
@@ -11858,6 +11969,13 @@
           "segment": "opening_commentary",
           "note": "Phenomenal post-quarter rally continuing with 7% gain; real conversion from enterprise software company to genuine AI data company",
           "closing_price": 255.55
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "Caller Eddie: stock down despite good earnings because grouped in AI cohort correcting. AI bubble already popped Oct 31, not brewing. Be careful with AI plays, especially those with weak balance sheets or credit ratings.",
+          "closing_price": 215.28
         }
       ],
       "sector": "Technology",
@@ -15710,6 +15828,13 @@
           "segment": "opening_commentary",
           "note": "Caller Robert highlights DaVinci 5 placements up 18% Q2 as opportunity; stock down 36% YTD looks cheap. Cramer counters: quarter wasn't good; cautions 'be careful in Intuitive Surgical'\u2014not yet time to aggressively add.",
           "closing_price": 361.8
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Good company and not threatened by J&J competition, but Cramer owns JNJ for travel trust; avoid portfolio concentration; hold existing positions.",
+          "closing_price": 401.27
         }
       ],
       "sector": "Healthcare",
@@ -16294,6 +16419,13 @@
           "segment": "lightning_round",
           "note": "Will (CO) same: Cramer\u2014'I like Constellation Energy; think oversold; Constellation is really fantastic company.'",
           "closing_price": 278.68
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "buy",
+          "segment": "closing_commentary",
+          "note": "$1B loan to restart Three Mile Island Unit 1 (renamed Crane Clean Energy Center) for Microsoft partnership. Not economic on own but demonstrates hyperscaler willingness to pay premium for clean nuclear energy; niche opportunity.",
+          "closing_price": 357.14
         }
       ],
       "sector": "Utilities",
@@ -16785,6 +16917,14 @@
           "segment": "closing_commentary",
           "note": "Fintech growth stock that thrived during institutional migration away from AI/data center speculation; represents sustainable growth alternative.",
           "closing_price": 73.39
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "CEO Max Levchin on air; Chapel Trust holding. Stock pulled back from $79 to $65 despite strong Q. Holiday volumes exploding: travel +47% YoY, Gen Z +75%, 0% offers +70%, 6-month plans up 3x; UK expansion via Revolve partnership accelerating.",
+          "price_level": 65,
+          "closing_price": 65.66
         }
       ],
       "sector": "Financial Services",
@@ -18281,6 +18421,19 @@
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Cramer will not recommend\u2014does not know underlying holdings; refuses to own opaque financials or black-box structures."
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Acquisition creating stock pressure; management being cautious; don't expect significant upside near-term due to integration risks."
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "Cramer has been hounding viewers to sell this company near 40-point decline level. Appears in nuclear stocks closing segment. Exact company name and ticker cannot be determined from transcript.",
+          "price_level": 40
         }
       ],
       "sector": "",
@@ -18509,6 +18662,14 @@
           "segment": "lightning_round",
           "note": "Too speculative and wild a trader; caller down 10% but should not add; speculative nuclear play too volatile for regular portfolio building.",
           "closing_price": 72.5
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "Company focused on molten/fission reactors; $13B valuation, up 288% YTD despite zero developed reactors. Cramer: 'absurd' valuation; suggests selling 10:30-11:30am when bulls try to defend position. No commercial reactors, only broken ground on one site.",
+          "price_level": 40,
+          "closing_price": 82.33
         }
       ],
       "sector": "Utilities",
@@ -18644,6 +18805,13 @@
           "segment": "opening_commentary",
           "note": "Healthcare distributor up another $2 as part of defensive sector rotation into healthcare before earnings Thursday; investor flight from cyclical tech hardware.",
           "closing_price": 239.71
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Caller asks about healthcare competitor; Cramer endorses Cardinal Health. CEO Jason Holler is visionary with better execution in healthcare distribution.",
+          "closing_price": 199.96
         }
       ],
       "sector": "Healthcare",
@@ -18737,6 +18905,13 @@
           "note": "Chili's parent; reported 'stupendous great quarter,' stock up 10%+. 21 consecutive quarters SSS growth, comps +6%. $10.99 value meals beat McDonald's. Cramer emphatic on value-pricing leadership.",
           "price_level": 85,
           "closing_price": 245.89
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Comparable sales +5.6% over +20% prior year; 3-year stack +50%, 5-year +70%; $10.99 value meal strategy drives traffic and share gains; strong FY2027 guidance; stock up 66% YTD.",
+          "closing_price": 238.61
         }
       ],
       "sector": "Consumer Cyclical",
@@ -19431,6 +19606,14 @@
           "segment": "interview",
           "note": "100X research shows losing share to T-Mobile on value/experience despite best network; Cramer changing his bullish view based on 100X data; competitive pressure intensifying.",
           "closing_price": 40.88
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "opening_commentary",
+          "note": "Down 5% in six months; decline may continue. Never buy common stocks as bonds. Does not offer growth or income appeal; focus on growth stocks instead.",
+          "price_level": 5,
+          "closing_price": 40.8
         }
       ],
       "sector": "Communication Services",
@@ -20164,6 +20347,13 @@
           "segment": "opening_commentary",
           "note": "Renewable energy power generation; terrific quarter with expanding order book; trading at premium valuation but fundamentals support higher prices.",
           "closing_price": 1018.53
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "buy",
+          "segment": "closing_commentary",
+          "note": "Established, mature nuclear player actually building reactors. Regulatory approval for Darlington (Ontario) in April; construction visible; 4-year opening timeline incredibly fast. Better bet than speculative newbies; real execution vs. business plans.",
+          "closing_price": 681.35
         }
       ],
       "sector": "Industrials",
@@ -20851,6 +21041,13 @@
           "segment": "lightning_round",
           "note": "Fast-casual concept attracting young, health-conscious, value-oriented diners. Packed restaurants; best of new concepts. Tasty, clean, fun.",
           "closing_price": 87.3
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Quarter solid but stock pricey; competitors kept $11 value pricing and are winning on customer traffic; Cava didn't match pricing; wait for lower entry point.",
+          "closing_price": 72.18
         }
       ],
       "sector": "Consumer Cyclical",
@@ -26918,6 +27115,13 @@
           "segment": "lightning_round",
           "note": "CEO Greg Brown executing well; Cramer still thinks Motorola can compete with Axon in next phase of growth.",
           "closing_price": 394.95
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Stock doubled; CEO Greg Brown excellent execution; very good company with strong fundamentals; consider building position.",
+          "closing_price": 465.04
         }
       ],
       "sector": "Technology",
@@ -29052,6 +29256,13 @@
           "segment": "lightning_round",
           "note": "Terrific company with a great chart \u2014 buy some here and add more if it comes down.",
           "closing_price": 590.94
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Philadelphia's best steel/specialty materials company outside Amark; buy the stock right here, right now; strong execution and market position.",
+          "closing_price": 535.57
         }
       ],
       "industry": "Metal Fabrication",
@@ -30282,6 +30493,13 @@
           "segment": "opening_commentary",
           "note": "Speculative stock to SELL Monday; 'I think it's a loser' from the day it came public despite liking the people involved; not worth holding.",
           "closing_price": null
+        },
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "IPO Oct 1 at $21 ($19B valuation); founded by Rick Perry (Trump Energy Sec). Project Matador (hybrid nuclear/gas/solar, Amarillo TX) lead tenant pulled out last week; stock crashed 44% in two days. Business plan, not business; avoid.",
+          "price_level": 21
         }
       ]
     },
@@ -32364,6 +32582,13 @@
           "segment": "lightning_round",
           "note": "Caller Greg (CA): Kathy Wood bought it; Cramer: big let-down, came on show, talked big game, didn't deliver; sell.",
           "closing_price": 3.45
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "CEO's story failed to deliver; business suffered after equity offering diluted shareholders; Cramer regrets recommending on air; avoid at all costs.",
+          "closing_price": 3.31
         }
       ]
     },
@@ -32795,6 +33020,13 @@
           "segment": "opening_commentary",
           "note": "Sold aerospace division to Howmet for $1.8B cash; terrific deal for shareholders repairing balance sheet; stock rallied 3%.",
           "closing_price": 75.24
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Professional market transformation successful; DeWalt growing above market driven by data center/infrastructure buildout; balance sheet improved after selling aerospace asset; $1B US investment announced; guidance raised; hold-not-wait story.",
+          "closing_price": 102.21
         }
       ]
     },
@@ -33301,6 +33533,142 @@
           "sentiment": "mild_buy",
           "segment": "closing_commentary",
           "note": "Payment processing company; 'never seems to go out of fashion'; beneficiary of rotation to fintech and sustainable growth."
+        }
+      ]
+    },
+    "CRVG": {
+      "company": "CoreWeave",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Data center GPU infrastructure provider with Nvidia partnerships and contracts through 2029; benefits from AI/data center buildout; strong business model for compute financing."
+        },
+        {
+          "date": "2026-08-13",
+          "sentiment": "mild_buy",
+          "segment": "closing_commentary",
+          "note": "Great spec play for data center infrastructure buildout; understand it's high-risk with debt on balance sheet and no traditional GAAP profitability; stock had big run already\u2014position size accordingly."
+        }
+      ]
+    },
+    "DXC": {
+      "company": "DXC Technologies",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Value trap with no proprietary competitive advantages or real momentum; don't own; portfolio would benefit from rotation to stronger names.",
+          "closing_price": 11.2
+        }
+      ]
+    },
+    "UI": {
+      "company": "Ubiquiti",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cramer needs to research drivers; stock rocky this year but unclear what's causing weakness; wait for more clarity before adding or selling.",
+          "closing_price": 583.0
+        }
+      ]
+    },
+    "ADAV": {
+      "company": "AeroVironment",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Drone business increasingly competitive with many new entrants; last acquisition with private equity not viewed favorably; proceed carefully and avoid chasing near term."
+        }
+      ]
+    },
+    "HESM": {
+      "company": "Hess Midstream",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "7% dividend yield with history of quarterly dividend increases; Chevron customer relationship secure post-acquisition; strong midstream fundamentals; consider as income play.",
+          "closing_price": 39.78
+        }
+      ]
+    },
+    "ZETA": {
+      "company": "Zeta Global",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cloud-driven marketing platform; too many similar cloud platforms in market to distinguish Zeta; can't provide considered opinion; wait for clearer differentiation.",
+          "closing_price": 29.62
+        }
+      ]
+    },
+    "SENS": {
+      "company": "Senseonics Holdings",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Glucose monitoring space very competitive (Dexcom, Abbott Labs crowding space), but acceptable for speculators willing to take risks; not for conservative portfolios.",
+          "closing_price": 7.73
+        }
+      ]
+    },
+    "ULS": {
+      "company": "UL Solutions",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Underwriter Labs; good company with difficult-to-understand corporate structure; stock down but had good year; possible buying opportunity; might be a buy if fundamentals hold.",
+          "closing_price": 76.81
+        }
+      ]
+    },
+    "CPNG": {
+      "company": "Coupang",
+      "mentions": [
+        {
+          "date": "2026-08-13",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer doesn't care for Coupang; prefer Amazon or Marta Libre; unlikely to get back to IPO prices in near term; avoid.",
+          "closing_price": 16.29
+        }
+      ]
+    },
+    "PERM": {
+      "company": "Perpetua Resource Corporation",
+      "mentions": [
+        {
+          "date": "2025-12-15",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Caller Ford resource play query. Cramer light endorsement: 'hot stock.' Speculative resource play riding market sentiment."
+        }
+      ]
+    },
+    "NSP": {
+      "company": "NewScale Power",
+      "mentions": [
+        {
+          "date": "2025-12-15",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "Small-scale nuclear reactor play; stock $17 (was $57); down 3% YTD despite mounting losses and lofty valuation. Speculative; GE Vernova is better-established alternative with actual construction progress.",
+          "price_level": 17,
+          "closing_price": 38.22
         }
       ]
     }
