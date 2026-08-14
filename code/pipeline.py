@@ -1798,6 +1798,26 @@ _CHART_SEGMENT_PRIORITY = [
 _CHART_BULLISH = {"strong_buy", "buy", "buy_on_pullback", "mild_buy"}
 _CHART_BEARISH = {"sell_avoid", "caution_concern"}
 
+# Per-sentiment (marker, color, size) for the email price charts. Mirrors CHART_MARKER
+# in docs/stocks.html so the email and the site look identical. Color carries the
+# buy→sell scale; shape carries direction. Buy & Mild Buy collapse to one medium green.
+# Buy on Pullback is a BLUE STAR by design — these charts are about timing, and a green
+# marker on a specific date reads as "buy here," which a wait-for-the-dip call is not.
+_CHART_MARKERS = {
+    "strong_buy":        ("^", "#1a7f37", 95),
+    "buy":               ("^", "#2da44e", 90),
+    "mild_buy":          ("^", "#2da44e", 90),
+    "buy_on_pullback":   ("*", "#1f6feb", 150),   # star reads smaller, so size up
+    "wait_hold_neutral": ("o", "#8b949e", 55),
+    "caution_concern":   ("v", "#f0a030", 90),
+    "sell_avoid":        ("v", "#d03030", 90),
+}
+
+
+def _chart_marker_for(sentiment: str) -> tuple:
+    """(matplotlib marker, hex color, point size) for a sentiment; gray circle default."""
+    return _CHART_MARKERS.get(sentiment, ("o", "#8b949e", 55))
+
 
 def _holding_edge(ticker: str) -> dict | None:
     """Paired excess return vs both indexes for a ticker's buy calls, or None.
@@ -1892,12 +1912,7 @@ def _generate_price_chart_png(ticker: str) -> bytes | None:
         ax.plot(dates, prices, "-", color="#0969da", linewidth=2.0, zorder=1)
 
         for dt, price, sent in zip(dates, prices, sentiments):
-            if sent in _CHART_BULLISH:
-                marker, color, size = "^", "#2da44e", 90
-            elif sent in _CHART_BEARISH:
-                marker, color, size = "v", "#a00000", 90
-            else:
-                marker, color, size = "o", "#8b949e", 55
+            marker, color, size = _chart_marker_for(sent)
             ax.scatter([dt], [price], marker=marker, color=color, s=size,
                        edgecolor="white", linewidth=1.2, zorder=3)
 
@@ -1992,16 +2007,21 @@ def _generate_price_chart_png(ticker: str) -> bytes | None:
         fig.autofmt_xdate(rotation=30, ha="right")
 
         legend_elements = [
-            plt.Line2D([0], [0], marker="^", color="w", markerfacecolor="#2da44e", markersize=8, label="Bullish"),
-            plt.Line2D([0], [0], marker="o", color="w", markerfacecolor="#8b949e", markersize=7, label="Neutral"),
-            plt.Line2D([0], [0], marker="v", color="w", markerfacecolor="#a00000", markersize=8, label="Bearish"),
+            plt.Line2D([0], [0], marker="^", color="w", markerfacecolor="#1a7f37", markersize=8, label="Strong Buy"),
+            plt.Line2D([0], [0], marker="^", color="w", markerfacecolor="#2da44e", markersize=8, label="Buy / Mild Buy"),
+            plt.Line2D([0], [0], marker="*", color="w", markerfacecolor="#1f6feb", markersize=11, label="Buy on Pullback"),
+            plt.Line2D([0], [0], marker="o", color="w", markerfacecolor="#8b949e", markersize=7, label="Wait / Hold"),
+            plt.Line2D([0], [0], marker="v", color="w", markerfacecolor="#f0a030", markersize=8, label="Caution"),
+            plt.Line2D([0], [0], marker="v", color="w", markerfacecolor="#d03030", markersize=8, label="Sell"),
             plt.Line2D([0], [0], color="#0969da", linestyle="--", label="Price at last call"),
         ]
         if daily_rows:
             legend_elements.append(
                 Patch(facecolor="#8250df", alpha=0.35, edgecolor="#8250df", label="Daily price")
             )
-        ax.legend(handles=legend_elements, loc="upper left", fontsize=7, frameon=False, ncol=len(legend_elements))
+        # More entries now — wrap to a second row so labels don't overrun the axes.
+        ax.legend(handles=legend_elements, loc="upper left", fontsize=7, frameon=False,
+                  ncol=-(-len(legend_elements) // 2))
 
         fig.tight_layout()
 
