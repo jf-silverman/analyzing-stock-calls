@@ -227,6 +227,45 @@ mention can hide as `(ep, ticker, '')` alongside `(ep, ticker, 'in_depth_analysi
 
 ---
 
+## 2026-08-18 — section 1 refilled by the Dec-2025 backfill + Aug episodes
+
+`--check-ticker-names` regenerated after the Aug 14/17 + 2025-12-12 catch-up run
+surfaced **5 new proven mis-tickers** (section 1 had been empty since 2026-07-23).
+All confirmed against the on-disk transcripts and applied; section 1 is empty again.
+
+| Was | Now | Company | Price fix | Transcript evidence |
+|-----|-----|---------|-----------|---------------------|
+| `AXIM` | `VOYG` | Voyager Technologies | $0.00 → **$33.49** | *"Voyager Technology is shooting for the moon"* (2026-08-04 interview). `AXIM` is AXIM Biotechnologies. |
+| `FREL` | `FRT` | Federal Realty | $26.69 → **$101.37** | *"I do happen to see **Federal Realty** coming back and I like to see **Don Wood** in that portfolio instead of SL Green"* (2025-12-19, Am-I-Diversified). `FREL` is a Fidelity real-estate **ETF** — the $26.69 was its price. Don Wood = Federal Realty's CEO. |
+| `THRM` | `TBPH` | Theravance Biopharma | $37.11 → **$17.91** | *"I've not looked at **Therav** in a couple of years… I will come back"* (2025-12-17 LR; Cramer defers, so `wait_hold_neutral` kept). `THRM` is Gentherm — the $37.11 was its price. New `stocks` row created for `TBPH`. |
+| `WF` | `WFC` | Wells Fargo | $57.07 → **$93.01** | Passing market color, not a discrete pick (*"positive WSJ article about Wells Fargo"*; *"JP Morgan is my #2 bank after Wells Fargo"*). User chose keep-as-`WFC` over delete. `WF` is Woori Financial — the $57.07 was its price. |
+
+**The `LUMN` split — two mentions, two different companies, same wrong name.** Both
+`LUMN` rows were stored with company "Lumentum", but they are not the same company:
+
+- **2025-12-16** (LR, id 10739) — the caller literally said *"my question is on **Lumen
+  Technologies**… home business technology"* and the $8.10 close matches Lumen. **Ticker
+  `LUMN` was correct**; only the stored *name* was wrong. Name-only fix → "Lumen
+  Technologies"; price untouched.
+- **2026-08-12** (opening, id 10708) — *"**Lumenum**, which makes fiber optics, told a
+  terrific tale. We got **Coherent** on tonight"* — Lumentum (`LITE`), the optical-component
+  maker and Coherent's peer, reporting its AI-transceiver quarter. Retargeted `LUMN` →
+  `LITE`; price $6.29 (Lumen's) → **$932.47**. User confirmed LITE over holding LUMN.
+
+This is the canonical "**don't bulk-move a multi-mention ticker**" case from the `BLK`
+lesson: the queue lumped both `LUMN` rows under one suggestion, but one was already right.
+
+Also note: `--backfill-prices --tickers …` only refilled a **Feb–Jul 2026 window** and
+skipped the Dec-2025 and recent-August dates of the 5 corrected rows — the five specific
+closes had to be fetched with `fetch_closing_price(ticker, date)` directly. Worth
+remembering when a correction's own date sits outside the bulk-backfill window.
+
+The five error classes here map onto `ticker-error-taxonomy.md`: `AXIM`/`FREL`/`THRM`/`WF`
+are **A3** (garble → real unrelated ticker, incl. two ETFs), and the `LUMN` split is **A1**
+name garble crossed with the multi-mention trap.
+
+---
+
 ## Method notes
 
 - **Yahoo's symbol search was wrong on 7 of 43** suggestions. Treat it as a

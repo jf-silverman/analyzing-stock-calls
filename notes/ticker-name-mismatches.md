@@ -1,6 +1,6 @@
 # Ticker / Company Name Mismatches — Review Queue
 
-**66 ticker(s)** hold a company name that Yahoo Finance says belongs to
+**61 ticker(s)** hold a company name that Yahoo Finance says belongs to
 a different company. These are not all the same problem — some are wrong data,
 most are a name we wrote informally — so they are split by **what can actually be
 proved**, not by what they look like.
@@ -10,7 +10,7 @@ symbol does Yahoo return for the company name we stored? A different symbol back
 means the call is sitting on the wrong company; the same symbol means our name is
 merely informal.
 
-That settles **10 of 66**. It cannot settle the other
+That settles **5 of 61**. It cannot settle the other
 **56**, because Yahoo's search only matches *current legal* names — it
 returns nothing for "Snapchat", "Burlington Coat Factory" or "D-Wave Systems"
 exactly as it returns nothing for a caption garble. Those need the transcript.
@@ -41,7 +41,7 @@ The **Where** column links each mention to its spot in the episode (`date · seg
 **Said? sym/name** is two hints: did the **symbol** and did the **company name** each appear in the episode(s) it was mentioned in — `yes` / `✗` / `—` (no transcript). Read together they suggest where a bad row came from: `✗ / yes` = symbol inferred from a spoken name; `yes / ✗` = symbol was said but the name looks invented; `✗ / ✗` = neither was said (a caption garble, like Sterling's "STRL" heard as "SPRL"). **Weak hints, not verdicts.** They misfire in both directions: a correct pick spoken only as its ticker shows `yes / ✗` (the caller said "GDRX", never "GoodRx"), and a garble that became the stored name shows a false `yes` ("AEVEX" mis-heard as "Aeva"). A short symbol can also match a common word. And a handful of early-2026 episodes have a stale transcript in the DB, so their answer is unreliable. Worth a glance, nothing more.
 
 
-## 1. Likely mis-tickers — 5 ticker(s), the data is wrong
+## 1. Likely mis-tickers — 0 ticker(s), the data is wrong
 
 **This is the section that matters.** Yahoo maps our stored company name to a
 *different* symbol than the one we filed the call under, so the call is most
@@ -52,13 +52,7 @@ The suggested symbol is advisory — Yahoo's search picks the first US listing a
 can be wrong, and the *company* half of the pair may be the mistaken one.
 Confirm against the transcript before changing anything.
 
-| Ticker | We stored it as | That name is probably | But this symbol is | Said? sym/name | Where — date · segment · time | Transcript context |
-|--------|-----------------|----------------------|--------------------|----------------|-------------------------------|--------------------|
-| `LUMN` | **Lumentum** | `LITE` | Lumen Technologies, Inc. | **✗** / **✗** | 2025-12-16 · lightning_round · [35:02](https://youtu.be/E3aoDRmugAk?t=2102)<br>2026-08-12 · opening_commentary · [0:01](https://youtu.be/ieKCMqjaF-U?t=1) | …It is time. It's time for the lightning round. First of historical only seen the… |
-| `AXIM` | **Voyager Technologies** | `VOYG` | AXIM Biotechnologies, Inc. | **✗** / yes | 2026-08-04 · interview · [12:00](https://youtu.be/M1Hwvz1qklQ?t=720) / [20:01](https://youtu.be/M1Hwvz1qklQ?t=1201) | …levitation on May money tonight. Voyager Technology is shooting for the moon to… |
-| `FREL` | **Federal Realty Investment Trust** | `FRT` | Fidelity MSCI Real Estate Index ETF | **✗** / yes | 2025-12-19 · caller_qa · [0:03](https://youtu.be/1rEdy1i5kZk?t=3) | …travel trust, do you know that this is one of the best… |
-| `THRM` | **Therav Bio** | `TBPH` | Gentherm Incorporated | **✗** / yes | 2025-12-17 · lightning_round · [34:40](https://youtu.be/-5TXDFR_roU?t=2080) | …So, is my stock the bio a buy sell or hold?… |
-| `WF` | **Wells Fargo** | `WFC` | Woori Financial Group Inc. | **✗** / yes | 2025-12-19 · opening_commentary · [0:03](https://youtu.be/1rEdy1i5kZk?t=3) | …article about Wells Fargo in the journal. Goldman Sachs up 56% for the… |
+_None._
 
 
 ## 2. Undecidable without the transcript — 56 ticker(s)
@@ -153,7 +147,7 @@ renamed-companies note in CLAUDE.md.
 | `WOOF` | **Petco** | Petco Health and Wellness Compa | yes / yes | 2026-06-05 · opening_commentary · [0:17](https://youtu.be/LDtdnZddg-k?t=17) | …woof, which might also I mean, I got noises for every single one of these… |
 
 
-_Checked 886 tickers with a stored company name. Tickers Yahoo does not
+_Checked 884 tickers with a stored company name. Tickers Yahoo does not
 recognise at all (hallucinated, private, OTC) are not listed here — see the
 'Hallucinated tickers' note in CLAUDE.md._
 
