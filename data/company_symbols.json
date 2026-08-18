@@ -3,6 +3,10 @@
 null,
 null
 ],
+"ATAI Life Sciences": [
+null,
+null
+],
 "Acorn Realty Trust": [
 null,
 null
@@ -31,6 +35,10 @@ null
 "AXIN",
 "Axiom Intelligence Acquisition "
 ],
+"BNY Mellon": [
+null,
+null
+],
 "Babcock and Wilcox Enterprises": [
 null,
 null
@@ -56,6 +64,10 @@ null
 "Blue Owl Capital Corporation"
 ],
 "Bob Evans Farms": [
+null,
+null
+],
+"British Petroleum": [
 null,
 null
 ],
@@ -107,11 +119,19 @@ null
 "FDS",
 "FactSet Research Systems Inc."
 ],
+"Federal Realty Investment Trust": [
+"FRT",
+"Federal Realty Investment Trust"
+],
 "Figure Technologies": [
 null,
 null
 ],
 "Fundrise Innovation Fund": [
+null,
+null
+],
+"Global Wafers": [
 null,
 null
 ],
@@ -143,15 +163,31 @@ null
 null,
 null
 ],
+"Lenar": [
+null,
+null
+],
 "Liberty Media Formula One": [
 null,
 null
+],
+"Lumentum": [
+"LITE",
+"Lumentum Holdings Inc."
 ],
 "Medline Industries": [
 null,
 null
 ],
+"NewScale Power": [
+null,
+null
+],
 "Nubank": [
+null,
+null
+],
+"One Oak": [
 null,
 null
 ],
@@ -164,6 +200,10 @@ null,
 null
 ],
 "Paychecks": [
+null,
+null
+],
+"Perpetua Resource Corporation": [
 null,
 null
 ],
@@ -207,11 +247,19 @@ null
 null,
 null
 ],
+"Restoration Hardware": [
+null,
+null
+],
 "Satalogic Inc.": [
 null,
 null
 ],
 "Selecta Biosciences": [
+null,
+null
+],
+"Sentinel One": [
 null,
 null
 ],
@@ -230,6 +278,10 @@ null
 "Tenneco": [
 null,
 null
+],
+"Therav Bio": [
+"TBPH",
+"Theravance Biopharma, Inc."
 ],
 "Timkin": [
 null,
@@ -254,5 +306,13 @@ null
 "Verdiv": [
 null,
 null
+],
+"Voyager Technologies": [
+"VOYG",
+"Voyager Technologies, Inc."
+],
+"Wells Fargo": [
+"WFC",
+"Wells Fargo & Company"
 ]
 }
