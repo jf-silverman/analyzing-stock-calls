@@ -1,6 +1,6 @@
 # Unknown Tickers — Manual Review Queue
 
-**18 mention(s)** are stored under a placeholder ticker (`????` / `???`) — Haiku heard a company but could not identify its symbol. These are excluded from the website until they are resolved.
+**29 mention(s)** are stored under a placeholder ticker (`????` / `???`) — Haiku heard a company but could not identify its symbol. These are excluded from the website until they are resolved.
 
 > **Generated file — do not edit by hand.**
 >
@@ -26,6 +26,13 @@ Re-run the generator afterwards and the row disappears on its own.
 
 | Date | Placeholder | Segment | Time | Call | Cramer's description | Episode |
 |------|-------------|---------|------|------|----------------------|---------|
+| 2025-12-12 | `????` | investor_club_qa | — | sell_avoid | Nuclear sector selloff justified. Revolution not happening in US as hoped. No conviction outside General Electric. | [episode](https://youtu.be/jER6ZOPH_tA) |
+| 2025-12-15 | `????` | closing_commentary | 38:51 | sell_avoid | Cramer has been hounding viewers to sell this company near 40-point decline level. Appears in nuclear stocks closing segment. Exact company name and ticker cannot be determined from transcript. | [watch](https://youtu.be/98hVLcFQtqM?t=2331) |
+| 2025-12-16 | `????` | lightning_round | 35:02 | sell_avoid | Cramer will not recommend—does not know underlying holdings; refuses to own opaque financials or black-box structures. | [watch](https://youtu.be/E3aoDRmugAk?t=2102) |
+| 2025-12-17 | `????` | lightning_round | 34:40 | wait_hold_neutral | Caller asks about stock; Cramer admits he doesn't know it and refuses to guess; can't make it up; pass on unfamiliar name. | [watch](https://youtu.be/-5TXDFR_roU?t=2080) |
+| 2025-12-18 | `????` | lightning_round | 35:01 | buy | Showing amazing quarter with expectations for sustained strength going forward; much improved versus historical periods. | [watch](https://youtu.be/jvCnOf1NQTU?t=2101) |
+| 2025-12-18 | `????` | opening_commentary | 0:23 | buy | Consumer retail stock gaining 2% in Santa Claus rally; company name unclear from transcript but benefits from CPI decline. | [watch](https://youtu.be/jvCnOf1NQTU?t=23) |
+| 2025-12-19 | `????` | lightning_round | 37:48 | sell_avoid | Losing too much money; avoid stocks losing money when winners available; stay away. | [watch](https://youtu.be/1rEdy1i5kZk?t=2268) |
 | 2026-01-05 | `????` | lightning_round | 36:40 | caution_concern | Fine to speculate given ties to former Seattle Genetics leadership, but Cramer stresses this is speculation, not investing, given the cash burn. | [watch](https://youtu.be/k4bEI8CxAgQ?t=2200) |
 | 2026-01-09 | `????` | lightning_round | 34:54 | wait_hold_neutral | Cramer congratulated the caller on the gain, describing the position as effectively resolved via the acquisition bid. | [watch](https://youtu.be/Ctwl6H8f9o8?t=2094) |
 | 2026-02-02 | `????` | lightning_round | 36:03 | buy | Cramer and Ben covered and felt really good about it; glad they were right; pretty amazing; outstanding positive marks. | [watch](https://youtu.be/nNcDqZ2zTvI?t=2163) |
@@ -44,3 +51,9 @@ Re-run the generator afterwards and the row disappears on its own.
 | 2026-05-28 | `????` | lightning_round | 35:08 | wait_hold_neutral | Crypto-related investment; Cramer bullish on crypto broadly but prefers Bitcoin; doesn't recommend doubling down on losing position—switch to Bitcoin. | [watch](https://youtu.be/G_nPvcsM8LA?t=2108) |
 | 2026-05-28 | `????` | opening_commentary | 0:17 | mild_buy | Pure-play drone manufacturer; third of Cramer's top-three picks in sector; upside if selected by Pentagon for supplier stakes; pick one or two from group. | [watch](https://youtu.be/G_nPvcsM8LA?t=17) |
 | 2026-06-03 | `????` | lightning_round | 35:19 | wait_hold_neutral | Space stock referenced in context of current news cycle. Cramer doesn't know ticker or company name; will research and follow up. | [watch](https://youtu.be/hNHRqIXUT0o?t=2119) |
+| 2026-07-29 | `????` | lightning_round | 36:39 | sell_avoid | Cramer doesn't care for this stock; expects recovery to take too long. Avoid. | [watch](https://youtu.be/dV7Dw4bIv7M?t=2199) |
+| 2026-07-30 | `????` | lightning_round | 36:40 | wait_hold_neutral | Regional bank doing incredibly well. Overbought on good quarter; wait for pullback if considering entry. If you own it, do not sell. | [watch](https://youtu.be/Z6eL97pcmJ0?t=2200) |
+| 2026-08-05 | `????` | lightning_round | 36:17 | sell_avoid | Cramer has observed this stock for 30 years and found it to be perpetually underperforming; avoids with confidence. | [watch](https://youtu.be/aiwQyVmb800?t=2177) |
+| 2026-08-13 | `????` | opening_commentary | 0:01 | caution_concern | Acquisition creating stock pressure; management being cautious; don't expect significant upside near-term due to integration risks. | [watch](https://youtu.be/Shey4Xa0wR0?t=1) |
+
+_1 row(s) show no timestamp — that episode has no redirect pages on disk (they are only generated when an Overcast ID or audio URL is found), so the link points at the start of the episode._
