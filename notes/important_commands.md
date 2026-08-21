@@ -209,15 +209,20 @@ Columns: `episode_date`, `video_id`, `yt_upload_utc`, `pipeline_fetch_utc`
 
 ## YouTube Cookie Refresh
 
-YouTube session cookies expire periodically. When the pipeline fails with bot-check errors:
+The pipeline reads a Netscape cookie file at `~/.madmoney/yt_cookies.txt`, pointed to by
+`YOUTUBE_COOKIE_FILE` in `.env` (the cron worktree's `.env` is a symlink to the same file).
+YouTube session cookies expire every few weeks; when the pipeline fails with a bot-check
+error ("Sign in to confirm you're not a bot"), re-export from Chrome — one line
+(make sure Chrome is logged into YouTube first):
 
 ```bash
-# Re-export cookies from Chrome (yt-dlp reads them automatically on Mac)
-# Use --no-playlist to skip fetching recommended feed metadata
-yt-dlp --cookies-from-browser chrome --no-playlist -o /dev/null --skip-download https://www.youtube.com/
+cd ~/Documents/DS/yt-words && .venv/bin/yt-dlp --cookies-from-browser chrome --cookies /tmp/c.txt --skip-download -o /dev/null https://www.youtube.com/ && grep -E 'youtube\.com|google\.com' /tmp/c.txt > ~/.madmoney/yt_cookies.txt
+```
 
-# For GitHub Actions: filter to youtube/google domains and update the YOUTUBE_COOKIES secret
-grep -E '(youtube\.com|google\.com)' ~/Library/... > yt_cookies_filtered.txt
+Verify it beats the bot-check before relying on it:
+
+```bash
+.venv/bin/python3 -c "import yt_dlp; print(yt_dlp.YoutubeDL({'quiet':True,'cookiefile':'/Users/jfs-m3/.madmoney/yt_cookies.txt'}).extract_info('https://www.youtube.com/watch?v=ch0JZQ7PGh0',download=False,process=False)['title'])"
 ```
 
 ## GitHub Pages
