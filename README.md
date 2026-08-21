@@ -2,7 +2,7 @@
 
 A self-initiated, end-to-end data project that turns six months of CNBC's *Mad Money* into a structured, fact-checked dataset — one that doesn't exist anywhere else — and a live analytics site, then uses it to answer a question its usual coverage settles with anecdotes: **do Jim Cramer's stock calls actually beat the market, and can you tell the good calls from the bad ones in advance?**
 
-Every weeknight it automatically scrapes the latest episode, uses an LLM to turn a messy hour of television into structured stock calls, cross-checks every ticker and price against market data, recomputes the analytics, and publishes. Just as much of the work goes into *distrusting* the data — catching mis-transcribed tickers, look-ahead-biased model features, and my own too-good-to-be-true results — as into generating it.
+Every weeknight it automatically scrapes the latest episode, uses an LLM to turn a messy hour of television into structured stock calls, cross-checks every ticker and price against market data, recomputes the analytics, and publishes. Just as much of the work goes into *dis-ambiguating* the data, so that trustworthy analytics can be built on top of the data.
 
 **Live site:** [jf-silverman.github.io/analyzing-stock-calls/stocks.html](https://jf-silverman.github.io/analyzing-stock-calls/stocks.html)
 
@@ -10,9 +10,7 @@ Every weeknight it automatically scrapes the latest episode, uses an LLM to turn
 
 ## The Question
 
-Jim Cramer makes dozens of stock picks per episode of Mad Money, and most coverage of his record is anecdotal. Does his conviction level actually predict accuracy? Does segment matter — is he sharper in his prepared Opening Commentary than in the rapid-fire Lightning Round? Which sectors does he call best? Would following his buy calls have beaten an index fund?
-
-Underneath those runs a second question I kept turning on my own work: **can you trust the answer?** Speech-to-text mangles tickers, a naïve median can flip the sign of an "edge," and a single feature can smuggle tomorrow's price into a backtest. So a large part of the project is adversarial toward its own conclusions — validating every symbol against market data, pressure-testing each finding against a benchmark, and documenting what I deliberately *didn't* do and why.
+Jim Cramer makes dozens of stock picks per episode of Mad Money, and most coverage of his record is anecdotal. Does his conviction level actually predict accuracy? Does segment matter — is he sharper in his prepared Opening Commentary than in the rapid-fire Lightning Round? Which sectors does he call best? Which of his buy calls have beaten a fund based on an index like the Nasdaq or S&P500?
 
 This builds the infrastructure to answer all of that rigorously, from raw YouTube audio to a queryable analytics dashboard.
 
@@ -30,9 +28,9 @@ This builds the infrastructure to answer all of that rigorously, from raw YouTub
 | **SQL querying & aggregation** | Complex queries for win rates by sentiment/segment/sector/market cap; median return calculations; benchmark-relative performance; confidence interval computation |
 | **Client-side web development** | GitHub Pages site (`docs/stocks.html`) — fully static, no backend; Chart.js time-scale charts with sentiment markers; async live price fetching; dynamic filter UI; per-ticker JSON shards fetched on demand |
 | **Analytics & data storytelling** | Win-rate and median-return comparisons across 1,100+ tickers, 6+ months, and 5 sentiment categories; pipeline-generated hero text that auto-updates each night |
-| **Analytical skepticism — checking my own work** | Treats every result as suspect until it survives scrutiny: excluded a look-ahead-biased feature that scored a fake 0.745 AUC, rebuilt a model's target after finding the label circular, rejected a tempting bulk "cleanup" that testing showed would delete 508 correct rows, and traced a headline "edge" to a single sector before believing it. Every top-line stat ships with the caveat that it all sits inside one ~6-month AI-driven bull market |
-| **Backtesting & benchmark methodology** | 60-day hold backtest of every buy call, each benchmarked against the S&P 500 / Nasdaq over its *own* matching window. Uses **paired per-call excess returns** — the naive "median of returns minus median of index returns" is invalid because different calls land in different market windows, and it can flip the sign of the result (NVDA reads as a loser by that method and a winner when paired correctly). Models a realistic "sell when he downgrades" variant, and rejects the tempting "drop the calls he later soured on" filter as lookahead bias |
-| **Predictive modeling** | scikit-learn logistic regression predicting which "buy on pullback" calls never pull back — 0.76 AUC / 77% accuracy, cross-validated with **grouped folds** (by ticker *and* by call date) so a stock can't leak across the split. Systematically tested volatility, fundamentals, valuation, market-regime (VIX/SPY) and analyst features; all failed to beat a single point-in-time momentum feature on n≈100. Caught and excluded **lookahead-biased features** (yfinance's `52WeekChange` embeds today's price and scored a fake 0.745 AUC), and rebuilt the target after discovering the original label was circular — it was derived from beta, which was also the model's strongest input |
+| **Analytical skepticism — checking my own work** | Treats every result as potentially flawed until it survives scrutiny: excluded a look-ahead-biased feature that scored a fake 0.745 AUC, rebuilt a model's target after finding the label circular, rejected a tempting bulk "cleanup" that testing showed would delete 508 correct rows, and traced a headline "edge" to a single sector before believing it. |
+| **Backtesting & benchmark methodology** | 60-day hold backtest of every buy call, each benchmarked against the S&P 500 / Nasdaq over its *own* matching window. Uses **paired per-call excess returns** — the naive "median of returns minus median of index returns" is invalid because different calls land in different market windows, and it can flip the sign of the result (NVDA reads as a loser by that method and a winner when paired correctly). Models a realistic "sell when he downgrades" variant, and rejects the tempting "drop the calls he later soured on" filter as lookahead bias. |
+| **Predictive modeling — and knowing when to kill a model** | scikit-learn logistic regression predicting which "buy on pullback" calls never pull back — 0.76 AUC / 77% accuracy in **grouped cross-validation** (folds by ticker *and* by call date so a stock can't leak across the split), on a single point-in-time momentum feature that beat volatility, fundamentals, valuation, market-regime (VIX/SPY) and analyst features on n≈100. Caught and excluded **lookahead-biased features** (yfinance's `52WeekChange` embeds today's price and scored a fake 0.745 AUC) and rebuilt a circular target derived from beta. **Then it failed its own held-out test:** as new calls closed, out-of-sample AUC came in at 0.33–0.40 (n=15–27) — *below* a coin flip — so I retired the live per-call prediction from the site rather than show a number that looked promising but didn't generalize to new test data in a different time window. |
 | **Data quality engineering** | Speech-to-text mangles company names ("Newor" &rarr; Nucor, "Sanders" &rarr; SanDisk), so the LLM picks a plausible-but-wrong ticker and the call silently inherits an unrelated company's price history. Built a Yahoo-arbitrated validator that runs at ingest and flags every symbol/company disagreement with a suggested correction. The matcher compares **token sets, not similarity ratios** — "Blackstone" and "BlackRock" score 0.74 on difflib, so no threshold can both accept `Lam Research` / `Lam Research Corporation` and reject that pair. 31 assertions in both directions |
 | **Idempotency & data integrity** | Re-processing an episode used to *append* rather than replace: `UNIQUE(episode_id, ticker, segment)` only rejects an exact repeat, so a re-analysis that moved a call to another segment left both rows behind, undetectably. Found 18 affected episodes, made every write path idempotent, and **rejected the tempting "newest run wins" bulk cleanup** after testing showed it would delete 508 rows including verified-correct ones |
 | **Troubleshooting complex systems** | Debugged YouTube authentication failures (bot-check evasion with filtered Netscape cookies), SQLite UNIQUE constraint violations in bulk ticker corrections, a `max_tokens` ceiling silently truncating stock-heavy episodes mid-JSON, credential-helper failures under `cron` (macOS keychain is unavailable headless), Yahoo Finance rate limiting, and yt-dlp format-selection failures |
@@ -63,7 +61,7 @@ Buying every buy call and holding 60 days, each call benchmarked against the ind
 - **Nearly all of his edge was one sector.** His AI-complex buy calls beat the S&P by **~+10 points per call** (70% rose). Everything else *trailed* the index by ~4.5 points. Take AI out and his stock picking added nothing.
 - **He picked the right sector and then mistimed it.** He was *more* bullish on AI than elsewhere (Strong Buy on 18% of AI calls vs. 10%), but hedged with "buy on pullback" ~2× as often — and **that dip never came ~38% of the time** (buying anyway returned a ~+31% median). Acting on his later downgrades cut the mean return from +8.0% to +5.0%.
 - **His bearish calls are good — except on AI.** Across all Caution/Sell calls the stock fell 54% of the time (median −1.3%, 4 points below the index). On AI names the same calls *rose*. AI takes 6 of the 10 worst bearish calls to follow, but only 3 of the 10 best.
-- **A 0.76-AUC model predicts which "buy on pullback" calls never pull back**, using a single point-in-time feature (20-day pre-call momentum), cross-validated with folds grouped by ticker. Beta, fundamentals, valuation, market regime, and analyst targets were all tested and *none* improved held-out AUC.
+- **A momentum model looked able to predict which "buy on pullback" calls never pull back — until it didn't.** On a single point-in-time feature (20-day pre-call momentum) it reached 0.76 AUC in cross-validation grouped by ticker, beating beta, fundamentals, valuation, market regime, and analyst targets. But as fresh calls closed out-of-sample it scored *below chance* (0.33–0.40 AUC, n=15–27), so I **pulled the live per-call prediction from the site** and kept only the descriptive backtest. The in-sample edge was real; a real *forward* edge it was not.
 
 ### Data quality is part of the result
 
@@ -75,7 +73,7 @@ both directions: an ingest-time validator so new ones are caught the night they 
 and a generated review queue for the backlog. Findings and the reasoning behind what was
 *not* auto-fixed are in [`notes/bugs.md`](notes/bugs.md).
 
-⚠️ **All of this sits inside one ~6-month AI-driven bull market (Jan–Jul 2026).** In that regime "the stock he was cautious on kept climbing" is nearly tautological for the leading sector. Read it as a verdict on this period, not on his process.
+⚠️ **All of this sits inside one ~6-month AI-driven bull market (Jan–Jul 2026).** In that regime "the stock he was cautious on kept climbing" is nearly always true for the leading sector. Read it as a verdict on this period, not on his process.
 
 ---
 
@@ -164,7 +162,9 @@ code/
   backfill.py        — date-range reprocessing utility
   db.py              — SQLite schema, upsert helpers, build_analytics_json(), backtest builders
   analyze_buy_on_pullback.py — "does waiting for the dip pay?" analysis
-  never_trigger_model.py     — frozen model: will this buy-on-pullback call ever dip?
+  never_trigger_model.py     — frozen "will this buy-on-pullback call ever dip?" model;
+                               its live site prediction was retired after failing out-of-sample,
+                               kept for offline monitoring only
 prompts/
   mad_money_rules.md — LLM system prompt (segment rules, ticker rules, JSON schema)
 data/
