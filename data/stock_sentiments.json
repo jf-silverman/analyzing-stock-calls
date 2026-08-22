@@ -693,6 +693,13 @@
           "note": "China H200 approval removes existential threat; Chinese demand will be substantial; own it, don't trade it for long-term wealth.",
           "price_level": 184.97,
           "closing_price": 184.97
+        },
+        {
+          "date": "2025-12-08",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Best-of-breed semiconductor/AI leader; CEO Jensen Wong's consistent execution justifies premium valuation; own it don't trade it; generated 800%+ returns through 2023-2024.",
+          "closing_price": 185.55
         }
       ],
       "sector": "Technology",
@@ -4701,6 +4708,13 @@
           "segment": "opening_commentary",
           "note": "iPhone 17 revolutionary; huge winning streak since factory visit; media criticism persistent but unfounded; own it, don't trade it.",
           "closing_price": 277.18
+        },
+        {
+          "date": "2025-12-08",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Best-of-breed technology with unmatched products, customer loyalty, services revenue, fortress balance sheet; own it don't trade it; 2016 $23 call exemplifies holding value through weakness.",
+          "closing_price": 277.89
         }
       ],
       "sector": "Technology",
@@ -4726,6 +4740,13 @@
           "segment": "lightning_round",
           "note": "Buy Bitcoin directly; don't use derivative strategies for exposure; simple, direct ownership.",
           "closing_price": 34.37
+        },
+        {
+          "date": "2025-12-08",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Optional portfolio diversification alternative to physical gold; Cramer's stated preference is gold bullion, then GLD; acceptable but not primary vehicle for hedging.",
+          "closing_price": 40.2
         }
       ],
       "sector": "",
@@ -4772,6 +4793,13 @@
           "segment": "in_depth_analysis",
           "note": "Up 127% since end-2023 but trading like speculative asset not hedge; failed protection in March inflation crisis (\u221214% while S&P \u22128%); take profits; seasonal/cycle analysis warns of 2-3 month pullback.",
           "closing_price": 429.89
+        },
+        {
+          "date": "2025-12-08",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Portfolio insurance and diversification element preferred over Bitcoin; recommended for younger investors balancing growth with hedge; tactical allocation component, not core holding.",
+          "closing_price": 385.42
         }
       ],
       "sector": "",
@@ -5420,6 +5448,13 @@
           "segment": "opening_commentary",
           "note": "Non-tech tech medtech innovator with terrific quarter; preferred over Bristol Myers for similar consumer/healthcare exposure; should be bought on weakness. Best healthcare diversification play.",
           "closing_price": 256.98
+        },
+        {
+          "date": "2025-12-08",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "AAA-balance-sheet healthcare best-of-breed; recommended for long-term and generational wealth building including children's portfolios; strong dividend with defensive characteristics.",
+          "closing_price": 201.62
         }
       ],
       "sector": "Healthcare",
@@ -8889,6 +8924,13 @@
           "segment": "in_depth_analysis",
           "note": "Disappointed street recently but fundamentals solid; patience will pay off; Cramer to detail bull case on Friday club call",
           "closing_price": 139.82
+        },
+        {
+          "date": "2025-12-08",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Best-of-breed consumer staples; industry-leading brands, fortress balance sheet, consistent dividend growth; quality justifies premium valuation versus lower-quality cheaper competitors.",
+          "closing_price": 138.34
         }
       ],
       "sector": "Consumer Defensive",
