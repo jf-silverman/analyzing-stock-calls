@@ -743,6 +743,13 @@
           "segment": "opening_commentary",
           "note": "Own it, don't trade it; key part of macro rally as tech hype fades and real economy rises.",
           "closing_price": 179.59
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Hyperscaler concentration overstated; dominates 50% of business as sovereign buyers and infrastructure builders make up other 50%; 70% revenue growth guidance vs 45% consensus demonstrates continued dominance.",
+          "closing_price": 227.98
         }
       ],
       "sector": "Technology",
@@ -1924,6 +1931,20 @@
           "segment": "interview",
           "note": "Cramer's charitable trust owns since 2009. Blowout Q2, strongest ACV in 4 years, Slack triple-digit bookings, Anthropic partnership, government expansion.",
           "closing_price": 205.62
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "SaaS apocalypse thesis thoroughly disproven; strongest net new annual order value in 4 years, seats up YoY, attrition near lowest level ever; Anthropic partnership expands TAM.",
+          "closing_price": 252.05
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Reports tomorrow; could benefit from AI agent push-back but too early to call; need earnings clarity before recommending action.",
+          "closing_price": 234.71
         }
       ],
       "sector": "Technology",
@@ -3457,6 +3478,13 @@
           "segment": "opening_commentary",
           "note": "Industrial gas producing rocket fuel for SpaceX; performed nicely; beneficiary of space and data center buildout.",
           "closing_price": 509.16
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Great industrial gas company but in freefall despite quality; timing is wrong for this cycle; management communication needed to stabilize stock.",
+          "closing_price": 408.79
         }
       ],
       "sector": "Basic Materials",
@@ -4844,6 +4872,13 @@
           "segment": "opening_commentary",
           "note": "Own it, don't trade it; macro rally will drive broad tech ownership despite Chinese weakness concerns.",
           "closing_price": 284.15
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "Own it, don't trade it; good buy despite run-up; Tim Cook endorsement of successor (John Turner) maintains confidence through leadership transition.",
+          "closing_price": 314.58
         }
       ],
       "sector": "Technology",
@@ -5795,6 +5830,13 @@
           "segment": "lightning_round",
           "note": "Cramer likes it; discussed positively earlier today.",
           "closing_price": 82.23
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Can bounce from current levels despite leadership transition (Reed Hastings departure) and Paramount deal disappointment; fundamentals intact for long-term holders.",
+          "closing_price": 79.84
         }
       ],
       "sector": "Communication Services",
@@ -6349,6 +6391,13 @@
           "segment": "opening_commentary",
           "note": "Hyperscaler ramping data center capex; can afford community compensation and compliance with new regulations; political regime favors large players.",
           "closing_price": 559.02
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Benefits from OpenAI deprioritizing advertising initiatives; down 150 points from highs; competitive pressure easing creates buying opportunity.",
+          "closing_price": 647.1
         }
       ],
       "sector": "Communication Services",
@@ -6927,6 +6976,13 @@
           "segment": "opening_commentary",
           "note": "Hyperscaler with resources to navigate new regulatory environment; can afford community compensation requirements that eliminate smaller competitors.",
           "closing_price": 262.07
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "OpenAI's personal assistant deprioritization gives Alexa opportunity to solidify shopping dominance; confirmed as largest trust position; AWS growth supports thesis.",
+          "closing_price": 234.42
         }
       ],
       "sector": "Consumer Cyclical",
@@ -9482,6 +9538,13 @@
           "segment": "interview",
           "note": "Monster Q3 with record ARR (265M vs expected 239M), record free cash flow (~300M), record operating income; global SI partnerships and AWS native integration driving enterprise adoption and government contracts.",
           "closing_price": 131.04
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Best quarter in company history; net new ARR up 51% YoY to $333M; Falcon platform positioned as security OS for agentic era with AI threat driving adoption and consolidation.",
+          "closing_price": 227.96
         }
       ],
       "sector": "Technology",
@@ -10068,6 +10131,13 @@
           "segment": "opening_commentary",
           "note": "M&A advisory business is gold mine with tremendous earnings per person and share; positioned for deal mania surge under Trump-era looser antitrust enforcement. Blockbuster deals expected when summer ends.",
           "closing_price": 1032.58
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Trust position affirms conviction; better risk-adjusted exposure than crypto-linked names like Coinbase; financial services positioning stronger.",
+          "closing_price": 815.21
         }
       ],
       "sector": "Financial Services",
@@ -11192,6 +11262,13 @@
           "price_target": null,
           "price_level": 79,
           "closing_price": 79.27
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Good quarter with conservative guidance; misses shouldn't deter\u2014buying opportunity on underpromising management; solid execution continuing.",
+          "closing_price": 112.15
         }
       ],
       "sector": "Technology",
@@ -13421,6 +13498,14 @@
           "segment": "opening_commentary",
           "note": "High-growth, high-quality name; don't sell on pullback; ignore political criticism (ICE controversy); going higher; own for long term.",
           "closing_price": 176.08
+        },
+        {
+          "date": "2026-08-27",
+          "sentiment": "buy",
+          "segment": "am_i_diversified",
+          "note": "Clearing $200 level; enterprise and government consulting positioning strengthens as AI adoption accelerates; attractive valuation with strong momentum.",
+          "price_target": 200,
+          "closing_price": 185.93
         }
       ],
       "sector": "Technology",
@@ -15930,6 +16015,13 @@
           "segment": "lightning_round",
           "note": "Still lagging; suppliers (Hexel) have outperformed; implies hold/wait until better relative value appears",
           "closing_price": 198.72
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "buy",
+          "segment": "closing_commentary",
+          "note": "Bottoming signal confirmed: CFO ended negative revision cycle; derisks stock ahead of January earnings; trust accumulated all the way down; profit-taking temporary but uptrend intact.",
+          "closing_price": 205.38
         }
       ],
       "sector": "Industrials",
@@ -19224,6 +19316,13 @@
           "segment": "caller_qa",
           "note": "Excessive debt burden disqualifies as buy despite caller enthusiasm on Bitcoin cycles; quantum computing threat further out than feared but balance sheet weakness remains disqualifying.",
           "closing_price": 122.63
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Bitcoin accumulation company highly leveraged with borrowed money; if forced to sell holdings, could cascade further crypto selling and trigger broader market decline.",
+          "closing_price": 181.33
         }
       ],
       "sector": "Technology",
@@ -19627,6 +19726,18 @@
           "sentiment": "buy",
           "segment": "in_depth_analysis",
           "note": "Only real company in uranium/natural gas power segment; will win regardless of nuke or nat gas outcome; invest, don't speculate."
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer did recent convert analysis; strong recommendation to stay away from this name."
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Defense sector stock with compelling metrics (up 218%, huge backlog) in anti-drone space; Cramer likes market opportunity but requires homework before recommendation."
         }
       ],
       "sector": "",
@@ -26349,6 +26460,13 @@
           "segment": "opening_commentary",
           "note": "Soared on Bitcoin rally; trades with bullish animal spirits unleashed by de-escalation signals in Middle East; proxy for institutional risk-on appetite.",
           "closing_price": 208.93
+        },
+        {
+          "date": "2025-12-02",
+          "sentiment": "sell_avoid",
+          "segment": "opening_commentary",
+          "note": "Deeply linked to Bitcoin price; should scale out on rallies toward $97-98K rather than hold; Goldman Sachs preferable alternative.",
+          "closing_price": 263.26
         }
       ],
       "sector": "Financial Services",
@@ -35986,6 +36104,53 @@
           "segment": "lightning_round",
           "note": "Data center and cell tower play; not the right stock for this moment; pass for now.",
           "closing_price": 9.86
+        }
+      ]
+    },
+    "ANF": {
+      "company": "Abercrombie & Fitch",
+      "mentions": [
+        {
+          "date": "2026-08-27",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Operating margin 19.9% nearly double expected; raised FY2026 EPS guidance ~26%; 7% H1 buyback reduction; trades 11x 2026E\u2014suggest buying pullbacks as stock digests gains.",
+          "closing_price": 145.75
+        }
+      ]
+    },
+    "VALE": {
+      "company": "Vale S.A.",
+      "mentions": [
+        {
+          "date": "2026-08-27",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "Best inflation hedge alongside crypto; iron ore and commodity exposure benefit from reflationary environment; strong hedge in inflationary scenario.",
+          "closing_price": 15.31
+        }
+      ]
+    },
+    "EROC": {
+      "company": "E-Rock Inc",
+      "mentions": [
+        {
+          "date": "2026-08-27",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Too speculative compared to Nvidia; avoid\u2014Core is maximum acceptable threshold for semiconductor sector speculation.",
+          "closing_price": 13.23
+        }
+      ]
+    },
+    "AQR": {
+      "company": "Arcosa Inc.",
+      "mentions": [
+        {
+          "date": "2025-12-02",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Year of magical investing has ended; caller doubled then lost all gains; recommend selling and moving to better opportunities."
         }
       ]
     }
