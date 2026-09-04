@@ -796,6 +796,14 @@
           "note": "China export restrictions create uncertainty despite blowout Q2 earnings; stock volatile (212 high\u2192176 low\u2192186 close); needs policy clarity on China sales before strong conviction; worst-case priced in but upside hostage to geopolitics.",
           "price_level": 186,
           "closing_price": 182.55
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Trading less than 15x forward earnings; Hugging Face acquisition removes inference concerns; aggressive buyback strategy could drive 50% upside if executed like active PM.",
+          "price_target": 160,
+          "closing_price": 228.45
         }
       ],
       "sector": "Technology",
@@ -3914,6 +3922,13 @@
           "segment": "opening_commentary",
           "note": "Excellent margin improvement, great pricing, Optum recovery, Steve Hemsley returned as CEO restoring leadership; up 28% YTD but well below 2-year highs; gave up $40 opening gain \u2014 fantastic quarter, stock weakness opportunity.",
           "closing_price": 423.38
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Good to buy; last quarter very good; sufficient profitable growth profile for portfolio diversification into healthcare.",
+          "closing_price": 400.94
         }
       ],
       "sector": "Healthcare",
@@ -5558,6 +5573,14 @@
           "segment": "opening_commentary",
           "note": "Gemini 3 breakthrough establishes competitive foothold vs. ChatGPT; seamless Search integration + proprietary Broadcom chip partnership create AI moat; stock +6%, positioned for continued market share gains.",
           "closing_price": 318.58
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Trading at 17x earnings; Google Cloud momentum, YouTube entertainment juggernaut, Search, Gemini AI all strong; up 9% YTD but ignored Warren Buffett buying and strong fundamentals.",
+          "price_level": 342,
+          "closing_price": 342.48
         }
       ],
       "sector": "Communication Services",
@@ -5850,6 +5873,13 @@
           "segment": "closing_commentary",
           "note": "Strong pharmaceutical and medical device franchises. Spin-off of commodity artificial joint business unlocks value and focuses on growth.",
           "closing_price": 206.67
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Best positioned big pharma; AAA balance sheet, 18 drugs, no patent cliff risk; most diversified franchise.",
+          "closing_price": 278.43
         }
       ],
       "sector": "Healthcare",
@@ -6650,6 +6680,14 @@
           "segment": "opening_commentary",
           "note": "Up 3% on Wall Street report; AI positioning less appreciated than peers; undervalued relative to Magnificent 7 rotation; value play within mega-cap group.",
           "closing_price": 613.05
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "$18B lawsuit settlement over 10 years is manageable; best advertising medium ever, WhatsApp most undervalued asset, data center expansion positioning for AI profits.",
+          "price_level": 19.5,
+          "closing_price": 610.68
         }
       ],
       "sector": "Communication Services",
@@ -7263,6 +7301,14 @@
           "segment": "opening_commentary",
           "note": "Up 2.5% on JPMorgan report highlighting retail strength; retail business underappreciated by Wall Street focus on AWS; AWS business humming along well despite growth skepticism.",
           "closing_price": 226.28
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Screaming buy at 20x earnings; AWS GPU/compute monetization and AI profits accelerating; $50B semiconductor business, healthcare, grocery, and advertising all firing; 12% YTD gain is wrong given improvements.",
+          "price_level": 20,
+          "closing_price": 258.9
         }
       ],
       "sector": "Consumer Cyclical",
@@ -7638,6 +7684,13 @@
           "segment": "opening_commentary",
           "note": "Connected to OpenAI; quiet trading despite solid business execution; no strong visible catalyst; Magnificent 7 rotation drag at present; hold for clarity on AI partnership dynamics.",
           "closing_price": 474.0
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Azure cloud infrastructure getting religion on disclosure; 2.67 GW behind-meter power deal with Chevron, Copilot adoption; at the price relative to growth.",
+          "closing_price": 510.12
         }
       ],
       "sector": "Technology",
@@ -8152,6 +8205,14 @@
           "segment": "closing_commentary",
           "note": "Trading near lows despite premium valuation; rate cuts will support multiple expansion. Secular moat in membership model justifies premium.",
           "closing_price": 894.33
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Entry under $900; best long-term performer; currently 44x earnings but cheaper than before.",
+          "price_level": 900,
+          "closing_price": 899.01
         }
       ],
       "sector": "Consumer Defensive",
@@ -8191,6 +8252,13 @@
           "segment": "in_depth_analysis",
           "note": "Caller Dave asked about post-earnings position. Avoid entire cosmetics group despite Elf being good company. Sector milieu is troubled; can't buck a troubled industry even with solid fundamentals.",
           "closing_price": 52.28
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Tariff headwinds plus heavy short interest create significant risk; avoid current levels despite management strength.",
+          "closing_price": 70.05
         }
       ],
       "sector": "Consumer Defensive",
@@ -8942,6 +9010,13 @@
           "segment": "interview",
           "note": "Moved to NYSE (largest transfer in 234 years); $50B US manufacturing commitment. Strong oncology, weight-management opportunity, AI accelerating drug development. On track for ambitious $80B revenue target by 2030.",
           "closing_price": 185.95
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Best-in-class cancer portfolio with strong survival data; $50B US investment through 2030; NYSE listing February improves access; up 15% YTD.",
+          "closing_price": 182.0
         }
       ],
       "sector": "Healthcare",
@@ -9560,6 +9635,14 @@
           "segment": "fundamentals_vs_rotation",
           "note": "Well-managed CPG stock used as example: can rally on defensive sector rotation (recession hedging) rather than fundamental improvements; shows importance of understanding true drivers of moves.",
           "closing_price": 143.45
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy_on_pullback",
+          "segment": "opening_commentary",
+          "note": "No growth at current 21x earnings and 3% yield not compelling; took small profit; need to see pullback to 19x earnings before re-entry.",
+          "price_level": 21,
+          "closing_price": 146.92
         }
       ],
       "sector": "Consumer Defensive",
@@ -10497,6 +10580,13 @@
           "segment": "opening_commentary",
           "note": "Trust position affirms conviction; better risk-adjusted exposure than crypto-linked names like Coinbase; financial services positioning stronger.",
           "closing_price": 815.21
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Excel Sports Management acquisition makes no strategic sense for core business; stock reversed hard.",
+          "closing_price": 774.03
         }
       ],
       "sector": "Financial Services",
@@ -10751,6 +10841,13 @@
           "segment": "closing_commentary",
           "note": "Greatest drug franchise with GLP-1 for weight loss, diabetes; expanding applications in hypertension and alcoholism multiply TAM significantly.",
           "closing_price": 1109.94
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "One huge franchise drug for many years; top pharma pick; fine to add to existing position; diversified pipeline with strong growth.",
+          "closing_price": 1159.6
         }
       ],
       "sector": "Healthcare",
@@ -11851,6 +11948,13 @@
           "segment": "lightning_round",
           "note": "Cramer allows ONE speculative unprofitable stock per portfolio; OpenDoor is that pick\u2014management aligned, open market buys from CEO, reshaping home buying.",
           "closing_price": 6.48
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Stock too high relative to zero profitability; company must make money before investment worthy.",
+          "closing_price": 6.75
         }
       ],
       "sector": "Real Estate",
@@ -12252,6 +12356,13 @@
           "note": "Stock up 16% after reporting strong quarter with $25/share earnings power; low <20x multiple; benefiting from Nvidia chip demand.",
           "price_level": 492,
           "closing_price": 492.2
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Gutsy prediction: data center and enterprise strength will overcome commodity cost concerns; own ahead of earnings.",
+          "closing_price": 122.51
         }
       ],
       "sector": "Technology",
@@ -12981,6 +13092,13 @@
           "note": "Caller bought at $93, now significantly lower; government stake creating near-term selling pressure; CPU architecture critical for robotics long-term but timing uncertain; Cramer acknowledges past errors.",
           "price_level": 93,
           "closing_price": 87.26
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "100% conviction despite government stake overhang; strong quarter results ignored by market waiting for government exit; willing to buy more at current level to improve average cost.",
+          "closing_price": 91.67
         }
       ],
       "sector": "Technology",
@@ -13975,6 +14093,13 @@
           "segment": "opening_commentary",
           "note": "Enterprise software up 51% in August; Rule of 40 score of 155 justifies premium valuation; oversold due to hedge fund pressure, now recovering.",
           "closing_price": 186.38
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Buyer despite pullback; wild trader but CEO Alex Karp knows what he's doing.",
+          "closing_price": 154.85
         }
       ],
       "sector": "Technology",
@@ -14949,6 +15074,13 @@
           "segment": "opening_commentary",
           "note": "Just received largest order ever: 1,000 LEAP engines for Airbus A320neo; stock fell 8 points despite news\u2014clear buying opportunity.",
           "closing_price": 341.3
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Wind business disappointing but hyperscalers will create data center orders; stock fallen significantly from highs; keep buying on further weakness.",
+          "closing_price": 333.48
         }
       ],
       "sector": "Industrials",
@@ -15010,6 +15142,13 @@
           "note": "Strong Q3 beat, raised full-year guidance, 7-consecutive-quarter computing growth, Gen Z in-store engagement, marketplace acceleration all validate execution.",
           "price_level": 75,
           "closing_price": 79.66
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Tuesday earnings; mixed outlook\u2014tariffs and rate headwinds offset by PC refresh cycle.",
+          "closing_price": 76.45
         }
       ],
       "sector": "Consumer Cyclical",
@@ -15189,6 +15328,13 @@
           "segment": "closing_commentary",
           "note": "Strong quarter execution; benefits from tariff rollback on sourcing costs; e-commerce growth and operational leverage working.",
           "closing_price": 107.0
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Steady performer; buy and put away for long-term holding; predictable business model insulated from trends; preferred over Target's recent momentum.",
+          "closing_price": 108.42
         }
       ],
       "sector": "Consumer Defensive",
@@ -15567,6 +15713,13 @@
           "segment": "opening_commentary",
           "note": "Up nearly 7% on autonomous vehicle and robotics narrative; not purely auto company anymore; self-driving vision expansion drives valuation multiple; keep working higher on structural growth story.",
           "closing_price": 417.78
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Down 60% YTD; Magnificent 7 profits from capex spending materializing in 2027; group getting no credit despite upcoming inflection; SpaceX buyout would unlock value.",
+          "closing_price": 376.36
         }
       ],
       "sector": "Consumer Cyclical",
@@ -15670,6 +15823,13 @@
           "segment": "opening_commentary",
           "note": "Once red-hot software security play disappointed on latest earnings; market pivot toward hardware over software leaving software valuations vulnerable.",
           "closing_price": 184.6
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Cybersecurity records will be broken; consistent beat history; group now offers value for first time.",
+          "closing_price": 275.01
         }
       ],
       "sector": "Technology",
@@ -16632,6 +16792,13 @@
           "segment": "in_depth_analysis",
           "note": "Fundamentals improved dramatically (first positive sales growth in 9 quarters at +14%); management guiding to 10% revenue CAGR 2025-2030 (best in 20+ years); $12B farm subsidy provides catalyst",
           "closing_price": 468.9
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy_on_pullback",
+          "segment": "opening_commentary",
+          "note": "Teflon-like stock benefits from ag subsidies, but wait for post-earnings pullback; commodity prices pressuring.",
+          "closing_price": 487.24
         }
       ],
       "sector": "Industrials",
@@ -17955,6 +18122,20 @@
           "segment": "caller_qa",
           "note": "Focus on 6.8% dividend yield until January JP Morgan conference when Dr. Bourla details growth initiatives and pipeline expansion; hold for income interim until competitive clarity emerges.",
           "closing_price": 25.27
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Starting to creep up and playing catch-up on innovation; need a catalyst to recommend; third choice behind J&J and Eli Lilly.",
+          "closing_price": 28.81
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Bond-like 6.9% yield with breakout potential; strong acquisition pipeline (Seagen oncology, Nurtec migraine, MedSema GLP-1) offsets patent expirations.",
+          "closing_price": 25.04
         }
       ],
       "sector": "Healthcare",
@@ -20415,6 +20596,24 @@
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Jay (AR caller): triple-digit revenue growth and robust margins but 82x earnings valuation makes it most overvalued stock in entire market; Cramer cannot support at current levels despite good business quality."
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Don't know this company; should follow more food companies; no recommendation available."
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Owns for the trust (charity); prefers over NuScale because it has nuclear operations and less execution risk than building new plants."
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Only neo-cloud/AI infrastructure play worth owning; other neocloud companies are too speculative."
         }
       ],
       "sector": "",
@@ -21382,6 +21581,13 @@
           "segment": "in_depth_analysis",
           "note": "Halved (\u221247%) today after largest customer canceled orders due to loose-lipped executives; extreme parabolic move example; ~$300K revenue\u2014too early stage.",
           "closing_price": 7.95
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Losing too much money; speculative era over, magical investing no longer works.",
+          "closing_price": 4.27
         }
       ],
       "sector": "Technology",
@@ -21963,6 +22169,13 @@
           "segment": "ipo_cycles",
           "note": "2019 IPO that surged during COVID-19 pandemic as platform became essential; cited as historical example of successful new issue that caught fire during period of IPO-driven euphoria.",
           "closing_price": 87.65
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Awaiting earnings Monday; needs to become more than video conferencing, possibly via acquisition.",
+          "closing_price": 78.63
         }
       ],
       "sector": "Technology",
@@ -24929,6 +25142,13 @@
           "segment": "lightning_round",
           "note": "Benefits from major LNG export project in British Columbia; Canadian natural gas infrastructure play with strong cash generation.",
           "closing_price": 50.08
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "Top dividend choice: 5.6% yield, pipeline expansion underway, benefits from US production growth and nat gas export terminals.",
+          "closing_price": 47.94
         }
       ],
       "sector": "Energy",
@@ -25287,6 +25507,13 @@
           "segment": "opening_commentary",
           "note": "Digital advertising platform down nearly 24% in August; Amazon slowdown impacting growth; selling seems overdone but no clear catalyst to return to favor.",
           "closing_price": 13.72
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Can't fight Amazon hyperscaler dominance; one of worst performers in S&P 500 this year.",
+          "closing_price": 39.65
         }
       ],
       "sector": "Communication Services",
@@ -26529,6 +26756,13 @@
           "segment": "closing_commentary",
           "note": "Memory chip cost spikes eating into margins; PC manufacturer customer suffering as suppliers raise prices.",
           "closing_price": 19.53
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "sell_avoid",
+          "segment": "opening_commentary",
+          "note": "Hostage to rising semiconductor costs; unlikely to make numbers despite 6% daily pop.",
+          "closing_price": 23.96
         }
       ],
       "sector": "Technology",
@@ -26936,6 +27170,13 @@
           "segment": "interview",
           "note": "Diversifying into data centers, gaming, Mexico; selective on data center box; GIC partnerships; up 15% YTD with safe 5% monthly dividend. Outperforming defensive appeal.",
           "closing_price": 64.94
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Sleep-at-night 5.7% monthly dividend; 98.7% occupancy rate; tenant base is recession-resistant necessities; recent pullback is buy opportunity.",
+          "closing_price": 56.67
         }
       ],
       "sector": "Real Estate",
@@ -26993,6 +27234,13 @@
           "segment": "closing_commentary",
           "note": "Department store resurgence play; value retailer benefiting from consumer trade-down; strong holiday performance defeating macro skepticism; consumer resilience evident.",
           "closing_price": 24.13
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Tuesday earnings; won't be terrible; decent results expected from retailer.",
+          "closing_price": 15.71
         }
       ],
       "sector": "Consumer Cyclical",
@@ -27026,6 +27274,13 @@
           "segment": "closing_commentary",
           "note": "Foot Locker acquisition integration progressing; margin expansion from consolidation and inventory cleanup. Sporting goods secular tailwind.",
           "closing_price": 206.73
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Foot Locker acquisition is major accretion; right brand portfolio (Nike, New Balance, Hoka, On) drives upside.",
+          "closing_price": 208.45
         }
       ],
       "sector": "Consumer Cyclical",
@@ -28184,6 +28439,13 @@
           "segment": "opening_commentary",
           "note": "Tremendous guidance on Tuesday night; stock rallied 10% next day; analog chip maker with 9% data center exposure; much more leveraged to real-world economy; data center business up 64% YoY; first profitable quarter since 1985.",
           "closing_price": 215.55
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Analog to Analog Devices; consider buying if ADI's results support sector strength.",
+          "closing_price": 159.4
         }
       ],
       "sector": "Technology",
@@ -28351,6 +28613,13 @@
           "segment": "undervalued_software_stocks",
           "note": "Document storage down 36%; expected 15% earnings growth at 16x multiples; CEO Levy credibly rebuts AI displacement fears.",
           "closing_price": 24.67
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Finally breaking out after years of doing nothing; has good cloud storage business, good CEO Aaron Levy; okay to own now that momentum is returning.",
+          "closing_price": 35.96
         }
       ],
       "sector": "Technology",
@@ -29821,6 +30090,13 @@
           "segment": "lightning_round",
           "note": "Cramer prefers GE Vernova (better execution) for nuclear sector exposure; does not recommend NuScale over alternative.",
           "closing_price": 22.85
+        },
+        {
+          "date": "2026-09-03",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Too hard to build nuclear power plants; modular design doesn't solve core execution challenges; prefer established nuclear operators.",
+          "closing_price": 9.75
         }
       ],
       "sector": "Industrials",
@@ -30483,6 +30759,13 @@
           "segment": "interview",
           "note": "Diversified pipeline (obesity, precision immunology, epilepsy) with several near-term catalysts after last year's clinical setbacks and funding doubts.",
           "closing_price": 11.7
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Stock appears significantly undervalued; Cramer has direct deal involvement; up 75% YTD but still low.",
+          "closing_price": 9.69
         }
       ],
       "sector": "Healthcare",
@@ -31789,6 +32072,13 @@
           "segment": "closing_commentary",
           "note": "Only retailer reporting worse than expected results; underperformer in otherwise robust retail environment; exception proving rule of consumer strength.",
           "closing_price": 242.43
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Weakest of off-price trio after strong TJX and Ross reports; tough comparisons ahead.",
+          "closing_price": 296.51
         }
       ],
       "industry": "Apparel Retail",
@@ -37056,6 +37346,13 @@
           "segment": "in_depth_analysis",
           "note": "Operating margin 19.9% nearly double expected; raised FY2026 EPS guidance ~26%; 7% H1 buyback reduction; trades 11x 2026E\u2014suggest buying pullbacks as stock digests gains.",
           "closing_price": 145.75
+        },
+        {
+          "date": "2025-11-21",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Total crapshoot; highly speculative apparel play with execution risk.",
+          "closing_price": 69.87
         }
       ]
     },
@@ -37393,6 +37690,78 @@
           "segment": "lightning_round",
           "note": "Nathan (TX caller): just had one of biggest moves; Cramer needs research before opining; too much uncertainty on recent move; wait for analysis and clarity on catalysts.",
           "closing_price": 38.69
+        }
+      ]
+    },
+    "FBLK": {
+      "company": "Five Below",
+      "mentions": [
+        {
+          "date": "2026-09-03",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "Steal; 14.1% SSS growth (vs 10.4% expected), 28c EPS beat, 107% earnings growth YoY; raised FY guidance 14% midpoint; CEO Winnie Park beating comps six straight quarters; trading at 24x earnings offers compelling risk/reward.",
+          "price_level": 240
+        }
+      ]
+    },
+    "NTRA": {
+      "company": "Natera",
+      "mentions": [
+        {
+          "date": "2026-09-03",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Place on watch list; strong precision medicine story (cancer screening $20\u201330B TAM, prenatal, transplant monitoring) but valued at 16x sales while unprofitable; wait for pullback then accumulate; Stanley Druckenmiller 20% portfolio position.",
+          "price_level": 16,
+          "closing_price": 327.67
+        }
+      ]
+    },
+    "NUV": {
+      "company": "Neuvation Bio",
+      "mentions": [
+        {
+          "date": "2026-09-03",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Pure speculation play (cancer drug company, unprofitable); okay to hold one spec in portfolio but accept risk that it could go to zero; don't add here.",
+          "closing_price": 8.88
+        }
+      ]
+    },
+    "ADI": {
+      "company": "Analog Devices",
+      "mentions": [
+        {
+          "date": "2025-11-21",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Industrial semiconductors weak; becomes buy if quarter is strong.",
+          "closing_price": 232.32
+        }
+      ]
+    },
+    "ODTY": {
+      "company": "Oddity Tech",
+      "mentions": [
+        {
+          "date": "2025-11-21",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "Beaten down despite strong fundamentals (71.6% gross margins, 24% YoY growth); new Methodic telehealth platform targets 50M acne sufferers; trading at 17x next year vs. 30x earlier."
+        }
+      ]
+    },
+    "MTD": {
+      "company": "Mettler-Toledo International",
+      "mentions": [
+        {
+          "date": "2025-11-21",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Poorly covered but very good company; overlooked by Wall Street despite quality.",
+          "closing_price": 1452.35
         }
       ]
     }
