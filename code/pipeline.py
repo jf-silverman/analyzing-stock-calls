@@ -354,9 +354,18 @@ def fetch_transcript(video_id: str, upload_date: str = "") -> tuple[str, list, s
     return date_str, [], text
 
 
-# ── 3. Haiku analysis ──────────────────────────────────────────────────────────
+# ── 3. LLM analysis ────────────────────────────────────────────────────────────
 
-ANALYSIS_MODEL = "claude-haiku-4-5-20251001"
+# Model for episode analysis. Switched Haiku 4.5 → Sonnet 5 on 2026-09-11 after an A/B
+# on 5 recent episodes (2026-08-31…09-10): in every ticker head-to-head where the two
+# disagreed, Sonnet had the correct/current symbol and Haiku a wrong or garbled one
+# (FREL→FRT, MRO→MPC, HNGR→HNGE, ????→CRWV/KALA, FBLK→FIVE, UACL→USAR), it fixed name
+# garbles (Nitera→Natera, Proctor→Procter, Aptive→Aptiv), and it stayed inside the
+# segment/sentiment enums where Haiku emitted invalid values (fantasy_stock_football_draft,
+# off_the_charts, wait_hold) — at no API cost (runs on the subscription) and faster.
+# Older episodes stay Haiku-analyzed (no backlog re-run), so analytics straddle this date.
+# See README "Model selection". Used by both the CLI (subscription) and --backend api paths.
+ANALYSIS_MODEL = "claude-sonnet-5"
 
 # A stock-heavy episode emits ~30k chars of JSON. At 8192 the 2026-07-20 episode
 # truncated mid-string ("Unterminated string ... char 28896") and the whole episode was
@@ -365,7 +374,10 @@ ANALYSIS_MAX_TOKENS = 32000
 
 
 def analyze_with_haiku(date_str: str, transcript_text: str) -> dict:
-    """Call Claude Haiku with the Mad Money rules. Returns parsed analysis dict."""
+    """Call the analysis model (ANALYSIS_MODEL) via the Anthropic API — the --backend api
+    path. Named for history; ANALYSIS_MODEL is Sonnet 5 as of 2026-09-11. Returns a parsed
+    analysis dict. The default nightly backend is claude-code (subscription); this API path
+    is used only with --backend api and spends credits."""
     system_prompt = RULES_FILE.read_text()
     client = anthropic.Anthropic()
 
