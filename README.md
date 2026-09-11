@@ -22,7 +22,7 @@ This builds the infrastructure to answer all of that rigorously, from raw YouTub
 |------|-------------|
 | **Self-directed project** | Conceived, designed, and built end-to-end without a team or specification — from YouTube scraping to a public analytics site |
 | **Data acquisition / scraping** | `yt-dlp` to extract YouTube auto-captions (JSON3/VTT format); Yahoo Finance v8 chart API for daily closing prices; Overcast podcast API for deep-link timestamps |
-| **LLM prompt engineering** | Structured prompt that instructs Claude Haiku to return validated JSON: segments, sentiment categories, tickers, confidence signals, and private company handling — including few-shot examples and explicit rules to prevent hallucination |
+| **LLM prompt engineering** | Structured prompt that instructs Claude (Haiku 4.5 → Sonnet 5, chosen by A/B) to return validated JSON: segments, sentiment categories, tickers, confidence signals, and private company handling — including few-shot examples and explicit rules to prevent hallucination |
 | **Relational database design** | SQLite schema with `episodes`, `mentions`, `stocks`, `daily_prices` tables; a `forward_returns` SQL view pre-computes 7/30/90/180-day returns joined to benchmark (S&P 500, Nasdaq) prices; proper UNIQUE constraints and upsert logic |
 | **ETL pipeline** | Scheduled nightly run discovers new episodes, fetches transcripts, calls the LLM, validates tickers, stores results, fetches closing prices, computes analytics JSON, and pushes to GitHub Pages in a single run. Runs from a **git worktree pinned to `main`** so an in-progress feature branch can never publish half-finished work to the live site |
 | **SQL querying & aggregation** | Complex queries for win rates by sentiment/segment/sector/market cap; median return calculations; benchmark-relative performance; confidence interval computation |
@@ -34,7 +34,7 @@ This builds the infrastructure to answer all of that rigorously, from raw YouTub
 | **Data quality engineering** | Speech-to-text mangles company names ("Newor" &rarr; Nucor, "Sanders" &rarr; SanDisk), so the LLM picks a plausible-but-wrong ticker and the call silently inherits an unrelated company's price history. Built a Yahoo-arbitrated validator that runs at ingest and flags every symbol/company disagreement with a suggested correction. The matcher compares **token sets, not similarity ratios** — "Blackstone" and "BlackRock" score 0.74 on difflib, so no threshold can both accept `Lam Research` / `Lam Research Corporation` and reject that pair. 31 assertions in both directions |
 | **Idempotency & data integrity** | Re-processing an episode used to *append* rather than replace: `UNIQUE(episode_id, ticker, segment)` only rejects an exact repeat, so a re-analysis that moved a call to another segment left both rows behind, undetectably. Found 18 affected episodes, made every write path idempotent, and **rejected the tempting "newest run wins" bulk cleanup** after testing showed it would delete 508 rows including verified-correct ones |
 | **Troubleshooting complex systems** | Debugged YouTube authentication failures (bot-check evasion with filtered Netscape cookies), SQLite UNIQUE constraint violations in bulk ticker corrections, a `max_tokens` ceiling silently truncating stock-heavy episodes mid-JSON, credential-helper failures under `cron` (macOS keychain is unavailable headless), Yahoo Finance rate limiting, and yt-dlp format-selection failures |
-| **Iterative improvement** | Haiku prompt refined over dozens of episodes — added private company ticker rules (Anthropic, OpenAI, SpaceX), tease-mention suppression, segment boundary detection, and caller Q&A incorporation |
+| **Iterative improvement** | System prompt refined over dozens of episodes — added private company ticker rules (Anthropic, OpenAI, SpaceX), tease-mention suppression, segment boundary detection, and caller Q&A incorporation |
 
 ---
 
@@ -115,6 +115,36 @@ The `prompts/mad_money_rules.md` system prompt is the core reliability layer:
 - **Sentiment taxonomy:** 6 ordered categories from Strong Buy to Sell/Avoid with clear definitions and boundary examples
 - **Hallucination prevention:** explicit rules on what NOT to do (no nested subsections, no invented tickers, no separating caller Q&A into standalone sections)
 
+### Model selection: Haiku vs. Sonnet (A/B)
+
+The extractor was Claude Haiku 4.5 for most of the corpus. Before upgrading I ran a
+blind A/B against Claude Sonnet 5 on 5 recent episodes (2026-08-31 → 09-10, 122 vs 130
+picks) — same prompt, same subscription backend — and diffed the structured output.
+
+The decisive axis is **ticker accuracy**, the project's largest error source. In *every*
+case where the two models disagreed on a company's symbol, I checked the transcript and
+Sonnet had the correct or current ticker while Haiku had a wrong or garbled one:
+
+| Company (as heard in the transcript) | Haiku | Sonnet |
+|---|---|---|
+| "Federal Realy", a shopping-center REIT | `FREL` ✗ | `FRT` ✓ |
+| "a Valero or a Marathon" (refiners) | `MRO` ✗ (Marathon **Oil**, acquired 2024) | `MPC` ✓ (Marathon **Petroleum**) |
+| "Hinge Health" | `HNGR` ✗ (Hanger Inc.) | `HNGE` ✓ |
+| "Core Weave" | `????` (gave up) | `CRWV` ✓ |
+| "Five Below" | `FBLK` ✗ (invented) | `FIVE` ✓ |
+| "USA Rare Earth" | `UACL` ✗ | `USAR` ✓ |
+
+Sonnet also fixed name garbles Haiku passed through (**Nitera → Natera**, **Proctor →
+Procter**, **Aptive → Aptiv**) and stayed inside the segment/sentiment enums where Haiku
+emitted **invalid values** (`fantasy_stock_football_draft`, `off_the_charts`, `wait_hold`)
+that would have quietly corrupted the by-segment analytics. It was also *faster*
+(148–234s vs 219–340s per episode) and — because both run on the Claude Code subscription
+rather than the metered API — cost the same: nothing.
+
+Sonnet was adopted for new episodes on 2026-09-11 (`ANALYSIS_MODEL` in `pipeline.py`). The
+existing backlog was left Haiku-analyzed rather than re-run, so cross-model differences in
+sentiment/segment labeling straddle that date — a known discontinuity, not re-baselined.
+
 ### Database design
 
 ```sql
@@ -149,8 +179,9 @@ python3 code/pipeline.py --check-ticker-names    # symbol vs. company mismatches
 python3 code/pipeline.py --list-unknown-tickers  # calls the LLM couldn't assign a symbol
 ```
 
-Analysis runs through the Claude Code CLI by default (no API credits); pass
-`--backend api` to use the Haiku API instead.
+Analysis runs through the Claude Code CLI by default (no API credits), using Claude
+Sonnet 5 (`ANALYSIS_MODEL` in `pipeline.py`); pass `--backend api` to run the same model
+through the metered Anthropic API instead.
 
 ---
 
