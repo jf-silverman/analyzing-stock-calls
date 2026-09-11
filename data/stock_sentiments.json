@@ -1779,6 +1779,13 @@
           "segment": "opening_commentary",
           "note": "Recently purchased for travel trust after headquarters visit in Boise, Idaho; memory play in AI acceleration.",
           "closing_price": 1000.26
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Caller's exceptional thesis vindicated; Cramer's travel trust owns it and buying aggressively. Forward PE, PEG, buyback, and dividend thesis all sound. Strong hold/add.",
+          "closing_price": 977.41
         }
       ],
       "sector": "Technology",
@@ -2288,6 +2295,13 @@
           "price_target": 85,
           "price_level": 103,
           "closing_price": 103.19
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "Competitive moats destroyed; athleisure out of favor, intense competition, China weakness, leadership vacuum. Too risky to short, can't recommend buying. Wait for new CEO clarity on turnaround.",
+          "closing_price": 96.88
         }
       ],
       "sector": "Consumer Cyclical",
@@ -3913,6 +3927,13 @@
           "segment": "in_depth_analysis",
           "note": "Strong quarter with 5% SSS growth; thrives when other retail struggles; up 20% YTD but still a 'steal' as off-price leader.",
           "closing_price": 148.07
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Off-price retailer owned by Cramer's trust but franchise deeply worries him. TJ Maxx/Marshalls underperforming; management won't disclose problems; competitive position weakening under discretionary spending pressure.",
+          "closing_price": 126.42
         }
       ],
       "sector": "Consumer Cyclical",
@@ -5276,6 +5297,13 @@
           "segment": "opening_commentary",
           "note": "Portfolio insurance and diversification element preferred over Bitcoin; recommended for younger investors balancing growth with hedge; tactical allocation component, not core holding.",
           "closing_price": 385.42
+        },
+        {
+          "date": "2025-11-17",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Cramer recommends all investors hold gold as portfolio hedge against economic chaos; GLD is accessible alternative to physical bullion for most investors.",
+          "closing_price": 371.65
         }
       ],
       "sector": "",
@@ -9858,6 +9886,13 @@
           "segment": "opening_commentary",
           "note": "Dividend aristocrat at 21x earnings with 3% yield; just initiated for trust as defensive value play in uncertain environment.",
           "closing_price": 148.19
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Insufficient growth to justify holding despite 3% yield. Club sold position. Don't look back.",
+          "closing_price": 142.97
         }
       ],
       "sector": "Consumer Defensive",
@@ -14176,6 +14211,13 @@
           "segment": "lightning_round",
           "note": "Meme stock in autonomous systems space; market volatility makes speculative positions too risky now.",
           "closing_price": 9.65
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Meme stock characteristics with legitimate wireless and autonomous tech focus. Cramer: 'It's okay, not great not bad.' Hold if owned; don't chase.",
+          "closing_price": 7.25
         }
       ],
       "sector": "Technology",
@@ -15669,6 +15711,14 @@
           "segment": "in_depth_analysis",
           "note": "Blew away expectations: 4.5% SSS growth, 27% e-commerce growth, 35% earnings growth, raised guidance; best-in-class execution and consumer strength.",
           "closing_price": 107.11
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Taking margin hit to keep customers and gain share; will earn loyalty when inflation ends. At 36x PE deserves lower. Buy at 105-106, buy more at 95.",
+          "price_level": 105,
+          "closing_price": 105.73
         }
       ],
       "sector": "Consumer Defensive",
@@ -18880,6 +18930,13 @@
           "segment": "lightning_round",
           "note": "Cheap pick-and-shovel AI infrastructure play with low 8.34 PE and good accumulation; concerns about move exhaustion are overblown given fundamentals.",
           "closing_price": 193.18
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "CEO Jill Wang is 'money'; stock up massively but buy every dip since her tenure. Cramer hasn't backed away from long-held conviction despite sharp rallies.",
+          "closing_price": 188.99
         }
       ],
       "sector": "Technology",
@@ -21045,6 +21102,18 @@
           "segment": "lightning_round",
           "note": "Small-cap energy storage company with earnings acceleration; Cramer pending deeper research with Ben Sto before committing.",
           "price_level": 132
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Commodity business trading at excessive PE multiple. Wait for lower prices before considering entry."
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Most speculative stock on Earth per Cramer; blessing caller's own choice to own it, but not making strong recommendation. Speculative biotech \u2014 caller's decision."
         }
       ],
       "sector": "",
@@ -21646,6 +21715,13 @@
           "segment": "opening_commentary",
           "note": "Fintech sector experiencing temporary drawdown as market rotates to legacy banks; cycle will reverse. Recommend ownership for long-term holders.",
           "closing_price": 18.25
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "Solid fintech management but trading premium valuation vs cohort. Mark time until earnings accelerate. Can own long-term but underperforming near term.",
+          "closing_price": 17.21
         }
       ],
       "sector": "Financial Services",
@@ -26145,6 +26221,13 @@
           "segment": "in_depth_analysis",
           "note": "Permian land owner up 65% Q1 (9th best); leases surface/sells fracking water; down 14% this week anticipating war end and oil decline\u2014prelude to pullback if strait reopens.",
           "closing_price": 439.2
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Fantastic stock; in right industry (energy/land); inexpensive valuation. Cramer club profiled it. Positioned for higher energy prices and land appreciation.",
+          "closing_price": 366.1
         }
       ],
       "sector": "Energy",
@@ -31995,6 +32078,13 @@
           "segment": "opening_commentary",
           "note": "Bob (NY caller) asks outlook; Cramer sees comeback opportunity despite sector headwinds; down significantly but fundamentals intact; rural consumer backbone supports recovery.",
           "closing_price": 53.03
+        },
+        {
+          "date": "2026-09-10",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "No mojo; good company but can't lift in tough market. Lacks competitive edge needed to own now. Near 52-week lows with no catalyst.",
+          "closing_price": 33.52
         }
       ],
       "sector": "Consumer Cyclical",
@@ -38514,6 +38604,17 @@
           "segment": "lightning_round",
           "note": "Diversified telecom/cable operator offering better profile than pure cable peers; not expensive; well-managed; Canadian domicile avoids U.S.-specific regulatory and economic headwinds.",
           "closing_price": 38.52
+        }
+      ]
+    },
+    "SENA": {
+      "company": "Seneca Foods Corporation",
+      "mentions": [
+        {
+          "date": "2026-09-10",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Food processor with 36% growth, rising earnings, reasonable 13x PE valuation, defensive positioning. Comfortable with small position; prefer pullback to add. Concerns: harvest risk, customer concentration, tariff pressure."
         }
       ]
     }
