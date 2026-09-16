@@ -2559,7 +2559,7 @@ def send_rerun_notice(reruns: list[dict], mode: str = "smtp") -> None:
 PAGES_BRANCH = "main"   # GitHub Pages publishes from main
 
 
-def commit_and_push(dates: list[str]) -> None:
+def commit_and_push(dates: list[str], msg: str | None = None) -> None:
     """Commit generated docs/ + data/ and push them to origin/main.
 
     GitHub Pages serves from main, so nightly artifacts must be committed *while checked out
@@ -2580,7 +2580,7 @@ def commit_and_push(dates: list[str]) -> None:
     trying to move them.
     """
     label = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
-    msg = f"Mad Money {label}: redirect pages + sentiment update"
+    commit_msg = msg or f"Mad Money {label}: redirect pages + sentiment update"
     paths = ["docs/", "data/"]
 
     def git(*args, check=True):
@@ -2604,7 +2604,7 @@ def commit_and_push(dates: list[str]) -> None:
         if not has_staged():
             print("  No docs/ or data/ changes to commit.")
             return
-        git("commit", "-m", msg)
+        git("commit", "-m", commit_msg)
         git("push", "origin", PAGES_BRANCH)
         print(f"  Pushed to origin/{PAGES_BRANCH} — redirect pages are live")
     except subprocess.CalledProcessError as e:
@@ -4211,6 +4211,16 @@ def main() -> None:
     # so a real run later should still discover and send for these dates.
     if not args.dry_run:
         save_processed(processed)
+        # save_processed() writes processed_episodes.json under data/ *after* the redirect
+        # push above, so a second commit is needed to capture it. Without this, the file
+        # lags git by exactly one run — each night commits the *previous* night's IDs but
+        # not its own, so a fresh clone or the CI fallback re-discovers and re-processes the
+        # episodes we just handled (idempotent, but wasteful and re-sends email).
+        # Kept *after* the email on purpose: an email failure crashes before this, leaving
+        # the episode unmarked (and uncommitted) for a clean retry on the next run. The first
+        # push already made the redirect links live before the email, so this only carries
+        # the processed-episode bookkeeping. (data/summaries/ is gitignored, so it never lagged.)
+        commit_and_push(dates, msg=f"Mad Money {dates[0]}: mark episodes processed")
     print("\nDone.")
 
 
