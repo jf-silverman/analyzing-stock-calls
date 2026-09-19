@@ -832,6 +832,13 @@
           "segment": "opening_commentary",
           "note": "Shorts betting against the data-center buildout are misjudging a stock that looks expensive on forward estimates but keeps beating actual earnings.",
           "closing_price": 199.05
+        },
+        {
+          "date": "2025-11-07",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Used as the illustrative core-position example: the most powerful AI chips and a great long-term story, but insanely volatile. Cramer's stance is 'own it, don't trade it', trimming and re-adding around a core.",
+          "closing_price": 188.15
         }
       ],
       "sector": "Technology",
@@ -1820,6 +1827,13 @@
           "segment": "opening_commentary",
           "note": "Cramer just added shares; products in short supply alongside Intel.",
           "closing_price": 977.5
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Told a caller not to sell: about 13x earnings and roughly 6x next year's is incredibly cheap. The Charitable Trust holds a giant position. The caller says the stock crossed $1,000 and is still about 25% off its high.",
+          "closing_price": 1015.8
         }
       ],
       "sector": "Technology",
@@ -5324,6 +5338,13 @@
           "segment": "opening_commentary",
           "note": "New foldable Duo iPhone demand could be off the charts; stock's post-launch rally has more room to run.",
           "closing_price": 332.27
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "iPhone 18 has standout battery life, and the foldable Duo (a month out) is potentially revolutionary. Cramer says DRAM-cost pricing worries are overblown because carriers subsidize handsets.",
+          "closing_price": 336.13
         }
       ],
       "sector": "Technology",
@@ -8612,6 +8633,13 @@
           "segment": "opening_commentary",
           "note": "Down more than 150 points from its high and despised, but Cramer thinks that's overdone.",
           "closing_price": 914.0
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Stock is acting poorly ahead of Thursday's report on trouble attracting younger members, who shop online more. The in-store experience remains the unique draw.",
+          "closing_price": 895.31
         }
       ],
       "sector": "Consumer Defensive",
@@ -18398,6 +18426,12 @@
           "segment": "lightning_round",
           "note": "Strong quarter despite elevated rates but Cramer skeptical of rate-drop predictions; has been wrong before on mortgage/real estate timing.",
           "closing_price": 13.56
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Can't recommend: the stock prices in one rate hike, not multiple, and rate hikes are the worst thing for mortgage lenders."
         }
       ],
       "sector": "Financial Services",
@@ -19068,6 +19102,13 @@
           "segment": "closing_commentary",
           "note": "Only worth owning as a takeover bet \u2014 GLP-1 weight-loss drugs are pressuring food stocks broadly.",
           "closing_price": 46.65
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "6.72% dividend yield is a red flag, reflecting input-cost and processed-food pressure on the stock. Cramer can't recommend it.",
+          "closing_price": 36.32
         }
       ],
       "sector": "Consumer Defensive",
@@ -22407,6 +22448,13 @@
           "segment": "lightning_round",
           "note": "Right level to start a partial position (25 of 100 target shares) at 10x earnings, but restaurant group is out of favor \u2014 wait before adding more.",
           "closing_price": 106.61
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Cramer calls himself a Brinker guy over Darden, citing a smaller, stronger game plan.",
+          "closing_price": 196.71
         }
       ],
       "sector": "Consumer Cyclical",
@@ -23323,6 +23371,13 @@
           "segment": "opening_commentary",
           "note": "Incredible run driven by crypto strength and prediction markets; youth market ownership (35 median age, 28% deposit growth); 28.4M funded customers.",
           "closing_price": 117.34
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Positioned for the generational wealth handoff with a broad product set (retirement match, credit card, prediction markets, Trump accounts). Stock is up about 90% from March lows but still below January highs.",
+          "closing_price": 119.82
         }
       ],
       "sector": "Financial Services",
@@ -25586,6 +25641,13 @@
           "segment": "in_depth_analysis",
           "note": "Largest US copper miner; bullish flag pattern with strong volume; MACD buy signal; TTM squeeze explosive; up 49% YTD; targets $80 then $100; Oct call interest 90s/95s.",
           "closing_price": 75.74
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "sell_avoid",
+          "segment": "in_depth_analysis",
+          "note": "Larry Williams' charts show copper overvalued with a cycle peak; Cramer would sell copper and FCX on Monday.",
+          "closing_price": 71.54
         }
       ],
       "sector": "Basic Materials",
@@ -26489,6 +26551,13 @@
           "segment": "opening_commentary",
           "note": "Olive Garden parent is a dependable pick as analysts return to the casual-dining trade.",
           "closing_price": 175.67
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Olive Garden is a gold mine and the $11 special is very good, though Cramer prefers Brinker.",
+          "closing_price": 209.28
         }
       ],
       "sector": "Consumer Cyclical",
@@ -27342,6 +27411,13 @@
           "segment": "closing_commentary",
           "note": "Identity verification is essential to spot which AI agents are rogue; AI labs underspending on this risk.",
           "closing_price": 190.02
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Positive analyst meeting expected Wednesday. CEO Todd McKinnon's case that identity verification can stop AI agent attacks was called the most enlightening of the week.",
+          "closing_price": 182.37
         }
       ],
       "sector": "Technology",
@@ -27420,6 +27496,13 @@
           "segment": "interview",
           "note": "Rebound from $85 to $98; WISE AI engine with 50+ years expertise, 26T+ data elements; strong small-business momentum (4 consecutive months job growth); July 7 HR compliance product launch; AI fears overblown.",
           "closing_price": 98.33
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Payroll and HR processor reporting with momentum; small and mid-sized business exposure is not expected to be hurt by the first rate hike.",
+          "closing_price": 116.14
         }
       ],
       "sector": "Technology",
@@ -28384,6 +28467,13 @@
           "segment": "lightning_round",
           "note": "Caller Mark (WI): semiconductor, burning cash but partnered with Nvidia; Cramer: good technology that should translate to earnings, not done so yet, ride it.",
           "closing_price": 10.84
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "A good speculation but not a great one; unprofitable, and Cramer avoids unprofitable companies in a rate-hike cycle.",
+          "closing_price": 11.43
         }
       ],
       "sector": "Technology",
@@ -32371,6 +32461,13 @@
           "segment": "in_depth_analysis",
           "note": "World's largest copper miner (Peru/Mexico); MACD buy, 200-day MA bounce, bullish channel, TTM squeeze extremely bullish; up 50% YTD; Lang favorite; $220 breakout to $250.",
           "closing_price": 208.87
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "sell_avoid",
+          "segment": "in_depth_analysis",
+          "note": "Copper-price exposure at a projected cycle peak with the Fed tightening; Cramer would sell it Monday.",
+          "closing_price": 195.7
         }
       ],
       "sector": "Basic Materials",
@@ -33033,6 +33130,13 @@
           "segment": "opening_commentary",
           "note": "Well-run home builder reporting this week; housing dead in water due to high rates; only Toll Brothers (TOL) can handle situation with 25% cash-purchase model.",
           "closing_price": 54.2
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Expects another weak homebuilder report Tuesday, similar to Lennar's, because Fed rate hikes hurt home sales.",
+          "closing_price": 47.12
         }
       ],
       "sector": "Consumer Cyclical",
@@ -38659,6 +38763,13 @@
           "segment": "opening_commentary",
           "note": "Terrific barometer of small business health; reports this week. Wait for earnings to assess business momentum.",
           "closing_price": 187.53
+        },
+        {
+          "date": "2026-09-18",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Uniforms and more; a pretty good business reporting with a full head of steam. The small and mid-sized business segment is the hottest part of the economy and historically resilient to a first rate hike.",
+          "closing_price": 197.64
         }
       ]
     },
@@ -40078,6 +40189,18 @@
           "segment": "lightning_round",
           "note": "Up 56% and constructive, but Alibaba is the preferred Chinese stock to own first.",
           "closing_price": 132.32
+        }
+      ]
+    },
+    "SIEGY": {
+      "company": "Siemens AG",
+      "mentions": [
+        {
+          "date": "2026-09-18",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Europe's biggest industrial is a leader in industrial AI, automation and electrification for data centers. Its fast-growing US business is about a quarter of sales.",
+          "closing_price": 151.92
         }
       ]
     }
