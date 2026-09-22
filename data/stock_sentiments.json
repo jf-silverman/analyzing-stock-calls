@@ -5345,6 +5345,48 @@
           "segment": "opening_commentary",
           "note": "iPhone 18 has standout battery life, and the foldable Duo (a month out) is potentially revolutionary. Cramer says DRAM-cost pricing worries are overblown because carriers subsidize handsets.",
           "closing_price": 336.13
+        },
+        {
+          "date": "2026-09-21",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Cramer reiterates his decade-long 'own it, don't trade it' thesis, citing early ResearchKit and Apple Pay traction as proof of durable ecosystem strength.",
+          "closing_price": 338.98
+        },
+        {
+          "date": "2026-09-21",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Cook frames buybacks as opportunistic value investing and highlights services as a fast-growing 20%+ revenue stream, reinforcing long-term ownership case.",
+          "closing_price": 338.98
+        },
+        {
+          "date": "2026-09-21",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Cook emphasizes long-term shareholder value over short-term stock moves, backed by iPhone ubiquity and a new $1B U.S. manufacturing fund.",
+          "closing_price": 338.98
+        },
+        {
+          "date": "2026-09-21",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Massive 1.3B-device install base and services revenue scaling past $41B underpin a recurring-revenue growth story Cramer argues merits a higher multiple.",
+          "closing_price": 338.98
+        },
+        {
+          "date": "2026-09-21",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "$600B U.S. manufacturing commitment across 79 factories shows capital discipline and domestic reinvestment with no shareholder pushback.",
+          "closing_price": 338.98
+        },
+        {
+          "date": "2026-09-21",
+          "sentiment": "strong_buy",
+          "segment": "closing_commentary",
+          "note": "Cramer's parting take: ~2,300% stock return under Cook, dominant iPhone share, underappreciated AI/services optionality, and a pristine balance sheet make AAPL a long-term own, not a trade.",
+          "closing_price": 338.98
         }
       ],
       "sector": "Technology",
