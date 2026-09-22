@@ -2236,6 +2236,21 @@ def build_email_html(summaries: list[dict],
                         matched_tickers.add(ticker)
             if not matched:
                 return ""
+            # One pill per ticker per section. The raw analysis can name the same
+            # stock several times within a single segment (the 2026-09-21 all-Apple
+            # Tim Cook tribute listed AAPL 4× in each section), but a section must
+            # show each ticker only once. Collapse duplicates, keeping the
+            # strongest-conviction sentiment so the pill's colour reflects the most
+            # bullish take among them.
+            _rank = {s: i for i, s in enumerate(SENTIMENT_ORDER)}
+            by_ticker: dict[str, dict] = {}
+            for s in matched:
+                t = s["ticker"]
+                cur = by_ticker.get(t)
+                if cur is None or _rank.get(normalize_sentiment(s.get("sentiment", "")), 99) \
+                        < _rank.get(normalize_sentiment(cur.get("sentiment", "")), 99):
+                    by_ticker[t] = s
+            matched = list(by_ticker.values())
             matched.sort(key=lambda s: s.get("ticker", ""))
             links = "".join(
                 f'<a class="tlink" href="#ticker-{s["ticker"]}" '
