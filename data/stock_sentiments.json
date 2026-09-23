@@ -839,6 +839,13 @@
           "segment": "in_depth_analysis",
           "note": "Used as the illustrative core-position example: the most powerful AI chips and a great long-term story, but insanely volatile. Cramer's stance is 'own it, don't trade it', trimming and re-adding around a core.",
           "closing_price": 188.15
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "White House blocked sale of most advanced chips to China, disappointing investors even though China isn't in guidance; a face of the AI bull market now under pressure.",
+          "closing_price": 188.08
         }
       ],
       "sector": "Technology",
@@ -4021,6 +4028,13 @@
           "segment": "opening_commentary",
           "note": "Owned for the travel trust; a fabulous, conservative company whose stock often gets hit even on good results, making dips buyable.",
           "closing_price": 146.08
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Strong performer in a tough retail environment; Cramer says own it, don't sell, calling it what works in a bad market.",
+          "closing_price": 143.77
         }
       ],
       "sector": "Consumer Cyclical",
@@ -4197,6 +4211,13 @@
           "segment": "caller_qa",
           "note": "Online sports betting has become too crowded and capital-intensive to keep customers; time to move on despite liking the CEO.",
           "closing_price": 24.74
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Revenue miss and cut guidance were driven by unfavorable NFL outcomes, not demand; handle growth accelerating and ESPN/NBC partnerships plus the Missouri launch set up a strong Q4.",
+          "closing_price": 27.98
         }
       ],
       "sector": "Consumer Cyclical",
@@ -4886,6 +4907,13 @@
           "segment": "in_depth_analysis",
           "note": "Cloud revenue and backlog surging, capex offset by customer prepayments easing balance-sheet fears; stock has room to recover but data-center politics argue waiting until after the midterms.",
           "closing_price": 150.28
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Key partner in OpenAI's data-center buildout has already raised $18B in debt and may need 20x more; rising borrowing costs are worrying Wall Street.",
+          "closing_price": 243.8
         }
       ],
       "sector": "Technology",
@@ -11614,6 +11642,13 @@
           "segment": "opening_commentary",
           "note": "Record order volume but profitability lagging; sells at premium 32x earnings multiple. Tony Xu built #1 company in field; like management very much; prefer entry at 100-120 range vs current premium valuation; wait for pullback.",
           "closing_price": 154.58
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Spending heavily to grow dominance; investors hated the quarter despite the strategy, consistent with the post-Palantir shift in sentiment.",
+          "closing_price": 196.46
         }
       ],
       "sector": "Consumer Cyclical",
@@ -12403,6 +12438,13 @@
           "segment": "closing_commentary",
           "note": "Part of the 'belt and suspenders' cybersecurity stack AI labs need to contain rogue agents.",
           "closing_price": 375.06
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Caller looking to add more after CrowdStrike's strong showing; Cramer agrees, citing a stronger-than-ever secular cybersecurity bull case and praising the CyberArk acquisition.",
+          "closing_price": 211.37
         }
       ],
       "sector": "Technology",
@@ -14996,6 +15038,13 @@
           "price_target": 250,
           "price_level": 193,
           "closing_price": 193.61
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Reported a 'picture perfect' quarter but the stock fell anyway, a warning sign that richly valued names are being punished regardless of results.",
+          "closing_price": 175.05
         }
       ],
       "sector": "Technology",
@@ -17365,6 +17414,13 @@
           "segment": "opening_commentary",
           "note": "New individual financial software looked swell in a recent demo and should gain adoption as IRS phases out its own competing product.",
           "closing_price": 662.41
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "New agentic AI platform extends Intuit beyond tax season into year-round financial management; CEO says its 10 million small-business base shows a healthy, stable consumer despite shutdown worries.",
+          "closing_price": 653.64
         }
       ],
       "sector": "Technology",
@@ -23420,6 +23476,13 @@
           "segment": "interview",
           "note": "Positioned for the generational wealth handoff with a broad product set (retirement match, credit card, prediction markets, Trump accounts). Stock is up about 90% from March lows but still below January highs.",
           "closing_price": 119.82
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Core results looked good but the market didn't care, part of a broader rotation away from high-flying speculative names since Palantir's report.",
+          "closing_price": 127.08
         }
       ],
       "sector": "Financial Services",
@@ -26739,6 +26802,13 @@
           "segment": "opening_commentary",
           "note": "Moves ~30% of North American crude production; 5.5% yield; Canadian, insulated from tariff fight; transports 20% of U.S. natural gas; secular defensive play.",
           "closing_price": 50.48
+        },
+        {
+          "date": "2026-09-22",
+          "sentiment": "buy",
+          "segment": "caller_qa",
+          "note": "Cited as a dividend growth stock offering both yield and upside potential, preferable to relying solely on short-term Treasuries for long-term income.",
+          "closing_price": 47.9
         }
       ],
       "sector": "Energy",
@@ -26899,6 +26969,13 @@
           "segment": "interview",
           "note": "Pipeline operator positioned for LNG growth to 30 BCF by 2030 (+12 BCF/day); Bakken has 5,000 wells to drill; expected crude exports 14\u201315M barrels/day (vs. prior 3.5M); strong capital allocation (dividends, debt paydown, buybacks); 4.85% yield.",
           "closing_price": 88.3
+        },
+        {
+          "date": "2026-09-22",
+          "sentiment": "buy",
+          "segment": "caller_qa",
+          "note": "Named alongside Enbridge as a dividend payer with growth characteristics, better suited than plain Treasury paper for long-term investors.",
+          "closing_price": 90.09
         }
       ],
       "sector": "Energy",
@@ -33584,6 +33661,12 @@
           "sentiment": "caution_concern",
           "segment": "closing_commentary",
           "note": "Needs to bring in top-tier cybersecurity partners given litigation risk if rogue agents cause harm."
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "CFO's offhand 'backstop' comment sparked worries OpenAI's massive data-center buildout may need government support; $1.4T in spending commitments over 8 years raise sustainability questions despite fast revenue growth."
         }
       ],
       "sector": "",
@@ -39400,6 +39483,13 @@
           "segment": "in_depth_analysis",
           "note": "Entertainment venue operator struggling through third straight year of negative same-store sales; new CEO from Yum Brands implementing turnarounds (ads, menu, promotions); too early to call bottom; balance sheet weak.",
           "closing_price": 17.53
+        },
+        {
+          "date": "2025-11-06",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Reconfigured post-private-equity company; Cramer says he needs to do homework before endorsing it either way.",
+          "closing_price": 13.23
         }
       ]
     },
@@ -40243,6 +40333,19 @@
           "segment": "interview",
           "note": "Europe's biggest industrial is a leader in industrial AI, automation and electrification for data centers. Its fast-growing US business is about a quarter of sales.",
           "closing_price": 151.92
+        }
+      ]
+    },
+    "HLN": {
+      "company": "Haleion",
+      "mentions": [
+        {
+          "date": "2025-11-06",
+          "sentiment": "buy_on_pullback",
+          "segment": "interview",
+          "note": "Stock has pulled back from north of $11 to about $9 despite solid 3.4% organic growth and strong Latin America/India/Europe momentum; Cramer likes buying known, cash-generative consumer brands on weakness.",
+          "price_level": 9,
+          "closing_price": 9.41
         }
       ]
     }
