@@ -320,12 +320,35 @@ def fetch_transcript(video_id: str, upload_date: str = "") -> tuple[str, list, s
     en_caps = (info or {}).get('automatic_captions', {}).get('en', [])
     if not en_caps:
         raise ValueError(f'No English auto-captions for {video_id}')
-    cap = (next((c for c in en_caps if c.get('ext') == 'json3'), None) or
-           next((c for c in en_caps if c.get('ext') == 'vtt'), None))
+    # Prefer the native English ASR track over a machine-translation of a
+    # foreign-language track. YouTube lists both under 'en': the native
+    # auto-captions, plus one "translate to English" entry per source language
+    # whose URL carries tlang=en (e.g. lang=ar&tlang=en — a translation *from
+    # Arabic*). A translated-from-another-language transcript is near-useless for
+    # stock extraction, so pick a track WITHOUT tlang first and only fall back to
+    # a translated one if that's genuinely all YouTube offers.
+    def _native(c: dict) -> bool:
+        return 'tlang=' not in (c.get('url') or '')
+    def _pick(ext: str) -> dict | None:
+        return (next((c for c in en_caps if c.get('ext') == ext and _native(c)), None)
+                or next((c for c in en_caps if c.get('ext') == ext), None))
+    cap = _pick('json3') or _pick('vtt')
     if not cap:
         raise ValueError(f'No usable caption format for {video_id}')
 
-    resp = requests.get(cap['url'], timeout=30)
+    # YouTube's timedtext endpoint rate-limits by IP (HTTP 429). A lone throttle
+    # used to sink the whole night, so retry a few times with growing backoff.
+    # A sustained multi-minute throttle still won't clear mid-run — that needs a
+    # later re-run — but this rescues the common brief spike. ~40s worst case.
+    import time
+    resp = None
+    for i, wait in enumerate((0, 10, 30)):
+        if wait:
+            print(f"  Captions rate-limited (429) — retry {i}/2 in {wait}s…")
+            time.sleep(wait)
+        resp = requests.get(cap['url'], timeout=30)
+        if resp.status_code != 429:
+            break
     resp.raise_for_status()
     text = _parse_json3(resp.json()) if cap['ext'] == 'json3' else _parse_vtt(resp.text)
 
