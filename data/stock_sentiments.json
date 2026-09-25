@@ -3884,6 +3884,13 @@
           "segment": "lightning_round",
           "note": "REIT with excellent 4.25% yield; high-quality dividend play; retail supported by TJ Maxx/HomeGoods strength.",
           "closing_price": 211.88
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Beat-and-raise quarter with 96.4% occupancy, under 15x FFO and an 8.9% yield. Called the best landlord in the business and a safe retail play.",
+          "closing_price": 182.59
         }
       ],
       "sector": "Real Estate",
@@ -10314,6 +10321,13 @@
           "segment": "closing_commentary",
           "note": "2.85% yield with the scale and science to lower costs as inflation likely peaks.",
           "closing_price": 148.54
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy_on_pullback",
+          "segment": "opening_commentary",
+          "note": "At a 52-week low with a 2.87% yield. Cramer would stagger purchases at rising yield levels of 3%, 3.25% and 3.5%, though starting at the low is defensible.",
+          "closing_price": 147.17
         }
       ],
       "sector": "Consumer Defensive",
@@ -10430,6 +10444,13 @@
           "segment": "in_depth_analysis",
           "note": "Underperformed other picks in Cramer's book, but he's not backing away and still calls it 'a good situation.'",
           "closing_price": 70.87
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Accelerating growth, improving engagement and a strong Eats business; the selloff on slight margin softness is an opportunity. Cramer would buy into weakness.",
+          "closing_price": 94.67
         }
       ],
       "sector": "Technology",
@@ -11616,6 +11637,13 @@
           "segment": "opening_commentary",
           "note": "'There's Eli Lilly and there's everybody else': the clear healthcare leader while other biotechs are picked over.",
           "closing_price": 925.81
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Recommended as the better way to play obesity than Viking; it's been the winner and the Charitable Trust owns it.",
+          "closing_price": 906.86
         }
       ],
       "sector": "Healthcare",
@@ -12181,6 +12209,13 @@
           "segment": "closing_commentary",
           "note": "Beaten down to a 4.89% yield while pursuing the Kenvue acquisition, adding strong complementary brands at a discount.",
           "closing_price": 103.03
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Beat ($1.82 vs $1.76) and yields 5%, but the stock gave up its gains after the Kenvue acquisition. Cramer questions why management felt compelled to bid.",
+          "closing_price": 100.64
         }
       ],
       "sector": "Consumer Defensive",
@@ -15122,6 +15157,13 @@
           "segment": "opening_commentary",
           "note": "Reported a 'picture perfect' quarter but the stock fell anyway, a warning sign that richly valued names are being punished regardless of results.",
           "closing_price": 175.05
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "63% revenue growth and 51% operating margin are unmatched, but the stock is at 300x+ earnings and needs to cool off and grow into its valuation. Cramer thinks it's ultimately justifiable and there's nothing wrong with the company.",
+          "closing_price": 190.74
         }
       ],
       "sector": "Technology",
@@ -17548,6 +17590,13 @@
           "segment": "lightning_round",
           "note": "Data center REIT; Cramer starts 'it's a great way to play the data' before getting cut off; incomplete discussion but positive opening sentiment.",
           "closing_price": 1065.06
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Caller Q&A: expensive, and Cramer sees better ways to play data centers and cloud. No need to add.",
+          "closing_price": 829.91
         }
       ],
       "sector": "Real Estate",
@@ -19521,6 +19570,13 @@
           "segment": "in_depth_analysis",
           "note": "Trades at 8x earnings with no growth engine; the Seagen acquisition is disappointing and the stock didn't rise on an upside surprise, which makes it uninvestable.",
           "closing_price": 24.61
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Beat and higher revenue ($0.87 vs $0.63), yet the stock fell 1.5% at about 8x earnings. Cramer cites it as a high-quality name that is cheap and getting cheaper, with no sign of a bottom.",
+          "closing_price": 24.3
         }
       ],
       "sector": "Healthcare",
@@ -20241,6 +20297,13 @@
           "segment": "opening_commentary",
           "note": "Down past 2 months in portfolio; negative commentary recently; darn good company; Cramer will research May 7 OpCo conference before recommending hold/buy/sell.",
           "closing_price": 215.37
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Okay to add after earnings, but stagger purchases because the stock is volatile.",
+          "closing_price": 200.68
         }
       ],
       "sector": "Industrials",
@@ -21422,6 +21485,13 @@
           "segment": "lightning_round",
           "note": "Parabolic move; reduce position by taking 50% off table; don't recommend tobacco stocks.",
           "closing_price": 72.79
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Doesn't recommend tobacco stocks personally, but admits long-term returns are hard to fight.",
+          "closing_price": 57.31
         }
       ],
       "sector": "Consumer Defensive",
@@ -22939,6 +23009,14 @@
           "segment": "in_depth_analysis",
           "note": "Appears to be turning, but the value creation isn't evident yet.",
           "closing_price": 82.88
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Hit on earnings and again on the China sale (60% to Boyu at a $4B valuation). Cramer won't add until it reaches $75 and expects it to get there; the Charitable Trust owns it.",
+          "price_target": 75,
+          "closing_price": 79.6
         }
       ],
       "sector": "Consumer Cyclical",
@@ -23508,6 +23586,13 @@
           "segment": "opening_commentary",
           "note": "Consistent non-tech performer; 6% yield, +14% YTD; you can do worse than owning Verizon away from data center rotation.",
           "closing_price": 46.38
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Beat ($1.21 vs $1.19) and raised its dividend, yet keeps grinding lower at about 8x earnings. Cramer sees no bottom.",
+          "closing_price": 39.32
         }
       ],
       "sector": "Communication Services",
@@ -23857,6 +23942,13 @@
           "segment": "in_depth_analysis",
           "note": "Up 22% YTD on enterprise growth + Anthropic stake ($1.27B+, potentially $3B). Q1: 5.5% revenue growth, beat, margin +160bps, beaten 19 of 20 quarters. 17.5x forward cheap. Product superiority, AI features, $1B buyback. Cramer: 'permission to buy tomorrow; buy more after earnings.'",
           "closing_price": 105.13
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Good company with consistent cash flow, but no catalyst; Cramer passes.",
+          "closing_price": 83.83
         }
       ],
       "sector": "Technology",
@@ -26779,6 +26871,13 @@
           "segment": "lightning_round",
           "note": "Multi-year flat revenue disqualifies it despite an 8% dividend yield and ongoing turnaround plan.",
           "closing_price": 17.43
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "Food stocks like Conagra at 8-9x earnings keep falling. Cramer is not going there.",
+          "closing_price": 17.11
         }
       ],
       "sector": "Consumer Defensive",
@@ -29097,6 +29196,13 @@
           "segment": "interview",
           "note": "Diversifying into data centers, gaming, Mexico; selective on data center box; GIC partnerships; up 15% YTD with safe 5% monthly dividend. Outperforming defensive appeal.",
           "closing_price": 64.94
+        },
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Caller Q&A: the stock looks oversold and Cramer likes the monthly dividend.",
+          "closing_price": 56.14
         }
       ],
       "sector": "Real Estate",
@@ -40553,6 +40659,42 @@
           "segment": "lightning_round",
           "note": "In the bears' sweet spot as application software is under attack; still a 40 P/E, so hold off.",
           "closing_price": 460.81
+        }
+      ]
+    },
+    "AGCO": {
+      "company": "AGCO Corporation",
+      "mentions": [
+        {
+          "date": "2025-11-04",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Cramer sticks with the trough-year thesis. The US-China soybean deal, $300M in cost cuts and a $1B buyback commitment set it up for a sharp cycle rebound.",
+          "closing_price": 104.69
+        }
+      ]
+    },
+    "VKTX": {
+      "company": "Viking Therapeutics",
+      "mentions": [
+        {
+          "date": "2025-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cramer doubts a takeover bid is coming and steers the caller to Eli Lilly instead.",
+          "closing_price": 34.63
+        }
+      ]
+    },
+    "ACDC": {
+      "company": "ProFrac Holding",
+      "mentions": [
+        {
+          "date": "2025-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer is anti-oil and fracking, expects the group to go lower and won't touch it.",
+          "closing_price": 5.12
         }
       ]
     }
