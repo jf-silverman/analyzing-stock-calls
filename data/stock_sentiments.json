@@ -2004,6 +2004,20 @@
           "segment": "closing_commentary",
           "note": "Being too conservative on demand; supply constrained.",
           "closing_price": 219.02
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "caller_qa",
+          "note": "Much cheaper than Western Digital with more room to run; Cramer's preferred memory/storage name.",
+          "closing_price": 1088.0
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy_on_pullback",
+          "segment": "caller_qa",
+          "note": "Likes the stock on strengthening DRAM pricing but it just made a parabolic move; wait for a pullback before buying.",
+          "closing_price": 202.29
         }
       ],
       "sector": "Technology",
@@ -2998,6 +3012,13 @@
           "segment": "opening_commentary",
           "note": "Best steel company; tariffs help, but results may be sluggish outside data centers. Likes the company, and a dip could be an opportunity.",
           "closing_price": 138.7
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Rallied nearly 3% on positive pin-action from GM's strong truck demand boosting steel demand.",
+          "closing_price": 140.52
         }
       ],
       "sector": "Basic Materials",
@@ -4006,6 +4027,13 @@
           "segment": "caller_qa",
           "note": "One of Cramer's top current dividend picks.",
           "closing_price": 71.16
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Remarkable execution from CEO James Quincey, taking share and growing profits via new products even as the broader economy slows.",
+          "closing_price": 71.22
         }
       ],
       "sector": "Consumer Defensive",
@@ -4672,6 +4700,13 @@
           "segment": "in_depth_analysis",
           "note": "Top pick to be the next trillion-dollar company \u2014 cheap at 15x earnings with a fortress balance sheet and roaring bank fundamentals.",
           "closing_price": 304.15
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "CEO Jamie Dimon's $170M bad-loan hit is a rounding error for the bank; his 'cockroach theory' warning hasn't been borne out by further disclosures yet.",
+          "closing_price": 297.09
         }
       ],
       "sector": "Financial Services",
@@ -5245,6 +5280,13 @@
           "segment": "in_depth_analysis",
           "note": "AI data-center momentum could get it to $1 trillion fastest, but its $60B/year OpenAI cloud deal carries outsized concentration risk.",
           "closing_price": 281.4
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Called out as the lone AI-data-center name still carrying real credit/debt exposure, unlike its AI peers.",
+          "closing_price": 143.56
         }
       ],
       "sector": "Technology",
@@ -5875,6 +5917,13 @@
           "segment": "in_depth_analysis",
           "note": "Up 127% since end-2023 but trading like speculative asset not hedge; failed protection in March inflation crisis (\u221214% while S&P \u22128%); take profits; seasonal/cycle analysis warns of 2-3 month pullback.",
           "closing_price": 429.89
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Gold's more-than-5% drop today was the fulcrum event that dragged the entire margin-fueled speculative complex lower.",
+          "closing_price": 377.24
         }
       ],
       "sector": "",
@@ -6902,6 +6951,13 @@
           "segment": "interview",
           "note": "A 10% post-earnings drop over a one-off Brazilian tax charge; revenue growth is accelerating and the stock is cheaper now.",
           "closing_price": 111.64
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "mild_buy",
+          "segment": "caller_qa",
+          "note": "Cramer reiterated it's fine to buy back the shares the caller sold during the April tariff scare.",
+          "closing_price": 124.14
         }
       ],
       "sector": "Communication Services",
@@ -11903,6 +11959,13 @@
           "segment": "caller_qa",
           "note": "Recent dip is a buying opportunity; Larry Fink rated a terrific CEO and it's a Travel Trust holding.",
           "closing_price": 1082.63
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Extraordinary savings/asset-flow numbers underscore strong underlying wealth trends.",
+          "closing_price": 1130.0
         }
       ],
       "sector": "Financial Services",
@@ -12175,6 +12238,13 @@
           "segment": "opening_commentary",
           "note": "Caller adding; premier franchise at 13 times earnings is a bargain in a tough tape.",
           "closing_price": 902.56
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Pickup in IPO and M&A advisory fees signals a healthier capital-markets environment.",
+          "closing_price": 758.98
         }
       ],
       "sector": "Financial Services",
@@ -12277,6 +12347,13 @@
           "segment": "opening_commentary",
           "note": "Caller Q&A: Cramer likes the new buyback authorization and CEO Ted Pick's execution relative to peers.",
           "closing_price": 188.01
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Strong quarter from the 'venerable bank,' part of a broad beat across big financials.",
+          "closing_price": 159.23
         }
       ],
       "sector": "Financial Services",
@@ -12527,6 +12604,13 @@
           "segment": "opening_commentary",
           "note": "Named as one of the few non-AI stocks still investable, with an obesity drug franchise driving growth.",
           "closing_price": 1157.49
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "wait_hold_neutral",
+          "segment": "caller_qa",
+          "note": "Needs a new drug indication that insurers will cover to reignite the stock, since the GLP-1/obesity narrative already feels played out.",
+          "closing_price": 799.57
         }
       ],
       "sector": "Healthcare",
@@ -14569,6 +14653,13 @@
           "segment": "opening_commentary",
           "note": "A huge disappointment that Cramer exited; chart looks decent but the story simply isn't working \u2014 stay away.",
           "closing_price": 190.77
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Finally delivered the quarter Cramer's charitable trust had been waiting for, with management guiding to an even stronger 2026; shares up nearly 6%.",
+          "closing_price": 220.77
         }
       ],
       "sector": "Healthcare",
@@ -14749,6 +14840,13 @@
           "segment": "opening_commentary",
           "note": "Has the best consumer data, and the analyst day should tell a sanguine story about the economy. Very inexpensive stock.",
           "closing_price": 53.45
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Showed consumer spending and saving at terrific rates, reinforcing a healthy-credit picture among big banks.",
+          "closing_price": 51.52
         }
       ],
       "sector": "Financial Services",
@@ -15860,6 +15958,13 @@
           "segment": "opening_commentary",
           "note": "Cramer disagrees with the defense-peak thesis because RTX keeps winning contracts; commercial aerospace weakness is a temporary overhang.",
           "closing_price": 184.33
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Staggering defense/aerospace quarter on missile replenishment demand and NATO rearmament; stock rallied about 7% today.",
+          "closing_price": 173.04
         }
       ],
       "sector": "Industrials",
@@ -17005,6 +17110,13 @@
           "segment": "closing_commentary",
           "note": "Strong pricing power in storage devices amid tight supply.",
           "closing_price": 129.43
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "caution_concern",
+          "segment": "caller_qa",
+          "note": "Up 135% this year, but Cramer prefers swapping into cheaper Micron, which he sees with more upside.",
+          "closing_price": 405.42
         }
       ],
       "sector": "Technology",
@@ -17395,6 +17507,13 @@
           "segment": "in_depth_analysis",
           "note": "Clean beat with 26% organic growth and raised guidance; services-driven margins and strong LEAP deliveries make it a best way to play aerospace.",
           "closing_price": 306.39
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Incredible commercial jet engine and services numbers under CEO Larry Culp, with Cramer expecting more strong quarters ahead.",
+          "closing_price": 306.63
         }
       ],
       "sector": "Industrials",
@@ -19154,6 +19273,13 @@
           "segment": "in_depth_analysis",
           "note": "River cruise specialist down 22% from $110 to $86 despite strong Q2; revenue +16.5% YoY, EPS beat; 2026 96% booked $833/day, 2027 53% booked $958/day; voucher impact 2027-2028; stock 26.5x 2026 earnings with 25% growth; buy into weakness.",
           "closing_price": 86.14
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Record 100-ship fleet, ~64% of 2026 already booked, and an ocean business growing faster than its river franchise; Cramer has recommended it since the IPO and sees more room to run.",
+          "closing_price": 61.34
         }
       ],
       "sector": "Consumer Cyclical",
@@ -19469,6 +19595,13 @@
           "segment": "opening_commentary",
           "note": "Cramer calls it sensational, not just good; owned since the 1987 crash.",
           "closing_price": 687.0
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer likes the ag-equipment space broadly, not just for midterm-election-cycle reasons.",
+          "closing_price": 656.87
         }
       ],
       "sector": "Industrials",
@@ -19620,6 +19753,13 @@
           "segment": "interview",
           "note": "Blowout quarter with 60% organic order growth and 30% backlog growth; the stock sold off on expectations, and the business is strong.",
           "closing_price": 171.59
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy_on_pullback",
+          "segment": "caller_qa",
+          "note": "Great order book in data-center infrastructure; Cramer likes buying it on weakness.",
+          "closing_price": 246.49
         }
       ],
       "sector": "Industrials",
@@ -20556,6 +20696,13 @@
           "segment": "opening_commentary",
           "note": "Respiratory care company hit new lows; suffering from broader healthcare sector decimation due to market's AI/tech fixation.",
           "closing_price": 198.76
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "No real catalyst has ever intrigued Cramer here; sees no reason to buy.",
+          "closing_price": 225.98
         }
       ],
       "sector": "Healthcare",
@@ -23927,6 +24074,36 @@
           "sentiment": "sell_avoid",
           "segment": "opening_commentary",
           "note": "Cramer says the company has no credibility in his eyes and he does not like its management record, so he would avoid it."
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Just-public Medtronic diabetes spinoff; Cramer wants nothing to do with it."
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Unfamiliar name to Cramer; he needs to do homework before offering a view."
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "in_depth_analysis",
+          "note": "Subprime auto lender's Chapter 7 liquidation, tied to possible fraud, was the first in a string of credit scares; privately held, no public ticker."
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "in_depth_analysis",
+          "note": "Auto-parts company's Chapter 11 filing involved alleged double-pledging of collateral and off-balance-sheet financing; privately held, no public ticker."
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cramer said he didn't recognize the name and would need to research it before giving a view."
         }
       ],
       "sector": "",
@@ -23977,6 +24154,13 @@
           "segment": "lightning_round",
           "note": "Runs autonomous routes for FedEx Freight; Cramer refuses to render a verdict until he gets co-founder Chris Urmson on the show.",
           "closing_price": 6.28
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Despite backing from Amazon, Uber, Toyota and Nvidia, the autonomous trucking leader still can't make money, which rules it out as a recommendation for now.",
+          "closing_price": 5.25
         }
       ],
       "sector": "Consumer Cyclical",
@@ -24179,6 +24363,13 @@
           "segment": "lightning_round",
           "note": "Cash-burning, offered $1 billion in converts and 2 million shares; Cramer says no thank you.",
           "closing_price": 71.35
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Just filed a large convertible offering after the close, which Cramer expects to pressure the stock like other dilutive speculative financings.",
+          "closing_price": 78.61
         }
       ],
       "sector": "Technology",
@@ -25727,6 +25918,14 @@
           "segment": "opening_commentary",
           "note": "Growth struggles are worrying; this quarter may be make-or-break for growth status.",
           "closing_price": 41.19
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy_on_pullback",
+          "segment": "caller_qa",
+          "note": "Cramer still sees $30 as an attractive entry despite the restaurant group's deep out-of-favor status.",
+          "price_target": 30,
+          "closing_price": 30.77
         }
       ],
       "sector": "Consumer Cyclical",
@@ -26391,6 +26590,13 @@
           "segment": "opening_commentary",
           "note": "Strong order growth and data center demand, but the stock was up about 80% YTD; sold off on no guidance raise, so the company is right and the stock was wrong.",
           "closing_price": 576.0
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "caller_qa",
+          "note": "Full soup-to-nuts data-center power play that's down a lot; Cramer would buy it alongside Vertiv.",
+          "closing_price": 997.09
         }
       ],
       "sector": "Industrials",
@@ -26444,6 +26650,13 @@
           "segment": "opening_commentary",
           "note": "Discretionary pressure from gasoline and rates; must execute flawlessly to keep the stock moving.",
           "closing_price": 19.87
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Mixed quarter (EPS beat on tariff refunds, slight revenue miss) masks a DTC business already rebounding in Q4; Cramer sees a Constellation Brands-style snapback.",
+          "closing_price": 19.51
         }
       ],
       "sector": "Consumer Cyclical",
@@ -26842,6 +27055,13 @@
           "segment": "opening_commentary",
           "note": "Cramer defends CEO Stephen Squeri as a genius who's figured out younger consumers, rejecting a caller's idea to swap into Klarna.",
           "closing_price": 358.22
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Monster quarter showing robust spending among younger cardholders and very solid credit metrics.",
+          "closing_price": 355.22
         }
       ],
       "sector": "Financial Services",
@@ -27111,6 +27331,13 @@
           "segment": "in_depth_analysis",
           "note": "Blew past lowered expectations with raised full-year guidance and tariff relief; still cheap at ~7x earnings with room to run on Fed cuts.",
           "closing_price": 69.38
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Terrific quarter driven by strong, highly profitable truck demand; benefiting from a lighter regulatory touch on emissions under the current administration.",
+          "closing_price": 66.62
         }
       ],
       "sector": "Consumer Cyclical",
@@ -27529,6 +27756,13 @@
           "segment": "lightning_round",
           "note": "Young, profitable, debt-free B2B e-commerce company; Cramer met founder and impressed. Stock keeps climbing on inexpensive valuation.",
           "closing_price": 44.96
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "One of the most speculative stocks out there; Cramer calls it a rocket ship for risk-tolerant traders.",
+          "closing_price": 55.96
         }
       ],
       "sector": "Technology",
@@ -27855,6 +28089,13 @@
           "segment": "opening_commentary",
           "note": "Feisty and positioned for pent-up IPO/M&A activity alongside its bank peers.",
           "closing_price": 86.26
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "mild_buy",
+          "segment": "caller_qa",
+          "note": "Extraordinary credit numbers and the Fed's asset-cap lift are tailwinds; Cramer trimmed a slice of a large trust position after a spike but still calls it cheap at ~12-13x earnings.",
+          "closing_price": 84.76
         }
       ],
       "sector": "Financial Services",
@@ -27983,6 +28224,14 @@
           "segment": "in_depth_analysis",
           "note": "Scaled via acquisitions into top-tier defense; operates in communications, space, electronic warfare, ISR; owns Aerojet Rocketdyne (missile propulsion) acquired ~3 years ago\u2014increasingly valuable as U.S. rebuilds missile stockpile; counter-drone products (Vampire System) in high demand.",
           "closing_price": 353.59
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Down-and-out defense name just landed a $6B federal contract under a new CEO; Cramer recommends scaling in incrementally from around $230.",
+          "price_level": 230,
+          "closing_price": 233.63
         }
       ],
       "sector": "Industrials",
@@ -29331,6 +29580,14 @@
           "segment": "opening_commentary",
           "note": "Beer and spirits weakness among younger drinkers; stock down 19% YTD; earnings Tuesday.",
           "closing_price": 112.87
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Beer share gains and a surprise tequila-led wine/spirits beat drove a sharp reversal; Cramer feels much better about the stock but isn't pounding the table yet.",
+          "price_level": 118,
+          "closing_price": 118.39
         }
       ],
       "sector": "Consumer Defensive",
@@ -31569,6 +31826,13 @@
           "segment": "in_depth_analysis",
           "note": "Up 10-fold from 2020 lows; 57% gain since January; RSI at 94 (vs. 86 in 2011); Bollinger Bands show 3.5 std deviation move (only matched 1979 Hunt corner); resistance 110-120/oz; 19-40 range possible if 2011 pattern repeats.",
           "closing_price": 101.59
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Silver's 7% plunge reinforced that leveraged speculative positions across commodities and other spec names are being unwound together.",
+          "closing_price": 43.79
         }
       ],
       "sector": "",
@@ -34291,6 +34555,13 @@
           "segment": "interview",
           "note": "Magnificent Q2: organic growth 5.4% (best 5+ years), EPS +11%, cash conversion 107%, guidance raised. Innovation restarted (350+ new products, vitality index climbing). Data center Microsoft deal (expanded beam optics, 100 patents). Industrial safety growth. PFAS resolved. CEO execution excellent.",
           "closing_price": 170.76
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Superb quarter with 70 new products launched and improving electronics/safety end markets; shares jumped nearly 7.7% as CEO Bill Brown's turnaround gains traction.",
+          "closing_price": 166.64
         }
       ],
       "sector": "Industrials",
@@ -35311,6 +35582,14 @@
           "segment": "in_depth_analysis",
           "note": "Pure speculation after 360% rally from $0.22 lows; converts coal plants to natural gas for AI data centers; high debt, losses, unproven execution; wait for pullback before buying.",
           "closing_price": 8.31
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Down-and-out energy name around $5; Cramer calls it a decent speculation given its backlog, but says to size it small.",
+          "price_level": 5,
+          "closing_price": 5.64
         }
       ],
       "sector": "Industrials",
@@ -35954,6 +36233,22 @@
           "segment": "opening_commentary",
           "note": "Expected to generate $3 to $4 billion monthly from computing-power leasing starting in December; a long-term holding for patient investors.",
           "closing_price": 171.09
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Can borrow near-government rates despite only a BBB credit rating because AI prospects are considered so bright; already profitably renting Nvidia-chip compute to Anthropic and Google.",
+          "closing_price": 167.6
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "strong_buy",
+          "segment": "closing_commentary",
+          "note": "Goldman's incremental price-target hike from $220 to $230 validates earlier 'speculative' targets; its AI compute business could make it Nvidia's largest customer, and Cramer may add it to the Charitable Trust.",
+          "price_target": 230,
+          "price_level": 167,
+          "closing_price": 167.6
         }
       ],
       "sector": "Industrials",
@@ -36430,6 +36725,12 @@
           "sentiment": "caution_concern",
           "segment": "closing_commentary",
           "note": "Cramer views the company's refusal to join the Nvidia-backed AI safety alliance and its erratic behavior as a credibility concern."
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Privately held AI leader's ability to raise enough capital for its massive data-center buildout is the key risk to the entire AI trade if it falls short."
         }
       ],
       "sector": "",
@@ -36448,6 +36749,13 @@
           "segment": "opening_commentary",
           "note": "Strong earnings spurring first positive recommendation in 17+ years; Cramer hated it since 1847, now says time to look forward, not backward.",
           "closing_price": 76.5
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Long-dormant ag name whose time has finally come, in Cramer's view.",
+          "closing_price": 81.34
         }
       ],
       "sector": "Consumer Defensive",
@@ -42163,6 +42471,13 @@
           "segment": "opening_commentary",
           "note": "Up 61% on a SaaS-apocalypse-fear unwind but too expensive at 30x earnings; Cramer prefers Salesforce's cheaper bounceback.",
           "closing_price": 281.93
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Rallied nearly 50% in three months after proving AI 'vibe coding' fears wrong; winning pharma CRM business from Salesforce with a credible path to $6B revenue.",
+          "closing_price": 282.5
         }
       ]
     },
@@ -43093,6 +43408,13 @@
           "segment": "lightning_round",
           "note": "Quantum computing with declining revenue, big losses, and heavy insider selling; Cramer doesn't see how to own it.",
           "closing_price": 36.06
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Large insider selling by a director is a red flag Cramer won't look past.",
+          "closing_price": 40.0
         }
       ]
     },
@@ -43522,6 +43844,13 @@
           "segment": "lightning_round",
           "note": "Losing hundreds of millions, up 347% YTD, raised $325 million in a private placement right after a spike; don't call yourself early.",
           "closing_price": 79.76
+        },
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "A recent bearish piece by Dr. Topol plus a huge parabolic run leaves Cramer unwilling to own it here.",
+          "closing_price": 83.71
         }
       ]
     },
@@ -43735,6 +44064,13 @@
           "segment": "opening_commentary",
           "note": "Roughly $52 billion of bonds trading near 9% yields are a red flag; investors are reaching for yield and taking on heavy risk.",
           "closing_price": 9.78
+        },
+        {
+          "date": "2026-10-07",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "New ~8%-yield bonds got clobbered despite an attractive rate, reflecting discretionary media's full exposure to economic and credit cycles.",
+          "closing_price": 8.89
         }
       ]
     },
@@ -43890,6 +44226,66 @@
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Self-driving company that has never made money over five years; Cramer sees no reason to own it."
+        }
+      ]
+    },
+    "ZION": {
+      "company": "Zions Bancorporation",
+      "mentions": [
+        {
+          "date": "2025-10-21",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Q3 beat with improving underlying credit quality despite a one-off $50M charge tied to alleged borrower fraud; stock has mostly recovered its post-disclosure drop.",
+          "closing_price": 52.7
+        }
+      ]
+    },
+    "WAL": {
+      "company": "Western Alliance Bancorporation",
+      "mentions": [
+        {
+          "date": "2025-10-21",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Credit disclosure tied to the same fraudulent borrower as Zions, but Q3 results and guidance came in better than feared.",
+          "closing_price": 76.25
+        }
+      ]
+    },
+    "TQQQ": {
+      "company": "ProShares UltraPro QQQ",
+      "mentions": [
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Leveraged Nasdaq ETF made a parabolic move that is now rolling over; Cramer says sell it.",
+          "closing_price": 53.88
+        }
+      ]
+    },
+    "TGEN": {
+      "company": "Tecogen",
+      "mentions": [
+        {
+          "date": "2025-10-21",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Natural-gas generation letter of intent with Vertiv is intriguing, but the company is unprofitable and the stock already ran up in anticipation \u2014 Cramer is passing.",
+          "closing_price": 8.89
+        }
+      ]
+    },
+    "INOD": {
+      "company": "Innodata",
+      "mentions": [
+        {
+          "date": "2025-10-21",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer likes this AI data-services company despite its high stock price and lack of current profitability, calling it a legitimately real business.",
+          "closing_price": 77.03
         }
       ]
     }
