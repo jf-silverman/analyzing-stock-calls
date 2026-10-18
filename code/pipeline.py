@@ -150,7 +150,7 @@ SENTIMENT_COLORS = {
     "strong_buy":        "#1a7f37",
     "buy":               "#2da44e",
     "mild_buy":          "#80e09a",
-    "buy_on_pullback":   "#4ac26b",
+    "buy_on_pullback":   "#1f6feb",
     "wait_hold_neutral": "#8b949e",
     "caution_concern":   "#f0a030",
     "sell_avoid":        "#a00000",
@@ -2275,13 +2275,26 @@ def build_email_html(summaries: list[dict],
                     by_ticker[t] = s
             matched = list(by_ticker.values())
             matched.sort(key=lambda s: s.get("ticker", ""))
-            links = "".join(
-                f'<a class="tlink" href="#ticker-{s["ticker"]}" '
-                f'style="border:1.5px solid {SENTIMENT_COLORS.get(normalize_sentiment(s.get("sentiment","")), "#8b949e")};'
-                f'color:{SENTIMENT_COLORS.get(normalize_sentiment(s.get("sentiment","")), "#8b949e")};background:#fff;">'
-                f'{_ticker_display(s["ticker"], ep_date)}{"*" if s["ticker"] in hl else ""}</a>'
-                for s in matched
-            )
+
+            def _pill(s: dict) -> str:
+                sent = normalize_sentiment(s.get("sentiment", ""))
+                color = SENTIMENT_COLORS.get(sent, "#8b949e")
+                star = "*" if s["ticker"] in hl else ""
+                # Surface the buy-on-pullback price when Cramer names one — the single
+                # most actionable number in the summary. price_target holds the specific
+                # buy/sell level (see prompts/mad_money_rules.md); shown as "↓$45" to read
+                # as "buy on a dip to $45". Only for pullback calls, only when stated.
+                price = ""
+                if sent == "buy_on_pullback":
+                    pt = s.get("price_target")
+                    if isinstance(pt, (int, float)) and pt > 0:
+                        price = f' <span style="font-weight:normal">&darr;${pt:g}</span>'
+                return (
+                    f'<a class="tlink" href="#ticker-{s["ticker"]}" '
+                    f'style="border:1.5px solid {color};color:{color};background:#fff;">'
+                    f'{_ticker_display(s["ticker"], ep_date)}{star}{price}</a>'
+                )
+            links = "".join(_pill(s) for s in matched)
             return f'<p class="sec-tickers">{links}</p>'
 
         def _section_parts(section: dict, indent: bool = False,
