@@ -96,7 +96,10 @@ For every company Cramer discusses, extract:
 - **sentiment**: one value from the enum below
 - **segment**: the segment type (snake_case: `opening_commentary`, `caller_qa`,
   `interview`, `in_depth_analysis`, `lightning_round`, `closing_commentary`)
-- **price_target**: numeric, only if Cramer gives a specific buy/sell price target
+- **price_target**: numeric, only if Cramer gives a specific buy/sell price target.
+  **Always capture it for a `buy_on_pullback` call when Cramer names the price or level
+  he'd buy at** (e.g. "I'd buy it at 45", "wait for it to come in to the low 40s" → `45`,
+  `42`) — that pullback buy price is the most actionable number in the call.
 - **price_level**: numeric, only if Cramer mentions a current price level as context
 - **note**: 1–2 sentences capturing the key rationale in analyst language
 - **ticker_note**: optional — only include when the ticker is uncertain or corrected (see Ticker Verification)
