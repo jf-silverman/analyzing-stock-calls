@@ -114,6 +114,29 @@ def init_db():
         )
     """)
 
+    # ticker_reviews — audit log of the ingest-time name↔ticker guard. One row each
+    # time the guard remaps a garble symbol to its real keeper, holds an unverifiable
+    # pick as a placeholder, or flags a symbol that Yahoo says is a different company
+    # (the "trap"). `emailed_at` tracks whether the correction has already ridden out
+    # on an episode email, so each one is reported exactly once. See the guard in
+    # pipeline.py (reconcile_ingest_tickers) and the maintained log it feeds.
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS ticker_reviews (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT NOT NULL,              -- episode date the pick came from
+            model_ticker TEXT NOT NULL,      -- symbol the model emitted
+            company TEXT NOT NULL,           -- company name the model gave
+            kind TEXT NOT NULL,              -- 'remapped' | 'held' | 'trap'
+            resolved_ticker TEXT,            -- keeper it was remapped to (remapped), else NULL
+            yahoo_identity TEXT,             -- what Yahoo says model_ticker actually is (trap)
+            detail TEXT NOT NULL,            -- one-line human-readable explanation
+            created_at TEXT NOT NULL,
+            emailed_at TEXT                  -- NULL until included in an episode email
+        )
+    """)
+    c.execute("CREATE INDEX IF NOT EXISTS idx_ticker_reviews_date ON ticker_reviews(date)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_ticker_reviews_emailed ON ticker_reviews(emailed_at)")
+
     # Indices for common queries
     c.execute("CREATE INDEX IF NOT EXISTS idx_mentions_episode ON mentions(episode_id)")
     c.execute("CREATE INDEX IF NOT EXISTS idx_mentions_ticker ON mentions(ticker)")
@@ -527,6 +550,65 @@ def upsert_daily_prices(ticker: str, prices: list) -> None:
     """, [(ticker, p["date"], p["close"]) for p in prices])
     conn.commit()
     conn.close()
+
+
+# ── Ticker-review audit log (ingest-time name↔ticker guard) ──────────────────────
+
+def replace_ticker_reviews(date: str, reviews: list) -> None:
+    """Replace all ticker_reviews rows for one episode date (idempotent re-processing).
+
+    `reviews` is a list of dicts with keys: model_ticker, company, kind,
+    resolved_ticker, yahoo_identity, detail. Mirrors how mentions are cleared and
+    rewritten per date, so re-analyzing a date doesn't pile up duplicate review rows.
+    """
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("DELETE FROM ticker_reviews WHERE date = ?", (date,))
+    c.executemany("""
+        INSERT INTO ticker_reviews
+            (date, model_ticker, company, kind, resolved_ticker, yahoo_identity, detail, created_at, emailed_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL)
+    """, [(date, r["model_ticker"], r["company"], r["kind"], r.get("resolved_ticker"),
+           r.get("yahoo_identity"), r["detail"], now) for r in reviews])
+    conn.commit()
+    conn.close()
+
+
+def get_unemailed_reviews() -> list:
+    """All ticker_reviews not yet carried out on an email, oldest episode first."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT * FROM ticker_reviews WHERE emailed_at IS NULL
+        ORDER BY date ASC, model_ticker ASC
+    """)
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
+
+
+def mark_reviews_emailed(ids: list) -> None:
+    """Stamp the given review ids as emailed (so they aren't reported again)."""
+    if not ids:
+        return
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    c = conn.cursor()
+    c.executemany("UPDATE ticker_reviews SET emailed_at = ? WHERE id = ?",
+                  [(now, i) for i in ids])
+    conn.commit()
+    conn.close()
+
+
+def get_all_reviews() -> list:
+    """Every ticker_review row, newest episode first (feeds the maintained log)."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT * FROM ticker_reviews ORDER BY date DESC, model_ticker ASC")
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
 
 
 # Query helpers
