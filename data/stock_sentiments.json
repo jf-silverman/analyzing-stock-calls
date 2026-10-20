@@ -958,6 +958,13 @@
           "segment": "opening_commentary",
           "note": "CEO Jensen Huang's public backing of CoreWeave helped stabilize the broader tech tape.",
           "closing_price": 217.23
+        },
+        {
+          "date": "2025-10-09",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Cited as the best 'own it, don't trade it' example \u2014 held through 2022 weakness into an 800% rally, and still looks cheap on out-year PE despite seeming expensive near-term.",
+          "closing_price": 192.57
         }
       ],
       "sector": "Technology",
@@ -2124,6 +2131,13 @@
           "segment": "closing_commentary",
           "note": "A chronically cheap memory stock that got re-rated higher on AI demand, now caught in the broader hardware multiple compression despite rising estimates.",
           "closing_price": 914.13
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Down 15-20% last week and still off more than 25% from highs despite being one of the highest-quality memory names.",
+          "closing_price": 904.9
         }
       ],
       "sector": "Technology",
@@ -3081,6 +3095,13 @@
           "segment": "closing_commentary",
           "note": "Like its storage peers, getting sold as the hardware trade unwinds following the Situational Awareness hedge-fund blowup.",
           "closing_price": 753.25
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Down 15-20% last week along with the broader memory/storage group.",
+          "closing_price": 660.81
         }
       ],
       "sector": "Technology",
@@ -3804,6 +3825,13 @@
           "segment": "opening_commentary",
           "note": "Alongside Lam Research, Cramer's top semi-equipment pick if ASML signals strong demand.",
           "closing_price": 507.03
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Semi-cap equipment maker down 8-19% last week despite being a top-tier company.",
+          "closing_price": 413.11
         }
       ],
       "sector": "Technology",
@@ -4210,6 +4238,13 @@
           "segment": "opening_commentary",
           "note": "Essential semiconductor equipment supplier; Cramer would own it at current levels and would not sell despite the slower growth.",
           "closing_price": 206.85
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Semi-cap equipment maker down 8-19% in the broad semiconductor beatdown.",
+          "closing_price": 166.4
         }
       ],
       "sector": "Technology",
@@ -5284,6 +5319,13 @@
           "segment": "lightning_round",
           "note": "Called 'the best' in the fiber-for-copper data center replacement theme.",
           "closing_price": 138.43
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Dropped more than 15% as fiber optics/AI infrastructure names sold off.",
+          "closing_price": 132.74
         }
       ],
       "sector": "Technology",
@@ -5607,6 +5649,13 @@
           "segment": "closing_commentary",
           "note": "Recommends selling half immediately after a lucky run-up; doesn't believe it's a stock to own long-term.",
           "closing_price": 134.47
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Flagged alongside SpaceX as one of the more financially tenuous names exposed to the AI data-center financing worries.",
+          "closing_price": 129.59
         }
       ],
       "sector": "Technology",
@@ -6202,6 +6251,20 @@
           "segment": "interview",
           "note": "Ecosystem loyalty (1.5 billion users) and underappreciated product creativity support upside Cramer thinks Wall Street is missing.",
           "closing_price": 249.34
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Up 2% last week as the only tech titan without major AI data-center exposure; Cramer reiterates 'own it, don't trade it' as the Apple-Gemini Duo gains traction.",
+          "closing_price": 342.94
+        },
+        {
+          "date": "2025-10-09",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "Told viewers to buy Apple at a split-adjusted $23 in 2016 despite skeptics calling its best days over; cited again as a core best-of-breed holding for kids' portfolios.",
+          "closing_price": 254.04
         }
       ],
       "sector": "Technology",
@@ -6776,6 +6839,13 @@
           "segment": "opening_commentary",
           "note": "Dragged down with AI/data-center names on the OpenAI revenue report; Cramer sees the selloff as overdone.",
           "closing_price": 348.29
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Largely spared from last week's selloff with only modest declines; strong cloud infrastructure growth is a positive data point for the AI buildout.",
+          "closing_price": 344.18
         }
       ],
       "sector": "Communication Services",
@@ -7111,6 +7181,13 @@
           "segment": "opening_commentary",
           "note": "Expected to post the strongest numbers of any pharma company; shares rose despite a lost talc lawsuit, signaling the stock is less hostage to litigation overhang.",
           "closing_price": 190.72
+        },
+        {
+          "date": "2025-10-09",
+          "sentiment": "buy",
+          "segment": "closing_commentary",
+          "note": "AAA-rated balance sheet makes it one of Cramer's go-to healthcare names for long-term children's or grandchildren's portfolios.",
+          "closing_price": 191.08
         }
       ],
       "sector": "Healthcare",
@@ -8139,6 +8216,13 @@
           "segment": "caller_qa",
           "note": "A ~24x multiple on next year's earnings is too cheap for this growth; stock is 80 points off its high and due for a big run.",
           "closing_price": 716.92
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "Spared from the worst of the selloff but less clear cloud monetization story; Wednesday's earnings are a key catalyst to watch.",
+          "closing_price": 705.44
         }
       ],
       "sector": "Communication Services",
@@ -8377,6 +8461,20 @@
           "segment": "in_depth_analysis",
           "note": "Up 180% YTD; Cramer finds the move too extended to chase further and prefers CoreWeave in the space.",
           "closing_price": 235.88
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Best-performing neocloud of the beatdown but still down 43% from its June high; Cramer views it as a riskier tertiary player.",
+          "closing_price": 170.24
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Viewed as a riskier tertiary neocloud player, more vulnerable than CoreWeave if rates rise further.",
+          "closing_price": 170.24
         }
       ],
       "sector": "Communication Services",
@@ -8886,6 +8984,13 @@
           "segment": "opening_commentary",
           "note": "Walmart's new ChatGPT e-commerce partnership adds competitive pressure to Amazon's retail dominance.",
           "closing_price": 216.39
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Rallied more than 12 points today on a Morgan Stanley upgrade, showing real momentum ('Mojo') versus the rest of the AI complex.",
+          "closing_price": 262.45
         }
       ],
       "sector": "Consumer Cyclical",
@@ -9356,6 +9461,13 @@
           "segment": "closing_commentary",
           "note": "Incredibly well-run with big Azure numbers expected; just let the position run into earnings.",
           "closing_price": 539.44
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Modest decline versus the rest of the complex; cloud infrastructure growth tied to OpenAI remains a key proof point to watch.",
+          "closing_price": 533.52
         }
       ],
       "sector": "Technology",
@@ -10890,6 +11002,13 @@
           "segment": "lightning_round",
           "note": "Momentum is good and the secular shift from copper to fiber in data centers should benefit the company.",
           "closing_price": 250.6
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Fiber optics name down roughly 25% alongside Lumentum in the AI infrastructure selloff.",
+          "closing_price": 232.02
         }
       ],
       "sector": "Technology",
@@ -11776,6 +11895,13 @@
           "price_target": 59,
           "price_level": 49,
           "closing_price": 159.35
+        },
+        {
+          "date": "2025-10-09",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Classic best-of-breed example \u2014 great balance sheet, long dividend-growth history, and premier brands even though it won't deliver short-term fireworks.",
+          "closing_price": 150.58
         }
       ],
       "sector": "Consumer Defensive",
@@ -12218,6 +12344,13 @@
           "segment": "opening_commentary",
           "note": "Cybersecurity is the gating factor for AI-driven growth, and CrowdStrike is a leading name.",
           "closing_price": 278.86
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "strong_buy",
+          "segment": "caller_qa",
+          "note": "Caller up 178% from an $82 cost basis and has already taken out half his basis; Cramer says let it ride since he's playing with the house's money.",
+          "closing_price": 228.1
         }
       ],
       "sector": "Technology",
@@ -17684,6 +17817,13 @@
           "segment": "closing_commentary",
           "note": "One of the former hedge-fund darlings now getting clubbed as software reclaims leadership; bottom isn't clear yet.",
           "closing_price": 1487.33
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Down 15-20% last week and off more than 40% from its highs as memory names got caught in the data-center financing scare.",
+          "closing_price": 1371.12
         }
       ],
       "sector": "Technology",
@@ -18045,6 +18185,13 @@
           "segment": "closing_commentary",
           "note": "Data-storage hardware name caught in the rotation out of chips/storage and into enterprise software; no clear bottom yet.",
           "closing_price": 386.94
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Down roughly 50% from highs, but Cramer's trust owns it after visiting Boise HQ and still thinks the underlying business is great despite poor stock action.",
+          "closing_price": 352.21
         }
       ],
       "sector": "Technology",
@@ -21650,6 +21797,20 @@
           "note": "Bonds yielding 15% spooked the market and the stock hit its worst week of the year, but it rebounded from $59 to $69 after Nvidia's Jensen Huang backed the company.",
           "price_level": 69,
           "closing_price": 69.69
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Debt-financed data-center builder with bonds yielding ~15%; stock plunged over 15% after Musk flagged borrowing costs, though Nvidia's CEO publicly defended it.",
+          "closing_price": 61.12
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Chips should hold their value and the business is fine standalone, but rising Treasury yields \u2014 not its balance sheet \u2014 are the real risk to its cost of capital.",
+          "closing_price": 61.12
         }
       ],
       "sector": "Technology",
@@ -23103,6 +23264,13 @@
           "segment": "opening_commentary",
           "note": "Favorite semiconductor equipment play to buy if ASML's guidance confirms solid demand.",
           "closing_price": 318.84
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Semi-cap equipment maker down 8-19% alongside peers despite strong underlying fundamentals.",
+          "closing_price": 272.2
         }
       ],
       "sector": "Technology",
@@ -23473,6 +23641,13 @@
           "segment": "closing_commentary",
           "note": "Reported a fantastic quarter with rising demand, yet the stock got clobbered anyway \u2014 pure multiple compression, not a fundamentals problem.",
           "closing_price": 1650.0
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Down 8-19% even after reporting a strong quarter \u2014 proof the group's selloff was sentiment-driven, not fundamentals-driven.",
+          "closing_price": 1647.12
         }
       ],
       "sector": "Technology",
@@ -26180,6 +26355,13 @@
           "segment": "interview",
           "note": "Diversified, fee-based financial super-app delivering rule-of-40+ growth for 16 straight quarters; stock up 80%+ YTD with crypto/stablecoin rollout ahead.",
           "closing_price": 28.03
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "caller_qa",
+          "note": "Trades as a high-multiple bank proxy; won't rally meaningfully until bank stocks broadly recover, which isn't happening now.",
+          "closing_price": 14.3
         }
       ],
       "sector": "Financial Services",
@@ -30021,6 +30203,13 @@
           "segment": "opening_commentary",
           "note": "Optical fiber provider for data centers; reported terrific quarter; rallied as part of optical-networking recovery.",
           "closing_price": 932.47
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Fiber optics name down 25% as the AI infrastructure theme got hit broadly.",
+          "closing_price": 834.51
         }
       ],
       "sector": "Technology",
@@ -30109,6 +30298,13 @@
           "segment": "opening_commentary",
           "note": "Non-data-center name that rallied as money rotated out of AI hardware.",
           "closing_price": 279.29
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Sits in the competitive crosshairs of Alphabet/Google, which Cramer wants no part of.",
+          "closing_price": 269.12
         }
       ],
       "sector": "Communication Services",
@@ -31952,6 +32148,13 @@
           "segment": "opening_commentary",
           "note": "Payroll and HR processor reporting with momentum; small and mid-sized business exposure is not expected to be hurt by the first rate hike.",
           "closing_price": 116.14
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "PEO/HR-outsourcing growth accelerating well beyond expectations, with new agentic AI tools and a tax-penalty guarantee widening its competitive moat.",
+          "closing_price": 110.75
         }
       ],
       "sector": "Technology",
@@ -32294,6 +32497,13 @@
           "segment": "lightning_round",
           "note": "Up over 300% year-to-date with strong hyperscaler contracts; blessed despite usual skepticism of hot momentum names.",
           "closing_price": 34.35
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Neocloud data-center builder cut more than in half from its 52-week high.",
+          "closing_price": 19.25
         }
       ],
       "sector": "Technology",
@@ -35228,6 +35438,13 @@
           "segment": "lightning_round",
           "note": "Stock has come down a bit and it is time to pull the trigger on a terrific defense stock.",
           "closing_price": 89.32
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Good earnings but defense stocks are broadly out of favor; Cramer defers to that negative sentiment.",
+          "closing_price": 39.17
         }
       ],
       "sector": "Industrials",
@@ -38068,6 +38285,13 @@
           "segment": "opening_commentary",
           "note": "Huge believer in SpaceX; the recent decline may be a gift \u2014 buy it slowly, pyramid-style, as the smoke clears.",
           "closing_price": 152.16
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Flagged as one of the two most financially tenuous hyperscaler-adjacent names; its earnings report is a major catalyst to watch.",
+          "closing_price": 147.96
         }
       ],
       "sector": "Industrials",
@@ -39037,6 +39261,13 @@
           "segment": "in_depth_analysis",
           "note": "Crypto miner turned AI data center, successful March IPO; up 33% in 2026; insane moves demand immediate profit-taking.",
           "closing_price": 18.36
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Neocloud data-center builder cut more than in half from its 52-week high.",
+          "closing_price": 13.73
         }
       ],
       "industry": "Software - Infrastructure",
@@ -39334,6 +39565,20 @@
           "segment": "lightning_round",
           "note": "Despite a reported Anthropic-related deal, Cramer trusts CoreWeave as the real neocloud play over IREN.",
           "closing_price": 34.8
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Cut more than in half from its 52-week high along with other neoclouds; Cramer flags it as riskier than CoreWeave.",
+          "closing_price": 27.73
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "closing_commentary",
+          "note": "Along with Nebius, seen as a tertiary, more vulnerable neocloud player than CoreWeave.",
+          "closing_price": 27.73
         }
       ],
       "industry": "Capital Markets",
@@ -40309,6 +40554,13 @@
           "segment": "opening_commentary",
           "note": "Clockwork stock that never misses; expected to deliver again.",
           "closing_price": 347.38
+        },
+        {
+          "date": "2025-10-09",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "One of the only cases Cramer recalls where a CEO left for an undisclosed personal reason and the stock was still worth owning \u2014 most resignations are a sell signal.",
+          "closing_price": 347.04
         }
       ],
       "sector": "Financial Services",
@@ -41334,6 +41586,13 @@
           "segment": "opening_commentary",
           "note": "Steady Eddie insurance play; low multiple, difficult business to understand, but consistent winner for shareholders.",
           "closing_price": 251.83
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "caller_qa",
+          "note": "Cheap on a PE of ~5 but just had a big run off the bottom; don't add on a bet for multiple expansion, wait for earnings.",
+          "closing_price": 246.85
         }
       ],
       "sector": "Financial Services",
@@ -42541,6 +42800,13 @@
           "note": "Crashed from $195 to $146 in ten days as Korea's crowded, leverage-driven retail trading frenzy unwound, spilling into U.S. tech.",
           "price_level": 146,
           "closing_price": 146.11
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Down 15-20% last week and still off more than 25% from its highs amid memory-chip demand worries tied to data-center financing fears.",
+          "closing_price": 142.87
         }
       ],
       "industry": "Semiconductors",
@@ -44189,6 +44455,13 @@
           "segment": "opening_commentary",
           "note": "Uniforms and more; a pretty good business reporting with a full head of steam. The small and mid-sized business segment is the hottest part of the economy and historically resilient to a first rate hike.",
           "closing_price": 197.64
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "buy_on_pullback",
+          "segment": "lightning_round",
+          "note": "Terrific, well-run company but had a big run; wants to buy if it comes in.",
+          "closing_price": 212.3
         }
       ]
     },
@@ -44739,6 +45012,13 @@
           "segment": "lightning_round",
           "note": "Best inflation hedge alongside crypto; iron ore and commodity exposure benefit from reflationary environment; strong hedge in inflationary scenario.",
           "closing_price": 15.31
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Likes the copper/iron-ore exposure.",
+          "closing_price": 13.11
         }
       ]
     },
@@ -46435,6 +46715,13 @@
           "segment": "lightning_round",
           "note": "Profitable but still a parabolic, suspect move; ring the register on some of it.",
           "closing_price": 49.92
+        },
+        {
+          "date": "2026-10-19",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Neocloud/data-center miner cut more than in half from its 52-week high during last week's selloff.",
+          "closing_price": 68.17
         }
       ]
     },
@@ -46654,6 +46941,42 @@
           "segment": "caller_qa",
           "note": "Caller sitting on a five-year gain; Cramer says take some profits off the table since it's a slow-moving utility stock.",
           "closing_price": 98.08
+        }
+      ]
+    },
+    "MFA": {
+      "company": "MFA Financial",
+      "mentions": [
+        {
+          "date": "2026-10-19",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Residential mortgage REITs have been horrendous; avoid regardless of how low the price looks.",
+          "closing_price": 6.41
+        }
+      ]
+    },
+    "TWLO": {
+      "company": "Twilio",
+      "mentions": [
+        {
+          "date": "2026-10-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Views the stock as fairly valued with no clear catalyst for upside or downside despite its AI-agent communications positioning.",
+          "closing_price": 257.29
+        }
+      ]
+    },
+    "CMPS": {
+      "company": "Compass Pathways",
+      "mentions": [
+        {
+          "date": "2026-10-19",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Going up against J&J in the space is too tough; brain/psychiatric drug approvals are especially difficult.",
+          "closing_price": 11.11
         }
       ]
     }
