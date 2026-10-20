@@ -58,6 +58,10 @@ from db import (
     upsert_stock,
     upsert_daily_prices,
     build_analytics_json,
+    replace_ticker_reviews,
+    get_unemailed_reviews,
+    mark_reviews_emailed,
+    get_all_reviews,
 )
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
@@ -2505,6 +2509,123 @@ def _inject_backfill_note(html: str, note: tuple | None) -> str:
     return html.replace("</body>", row + "</body>", 1) if "</body>" in html else html + row
 
 
+def _esc(s: str) -> str:
+    """Minimal HTML escape for text dropped into the email body."""
+    return (str(s).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+def _render_ticker_reviews_html(rows: list[dict], newest_date: str) -> str:
+    """A footer block listing the ingest guard's ticker corrections, split into
+    tonight's episode and any earlier-dated ones not yet reported. Empty string when
+    there's nothing to report. Fed by db.get_unemailed_reviews()."""
+    if not rows:
+        return ""
+
+    def pretty(d: str) -> str:
+        try:
+            return datetime.fromisoformat(d).strftime("%a %b %-d")
+        except Exception:
+            return d
+
+    site = "https://jf-silverman.github.io/analyzing-stock-calls/stocks.html"
+    kind_tag = {
+        "remapped": ('#1a7f37', '↦ fixed'),
+        "held":     ('#9a6700', '⏸ held'),
+        "trap":     ('#b35900', '⚠ flagged'),
+    }
+
+    def item(r: dict, with_date: bool) -> str:
+        color, tag = kind_tag.get(r["kind"], ('#555', r["kind"]))
+        date_prefix = f'<b>{pretty(r["date"])}</b> · ' if with_date else ''
+        return (
+            '<li style="margin:5px 0;line-height:1.45;">'
+            f'<span style="color:{color};font-weight:600;">{tag}</span> &nbsp;'
+            f'{date_prefix}{_esc(r["detail"])}</li>'
+        )
+
+    tonight = [r for r in rows if r["date"] == newest_date]
+    earlier = [r for r in rows if r["date"] != newest_date]
+
+    parts = [
+        '<div style="font:13px -apple-system,Helvetica,Arial,sans-serif;color:#333;'
+        'border-top:2px solid #e5e5e5;margin:26px 0 0;padding-top:14px;">',
+        '<p style="margin:0 0 6px;font-weight:700;font-size:14px;">'
+        '🛠 Data-quality fixes (auto ticker check)</p>',
+        '<p style="margin:0 0 10px;color:#666;">The pipeline now verifies each pick\'s '
+        'ticker against its company name as it\'s stored. Here\'s what it caught:</p>',
+    ]
+    if tonight:
+        parts.append(f'<p style="margin:10px 0 2px;font-weight:600;">From tonight\'s episode '
+                     f'({pretty(newest_date)}):</p><ul style="margin:0 0 6px;padding-left:20px;">')
+        parts += [item(r, with_date=False) for r in tonight]
+        parts.append('</ul>')
+    if earlier:
+        parts.append('<p style="margin:10px 0 2px;font-weight:600;">From earlier episodes '
+                     '(not previously flagged to you):</p><ul style="margin:0 0 6px;padding-left:20px;">')
+        parts += [item(r, with_date=True) for r in earlier]
+        parts.append('</ul>')
+    parts.append(
+        f'<p style="margin:8px 0 0;color:#888;font-size:12px;">Full history: '
+        f'<code>notes/ticker-corrections-log.md</code> in the repo · '
+        f'held items show as N/A on the <a href="{site}" style="color:#888;">site</a> '
+        f'until reviewed.</p></div>')
+    return "".join(parts)
+
+
+def _inject_ticker_reviews(html: str, block: str) -> str:
+    """Drop the ticker-reviews footer in before </body> (or append if absent)."""
+    if not block:
+        return html
+    return html.replace("</body>", block + "</body>", 1) if "</body>" in html else html + block
+
+
+TICKER_CORRECTIONS_LOG = ROOT / "notes" / "ticker-corrections-log.md"
+
+
+def write_ticker_corrections_log() -> None:
+    """Regenerate notes/ticker-corrections-log.md from the ticker_reviews table.
+
+    A maintained, committed record of every correction the ingest guard has made —
+    deliberately in the repo so the fixes are visible in history. Generated (rebuilt
+    from the DB each run), so it's main-owned like the other notes/ queues.
+    """
+    rows = get_all_reviews()
+    kind_word = {"remapped": "Remapped", "held": "Held (no match)", "trap": "Flagged (wrong company)"}
+    lines = [
+        "# Ticker corrections log",
+        "",
+        "GENERATED — rebuilt from the `ticker_reviews` table on every pipeline run. "
+        "Do not edit by hand; changes are overwritten. This records ticker↔company "
+        "corrections so one company no longer fans out across bogus symbols: the "
+        "ingest-time guard (`reconcile_ingest_tickers` in `code/pipeline.py`) going "
+        "forward, plus the one-time 2026-10-20 backlog cleanup that prompted it.",
+        "",
+        "- **Remapped** — the model's symbol wasn't a real ticker; auto-pointed to the real keeper.",
+        "- **Held (no match)** — not a real ticker and no confident match found; stored as `????` for review.",
+        "- **Flagged (wrong company)** — the symbol is a *different* real company; held as `????` (never auto-remapped, since the company name could be the wrong half).",
+        "",
+        f"_{len(rows)} correction(s) recorded._",
+        "",
+        "| Episode | Model said | Company | Action | Result | Reported? |",
+        "|---------|-----------|---------|--------|--------|-----------|",
+    ]
+    for r in rows:
+        action = kind_word.get(r["kind"], r["kind"])
+        if r["kind"] == "remapped":
+            result = f"→ `{r['resolved_ticker']}`"
+        elif r["kind"] == "trap":
+            result = f"is {r['yahoo_identity']}" if r["yahoo_identity"] else "held `????`"
+        else:
+            result = "held `????`"
+        reported = "yes" if r["emailed_at"] else "pending"
+        company = (r["company"] or "").replace("|", "\\|")
+        lines.append(f"| {r['date']} | `{r['model_ticker']}` | {company} | {action} | {result} | {reported} |")
+    lines.append("")
+    TICKER_CORRECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
+    TICKER_CORRECTIONS_LOG.write_text("\n".join(lines))
+
+
 def send_email(html: str, subject: str, mode: str = "smtp",
                recipient: str | None = None,
                chart_attachments: list[tuple[str, bytes]] | None = None) -> None:
@@ -2632,7 +2753,12 @@ def commit_and_push(dates: list[str], msg: str | None = None) -> None:
     """
     label = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
     commit_msg = msg or f"Mad Money {label}: redirect pages + sentiment update"
+    # notes/ticker-corrections-log.md is a generated, main-owned file (see the pre-commit
+    # guard list); it rides out on the same push as the artifacts it describes. Staged
+    # only when present so a run before the first correction can't trip `git add`.
     paths = ["docs/", "data/"]
+    if TICKER_CORRECTIONS_LOG.exists():
+        paths.append("notes/ticker-corrections-log.md")
 
     def git(*args, check=True):
         return subprocess.run(["git", *args], cwd=ROOT, check=check,
@@ -2944,6 +3070,118 @@ def _suggest_ticker_uncached(company: str) -> tuple[str | None, str | None]:
     except Exception:
         pass
     return (None, None)
+
+
+def _symbol_identity(ticker: str, cache: dict) -> tuple[str, str | None]:
+    """What a symbol really is, distinguishing 'not a real ticker' from a network
+    hiccup so the ingest guard never buries a good pick just because Yahoo was down.
+
+    Returns one of:
+      ("ok", name)      — Yahoo has this US symbol; `name` is its company (may be None).
+      ("absent", None)  — Yahoo definitively has no such symbol (HTTP 404 / chart error).
+      ("error", None)   — couldn't tell (timeout, other non-OK). The caller must NOT act.
+
+    Shares the data/ticker_names.json memo with _yahoo_ticker_name. Only an 'ok' name
+    is cached; 'absent'/'error' are never written, so a transient failure isn't frozen in.
+    """
+    if cache.get(ticker):
+        return ("ok", cache[ticker])
+    try:
+        r = requests.get(
+            f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}",
+            params={"interval": "1d", "range": "1d"},
+            headers={"User-Agent": "Mozilla/5.0"}, timeout=8,
+        )
+    except Exception:
+        return ("error", None)
+    if r.status_code == 404:
+        return ("absent", None)
+    if not r.ok:
+        return ("error", None)
+    try:
+        chart = r.json().get("chart", {})
+        if chart.get("error"):
+            return ("absent", None)
+        meta = (chart.get("result") or [{}])[0].get("meta", {})
+        name = meta.get("longName") or meta.get("shortName")
+    except Exception:
+        return ("error", None)
+    if name:
+        cache[ticker] = name
+    return ("ok", name)
+
+
+def reconcile_ingest_tickers(analysis: dict, date_str: str) -> list[dict]:
+    """Ingest-time name↔ticker guard. Mutates analysis['stocks'] in place so the DB
+    write never files a pick under a bad symbol, and returns one review record per
+    correction (for the episode email and the maintained log).
+
+    Three graded responses — only the first is automatic, per CLAUDE.md's rule that a
+    wrong ticker is worse than a missing one and that the model's *company name* can
+    itself be the wrong half:
+
+      • garble + confident keeper  → remap the symbol to the real keeper (automatic).
+      • garble, no keeper found    → hold the pick under the '????' placeholder.
+      • trap (symbol is a real *different* company) → hold under '????' and flag it,
+        suggesting the keeper but never applying it — the name might be the wrong half.
+
+    Acts only on a *definitive* Yahoo verdict; a network error leaves the pick
+    untouched (advisory-only, as before), so a bad Yahoo night can't bury good calls.
+    """
+    cache = {}
+    if TICKER_NAME_CACHE.exists():
+        try:
+            cache = json.loads(TICKER_NAME_CACHE.read_text())
+        except Exception:
+            cache = {}
+
+    reviews = []
+    for stock in analysis.get("stocks", []):
+        ticker = (stock.get("ticker") or "").upper()
+        company = (stock.get("company") or "").strip()
+        if not ticker or not company or is_unknown_ticker(ticker) or ticker in PRIVATE_COMPANIES:
+            continue
+        status, actual = _symbol_identity(ticker, cache)
+        if status == "error":
+            continue                                   # couldn't verify → leave as-is
+        if status == "ok" and (actual is None or names_agree(company, actual)):
+            continue                                   # real symbol that matches → fine
+
+        # Off: find the real keeper for the spoken company via Yahoo's search.
+        keeper, keeper_name = suggest_ticker_detail(company)
+        keeper = (keeper or "").upper() or None
+        good_keeper = bool(keeper and keeper != ticker and names_agree(company, keeper_name))
+
+        if status == "absent":
+            if good_keeper:
+                stock["ticker"] = keeper
+                reviews.append({
+                    "model_ticker": ticker, "company": company, "kind": "remapped",
+                    "resolved_ticker": keeper, "yahoo_identity": None,
+                    "detail": f"{ticker} isn't a real ticker — remapped to {keeper} "
+                              f"({keeper_name}) for {company!r}."})
+            else:
+                stock["ticker"] = UNKNOWN_TICKER
+                reviews.append({
+                    "model_ticker": ticker, "company": company, "kind": "held",
+                    "resolved_ticker": None, "yahoo_identity": None,
+                    "detail": f"{ticker} isn't a real ticker and no match was found for "
+                              f"{company!r} — held as {UNKNOWN_TICKER} for review."})
+        else:
+            # status == "ok" but the symbol is a different real company (a trap).
+            stock["ticker"] = UNKNOWN_TICKER
+            hint = f" (Yahoo says {company!r} is {keeper})" if good_keeper else ""
+            reviews.append({
+                "model_ticker": ticker, "company": company, "kind": "trap",
+                "resolved_ticker": None, "yahoo_identity": actual,
+                "detail": f"{ticker} is {actual!r}, not {company!r} — held as "
+                          f"{UNKNOWN_TICKER} for review{hint}."})
+
+    try:
+        TICKER_NAME_CACHE.write_text(json.dumps(cache, indent=0, sort_keys=True))
+    except Exception:
+        pass
+    return reviews
 
 
 def validate_analysis_tickers(analysis: dict, suggest: bool = True) -> list[dict]:
@@ -3833,15 +4071,25 @@ def _process_episode(ep: dict, args) -> dict:
             "treating as a failed analysis so it retries next run"
         )
 
-    # Catch mis-tickered calls at the moment they enter the DB, while the transcript
-    # is right there to check against. Advisory only — a flagged call is still stored,
-    # because the model is more often right than not and silently dropping calls would
-    # be worse than a noisy warning.
-    print("  Checking tickers against Yahoo...")
+    # Name↔ticker guard: catch mis-tickered calls at the moment they enter the DB,
+    # while the transcript is right there. Garbles are remapped to the real keeper,
+    # unverifiable or trap calls are held as '????' — so one company never fans out
+    # across several bogus symbols the way it used to. Mutates `analysis` in place.
+    print("  Reconciling tickers (name↔ticker guard)…")
+    reviews = reconcile_ingest_tickers(analysis, date_str)
+    for r in reviews:
+        print(f"    • {r['detail']}")
+    if not reviews:
+        print("    • no corrections needed")
+    # Keep the advisory Yahoo check too, now on the reconciled analysis (so it stays
+    # a quiet second line of defence rather than re-flagging what the guard just fixed).
     report_ticker_flags(validate_analysis_tickers(analysis), date_str)
 
     print("  Updating stock_sentiments.json...")
     update_stock_sentiments(analysis, video_id=video_id)
+
+    # Record the guard's corrections (idempotent per date) for the email + the log.
+    replace_ticker_reviews(date_str, reviews)
 
     print("  Looking up podcast episode in RSS feed...")
     audio_url = find_podcast_episode(date_str)
@@ -4218,6 +4466,11 @@ def main() -> None:
     # The backfill note rides on the newest episode's email only.
     newest_date = max(s["date_str"] for s in summaries)
 
+    # Ticker-guard corrections ride on the newest email too: tonight's plus any
+    # earlier-dated ones not yet reported. Built once; marked emailed after it sends.
+    review_rows = get_unemailed_reviews()
+    reviews_html = _render_ticker_reviews_html(review_rows, newest_date)
+
     # One email per episode — if we fell behind a day or two, this sends several
     # separate emails in one run rather than bundling multiple episodes together.
     for ep_summary in summaries:
@@ -4230,13 +4483,17 @@ def main() -> None:
         ep_tickers = {s.get("ticker", "").upper() for s in ep_summary["analysis"].get("stocks", [])}
         brother_hits = ep_tickers & BROTHER_TICKERS
 
-        # Only the newest email carries the backfill note.
+        # Only the newest email carries the backfill note and the ticker-guard fixes.
         note = backfill_note if date_str == newest_date else None
+        rv = reviews_html if date_str == newest_date else ""
+
+        def _footer(h):
+            return _inject_ticker_reviews(_inject_backfill_note(h, note), rv)
 
         if args.dry_run:
             # base64 so the standalone preview file is viewable in a browser
             html, _ = build_email_html([ep_summary], embed_charts="base64")
-            html = _inject_backfill_note(html, note)
+            html = _footer(html)
             EMAIL_PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
             out = EMAIL_PREVIEW_DIR / f"{date_str}_email_preview.html"
             out.write_text(html)
@@ -4244,24 +4501,32 @@ def main() -> None:
             if brother_hits:
                 bro_html, _ = build_email_html([ep_summary], highlight_tickers=BROTHER_TICKERS, embed_charts="base64")
                 bro_out = EMAIL_PREVIEW_DIR / f"{date_str}_email_preview_brother.html"
-                bro_out.write_text(_inject_backfill_note(bro_html, note))
+                bro_out.write_text(_footer(bro_html))
                 print(f"Brother preview saved to {bro_out} (hits: {', '.join(sorted(brother_hits))})")
         else:
             # cid: attachments render more reliably than inline base64 in most email clients
             html, chart_attachments = build_email_html([ep_summary], embed_charts="cid")
-            html = _inject_backfill_note(html, note)
+            html = _footer(html)
             print(f"\nSending email: {subject}")
             send_email(html, subject, mode=args.email_mode, chart_attachments=chart_attachments)
             if brother_hits:
                 print(f"  Brother's tickers mentioned: {', '.join(sorted(brother_hits))} — sending copy to {BROTHER_TO}")
                 bro_html, bro_charts = build_email_html([ep_summary], highlight_tickers=BROTHER_TICKERS, embed_charts="cid")
-                send_email(_inject_backfill_note(bro_html, note), subject,
+                send_email(_footer(bro_html), subject,
                            mode=args.email_mode, recipient=BROTHER_TO, chart_attachments=bro_charts)
+            # Mark the guard's corrections reported once the newest email has gone out,
+            # so they're never flagged to the reader twice.
+            if date_str == newest_date and review_rows:
+                mark_reviews_emailed([r["id"] for r in review_rows])
+                print(f"  Reported {len(review_rows)} ticker correction(s) in this email.")
 
     # Dry runs must not mark episodes as processed — no email was actually sent,
     # so a real run later should still discover and send for these dates.
     if not args.dry_run:
         save_processed(processed)
+        # Refresh the maintained corrections log (now that this run's reviews are marked
+        # emailed) so it rides out on the commit below with current "Reported?" status.
+        write_ticker_corrections_log()
         # save_processed() writes processed_episodes.json under data/ *after* the redirect
         # push above, so a second commit is needed to capture it. Without this, the file
         # lags git by exactly one run — each night commits the *previous* night's IDs but
