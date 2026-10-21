@@ -6,7 +6,7 @@ GENERATED — rebuilt from the `ticker_reviews` table on every pipeline run. Do 
 - **Held (no match)** — not a real ticker and no confident match found; stored as `????` for review.
 - **Flagged (wrong company)** — the symbol is a *different* real company; held as `????` (never auto-remapped, since the company name could be the wrong half).
 
-_74 correction(s) recorded._
+_76 correction(s) recorded._
 
 | Episode | Model said | Company | Action | Result | Reported? |
 |---------|-----------|---------|--------|--------|-----------|
@@ -84,3 +84,5 @@ _74 correction(s) recorded._
 | 2025-11-24 | `SIX` | Six Flags Entertainment | Remapped | → `FUN` | yes |
 | 2025-11-20 | `GPS` | Gap Inc. | Remapped | → `GAP` | yes |
 | 2025-11-19 | `SLST` | Solstice Advanced Materials | Remapped | → `SOLS` | yes |
+| 2025-10-08 | `K` | Kellanova | Held (no match) | held `????` | yes |
+| 2025-10-08 | `OLO` | Olo Inc | Held (no match) | held `????` | yes |
