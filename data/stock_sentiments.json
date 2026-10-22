@@ -951,6 +951,13 @@
           "segment": "opening_commentary",
           "note": "CEO Jensen Huang's public backing of CoreWeave helped stabilize the broader tech tape.",
           "closing_price": 217.23
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "CNBC Investing Club's Jensen Huang meeting reinforced conviction; Cramer wants to buy more on weakness given confidence in the long-term AI buildout thesis, all while guidance assumes zero China revenue.",
+          "closing_price": 185.04
         }
       ],
       "sector": "Technology",
@@ -8153,6 +8160,13 @@
           "segment": "in_depth_analysis",
           "note": "Spared from the worst of the selloff but less clear cloud monetization story; Wednesday's earnings are a key catalyst to watch.",
           "closing_price": 705.44
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Zuckerberg's smart-glasses form factor seen as the best vehicle for consumer AI, with each iteration getting more sophisticated and close ties to Nvidia.",
+          "closing_price": 713.08
         }
       ],
       "sector": "Communication Services",
@@ -9691,6 +9705,13 @@
           "segment": "closing_commentary",
           "note": "Fell from 193 to 81 on AI-disruption fears that didn't play out; now part of the enterprise software multiple-expansion trade.",
           "closing_price": 139.98
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "One of the few software stocks Cramer can still recommend without hesitation; praised CEO Bill McDermott.",
+          "closing_price": 180.85
         }
       ],
       "sector": "Technology",
@@ -12272,6 +12293,13 @@
           "segment": "caller_qa",
           "note": "Caller up 178% from an $82 cost basis and has already taken out half his basis; Cramer says let it ride since he's playing with the house's money.",
           "closing_price": 228.1
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "Cramer believes in CEO George Kurtz and thinks the stock goes higher, maybe much higher, despite daily volatility.",
+          "closing_price": 121.15
         }
       ],
       "sector": "Technology",
@@ -13515,6 +13543,13 @@
           "segment": "in_depth_analysis",
           "note": "Survived an identical AI-obsolescence bear thesis seven months ago, rallying from 150 to 240, suggesting the current fear may again prove overblown.",
           "closing_price": 187.1
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Record quarter, growing Dashpass loyalty, new verticals and a $1B+ ad business justify a ~43x multiple on ~30% growth; stock not done running.",
+          "closing_price": 276.78
         }
       ],
       "sector": "Consumer Cyclical",
@@ -21660,6 +21695,13 @@
           "segment": "interview",
           "note": "Fifth straight quarter of 30%+ GMV growth ($116B quarterly GMV); Sidekick AI accelerating new merchants to first sale and helping small brands win via AI search. Stock up 17% on earnings; Cramer emphatic believer.",
           "closing_price": 144.24
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "New ChatGPT tie-up seen driving the stock much higher.",
+          "closing_price": 161.28
         }
       ],
       "sector": "Technology",
@@ -21846,6 +21888,13 @@
           "segment": "closing_commentary",
           "note": "Chips should hold their value and the business is fine standalone, but rising Treasury yields \u2014 not its balance sheet \u2014 are the real risk to its cost of capital.",
           "closing_price": 61.12
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer likes it, citing Jensen Huang's praise for its data-center operating expertise and hoping the Core Scientific deal closes.",
+          "closing_price": 128.83
         }
       ],
       "sector": "Technology",
@@ -22895,6 +22944,13 @@
           "segment": "opening_commentary",
           "note": "Premium valuation despite solid subscriber growth; intense Apple/YouTube/Amazon competition; market turning on high-multiple stocks; sell or wait for lower entry.",
           "closing_price": 511.33
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer said he likes it alongside Shopify.",
+          "closing_price": 680.44
         }
       ],
       "sector": "Communication Services",
@@ -23532,6 +23588,13 @@
           "segment": "opening_commentary",
           "note": "Excellent quarter with momentum through holiday season; 28M active customers; partnerships with Amazon, Costco, Shopify, Target, Apple; rate hike fears overblown.",
           "closing_price": 72.08
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer called CEO Max Levchin a genius and the stock undervalued.",
+          "closing_price": 76.65
         }
       ],
       "sector": "Financial Services",
@@ -26623,6 +26686,13 @@
           "segment": "lightning_round",
           "note": "Speculative biotech heavily shorted with no earnings; only buy if you believe in life-saving potential. Otherwise, move on.",
           "closing_price": 30.56
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Called it too speculative to recommend.",
+          "closing_price": 25.13
         }
       ],
       "sector": "Healthcare",
@@ -26850,6 +26920,13 @@
           "segment": "lightning_round",
           "note": "Great company and surprised to see so low but market prefers Quanta; nothing can change investor perception despite fundamentals.",
           "closing_price": 85.7
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Permitting, siting, and environmental expertise give it an edge as data-center investment is expected to triple by 2030; more room to run after a 52% rally off lows.",
+          "closing_price": 129.43
         }
       ],
       "sector": "Industrials",
@@ -27016,6 +27093,13 @@
           "segment": "lightning_round",
           "note": "Neutron delay to 2027 and recent sell-off present a great opportunity to exit, not add.",
           "closing_price": 55.25
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Sees a real business model but calls it a controversial speculative name, not a blue-chip.",
+          "closing_price": 61.51
         }
       ],
       "sector": "Industrials",
@@ -32694,6 +32778,13 @@
           "segment": "interview",
           "note": "Data center engineering pure-play with +62% YTD growth, +500% pipeline; digital twin AI optimization, reshoring tailwind, life sciences buildout. Inexpensive given mega-trend convergence.",
           "closing_price": 129.21
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Nvidia digital-twin partnership cuts costly construction overruns in data-center builds; also a reshoring beneficiary via US manufacturing/pharma plants.",
+          "closing_price": 155.31
         }
       ],
       "sector": "Industrials",
@@ -34511,6 +34602,13 @@
           "segment": "in_depth_analysis",
           "note": "This comparable data-center engineering play has fallen from above $1,000 to the low $500s but remains well above Cramer's original recommendation; he says stick with it.",
           "closing_price": 501.19
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "E-infrastructure segment now half of revenue with 57% operating-income growth; CEC Facilities acquisition deepens its data-center buildout capability.",
+          "closing_price": 348.57
         }
       ],
       "sector": "Industrials",
@@ -36005,6 +36103,13 @@
           "segment": "interview",
           "note": "10 consecutive quarters of beat and raise; at intersection of AI and cybersecurity; stock down 13% post-earnings despite strong results; partnership with CrowdStrike.",
           "closing_price": 87.18
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "Straightforward buy call with no hesitation.",
+          "closing_price": 79.5
         }
       ],
       "sector": "Technology",
@@ -37281,6 +37386,13 @@
           "segment": "in_depth_analysis",
           "note": "Tobacco company with anti-tobacco pivot; unique risk/reward; stable dividend.",
           "closing_price": 173.62
+        },
+        {
+          "date": "2025-10-07",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Despite personal distaste for the product, Cramer calls it one of the greatest-performing stocks of all time and tells the caller to stick with it.",
+          "closing_price": 154.55
         }
       ],
       "sector": "Consumer Defensive",
@@ -46567,6 +46679,42 @@
           "segment": "lightning_round",
           "note": "Big run-up \u2014 take out your cost basis and let the remaining position ride.",
           "closing_price": 8.76
+        }
+      ]
+    },
+    "CART": {
+      "company": "Instacart (Maplebear Inc.)",
+      "mentions": [
+        {
+          "date": "2025-10-07",
+          "sentiment": "sell_avoid",
+          "segment": "in_depth_analysis",
+          "note": "DoorDash's expanded Kroger grocery partnership is seen as encroaching on Instacart's core business; Cramer doesn't think the model works.",
+          "closing_price": 38.99
+        }
+      ]
+    },
+    "PRME": {
+      "company": "Prime Medicine",
+      "mentions": [
+        {
+          "date": "2025-10-07",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cramer said he doesn't know this one well enough to opine.",
+          "closing_price": 5.87
+        }
+      ]
+    },
+    "CCI": {
+      "company": "Crown Castle",
+      "mentions": [
+        {
+          "date": "2025-10-07",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Yield isn't as attractive as perceived and its urban tower buildout isn't working; business model not sound.",
+          "closing_price": 95.14
         }
       ]
     }
