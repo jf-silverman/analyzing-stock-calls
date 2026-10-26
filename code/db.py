@@ -137,6 +137,38 @@ def init_db():
     c.execute("CREATE INDEX IF NOT EXISTS idx_ticker_reviews_date ON ticker_reviews(date)")
     c.execute("CREATE INDEX IF NOT EXISTS idx_ticker_reviews_emailed ON ticker_reviews(emailed_at)")
 
+    # earnings_reports — one row per (holding, quarterly report). Detection records a
+    # 'pending' row the first night a holding's earnings land (date + EPS/estimate from
+    # Yahoo); the nightly run then tries to fetch the press release and summarize it to
+    # three bullets, promoting the row to 'ready'. A fetch/summary that fails bumps
+    # `attempts`; after MAX attempts (3 separate nights) the row is marked 'failed' and
+    # left alone. `emailed_at` tracks the one time a ready row rode out on an email, so
+    # each quarter is reported once, at the top of the next nightly email. See the
+    # earnings section in pipeline.py (detect_new_earnings / run_earnings_updates).
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS earnings_reports (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ticker TEXT NOT NULL,            -- holding that reported
+            company TEXT,                    -- display name at detection time
+            report_date TEXT NOT NULL,       -- date the company reported (YYYY-MM-DD)
+            fiscal_period TEXT,              -- e.g. 'Q3 2026' (filled on summary)
+            eps_reported REAL,               -- Yahoo: reported EPS (detection)
+            eps_estimate REAL,               -- Yahoo: consensus EPS estimate
+            surprise_pct REAL,               -- Yahoo: EPS surprise %
+            bullets TEXT,                    -- JSON array of 3 summary strings (ready)
+            source TEXT,                     -- URL / tag of the summarized source
+            status TEXT NOT NULL DEFAULT 'pending',  -- 'pending' | 'ready' | 'failed'
+            attempts INTEGER NOT NULL DEFAULT 0,     -- nightly summary attempts so far
+            last_error TEXT,                 -- why the last attempt failed
+            first_seen TEXT NOT NULL,        -- when detection first saw this report
+            updated_at TEXT NOT NULL,
+            emailed_at TEXT,                 -- NULL until carried out on an email
+            UNIQUE(ticker, report_date)
+        )
+    """)
+    c.execute("CREATE INDEX IF NOT EXISTS idx_earnings_status ON earnings_reports(status)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_earnings_emailed ON earnings_reports(emailed_at)")
+
     # Indices for common queries
     c.execute("CREATE INDEX IF NOT EXISTS idx_mentions_episode ON mentions(episode_id)")
     c.execute("CREATE INDEX IF NOT EXISTS idx_mentions_ticker ON mentions(ticker)")
@@ -609,6 +641,123 @@ def get_all_reviews() -> list:
     rows = [dict(r) for r in c.fetchall()]
     conn.close()
     return rows
+
+
+# ── Quarterly earnings reports (holdings) ────────────────────────────────────────
+
+def record_earnings_detection(ticker: str, company: str, report_date: str,
+                              eps_reported=None, eps_estimate=None,
+                              surprise_pct=None) -> bool:
+    """Register that `ticker` reported earnings on `report_date`, if not already known.
+
+    Idempotent on (ticker, report_date): returns True when a new pending row was
+    created, False when the report was already tracked (any status). Detection stores
+    only the Yahoo figures; the three-bullet summary is filled in later by
+    save_earnings_summary(). Does not touch an existing row's status/attempts.
+    """
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT id FROM earnings_reports WHERE ticker = ? AND report_date = ?",
+              (ticker, report_date))
+    if c.fetchone():
+        conn.close()
+        return False
+    c.execute("""
+        INSERT INTO earnings_reports
+            (ticker, company, report_date, eps_reported, eps_estimate, surprise_pct,
+             status, attempts, first_seen, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, 'pending', 0, ?, ?)
+    """, (ticker, company, report_date, eps_reported, eps_estimate, surprise_pct, now, now))
+    conn.commit()
+    conn.close()
+    return True
+
+
+def pending_earnings(max_attempts: int = 3) -> list:
+    """Reports still awaiting a usable summary and under the nightly-attempt cap,
+    oldest report first (so a backlog is worked in order)."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT * FROM earnings_reports
+        WHERE status = 'pending' AND attempts < ?
+        ORDER BY report_date ASC, ticker ASC
+    """, (max_attempts,))
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
+
+
+def save_earnings_summary(report_id: int, fiscal_period: str, bullets: list,
+                          source: str, company: str | None = None) -> None:
+    """Promote a report to 'ready' with its three-bullet summary. `company`, when given,
+    refreshes the display name (the summarizer reads it from the filing — more reliable
+    than the detection-time guess, and the only source when the holding has no DB row)."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    c = conn.cursor()
+    if company:
+        c.execute("""
+            UPDATE earnings_reports
+            SET status = 'ready', fiscal_period = ?, bullets = ?, source = ?, company = ?,
+                attempts = attempts + 1, last_error = NULL, updated_at = ?
+            WHERE id = ?
+        """, (fiscal_period, json.dumps(bullets), source, company, now, report_id))
+    else:
+        c.execute("""
+            UPDATE earnings_reports
+            SET status = 'ready', fiscal_period = ?, bullets = ?, source = ?,
+                attempts = attempts + 1, last_error = NULL, updated_at = ?
+            WHERE id = ?
+        """, (fiscal_period, json.dumps(bullets), source, now, report_id))
+    conn.commit()
+    conn.close()
+
+
+def record_earnings_failure(report_id: int, error: str, max_attempts: int = 3) -> None:
+    """Bump the attempt counter after a failed fetch/summary; mark 'failed' once the
+    nightly-attempt cap is reached so it's no longer retried."""
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        UPDATE earnings_reports
+        SET attempts = attempts + 1,
+            status = CASE WHEN attempts + 1 >= ? THEN 'failed' ELSE 'pending' END,
+            last_error = ?, updated_at = ?
+        WHERE id = ?
+    """, (max_attempts, (error or "")[:500], now, report_id))
+    conn.commit()
+    conn.close()
+
+
+def get_unemailed_earnings() -> list:
+    """Ready earnings summaries not yet carried out on an email, newest report first
+    (the email leads with the most recent quarter)."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT * FROM earnings_reports
+        WHERE status = 'ready' AND emailed_at IS NULL
+        ORDER BY report_date DESC, ticker ASC
+    """)
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return rows
+
+
+def mark_earnings_emailed(ids: list) -> None:
+    """Stamp the given earnings-report ids as emailed (reported exactly once)."""
+    if not ids:
+        return
+    now = datetime.utcnow().isoformat()
+    conn = get_connection()
+    c = conn.cursor()
+    c.executemany("UPDATE earnings_reports SET emailed_at = ? WHERE id = ?",
+                  [(now, i) for i in ids])
+    conn.commit()
+    conn.close()
 
 
 # Query helpers

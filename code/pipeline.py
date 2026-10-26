@@ -62,6 +62,12 @@ from db import (
     get_unemailed_reviews,
     mark_reviews_emailed,
     get_all_reviews,
+    record_earnings_detection,
+    pending_earnings,
+    save_earnings_summary,
+    record_earnings_failure,
+    get_unemailed_earnings,
+    mark_earnings_emailed,
 )
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
@@ -2626,6 +2632,338 @@ def write_ticker_corrections_log() -> None:
     TICKER_CORRECTIONS_LOG.write_text("\n".join(lines))
 
 
+# ── Quarterly earnings updates (holdings) ────────────────────────────────────────
+#
+# Goal: lead the nightly email with a short "Quarterly Earnings" section summarizing
+# any of USER_HOLDINGS that reported since the last email — three bullets each, drawn
+# from the company's own earnings press release (SEC 8-K/6-K exhibit), summarized by
+# the same claude-code backend the pipeline uses for episodes (no API credits).
+#
+# Flow (all state in the earnings_reports table, see db.py):
+#   detect_new_earnings()  — Yahoo earnings calendar flags holdings that reported in
+#                            the last EARNINGS_LOOKBACK_DAYS; a new one is recorded
+#                            'pending'. Idempotent per (ticker, report_date).
+#   run_earnings_updates() — for each pending report (under the attempt cap), fetch the
+#                            press release and summarize it. Success → 'ready'; failure
+#                            bumps attempts and retries on later NIGHTS. After
+#                            EARNINGS_MAX_ATTEMPTS separate nights it's marked 'failed'
+#                            and dropped (the "try three times, then give up" rule).
+#   _render_earnings_html()— the ready, not-yet-emailed rows become the top section;
+#                            marked emailed after the newest email sends (reported once).
+#
+# Everything here is wrapped by the caller in try/except — a flaky Yahoo/SEC call or a
+# summary miss must never block the episode email.
+
+EARNINGS_LOOKBACK_DAYS = 14          # how far back detection looks for a fresh report
+EARNINGS_MAX_ATTEMPTS = 3            # separate nights to try before giving up
+EARNINGS_MAX_PER_NIGHT = 10          # cap summaries per run so a cluster can't stall it
+_SEC_UA = {"User-Agent": "mad-money-pipeline (joelfsilverman@gmail.com)"}
+_sec_cik_cache: dict | None = None
+
+
+def _company_name(ticker: str) -> str:
+    """Best-effort display name for a holding, from the DB stocks table; ticker if unknown."""
+    try:
+        from db import get_connection
+        conn = get_connection()
+        row = conn.execute("SELECT company FROM stocks WHERE ticker = ?", (ticker,)).fetchone()
+        conn.close()
+        if row and row["company"]:
+            return row["company"]
+    except Exception:
+        pass
+    return ticker
+
+
+def _sec_cik_map() -> dict:
+    """ticker → 10-digit zero-padded CIK, from SEC's master list (fetched once/run)."""
+    global _sec_cik_cache
+    if _sec_cik_cache is None:
+        data = requests.get("https://www.sec.gov/files/company_tickers.json",
+                            headers=_SEC_UA, timeout=15).json()
+        _sec_cik_cache = {row["ticker"].upper(): str(row["cik_str"]).zfill(10)
+                          for row in data.values()}
+    return _sec_cik_cache
+
+
+def _strip_html(h: str) -> str:
+    """Crude HTML → plain text: drop script/style, tags, collapse whitespace."""
+    import html as _htmlmod
+    h = re.sub(r"(?is)<(script|style).*?</\1>", " ", h)
+    h = re.sub(r"(?s)<[^>]+>", " ", h)
+    h = _htmlmod.unescape(h)
+    return re.sub(r"\s+", " ", h).strip()
+
+
+def _pick_release_exhibit(items: list, primary: str) -> str | None:
+    """Choose the earnings press-release document from an 8-K/6-K filing's file list.
+
+    Exhibit names are wildly inconsistent across filers (`ex991_…`, `q326exhibit991.htm`,
+    `exhibit99-…`, or a plain `pressreleaseq32026.htm`), so score each .htm candidate on
+    the EX-99.1 markers AND on press/earnings wording, preferring 99.1 over the 99.2
+    supplemental financials. Returns None when nothing scores positive.
+    """
+    scored = []
+    for n in items:
+        ln = n.lower()
+        if not ln.endswith((".htm", ".html")) or n == primary:
+            continue
+        score = 0
+        if re.search(r"ex\.?-?99", ln) or "exhibit99" in ln:
+            score += 3
+        if re.search(r"99[\-_.]?1(?!\d)", ln):
+            score += 4
+        if re.search(r"99[\-_.]?2", ln):
+            score -= 3
+        for kw in ("press", "release", "earning", "result", "financ"):
+            if kw in ln:
+                score += 2
+        if "supplement" in ln:
+            score -= 4
+        if score > 0:
+            scored.append((score, n))
+    scored.sort(reverse=True)
+    return scored[0][1] if scored else None
+
+
+def fetch_earnings_release(ticker: str, report_date: str) -> tuple[str | None, str | None]:
+    """Return (plain_text, source_url) of the earnings press release for a holding's
+    report, or (None, None) if it can't be located.
+
+    Source is the company's own filing via SEC EDGAR — an 8-K (domestic) or 6-K
+    (foreign issuers, e.g. SKHY) filed within 2 days of report_date. We pull the
+    press-release exhibit, falling back to the filing's primary document if that's the
+    substantive one. Primary source, so it sidesteps the news aggregators that kept
+    mixing up fiscal quarters.
+    """
+    cik = _sec_cik_map().get(ticker.upper())
+    if not cik:
+        return None, None
+    sub = requests.get(f"https://data.sec.gov/submissions/CIK{cik}.json",
+                       headers=_SEC_UA, timeout=15).json()
+    rec = sub["filings"]["recent"]
+    target = datetime.fromisoformat(report_date).date()
+    for form, fdate, acc, doc in zip(rec["form"], rec["filingDate"],
+                                     rec["accessionNumber"], rec["primaryDocument"]):
+        if form not in ("8-K", "6-K"):
+            continue
+        if abs((datetime.fromisoformat(fdate).date() - target).days) > 2:
+            continue
+        base = f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{acc.replace('-', '')}"
+        try:
+            items = [it["name"] for it in
+                     requests.get(f"{base}/index.json", headers=_SEC_UA, timeout=15)
+                     .json()["directory"]["item"]]
+        except Exception:
+            continue
+        name = _pick_release_exhibit(items, doc)
+        if not name:
+            # No obvious exhibit — use the primary doc only if it's substantive text.
+            name = doc
+        text = _strip_html(requests.get(f"{base}/{name}", headers=_SEC_UA, timeout=20).text)
+        if len(text) >= 1200:            # a real release, not a one-line cover page
+            return text, f"{base}/{name}"
+    return None, None
+
+
+_EARNINGS_SYS_PROMPT = (
+    "You summarize one company's quarterly earnings press release for a personal "
+    "investing digest. Output STRICT JSON only, no markdown fences, exactly:\n"
+    '{"company": "Legal Name", "fiscal_period": "Q# YYYY", "bullets": ["...", "...", "..."]}\n'
+    "`company` is the issuer's name as the release gives it. "
+    "Exactly three bullets, each a single sentence grounded in concrete figures from "
+    "the release. Bullet 1: revenue (with YoY %) and EPS (GAAP and adjusted if both "
+    "given). Bullet 2: a key operational, segment, or margin detail. Bullet 3: forward "
+    "guidance (raised/lowered, with the new range) or the single most notable event. "
+    "Use only figures present in the text; never invent numbers. fiscal_period is the "
+    "quarter the release is for (e.g. 'Q3 2026'); if it states a fiscal quarter that "
+    "differs from the calendar quarter, use the company's fiscal label."
+)
+
+
+def summarize_earnings_release(ticker: str, company: str, report_date: str,
+                               text: str, figs: dict) -> dict:
+    """Summarize a press release into {fiscal_period, bullets:[3]} via the claude CLI
+    (Claude Code subscription — no API credits). Raises RuntimeError on failure so the
+    caller can count the attempt and retry on a later night."""
+    hint = ""
+    if figs.get("eps_reported") is not None:
+        hint = (f"\n\n(Yahoo reference — reported EPS {figs['eps_reported']}, "
+                f"estimate {figs.get('eps_estimate')}, surprise {figs.get('surprise_pct')}%.)")
+    msg = (f"Ticker: {ticker}\nCompany: {company}\nReported: {report_date}{hint}\n\n"
+           f"Press release text:\n{text[:12000]}")
+    env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+    argv = [
+        _claude_bin(), "-p", msg,
+        "--system-prompt", _EARNINGS_SYS_PROMPT,
+        "--model", ANALYSIS_MODEL,
+        "--tools", "", "--setting-sources", "", "--strict-mcp-config",
+        "--disable-slash-commands", "--no-session-persistence",
+    ]
+    try:
+        result = subprocess.run(argv, capture_output=True, text=True, env=env, timeout=300)
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("summary timed out after 300s")
+    if result.returncode != 0:
+        detail = (result.stdout or result.stderr or "").strip()[:300]
+        if _is_auth_error(detail):
+            raise RuntimeError(f"claude CLI not authenticated — {detail}")
+        raise RuntimeError(f"claude CLI rc={result.returncode}: {detail}")
+    raw = result.stdout.strip()
+    if raw.startswith("```"):
+        raw = raw.split("\n", 1)[1].rsplit("```", 1)[0].strip()
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"invalid JSON from summary ({e}); head: {raw[:160]}")
+    bullets = [str(b).strip() for b in data.get("bullets", []) if str(b).strip()]
+    if len(bullets) < 2:
+        raise RuntimeError(f"summary returned {len(bullets)} bullet(s), need ≥2")
+    return {"company": (data.get("company") or "").strip(),
+            "fiscal_period": data.get("fiscal_period") or "", "bullets": bullets[:3]}
+
+
+def detect_new_earnings(holdings: set | None = None,
+                        lookback_days: int = EARNINGS_LOOKBACK_DAYS) -> int:
+    """Flag any holding that reported earnings within the last `lookback_days`, recording
+    a pending earnings_reports row for each newly-seen (ticker, date). Returns the count
+    of newly-detected reports. Uses Yahoo's earnings calendar via yfinance; a holding
+    with no calendar data is simply skipped."""
+    import yfinance as yf
+    holdings = holdings or USER_HOLDINGS
+    today = datetime.now().date()
+    cutoff = today - timedelta(days=lookback_days)
+    found = 0
+    for ticker in sorted(holdings):
+        try:
+            ed = yf.Ticker(ticker).get_earnings_dates(limit=8)
+        except Exception as e:
+            print(f"    earnings calendar lookup failed for {ticker}: {e}")
+            continue
+        if ed is None or ed.empty:
+            continue
+        now_ts = datetime.now(ed.index.tz) if ed.index.tz else datetime.now()
+        reported = [(ix, r.get("Reported EPS"), r.get("EPS Estimate"), r.get("Surprise(%)"))
+                    for ix, r in ed.iterrows()
+                    if ix <= now_ts and r.get("Reported EPS") == r.get("Reported EPS")]
+        if not reported:
+            continue
+        ix, rep, est, sur = max(reported, key=lambda x: x[0])
+        rdate = ix.date()
+        if rdate < cutoff:
+            continue
+        def _f(v):
+            try:
+                return float(v) if v == v else None   # NaN → None
+            except (TypeError, ValueError):
+                return None
+        if record_earnings_detection(ticker, _company_name(ticker), rdate.isoformat(),
+                                     _f(rep), _f(est), _f(sur)):
+            found += 1
+            print(f"    earnings detected: {ticker} reported {rdate}")
+    return found
+
+
+def run_earnings_updates(holdings: set | None = None,
+                         detect: bool = True,
+                         max_summaries: int = EARNINGS_MAX_PER_NIGHT) -> None:
+    """One nightly pass: detect freshly-reported holdings, then try to summarize each
+    pending report (under the per-night cap). Each failed fetch/summary counts as one
+    of EARNINGS_MAX_ATTEMPTS nightly attempts before the report is abandoned."""
+    if detect:
+        n = detect_new_earnings(holdings)
+        if n:
+            print(f"  Detected {n} new earnings report(s) among holdings.")
+    pend = pending_earnings(EARNINGS_MAX_ATTEMPTS)[:max_summaries]
+    if not pend:
+        return
+    print(f"  Summarizing {len(pend)} pending earnings report(s)…")
+    for r in pend:
+        tkr, rdate = r["ticker"], r["report_date"]
+        try:
+            text, url = fetch_earnings_release(tkr, rdate)
+            if not text:
+                raise RuntimeError("no press release found via SEC EDGAR")
+            summary = summarize_earnings_release(
+                tkr, r.get("company") or tkr, rdate, text,
+                {"eps_reported": r.get("eps_reported"), "eps_estimate": r.get("eps_estimate"),
+                 "surprise_pct": r.get("surprise_pct")})
+            # Prefer the filing's company name when detection had none (or only the
+            # ticker as a placeholder — e.g. a holding Cramer never picked, so no DB row).
+            cur = (r.get("company") or "").strip()
+            co = summary.get("company") if (not cur or cur == tkr) else None
+            save_earnings_summary(r["id"], summary["fiscal_period"], summary["bullets"], url,
+                                  company=co)
+            print(f"    ✓ {tkr} {rdate} → {summary['fiscal_period']} ({len(summary['bullets'])} bullets)")
+        except Exception as e:
+            record_earnings_failure(r["id"], str(e), EARNINGS_MAX_ATTEMPTS)
+            attempt = (r["attempts"] or 0) + 1
+            gave_up = " — giving up" if attempt >= EARNINGS_MAX_ATTEMPTS else ""
+            print(f"    ✗ {tkr} {rdate} attempt {attempt}/{EARNINGS_MAX_ATTEMPTS}: "
+                  f"{str(e).splitlines()[0][:90]}{gave_up}")
+
+
+def _render_earnings_html(rows: list) -> str:
+    """The top-of-email 'Quarterly Earnings' section: one card per holding that reported,
+    newest first, three bullets each. Empty string when there's nothing new. Fed by
+    db.get_unemailed_earnings()."""
+    if not rows:
+        return ""
+
+    def pretty(d: str) -> str:
+        try:
+            return datetime.fromisoformat(d).strftime("%a %b %-d")
+        except Exception:
+            return d
+
+    site = "https://jf-silverman.github.io/analyzing-stock-calls/stocks.html"
+    cards = []
+    for r in rows:
+        try:
+            bullets = json.loads(r["bullets"] or "[]")
+        except (json.JSONDecodeError, TypeError):
+            bullets = []
+        if not bullets:
+            continue
+        star = " ★" if r["ticker"] in USER_HOLDINGS else ""
+        period = _esc(r["fiscal_period"]) if r.get("fiscal_period") else "latest quarter"
+        lis = "".join(f'<li style="margin:4px 0;line-height:1.5;">{_esc(b)}</li>'
+                      for b in bullets)
+        cards.append(
+            '<div style="margin:0 0 14px;padding:12px 14px;background:#f6f8fa;'
+            'border:1px solid #e5e5e5;border-radius:8px;">'
+            f'<p style="margin:0 0 6px;font-weight:700;font-size:14px;color:#1a1a1a;">'
+            f'{_esc(r["ticker"])}{star} · {_esc(r.get("company") or "")} '
+            f'<span style="color:#666;font-weight:500;">— {period}, reported {pretty(r["report_date"])}</span></p>'
+            f'<ul style="margin:0;padding-left:20px;font:13px -apple-system,Helvetica,Arial,sans-serif;color:#333;">{lis}</ul>'
+            '</div>'
+        )
+    if not cards:
+        return ""
+    header = (
+        '<div style="font:13px -apple-system,Helvetica,Arial,sans-serif;'
+        'margin:0 0 22px;padding:16px 16px 4px;border:2px solid #1f6feb33;'
+        'border-radius:10px;background:#fbfdff;">'
+        '<p style="margin:0 0 4px;font-weight:800;font-size:16px;color:#0b3d91;">'
+        '📊 Quarterly Earnings</p>'
+        '<p style="margin:0 0 12px;color:#666;">Your holdings that reported since the '
+        'last email — three takeaways from each company\'s earnings release.</p>'
+    )
+    footer = (
+        f'<p style="margin:2px 0 4px;color:#888;font-size:12px;">Summarized from each '
+        f'company\'s SEC filing · see all your picks on the '
+        f'<a href="{site}" style="color:#888;">site</a>.</p></div>'
+    )
+    return header + "".join(cards) + footer
+
+
+def _inject_earnings(html: str, block: str) -> str:
+    """Drop the earnings section in right after <body> so it leads the email."""
+    if not block:
+        return html
+    return html.replace("<body>", "<body>" + block, 1) if "<body>" in html else block + html
+
+
 def send_email(html: str, subject: str, mode: str = "smtp",
                recipient: str | None = None,
                chart_attachments: list[tuple[str, bytes]] | None = None) -> None:
@@ -4219,6 +4557,10 @@ def main() -> None:
                              "even when a closing price already exists (use after ticker corrections)")
     parser.add_argument("--rebuild-shards", action="store_true",
                         help="Rebuild all per-ticker JSON shards in docs/data/ from stock_sentiments.json")
+    parser.add_argument("--earnings-updates", action="store_true",
+                        help="Detect holdings that reported earnings recently and summarize each "
+                             "into 3 bullets (stored for the next email's Quarterly Earnings section). "
+                             "The nightly run does this automatically; this forces it now.")
     parser.add_argument("--update-prices", action="store_true",
                         help="Fetch/refresh daily price history files for all active tickers in docs/data/")
     parser.add_argument("--refresh-prices", action="store_true",
@@ -4260,6 +4602,21 @@ def main() -> None:
 
     if args.rebuild_shards:
         rebuild_ticker_shards()
+        return
+
+    if args.earnings_updates:
+        run_earnings_updates()
+        ready = get_unemailed_earnings()
+        print(f"\n{len(ready)} earnings summary(ies) ready and awaiting the next email:")
+        for r in ready:
+            try:
+                bl = json.loads(r["bullets"] or "[]")
+            except (json.JSONDecodeError, TypeError):
+                bl = []
+            print(f"\n  {r['ticker']} · {r.get('company') or ''} — "
+                  f"{r.get('fiscal_period') or '?'}, reported {r['report_date']}")
+            for b in bl:
+                print(f"    • {b}")
         return
 
     if args.update_prices:
@@ -4471,6 +4828,17 @@ def main() -> None:
     review_rows = get_unemailed_reviews()
     reviews_html = _render_ticker_reviews_html(review_rows, newest_date)
 
+    # Quarterly earnings: detect holdings that reported since the last email and
+    # summarize each into three bullets, then lead the newest email with them. Fully
+    # guarded — a Yahoo/SEC hiccup or a summary miss must never block the episode email
+    # (failed reports just retry on later nights, up to EARNINGS_MAX_ATTEMPTS).
+    try:
+        run_earnings_updates()
+    except Exception as e:
+        print(f"  Earnings updates skipped ({type(e).__name__}: {e})")
+    earnings_rows = get_unemailed_earnings()
+    earnings_html = _render_earnings_html(earnings_rows)
+
     # One email per episode — if we fell behind a day or two, this sends several
     # separate emails in one run rather than bundling multiple episodes together.
     for ep_summary in summaries:
@@ -4483,12 +4851,15 @@ def main() -> None:
         ep_tickers = {s.get("ticker", "").upper() for s in ep_summary["analysis"].get("stocks", [])}
         brother_hits = ep_tickers & BROTHER_TICKERS
 
-        # Only the newest email carries the backfill note and the ticker-guard fixes.
+        # Only the newest email carries the backfill note, ticker-guard fixes, and the
+        # quarterly-earnings section (which leads the email, above the episode summary).
         note = backfill_note if date_str == newest_date else None
         rv = reviews_html if date_str == newest_date else ""
+        eh = earnings_html if date_str == newest_date else ""
 
         def _footer(h):
-            return _inject_ticker_reviews(_inject_backfill_note(h, note), rv)
+            return _inject_earnings(
+                _inject_ticker_reviews(_inject_backfill_note(h, note), rv), eh)
 
         if args.dry_run:
             # base64 so the standalone preview file is viewable in a browser
@@ -4519,6 +4890,9 @@ def main() -> None:
             if date_str == newest_date and review_rows:
                 mark_reviews_emailed([r["id"] for r in review_rows])
                 print(f"  Reported {len(review_rows)} ticker correction(s) in this email.")
+            if date_str == newest_date and earnings_rows:
+                mark_earnings_emailed([r["id"] for r in earnings_rows])
+                print(f"  Reported {len(earnings_rows)} quarterly earnings update(s) in this email.")
 
     # Dry runs must not mark episodes as processed — no email was actually sent,
     # so a real run later should still discover and send for these dates.
