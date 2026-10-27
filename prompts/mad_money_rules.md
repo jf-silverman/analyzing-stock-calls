@@ -232,9 +232,8 @@ Return exactly this JSON structure. Omit optional fields (`price_target`, `price
   "episode_type": "fundamentals",
   "market_headline": "Summary: <one sharp sentence — Cramer's top actionable takeaway for the day, under 20 words>",
   "market_bullets": [
-    "<bullet 1: macro environment or top theme>",
-    "<bullet 2: sector or rate context>",
-    "<bullet 3+: additional key points — aim for 2-6 total>"
+    "<bullet 1: ONE sentence capturing the topic, Cramer's tone/stance, and the point of his opening and closing monologues taken together — the market/macro call he leads with and signs off on. State the substance; do NOT say the show has an intro or an outro.>",
+    "<bullet 2+: 3 to 4 more bullets describing what the episode CONTAINS — the subject of each in-depth deep-dive, each guest Cramer interviews named with company and job title (e.g. 'CEO of Nvidia', 'CFO of Workday'), and which recurring segments run (Lightning Round, Am I Diversified?, No-Huddle Offense, etc.). Aim for 4-5 bullets total including bullet 1.>"
   ],
   "sections": [
     {
