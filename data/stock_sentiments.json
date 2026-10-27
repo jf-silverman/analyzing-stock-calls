@@ -3784,6 +3784,15 @@
           "segment": "in_depth_analysis",
           "note": "Semi-cap equipment maker down 8-19% last week despite being a top-tier company.",
           "closing_price": 413.11
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy_on_pullback",
+          "segment": "opening_commentary",
+          "note": "Multiple contraction from rate fears, not fundamentals; buy a quarter position now at 387, more once it completes its head-and-shoulders pattern, rest if it falls to the 200s.",
+          "price_target": 200,
+          "price_level": 387,
+          "closing_price": 387.59
         }
       ],
       "sector": "Technology",
@@ -4346,6 +4355,13 @@
           "segment": "opening_commentary",
           "note": "One of greatest growth stories since Hansen Natural inception in 1985; defensive growth going global; buy buy buy.",
           "closing_price": 91.21
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Preferred over Celsius as the superior energy-drink stock.",
+          "closing_price": 46.44
         }
       ],
       "sector": "Consumer Defensive",
@@ -5345,6 +5361,13 @@
           "segment": "lightning_round",
           "note": "Management's recent appearance on the show told a good story; don't abandon the stock despite its run-up.",
           "closing_price": 8.45
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "QNX backlog surging and robotics/physical AI expansion with Nvidia make the stock attractive again after its pullback from frothy highs.",
+          "closing_price": 9.19
         }
       ],
       "sector": "Technology",
@@ -12315,6 +12338,13 @@
           "segment": "lightning_round",
           "note": "Cramer believes in CEO George Kurtz and thinks the stock goes higher, maybe much higher, despite daily volatility.",
           "closing_price": 121.15
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "wait_hold_neutral",
+          "segment": "interview",
+          "note": "Interview focused on industry-wide 'Black October' cyber risk rather than a specific trading call on the stock.",
+          "closing_price": 261.83
         }
       ],
       "sector": "Technology",
@@ -15117,6 +15147,12 @@
           "segment": "opening_commentary",
           "note": "Disclosed slowing sequential revenue growth (147% to 45%), disappointing uber-bulls despite still-massive absolute growth.",
           "closing_price": null
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "S-1 filing showed amazing growth and even adjusted profitability; Cramer wants exposure alongside SpaceX as AI leaders that could be the next Amazon."
         }
       ],
       "sector": "Healthcare",
@@ -15708,6 +15744,13 @@
           "segment": "closing_commentary",
           "note": "Trading <20x earnings but only 1% organic growth (management guided 3-4% later); overvalued relative to near-term growth rate.",
           "closing_price": 494.04
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Accelerating organic growth and raised guidance signal a multi-year recovery in pharma/biotech and semiconductor-tool capex.",
+          "closing_price": 684.89
         }
       ],
       "sector": "Healthcare",
@@ -32050,6 +32093,13 @@
           "segment": "opening_commentary",
           "note": "Named as one of the few non-AI stocks still investable, citing its melanoma vaccine program.",
           "closing_price": 187.46
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Stock had a parabolic move into Nov. 6 earnings; Cramer wants it to come in before buying \u2014 'we don't buy parabolic moves.'",
+          "closing_price": 198.85
         }
       ],
       "sector": "Healthcare",
@@ -32462,6 +32512,13 @@
           "segment": "lightning_round",
           "note": "Pure speculation immunotherapy play; losing money but own if no other spec position; acceptable spec risk.",
           "closing_price": 7.38
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Good speculative biotech position amid heavy sector M&A activity.",
+          "closing_price": 7.81
         }
       ],
       "sector": "Healthcare",
@@ -33576,6 +33633,13 @@
           "segment": "in_depth_analysis",
           "note": "Volumes down ~20% while competitor Alani grows 74%; Cramer calls it an execution problem and would not buy despite insider/Trump stake purchases.",
           "closing_price": 27.4
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer calls it a 'second-rate Monster' and tells the caller to stick with Monster instead.",
+          "closing_price": 28.15
         }
       ],
       "sector": "Consumer Defensive",
@@ -38460,6 +38524,13 @@
           "segment": "in_depth_analysis",
           "note": "Flagged as one of the two most financially tenuous hyperscaler-adjacent names; its earnings report is a major catalyst to watch.",
           "closing_price": 147.96
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Changing the world like Anthropic; Cramer wants a piece if execution continues to go right.",
+          "closing_price": 146.9
         }
       ],
       "sector": "Industrials",
@@ -40457,6 +40528,13 @@
           "segment": "lightning_round",
           "note": "Speculative play on potential White House equity stake in rare-earth producers, not an earnings-based call.",
           "closing_price": 26.32
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Chart looks like a mountain peak with nothing but downside from here \u2014 avoid.",
+          "closing_price": 8.91
         }
       ],
       "sector": "Basic Materials",
@@ -43018,6 +43096,15 @@
           "segment": "lightning_round",
           "note": "Quantum computing high-beta, high-PE equity vulnerable to rate volatility; rates moving wrong direction for growth stocks.",
           "closing_price": 34.68
+        },
+        {
+          "date": "2026-10-26",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "No-earnings story stock that Cramer feels came public too early; only average down meaningfully if it falls toward 30.",
+          "price_target": 30,
+          "price_level": 67,
+          "closing_price": 30.76
         }
       ]
     },
@@ -46886,6 +46973,19 @@
           "segment": "lightning_round",
           "note": "Rent-to-own, lease-to-own model is unproven; Cramer doesn't like it.",
           "closing_price": 22.03
+        }
+      ]
+    },
+    "GBCI": {
+      "company": "Glacier Bancorp",
+      "mentions": [
+        {
+          "date": "2026-10-26",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Premium regional bank with a 4% net interest margin and strong insider buying in a fast-growing Montana market; could retrace to 45 without concern.",
+          "price_level": 49,
+          "closing_price": 49.0
         }
       ]
     }
