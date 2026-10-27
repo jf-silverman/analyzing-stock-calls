@@ -2797,6 +2797,20 @@ def _analyst_snapshot(ticker: str, report_date: str,
             snap["upside_pct"] = round((snap["target_mean"] / snap["price"] - 1) * 100, 1)
     except Exception:
         pass
+    # Analyst-rating breakdown by bucket (current "0m" period): how many analysts
+    # sit at strong buy / buy / hold / sell / strong sell. Powers the colored
+    # count chip in the email. Best-effort — omitted if the lookup fails.
+    try:
+        rec = tk.recommendations
+        if rec is not None and len(rec):
+            row = rec.iloc[0]  # "0m" = current month
+            counts = {k: int(row[k]) for k in
+                      ("strongBuy", "buy", "hold", "sell", "strongSell")
+                      if k in row and row[k] == row[k]}  # k==k drops NaN
+            if sum(counts.values()) > 0:
+                snap["rec_counts"] = counts
+    except Exception:
+        pass
     # Post-earnings reaction: last close before the report → first close after it.
     try:
         import datetime as _dt
@@ -3016,10 +3030,35 @@ def _render_earnings_html(rows: list) -> str:
         "lowering":    (RED,   "Guidance lowered"),
     }
 
+    GREEN_DARK, GREEN_LT = "#0a6b2e", "#2da44e"  # strong buy (dark) vs buy
+
     def chip(text: str, color: str) -> str:
         return (f'<span style="display:inline-block;margin:0 6px 4px 0;padding:2px 8px;'
                 f'border:1px solid {color}44;border-radius:12px;background:{color}0d;'
                 f'color:{color};font-size:11px;font-weight:600;white-space:nowrap;">{text}</span>')
+
+    def rec_chip(counts: dict) -> str:
+        # One pill, "Street N/N/N/N", each count colored by bucket (strong buy
+        # dark green, buy green, hold grey, sell red). Sell folds in strong sell.
+        # Zero buckets are dropped so the pill stays short; color + left-to-right
+        # order (SB→B→H→S) carry which is which.
+        order = [("strongBuy", GREEN_DARK, "Strong Buy"), ("buy", GREEN_LT, "Buy"),
+                 ("hold", GRAY, "Hold"), ("sell", RED, "Sell")]
+        vals = dict(counts)
+        vals["sell"] = int(counts.get("sell", 0)) + int(counts.get("strongSell", 0))
+        nums = []
+        for key, color, lbl in order:
+            v = int(vals.get(key, 0))
+            if v:
+                nums.append(f'<span style="color:{color};font-weight:700;" '
+                            f'title="{lbl}">{v}</span>')
+        if not nums:
+            return ""
+        inner = ' <span style="color:#c0c0c0;">/</span> '.join(nums)
+        return (f'<span style="display:inline-block;margin:0 6px 4px 0;padding:2px 8px;'
+                f'border:1px solid #d0d7de;border-radius:12px;background:#f6f8fa;'
+                f'font-size:11px;font-weight:600;white-space:nowrap;color:#57606a;">'
+                f'Street {inner}</span>')
 
     def stat_chips(r) -> str:
         try:
@@ -3030,7 +3069,10 @@ def _render_earnings_html(rows: list) -> str:
         sur = a.get("eps_surprise_pct")
         if sur is not None:
             out.append(chip(f"EPS {sur:+}% vs est", GREEN if sur >= 0 else RED))
-        if a.get("rec_key"):
+        counts = a.get("rec_counts")
+        if counts and sum(int(v or 0) for v in counts.values()) > 0:
+            out.append(rec_chip(counts))
+        elif a.get("rec_key"):
             n = a.get("n_analysts")
             label = str(a["rec_key"]).replace("_", " ").title()
             out.append(chip(f"Street: {label}" + (f" ({n})" if n else ""),
