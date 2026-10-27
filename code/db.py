@@ -168,6 +168,21 @@ def init_db():
     """)
     c.execute("CREATE INDEX IF NOT EXISTS idx_earnings_status ON earnings_reports(status)")
     c.execute("CREATE INDEX IF NOT EXISTS idx_earnings_emailed ON earnings_reports(emailed_at)")
+    # Verdict + analyst columns (added after the table shipped; idempotent ALTERs).
+    #   results_vs_prior   'above' | 'in_line' | 'below'  (quarter vs prior-year results)
+    #   guidance_direction 'raising' | 'maintaining' | 'lowering' | 'none'
+    #   analyst_view       one-sentence characterization of the Street's reception
+    #   analyst_json       the factual Yahoo snapshot the characterization rests on
+    for col, typedef in [
+        ("results_vs_prior",   "TEXT"),
+        ("guidance_direction", "TEXT"),
+        ("analyst_view",       "TEXT"),
+        ("analyst_json",       "TEXT"),
+    ]:
+        try:
+            c.execute(f"ALTER TABLE earnings_reports ADD COLUMN {col} {typedef}")
+        except sqlite3.OperationalError:
+            pass  # column already exists
 
     # Indices for common queries
     c.execute("CREATE INDEX IF NOT EXISTS idx_mentions_episode ON mentions(episode_id)")
@@ -689,28 +704,35 @@ def pending_earnings(max_attempts: int = 3) -> list:
     return rows
 
 
-def save_earnings_summary(report_id: int, fiscal_period: str, bullets: list,
-                          source: str, company: str | None = None) -> None:
-    """Promote a report to 'ready' with its three-bullet summary. `company`, when given,
-    refreshes the display name (the summarizer reads it from the filing — more reliable
-    than the detection-time guess, and the only source when the holding has no DB row)."""
+def save_earnings_summary(report_id: int, source: str, summary: dict,
+                          analyst: dict | None = None) -> None:
+    """Promote a report to 'ready' with its summary. `summary` carries fiscal_period,
+    bullets, and the verdict/characterization fields (results_vs_prior,
+    guidance_direction, analyst_view); `company`, when present, refreshes the display
+    name (read from the filing — the only source when the holding has no DB row).
+    `analyst` is the factual Yahoo snapshot the characterization rests on (stored as
+    JSON for the email's stat line and for provenance). Unknown keys are ignored, so
+    the writer tolerates a summarizer that omits a field."""
     now = datetime.utcnow().isoformat()
+    sets = {
+        "status": "ready",
+        "fiscal_period": summary.get("fiscal_period") or None,
+        "bullets": json.dumps(summary.get("bullets") or []),
+        "source": source,
+        "results_vs_prior": summary.get("results_vs_prior") or None,
+        "guidance_direction": summary.get("guidance_direction") or None,
+        "analyst_view": summary.get("analyst_view") or None,
+        "analyst_json": json.dumps(analyst) if analyst else None,
+        "last_error": None,
+        "updated_at": now,
+    }
+    if summary.get("company"):
+        sets["company"] = summary["company"]
+    assigns = ", ".join(f"{k} = ?" for k in sets) + ", attempts = attempts + 1"
     conn = get_connection()
     c = conn.cursor()
-    if company:
-        c.execute("""
-            UPDATE earnings_reports
-            SET status = 'ready', fiscal_period = ?, bullets = ?, source = ?, company = ?,
-                attempts = attempts + 1, last_error = NULL, updated_at = ?
-            WHERE id = ?
-        """, (fiscal_period, json.dumps(bullets), source, company, now, report_id))
-    else:
-        c.execute("""
-            UPDATE earnings_reports
-            SET status = 'ready', fiscal_period = ?, bullets = ?, source = ?,
-                attempts = attempts + 1, last_error = NULL, updated_at = ?
-            WHERE id = ?
-        """, (fiscal_period, json.dumps(bullets), source, now, report_id))
+    c.execute(f"UPDATE earnings_reports SET {assigns} WHERE id = ?",
+              (*sets.values(), report_id))
     conn.commit()
     conn.close()
 

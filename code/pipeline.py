@@ -2766,31 +2766,111 @@ def fetch_earnings_release(ticker: str, report_date: str) -> tuple[str | None, s
     return None, None
 
 
+def _analyst_snapshot(ticker: str, report_date: str,
+                      surprise_pct: float | None = None) -> dict:
+    """Best-effort Yahoo snapshot of how the Street sees the stock, for the LLM to
+    characterize and for the email's factual stat line. Every field is optional — any
+    lookup that fails is simply omitted. Keys: eps_surprise_pct, rec_mean, rec_key,
+    n_analysts, target_mean/low/high, price, upside_pct, reaction_pct.
+    """
+    import yfinance as yf
+    snap: dict = {}
+    if surprise_pct is not None:
+        snap["eps_surprise_pct"] = round(float(surprise_pct), 1)
+    try:
+        tk = yf.Ticker(ticker)
+    except Exception:
+        return snap
+    try:
+        info = tk.info or {}
+        for src, dst in [("recommendationMean", "rec_mean"),
+                         ("recommendationKey", "rec_key"),
+                         ("numberOfAnalystOpinions", "n_analysts"),
+                         ("targetMeanPrice", "target_mean"),
+                         ("targetLowPrice", "target_low"),
+                         ("targetHighPrice", "target_high"),
+                         ("currentPrice", "price")]:
+            v = info.get(src)
+            if v not in (None, ""):
+                snap[dst] = v
+        if snap.get("target_mean") and snap.get("price"):
+            snap["upside_pct"] = round((snap["target_mean"] / snap["price"] - 1) * 100, 1)
+    except Exception:
+        pass
+    # Post-earnings reaction: last close before the report → first close after it.
+    try:
+        import datetime as _dt
+        rd = _dt.date.fromisoformat(report_date)
+        hist = tk.history(start=(rd - _dt.timedelta(days=7)).isoformat(),
+                          end=(rd + _dt.timedelta(days=7)).isoformat())
+        closes = [(i.date(), float(c)) for i, c in hist["Close"].items()]
+        pre = [c for d, c in closes if d < rd]
+        post = [c for d, c in closes if d > rd]
+        if pre and post and pre[-1]:
+            snap["reaction_pct"] = round((post[0] / pre[-1] - 1) * 100, 1)
+    except Exception:
+        pass
+    return snap
+
+
+def _analyst_snapshot_text(snap: dict) -> str:
+    """Render the snapshot as a compact line for the summarizer prompt."""
+    if not snap:
+        return "(no analyst data available)"
+    bits = []
+    if "eps_surprise_pct" in snap:
+        bits.append(f"EPS surprise vs consensus {snap['eps_surprise_pct']:+}%")
+    if "rec_key" in snap or "rec_mean" in snap:
+        bits.append(f"Street consensus {snap.get('rec_key','?')} "
+                    f"(mean {snap.get('rec_mean','?')} on 1=StrongBuy..5=Sell, "
+                    f"{snap.get('n_analysts','?')} analysts)")
+    if "upside_pct" in snap:
+        bits.append(f"mean price target {snap.get('target_mean')} "
+                    f"({snap['upside_pct']:+}% vs ${snap.get('price')})")
+    if "reaction_pct" in snap:
+        bits.append(f"stock moved {snap['reaction_pct']:+}% the session after the report")
+    return "; ".join(bits)
+
+
 _EARNINGS_SYS_PROMPT = (
     "You summarize one company's quarterly earnings press release for a personal "
-    "investing digest. Output STRICT JSON only, no markdown fences, exactly:\n"
-    '{"company": "Legal Name", "fiscal_period": "Q# YYYY", "bullets": ["...", "...", "..."]}\n'
-    "`company` is the issuer's name as the release gives it. "
+    "investing digest. Output STRICT JSON only, no markdown fences, exactly these keys:\n"
+    '{"company": "Legal Name", "fiscal_period": "Q# YYYY", '
+    '"results_vs_prior": "above|in_line|below", '
+    '"guidance_direction": "raising|maintaining|lowering|none", '
+    '"analyst_view": "one sentence", "bullets": ["...", "...", "..."]}\n'
+    "`company` is the issuer's name as the release gives it. `fiscal_period` is the "
+    "quarter the release is for (e.g. 'Q3 2026'); use the company's fiscal label if it "
+    "differs from the calendar quarter.\n"
+    "`results_vs_prior`: judge THIS quarter's headline results against the prior-year "
+    "period from the release — 'above' if revenue and EPS both grew meaningfully, "
+    "'below' if they fell, 'in_line' if roughly flat or mixed.\n"
+    "`guidance_direction`: did the company RAISE, maintain, or lower its forward "
+    "(next-quarter or full-year) outlook versus its prior guidance? 'none' if the "
+    "release gives no comparable forward guidance.\n"
+    "`analyst_view`: ONE sentence characterizing how the Street/market is receiving the "
+    "quarter and guidance, grounded ONLY in the analyst snapshot provided below (EPS "
+    "surprise, consensus rating, price-target upside, and the post-report stock move) — "
+    "e.g. note a beat met by a sell-off, or an in-line quarter the Street still rates a "
+    "buy. Do not invent ratings, targets, or quotes beyond that snapshot; if the "
+    "snapshot is empty, say analyst data was unavailable.\n"
     "Exactly three bullets, each a single sentence grounded in concrete figures from "
     "the release. Bullet 1: revenue (with YoY %) and EPS (GAAP and adjusted if both "
     "given). Bullet 2: a key operational, segment, or margin detail. Bullet 3: forward "
     "guidance (raised/lowered, with the new range) or the single most notable event. "
-    "Use only figures present in the text; never invent numbers. fiscal_period is the "
-    "quarter the release is for (e.g. 'Q3 2026'); if it states a fiscal quarter that "
-    "differs from the calendar quarter, use the company's fiscal label."
+    "Use only figures present in the text; never invent numbers."
 )
 
 
 def summarize_earnings_release(ticker: str, company: str, report_date: str,
-                               text: str, figs: dict) -> dict:
-    """Summarize a press release into {fiscal_period, bullets:[3]} via the claude CLI
-    (Claude Code subscription — no API credits). Raises RuntimeError on failure so the
-    caller can count the attempt and retry on a later night."""
-    hint = ""
-    if figs.get("eps_reported") is not None:
-        hint = (f"\n\n(Yahoo reference — reported EPS {figs['eps_reported']}, "
-                f"estimate {figs.get('eps_estimate')}, surprise {figs.get('surprise_pct')}%.)")
-    msg = (f"Ticker: {ticker}\nCompany: {company}\nReported: {report_date}{hint}\n\n"
+                               text: str, snapshot: dict) -> dict:
+    """Summarize a press release into {company, fiscal_period, results_vs_prior,
+    guidance_direction, analyst_view, bullets:[3]} via the claude CLI (Claude Code
+    subscription — no API credits). `snapshot` is the Yahoo analyst snapshot the
+    analyst_view must be grounded in. Raises RuntimeError on failure so the caller can
+    count the attempt and retry on a later night."""
+    msg = (f"Ticker: {ticker}\nCompany: {company}\nReported: {report_date}\n\n"
+           f"Analyst snapshot (Yahoo): {_analyst_snapshot_text(snapshot)}\n\n"
            f"Press release text:\n{text[:12000]}")
     env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
     argv = [
@@ -2819,8 +2899,14 @@ def summarize_earnings_release(ticker: str, company: str, report_date: str,
     bullets = [str(b).strip() for b in data.get("bullets", []) if str(b).strip()]
     if len(bullets) < 2:
         raise RuntimeError(f"summary returned {len(bullets)} bullet(s), need ≥2")
+    res = (data.get("results_vs_prior") or "").strip().lower()
+    guid = (data.get("guidance_direction") or "").strip().lower()
     return {"company": (data.get("company") or "").strip(),
-            "fiscal_period": data.get("fiscal_period") or "", "bullets": bullets[:3]}
+            "fiscal_period": data.get("fiscal_period") or "",
+            "results_vs_prior": res if res in ("above", "in_line", "below") else "",
+            "guidance_direction": guid if guid in ("raising", "maintaining", "lowering", "none") else "",
+            "analyst_view": (data.get("analyst_view") or "").strip(),
+            "bullets": bullets[:3]}
 
 
 def detect_new_earnings(holdings: set | None = None,
@@ -2884,17 +2970,18 @@ def run_earnings_updates(holdings: set | None = None,
             text, url = fetch_earnings_release(tkr, rdate)
             if not text:
                 raise RuntimeError("no press release found via SEC EDGAR")
-            summary = summarize_earnings_release(
-                tkr, r.get("company") or tkr, rdate, text,
-                {"eps_reported": r.get("eps_reported"), "eps_estimate": r.get("eps_estimate"),
-                 "surprise_pct": r.get("surprise_pct")})
+            snapshot = _analyst_snapshot(tkr, rdate, r.get("surprise_pct"))
+            summary = summarize_earnings_release(tkr, r.get("company") or tkr, rdate,
+                                                 text, snapshot)
             # Prefer the filing's company name when detection had none (or only the
             # ticker as a placeholder — e.g. a holding Cramer never picked, so no DB row).
             cur = (r.get("company") or "").strip()
-            co = summary.get("company") if (not cur or cur == tkr) else None
-            save_earnings_summary(r["id"], summary["fiscal_period"], summary["bullets"], url,
-                                  company=co)
-            print(f"    ✓ {tkr} {rdate} → {summary['fiscal_period']} ({len(summary['bullets'])} bullets)")
+            if cur and cur != tkr:
+                summary["company"] = ""   # keep the established name
+            save_earnings_summary(r["id"], url, summary, analyst=snapshot)
+            print(f"    ✓ {tkr} {rdate} → {summary['fiscal_period']} "
+                  f"[{summary.get('results_vs_prior') or '?'}/{summary.get('guidance_direction') or '?'}] "
+                  f"({len(summary['bullets'])} bullets)")
         except Exception as e:
             record_earnings_failure(r["id"], str(e), EARNINGS_MAX_ATTEMPTS)
             attempt = (r["attempts"] or 0) + 1
@@ -2917,6 +3004,46 @@ def _render_earnings_html(rows: list) -> str:
             return d
 
     site = "https://jf-silverman.github.io/analyzing-stock-calls/stocks.html"
+    GREEN, GRAY, RED, AMBER = "#1a7f37", "#57606a", "#b02a2a", "#9a6700"
+    results_tag = {
+        "above":   (GREEN, "▲ Above prior-year results"),
+        "in_line": (GRAY,  "▬ In line with prior results"),
+        "below":   (RED,   "▼ Below prior results"),
+    }
+    guidance_tag = {
+        "raising":     (GREEN, "Guidance raised"),
+        "maintaining": (GRAY,  "Guidance maintained"),
+        "lowering":    (RED,   "Guidance lowered"),
+    }
+
+    def chip(text: str, color: str) -> str:
+        return (f'<span style="display:inline-block;margin:0 6px 4px 0;padding:2px 8px;'
+                f'border:1px solid {color}44;border-radius:12px;background:{color}0d;'
+                f'color:{color};font-size:11px;font-weight:600;white-space:nowrap;">{text}</span>')
+
+    def stat_chips(r) -> str:
+        try:
+            a = json.loads(r["analyst_json"] or "{}")
+        except (json.JSONDecodeError, TypeError):
+            a = {}
+        out = []
+        sur = a.get("eps_surprise_pct")
+        if sur is not None:
+            out.append(chip(f"EPS {sur:+}% vs est", GREEN if sur >= 0 else RED))
+        if a.get("rec_key"):
+            n = a.get("n_analysts")
+            label = str(a["rec_key"]).replace("_", " ").title()
+            out.append(chip(f"Street: {label}" + (f" ({n})" if n else ""),
+                            GREEN if str(a["rec_key"]).endswith("buy") else
+                            (RED if "sell" in str(a["rec_key"]) else GRAY)))
+        up = a.get("upside_pct")
+        if up is not None:
+            out.append(chip(f"{up:+}% to mean target", GREEN if up >= 0 else AMBER))
+        rx = a.get("reaction_pct")
+        if rx is not None:
+            out.append(chip(f"{rx:+}% after report", GREEN if rx >= 0 else RED))
+        return "".join(out)
+
     cards = []
     for r in rows:
         try:
@@ -2927,6 +3054,24 @@ def _render_earnings_html(rows: list) -> str:
             continue
         star = " ★" if r["ticker"] in USER_HOLDINGS else ""
         period = _esc(r["fiscal_period"]) if r.get("fiscal_period") else "latest quarter"
+
+        # Verdict line: results-vs-prior and guidance direction, color-coded.
+        verdict_parts = []
+        rc, rt = results_tag.get((r["results_vs_prior"] or "").lower(), (None, None))
+        if rt:
+            verdict_parts.append(f'<span style="color:{rc};font-weight:700;">{rt}</span>')
+        gc, gt = guidance_tag.get((r["guidance_direction"] or "").lower(), (None, None))
+        if gt:
+            verdict_parts.append(f'<span style="color:{gc};font-weight:700;">{gt}</span>')
+        verdict = ('<p style="margin:0 0 6px;font-size:13px;">'
+                   + ' <span style="color:#ccc;">·</span> '.join(verdict_parts)
+                   + '</p>') if verdict_parts else ''
+
+        view = (f'<p style="margin:0 0 7px;font-size:12.5px;color:#444;font-style:italic;'
+                f'line-height:1.45;">Street view: {_esc(r["analyst_view"])}</p>'
+                if r.get("analyst_view") else '')
+        chips = stat_chips(r)
+        chips_html = f'<p style="margin:0 0 8px;">{chips}</p>' if chips else ''
         lis = "".join(f'<li style="margin:4px 0;line-height:1.5;">{_esc(b)}</li>'
                       for b in bullets)
         cards.append(
@@ -2935,6 +3080,7 @@ def _render_earnings_html(rows: list) -> str:
             f'<p style="margin:0 0 6px;font-weight:700;font-size:14px;color:#1a1a1a;">'
             f'{_esc(r["ticker"])}{star} · {_esc(r.get("company") or "")} '
             f'<span style="color:#666;font-weight:500;">— {period}, reported {pretty(r["report_date"])}</span></p>'
+            f'{verdict}{view}{chips_html}'
             f'<ul style="margin:0;padding-left:20px;font:13px -apple-system,Helvetica,Arial,sans-serif;color:#333;">{lis}</ul>'
             '</div>'
         )
@@ -2950,8 +3096,9 @@ def _render_earnings_html(rows: list) -> str:
         'last email — three takeaways from each company\'s earnings release.</p>'
     )
     footer = (
-        f'<p style="margin:2px 0 4px;color:#888;font-size:12px;">Summarized from each '
-        f'company\'s SEC filing · see all your picks on the '
+        f'<p style="margin:2px 0 4px;color:#888;font-size:12px;">Bullets summarized from '
+        f'each company\'s SEC filing; verdict and Street view from the filing and Yahoo '
+        f'analyst data · see all your picks on the '
         f'<a href="{site}" style="color:#888;">site</a>.</p></div>'
     )
     return header + "".join(cards) + footer
