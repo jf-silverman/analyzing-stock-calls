@@ -965,6 +965,13 @@
           "segment": "opening_commentary",
           "note": "AMD's OpenAI win doesn't change Cramer's bullish Nvidia thesis \u2014 hyperscalers need both chipmakers.",
           "closing_price": 185.54
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Remains the best-capitalized player in the AI buildout; speculation that Nvidia could even buy CoreWeave's bonds underscores its unique financial strength.",
+          "closing_price": 217.94
         }
       ],
       "sector": "Technology",
@@ -2140,6 +2147,13 @@
           "segment": "in_depth_analysis",
           "note": "Down 15-20% last week and still off more than 25% from highs despite being one of the highest-quality memory names.",
           "closing_price": 904.9
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Trades in lockstep with SK Hynix, a correlation Cramer dislikes and hopes eventually breaks given Micron's own fundamentals.",
+          "closing_price": 928.76
         }
       ],
       "sector": "Technology",
@@ -7668,6 +7682,13 @@
           "segment": "opening_commentary",
           "note": "Sold off with the AI/data-center complex on the OpenAI story; expected to recover.",
           "closing_price": 360.14
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "strong_buy",
+          "segment": "opening_commentary",
+          "note": "CEO Hock Tan personally closed a $63B financing deal enabling Anthropic to buy Broadcom's computing infrastructure, a key AI-rally catalyst.",
+          "closing_price": 342.33
         }
       ],
       "sector": "Technology",
@@ -8197,6 +8218,13 @@
           "segment": "opening_commentary",
           "note": "Zuckerberg's smart-glasses form factor seen as the best vehicle for consumer AI, with each iteration getting more sophisticated and close ties to Nvidia.",
           "closing_price": 713.08
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Equity raise was well received, but the planned $60B at-the-market program next year risks pressuring shares if poorly timed by underwriters.",
+          "closing_price": 620.19
         }
       ],
       "sector": "Communication Services",
@@ -15153,6 +15181,12 @@
           "sentiment": "buy",
           "segment": "opening_commentary",
           "note": "S-1 filing showed amazing growth and even adjusted profitability; Cramer wants exposure alongside SpaceX as AI leaders that could be the next Amazon."
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "S-1 filing shows strong growth and ample cash from the Broadcom financing deal, a bright spot that helped mask CoreWeave's weakness."
         }
       ],
       "sector": "Healthcare",
@@ -18753,6 +18787,14 @@
           "segment": "opening_commentary",
           "note": "$12B Consolidated Precision Products acquisition validates defense/aviation thesis; will accelerate Boeing production; relatively near highs but deserved.",
           "closing_price": 334.91
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "58% commercial order growth and a record $170B backlog disprove the bear case that high rates/oil are killing aircraft demand; fine to buy despite a rich multiple.",
+          "price_level": 300,
+          "closing_price": 297.66
         }
       ],
       "sector": "Industrials",
@@ -20844,6 +20886,13 @@
           "segment": "in_depth_analysis",
           "note": "New CEO has turned things around; stock trades inversely to oil despite airlines benefiting from more fuel-efficient planes \u2014 expects shares to rise as oil peaks.",
           "closing_price": 210.45
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Q3 miss and a disappointing multi-year free-cash-flow outlook tanked shares over 10%, but record $612B commercial backlog and $101B defense backlog argue sellers will be 'wrong for 200 points.'",
+          "closing_price": 168.18
         }
       ],
       "sector": "Industrials",
@@ -21981,6 +22030,13 @@
           "segment": "lightning_round",
           "note": "Cramer likes it, citing Jensen Huang's praise for its data-center operating expertise and hoping the Core Scientific deal closes.",
           "closing_price": 128.83
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Bond yields blowing out to 15% and plunging shares remain the biggest crack in the data-center bull case; shorts likely to keep pressuring the stock.",
+          "closing_price": 59.57
         }
       ],
       "sector": "Technology",
@@ -32253,6 +32309,13 @@
           "segment": "opening_commentary",
           "note": "Positive analyst meeting expected Wednesday. CEO Todd McKinnon's case that identity verification can stop AI agent attacks was called the most enlightening of the week.",
           "closing_price": 182.37
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Shares up 160%+ this year as identity security becomes critical infrastructure for defending against AI-powered attacks and managing proliferating AI agents.",
+          "closing_price": 226.07
         }
       ],
       "sector": "Technology",
@@ -33513,6 +33576,13 @@
           "segment": "lightning_round",
           "note": "Similar industrial pipes and valves exposure; down six consecutive points but Cramer prefers this over other equipment options.",
           "closing_price": 201.49
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "16% backlog growth into 2027, strong margin setup, and ongoing buybacks make the stock's flat 2026 performance look mispriced.",
+          "closing_price": 206.18
         }
       ],
       "sector": "Industrials",
@@ -37269,6 +37339,13 @@
           "segment": "in_depth_analysis",
           "note": "Biotech up 46% on takeover interest from Merck and Ivvie; potential catalyst genuine but take some profits given 50%+ run.",
           "closing_price": 116.22
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Caller's long-held pancreatic cancer drug developer; Cramer says let the winner run given a more accommodating FDA.",
+          "closing_price": 186.22
         }
       ],
       "sector": "Healthcare",
@@ -38531,6 +38608,14 @@
           "segment": "opening_commentary",
           "note": "Changing the world like Anthropic; Cramer wants a piece if execution continues to go right.",
           "closing_price": 146.9
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Cramer agrees with a caller eyeing a pullback entry near $141-142 (vs. ~$148 close) and says he wants to buy for his charitable trust but is currently restricted by trust rules.",
+          "price_level": 148,
+          "closing_price": 148.58
         }
       ],
       "sector": "Industrials",
@@ -42638,6 +42723,13 @@
           "segment": "in_depth_analysis",
           "note": "Down 15-20% last week and still off more than 25% from its highs amid memory-chip demand worries tied to data-center financing fears.",
           "closing_price": 142.87
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Korean DRAM peer whose moves currently dictate Micron's trading pattern, an unwanted linkage.",
+          "closing_price": 145.36
         }
       ],
       "industry": "Semiconductors",
@@ -46651,6 +46743,13 @@
           "segment": "lightning_round",
           "note": "Has a real underlying business despite its meme-stock reputation; okay to buy.",
           "closing_price": 78.2
+        },
+        {
+          "date": "2026-10-27",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Low valuation multiple provides downside protection versus other data-center-linked tech names.",
+          "closing_price": 58.99
         }
       ]
     },
