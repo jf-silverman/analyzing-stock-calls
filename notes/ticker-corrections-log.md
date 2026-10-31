@@ -6,10 +6,11 @@ GENERATED — rebuilt from the `ticker_reviews` table on every pipeline run. Do 
 - **Held (no match)** — not a real ticker and no confident match found; stored as `????` for review.
 - **Flagged (wrong company)** — the symbol is a *different* real company; held as `????` (never auto-remapped, since the company name could be the wrong half).
 
-_79 correction(s) recorded._
+_80 correction(s) recorded._
 
 | Episode | Model said | Company | Action | Result | Reported? |
 |---------|-----------|---------|--------|--------|-----------|
+| 2026-10-30 | `IBM` | IBM | Flagged (wrong company) | is International Business Machines | yes |
 | 2026-10-22 | `BRK.B` | Berkshire Hathaway | Remapped | → `BRK-B` | yes |
 | 2026-10-22 | `FL` | Foot Locker | Held (no match) | held `????` | yes |
 | 2026-09-09 | `FXFR` | FedEx Freight | Remapped | → `FDXF` | yes |
