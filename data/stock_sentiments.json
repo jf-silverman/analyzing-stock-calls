@@ -979,6 +979,14 @@
           "segment": "in_depth_analysis",
           "note": "Cited among stocks showing a bearish death-cross technical signal.",
           "closing_price": 202.06
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Fell from $239 to $200 on fears of an end to chip shortages; Cramer doubts it's as bad as the selloff implies.",
+          "price_level": 200,
+          "closing_price": 200.13
         }
       ],
       "sector": "Technology",
@@ -4729,6 +4737,14 @@
           "segment": "opening_commentary",
           "note": "Down 8.3% on the year but Cramer is sticking with it, betting its turnaround matches what new Ross Stores leadership has achieved.",
           "closing_price": 141.49
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "closing_commentary",
+          "note": "No longer trusts management's 'things are under control' message after this year's slide from 150 to 122; would sell into today's exaggerated 7-point pop.",
+          "price_level": 145,
+          "closing_price": 144.76
         }
       ],
       "sector": "Consumer Cyclical",
@@ -6410,6 +6426,13 @@
           "segment": "closing_commentary",
           "note": "Despite a light services-growth guide, overall revenue outlook beat expectations; the foldable Duo and potentially peaking memory prices support owning, not trading, the stock.",
           "closing_price": 331.9
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Rally driven by hopes an AI data-center slowdown eases DRAM costs, plus T-Mobile's new discounted iPhone Duo bundle.",
+          "closing_price": 349.51
         }
       ],
       "sector": "Technology",
@@ -8740,6 +8763,13 @@
           "segment": "opening_commentary",
           "note": "Like Iren, a NeoCloud without Amazon's balance-sheet flexibility to simply buy its way into new towns if projects get canceled.",
           "closing_price": 151.64
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Neocloud financing looks harder to come by if the data-center buildout narrative stalls.",
+          "closing_price": 141.52
         }
       ],
       "sector": "Communication Services",
@@ -9277,6 +9307,13 @@
           "segment": "opening_commentary",
           "note": "Quarter was actually strong despite the sell-off; a big operating income beat was obscured by EPS distortion from investment marks.",
           "closing_price": 245.63
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Investors bet election results will force spending discipline on its aggressive data-center buildout.",
+          "closing_price": 266.03
         }
       ],
       "sector": "Consumer Cyclical",
@@ -9778,6 +9815,13 @@
           "segment": "in_depth_analysis",
           "note": "The only hyperscaler to trim capex plans, and it got the best relative market reaction \u2014 fell the least among peers.",
           "closing_price": 507.12
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Benefits if fewer data centers lower future build costs, aligning with its capex-discipline strategy.",
+          "closing_price": 555.8
         }
       ],
       "sector": "Technology",
@@ -10519,6 +10563,13 @@
           "segment": "opening_commentary",
           "note": "Up 475% since Cramer's original pick at $15-17; with the P/E near 150, trim a third and let the rest run.",
           "closing_price": 112.95
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Blowout quarter with 51% revenue growth, raised guidance, and a fast-expanding Rhode brand plus new hair/fragrance lines.",
+          "closing_price": 113.63
         }
       ],
       "sector": "Consumer Defensive",
@@ -11705,6 +11756,13 @@
           "segment": "opening_commentary",
           "note": "Management's turnaround and value push looks credible, but franchisee complaints are a worrying sign Cramer isn't fully dismissing.",
           "closing_price": 258.12
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Value-driven 'interventions' turned US comps positive in September and October; Cramer stays bullish on the turnaround despite today's pop.",
+          "closing_price": 280.22
         }
       ],
       "sector": "Consumer Cyclical",
@@ -14797,6 +14855,13 @@
           "segment": "in_depth_analysis",
           "note": "Best story among the high-yielders under CEO Steve Cahillane, who broke up Kellogg profitably; wants core business stabilized before a breakup.",
           "closing_price": 23.56
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "mild_buy",
+          "segment": "caller_qa",
+          "note": "Prefers Kraft Heinz over ADM following its Maxwell House divestiture, with the company retaining a 30% stake.",
+          "closing_price": 25.44
         }
       ],
       "sector": "Consumer Defensive",
@@ -17539,6 +17604,13 @@
           "segment": "lightning_round",
           "note": "Loses money hand over fist; cannot recommend despite volume activity; pure speculation play not backed by fundamentals",
           "closing_price": 5.04
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Still losing too much money despite new contracts and a NASA deal; Cramer won't recommend it.",
+          "closing_price": 2.56
         }
       ],
       "sector": "Technology",
@@ -22658,6 +22730,13 @@
           "segment": "opening_commentary",
           "note": "Called the data-center bellwether whose trajectory is front and center for the siting-backlash risk Cramer flagged.",
           "closing_price": 53.74
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Grouped with neoclouds facing tougher financing conditions amid data-center buildout doubts.",
+          "closing_price": 48.42
         }
       ],
       "sector": "Technology",
@@ -26077,6 +26156,14 @@
           "segment": "caller_qa",
           "note": "Likes the business despite a 36% drop and a fierce competitor; start near $39 and add on weakness toward $25\u201330 as the chart is weak.",
           "closing_price": 39.06
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "caution_concern",
+          "segment": "caller_qa",
+          "note": "Reported a bad quarter, with shares sliding to $36.",
+          "price_level": 36,
+          "closing_price": 43.99
         }
       ],
       "sector": "Consumer Cyclical",
@@ -26617,6 +26704,42 @@
           "segment": "lightning_round",
           "note": "Stock held back by a large FedEx-owned share overhang; a clearing sale of that block could send shares toward $150 after a strong quarter.",
           "closing_price": null
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Posted a huge earnings beat but fell on fears slower data-center growth will end chip shortages; Cramer says it's doing incredibly well."
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Grouped with neoclouds facing tougher financing conditions amid data-center buildout doubts."
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "caller_qa",
+          "note": "Business is good and improving post-IPO; tells caller to hold rather than add, noting the earlier selloff reflected confused sellers, not fundamentals."
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Residential-focused company needs a clearer strategy, like grid-scale batteries; Cramer can't recommend it over Nextracker."
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Preferred over the caller's distressed solar pick, with CEO Dan Shugar in Cramer's corner."
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Declines to say anything positive, implying caution on the newly spun-off aerospace business's rocky start."
         }
       ],
       "sector": "",
@@ -27588,6 +27711,14 @@
           "segment": "closing_commentary",
           "note": "CEO Brian Nickels executing Chipotle playbook: restore coffee-house experience, simplify menu, rigorous service benchmarks. Domestic SSS +7.9%, earnings guidance raised. Broke out of trading range; Cramer sees 'much higher' ahead.",
           "closing_price": 105.85
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "strong_buy",
+          "segment": "caller_qa",
+          "note": "Likes it as a 'real good cup of coffee' turnaround story under Brian Niccol; reiterates a $125 price target for his charitable trust.",
+          "price_target": 125,
+          "closing_price": 109.7
         }
       ],
       "sector": "Consumer Cyclical",
@@ -28794,6 +28925,13 @@
           "segment": "closing_commentary",
           "note": "Persian Gulf competitors going offline lifts industry prices to pure profit for Dow, which also uses cheaper domestic energy.",
           "closing_price": 30.37
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Heavily levered to China; needs Chinese stimulus/demand to improve before Cramer gets more constructive.",
+          "closing_price": 32.7
         }
       ],
       "sector": "Basic Materials",
@@ -31988,6 +32126,13 @@
           "segment": "opening_commentary",
           "note": "Reversed last week's oil/delinquency-driven sell-off, roaring nearly 3% as rates fell.",
           "closing_price": 210.77
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Swung wildly on fears Democrats would cap credit-card rates, echoing a failed Trump rate-cap attempt in January; shouldn't have moved much either way.",
+          "closing_price": 206.31
         }
       ],
       "sector": "Financial Services",
@@ -35424,6 +35569,13 @@
           "segment": "lightning_round",
           "note": "Likes it after a sharp pullback; numbers remain good despite the higher multiple.",
           "closing_price": 212.99
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Sees it in better shape than FTAI within the aerospace space.",
+          "closing_price": 213.56
         }
       ],
       "sector": "Industrials",
@@ -40099,6 +40251,13 @@
           "segment": "lightning_round",
           "note": "Long-dormant ag name whose time has finally come, in Cramer's view.",
           "closing_price": 81.34
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "sell_avoid",
+          "segment": "caller_qa",
+          "note": "Views it as a commodity business with no clear catalyst and passes in favor of other opportunities.",
+          "closing_price": 70.84
         }
       ],
       "sector": "Consumer Defensive",
@@ -45696,6 +45855,14 @@
           "segment": "closing_commentary",
           "note": "Cut in half on fears Claude would make its clinical-trial software obsolete; that thesis has reversed and multiple expansion has resumed.",
           "closing_price": 297.35
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "caller_qa",
+          "note": "Caller's five-year hold had a monster quarter; Cramer expects more good news at the January JPM Healthcare Conference.",
+          "price_level": 300,
+          "closing_price": 310.63
         }
       ]
     },
@@ -45839,6 +46006,13 @@
           "segment": "opening_commentary",
           "note": "Will have good run in transport breakout; strong e-commerce environment supports pricing.",
           "closing_price": 68.62
+        },
+        {
+          "date": "2026-11-04",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Supply-driven freight recovery, record managed-solutions revenue, and tech/driver-retention edge support an 85% YTD rally.",
+          "closing_price": 139.29
         }
       ]
     },
@@ -48198,6 +48372,30 @@
           "segment": "lightning_round",
           "note": "Purely speculative cancer biotech that's worked so far; okay to hold as a single spec position but don't add more speculative names.",
           "closing_price": 20.65
+        }
+      ]
+    },
+    "PRLB": {
+      "company": "Proto Labs",
+      "mentions": [
+        {
+          "date": "2026-11-04",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Admits he doesn't know the company well enough to comment.",
+          "closing_price": 66.48
+        }
+      ]
+    },
+    "FTAI": {
+      "company": "FTAI Aviation",
+      "mentions": [
+        {
+          "date": "2026-11-04",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Likes the aerospace aftermarket parts story, though prefers Howmet in the same space.",
+          "closing_price": 179.58
         }
       ]
     }
