@@ -6,10 +6,14 @@ GENERATED — rebuilt from the `ticker_reviews` table on every pipeline run. Do 
 - **Held (no match)** — not a real ticker and no confident match found; stored as `????` for review.
 - **Flagged (wrong company)** — the symbol is a *different* real company; held as `????` (never auto-remapped, since the company name could be the wrong half).
 
-_81 correction(s) recorded._
+_85 correction(s) recorded._
 
 | Episode | Model said | Company | Action | Result | Reported? |
 |---------|-----------|---------|--------|--------|-----------|
+| 2026-11-04 | `AMD` | AMD | Flagged (wrong company) | is Advanced Micro Devices, Inc. | yes |
+| 2026-11-04 | `IREN` | Iris Energy | Flagged (wrong company) | is IREN LIMITED | yes |
+| 2026-11-04 | `NOVA` | Sunnova Energy | Held (no match) | held `????` | yes |
+| 2026-11-04 | `NXT` | Nextracker | Flagged (wrong company) | is Nextpower Inc. | yes |
 | 2026-11-03 | `IREN` | Iris Energy | Flagged (wrong company) | is IREN LIMITED | yes |
 | 2026-10-30 | `IBM` | IBM | Flagged (wrong company) | is International Business Machines | yes |
 | 2026-10-22 | `BRK.B` | Berkshire Hathaway | Remapped | → `BRK-B` | yes |
