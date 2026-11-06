@@ -987,6 +987,13 @@
           "note": "Fell from $239 to $200 on fears of an end to chip shortages; Cramer doubts it's as bad as the selloff implies.",
           "price_level": 200,
           "closing_price": 200.13
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Dropped into the red and negative for the year, but trades under 12x next year's earnings on a 70% growth rate \u2014 Cramer calls it an 'incredible bargain' and says the company should be aggressively buying back stock here.",
+          "closing_price": 181.6
         }
       ],
       "sector": "Technology",
@@ -2204,6 +2211,13 @@
           "segment": "lightning_round",
           "note": "Preferred over Western Digital for its stronger technology position.",
           "closing_price": 833.59
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Take-or-pay contracts with data center customers give some revenue visibility despite neocloud credit risk; free to launch a large buyback starting December 9th.",
+          "closing_price": 656.39
         }
       ],
       "sector": "Technology",
@@ -5827,6 +5841,13 @@
           "segment": "opening_commentary",
           "note": "A $10B block trade priced at $116 and rallied to $126, a sign large holders believe the fund-raising is finally done.",
           "closing_price": 126.19
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Grouped with other neocloud-adjacent debt-financed data-center builders facing new regulatory headwinds post-election.",
+          "closing_price": 115.16
         }
       ],
       "sector": "Technology",
@@ -8770,6 +8791,13 @@
           "segment": "opening_commentary",
           "note": "Neocloud financing looks harder to come by if the data-center buildout narrative stalls.",
           "closing_price": 141.52
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Smaller neocloud builder whose debt load is the real risk Cramer is watching, more than the equity selloff itself.",
+          "closing_price": 120.37
         }
       ],
       "sector": "Communication Services",
@@ -11918,6 +11946,13 @@
           "segment": "lightning_round",
           "note": "Stock is inexpensive after a bad year and at a great entry price.",
           "closing_price": 159.36
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Down from a $160 recommendation to $90 after a Google algorithm change hurt traffic; Cramer still calls it a valuable company but offered no new actionable call.",
+          "closing_price": 93.81
         }
       ],
       "sector": "Communication Services",
@@ -12827,6 +12862,13 @@
           "segment": "interview",
           "note": "New AI kill-switch technology and Anthropic partnership make the company essential infrastructure for safely deploying AI agents.",
           "closing_price": 244.68
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Also hammered today as a high-multiple name; same advice as Palo Alto \u2014 don't add right now.",
+          "closing_price": 217.2
         }
       ],
       "sector": "Technology",
@@ -15097,6 +15139,13 @@
           "segment": "closing_commentary",
           "note": "One-stop cyber security platform built out under CEO Nikesh Arora was unfairly sold off alongside Fortinet; buy the dip.",
           "closing_price": 380.57
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "High-multiple stock hurt badly in today's selloff; Cramer says give it 'some berth' rather than add in a bearish tape, even though it's made money long-term.",
+          "closing_price": 314.67
         }
       ],
       "sector": "Technology",
@@ -15734,6 +15783,12 @@
           "segment": "in_depth_analysis",
           "note": "Updated S-1 shows revenue growth decelerating from 144% to 47% q/q but improving profitability; IPO roadshow targeted for next week, pricing mid-November \u2014 a key catalyst Cramer is watching for tech overall.",
           "closing_price": null
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Pre-IPO AI lab whose rumored $1.5-2 trillion valuation is now in question after the selloff, clouding what the rest of the data-center ecosystem is worth."
         }
       ],
       "sector": "Healthcare",
@@ -15976,6 +16031,13 @@
           "segment": "closing_commentary",
           "note": "Rallied from $110 to $595 on AI server demand before pulling back; too early to call a bottom amid broad hardware multiple compression.",
           "closing_price": 507.93
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "One of the data-center-adjacent names that had held up better than most but has started weakening in the recent selloff.",
+          "closing_price": 316.91
         }
       ],
       "sector": "Technology",
@@ -20438,6 +20500,13 @@
           "segment": "in_depth_analysis",
           "note": "Mostly insulated from AI agents since bots can't easily replace direct owner-rental bookings; recent dramatic selloff makes it a steal and Cramer's favorite 'Muse casualty.'",
           "closing_price": 156.96
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Accelerating revenue and bookings growth driven by AI and execution, taking share from Booking/Expedia with new luxury and Gen Z demand.",
+          "closing_price": 170.13
         }
       ],
       "sector": "Consumer Cyclical",
@@ -20871,6 +20940,13 @@
           "segment": "opening_commentary",
           "note": "Reported a very strong quarter after the close, bolstering the case that non-megacap tech can lead the market higher.",
           "closing_price": 483.9
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Just reported a 'spectacular' quarter with a trillion-dollar data-center TAM per CEO Lisa Su, but the stock's huge run since March makes valuation 'awfully high' \u2014 may be the real problem.",
+          "closing_price": 404.4
         }
       ],
       "sector": "Technology",
@@ -21832,6 +21908,13 @@
           "segment": "interview",
           "note": "Beat-and-raise quarter with 61% revenue growth, yet shares remain ~35% below their May high despite strong, broad-based data-center demand \u2014 a buying opportunity.",
           "closing_price": 245.92
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy_on_pullback",
+          "segment": "lightning_round",
+          "note": "Doing great fundamentally but still up for the year; Cramer wants it to come down a lot before buying given uncertainty in the data-center space.",
+          "closing_price": 176.73
         }
       ],
       "sector": "Industrials",
@@ -22737,6 +22820,13 @@
           "segment": "opening_commentary",
           "note": "Grouped with neoclouds facing tougher financing conditions amid data-center buildout doubts.",
           "closing_price": 48.42
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Neocloud builder carrying heavy debt to finance data-center construction; Cramer worries not all these companies will survive ('NGMI').",
+          "closing_price": 43.66
         }
       ],
       "sector": "Technology",
@@ -24299,6 +24389,14 @@
           "segment": "lightning_round",
           "note": "Cramer's favorite in the group long-term, but won't buy at 23x earnings while the stocks are still falling.",
           "closing_price": 227.56
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy_on_pullback",
+          "segment": "lightning_round",
+          "note": "Stock down from 438 to 185 but was at 135 a year ago, suggesting more downside; Cramer would only buy a quarter position now and wait for a better entry.",
+          "price_level": 185,
+          "closing_price": 185.2
         }
       ],
       "sector": "Technology",
@@ -24528,6 +24626,13 @@
           "segment": "opening_commentary",
           "note": "Excellent quarter with momentum through holiday season; 28M active customers; partnerships with Amazon, Costco, Shopify, Target, Apple; rate hike fears overblown.",
           "closing_price": 72.08
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Cramer's preferred buy-now-pay-later name delivered record GMV growth and profitability with a confident holiday outlook; selloff pressure isn't a referendum on the business.",
+          "closing_price": 69.66
         }
       ],
       "sector": "Financial Services",
@@ -26740,6 +26845,18 @@
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Declines to say anything positive, implying caution on the newly spun-off aerospace business's rocky start."
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy_on_pullback",
+          "segment": "lightning_round",
+          "note": "Just reported a great quarter and is preferred over Xylem in water purification; Cramer wants to wait for the stock to come in before buying."
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Sold off badly today at 21x earnings, creating a good opportunity; Cramer likes CEO Dan Shugar's thinking as the way to play green energy initiatives from the new Congress."
         }
       ],
       "sector": "",
@@ -30613,6 +30730,13 @@
           "segment": "lightning_round",
           "note": "Stay away; too hard to follow. Colleague Karen's 30-year-old advice still holds: always stay away from First Solar.",
           "closing_price": 206.82
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer said no to playing green-energy policy through First Solar, preferring Nextracker instead.",
+          "closing_price": 195.76
         }
       ],
       "sector": "Technology",
@@ -39704,6 +39828,13 @@
           "segment": "in_depth_analysis",
           "note": "Posted its first profit with all three segments EBITDA-positive and guided for a huge Q4 capex ramp financed partly via a $40B Apollo GPU deal.",
           "closing_price": 134.72
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Elon Musk's gigantic recent deal added to speculative froth around the data-center/AI theme.",
+          "closing_price": 123.62
         }
       ],
       "sector": "Industrials",
@@ -40226,6 +40357,12 @@
           "segment": "in_depth_analysis",
           "note": "Cut its new funding round target from $30B/$1.44T valuation to $20B/$1.25T, a minor read on AI-lab investor demand.",
           "closing_price": null
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Private AI leader at the 'end of the food chain' of the data-center trade; profitability unclear given private status."
         }
       ],
       "sector": "",
@@ -44464,6 +44601,13 @@
           "segment": "lightning_round",
           "note": "DuPont spin-off, up 70% since IPO 5mo ago; beats earnings estimates; materials for semiconductor manufacturing; club holding; still inexpensive at 30-31x earnings.",
           "closing_price": 120.26
+        },
+        {
+          "date": "2026-11-05",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "DuPont spinoff and pure-play semiconductor-materials supplier beat estimates again; Cramer, who owns it for the Charitable Trust, says numbers keep getting better despite being caught in today's data-center-driven selloff.",
+          "closing_price": 110.04
         }
       ]
     },
@@ -48396,6 +48540,18 @@
           "segment": "lightning_round",
           "note": "Likes the aerospace aftermarket parts story, though prefers Howmet in the same space.",
           "closing_price": 179.58
+        }
+      ]
+    },
+    "XYL": {
+      "company": "Xylem",
+      "mentions": [
+        {
+          "date": "2026-11-05",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer prefers DuPont's water-purification business over Xylem.",
+          "closing_price": 100.05
         }
       ]
     }
