@@ -2657,6 +2657,8 @@ def write_ticker_corrections_log() -> None:
 EARNINGS_LOOKBACK_DAYS = 14          # how far back detection looks for a fresh report
 EARNINGS_MAX_ATTEMPTS = 3            # separate nights to try before giving up
 EARNINGS_MAX_PER_NIGHT = 10          # cap summaries per run so a cluster can't stall it
+EARNINGS_UPCOMING_DAYS = 7           # "reporting in the week ahead" lookahead window
+UPCOMING_CACHE = DATA_DIR / "upcoming_earnings.json"   # refreshed each detect pass (gitignored)
 _SEC_UA = {"User-Agent": "mad-money-pipeline (joelfsilverman@gmail.com)"}
 _sec_cik_cache: dict | None = None
 
@@ -2933,7 +2935,9 @@ def detect_new_earnings(holdings: set | None = None,
     holdings = holdings or USER_HOLDINGS
     today = datetime.now().date()
     cutoff = today - timedelta(days=lookback_days)
+    ahead = today + timedelta(days=EARNINGS_UPCOMING_DAYS)
     found = 0
+    upcoming: list[dict] = []
     for ticker in sorted(holdings):
         try:
             ed = yf.Ticker(ticker).get_earnings_dates(limit=8)
@@ -2946,6 +2950,13 @@ def detect_new_earnings(holdings: set | None = None,
         reported = [(ix, r.get("Reported EPS"), r.get("EPS Estimate"), r.get("Surprise(%)"))
                     for ix, r in ed.iterrows()
                     if ix <= now_ts and r.get("Reported EPS") == r.get("Reported EPS")]
+        # Upcoming: the nearest FUTURE scheduled date (no reported EPS yet). The same
+        # calendar DataFrame already holds it, so this costs no extra Yahoo call.
+        future = sorted(ix.date() for ix, r in ed.iterrows()
+                        if ix > now_ts and r.get("Reported EPS") != r.get("Reported EPS"))
+        if future and today <= future[0] <= ahead:
+            upcoming.append({"ticker": ticker, "company": _company_name(ticker),
+                             "date": future[0].isoformat()})
         if not reported:
             continue
         ix, rep, est, sur = max(reported, key=lambda x: x[0])
@@ -2961,6 +2972,14 @@ def detect_new_earnings(holdings: set | None = None,
                                      _f(rep), _f(est), _f(sur)):
             found += 1
             print(f"    earnings detected: {ticker} reported {rdate}")
+    # Refresh the "week ahead" cache (dates are Yahoo estimates and can shift).
+    upcoming.sort(key=lambda u: (u["date"], u["ticker"]))
+    try:
+        UPCOMING_CACHE.write_text(json.dumps(
+            {"generated": today.isoformat(), "window_days": EARNINGS_UPCOMING_DAYS,
+             "reporters": upcoming}, indent=2))
+    except Exception as e:
+        print(f"    could not write upcoming-earnings cache: {e}")
     return found
 
 
@@ -3004,12 +3023,22 @@ def run_earnings_updates(holdings: set | None = None,
                   f"{str(e).splitlines()[0][:90]}{gave_up}")
 
 
+def _read_upcoming_cache() -> list[dict]:
+    """The 'reporting in the week ahead' reporters written by the last detect pass.
+    Returns [] if the cache is missing/unreadable."""
+    try:
+        data = json.loads(UPCOMING_CACHE.read_text())
+        return data.get("reporters", []) or []
+    except Exception:
+        return []
+
+
 def _render_earnings_html(rows: list) -> str:
     """The top-of-email 'Quarterly Earnings' section: one card per holding that reported,
-    newest first, three bullets each. Empty string when there's nothing new. Fed by
-    db.get_unemailed_earnings()."""
-    if not rows:
-        return ""
+    newest first, three bullets each, then a short 'week ahead' list of holdings slated to
+    report. Empty string when there's neither. Fed by db.get_unemailed_earnings() plus the
+    upcoming-earnings cache."""
+    rows = rows or []
 
     def pretty(d: str) -> str:
         try:
@@ -3126,16 +3155,44 @@ def _render_earnings_html(rows: list) -> str:
             f'<ul style="margin:0;padding-left:20px;font:13px -apple-system,Helvetica,Arial,sans-serif;color:#333;">{lis}</ul>'
             '</div>'
         )
-    if not cards:
+    # "Reporting in the week ahead" — holdings slated to report in the next few days.
+    upcoming = _read_upcoming_cache()
+    upcoming_html = ""
+    if upcoming:
+        def pretty_u(d: str) -> str:
+            try:
+                return datetime.fromisoformat(d).strftime("%a %b %-d")
+            except Exception:
+                return d
+        items = "".join(
+            f'<li style="margin:3px 0;line-height:1.5;">'
+            f'<span style="font-weight:700;color:#1a1a1a;">{_esc(u["ticker"])}'
+            f'{" ★" if u["ticker"] in USER_HOLDINGS else ""}</span> '
+            f'<span style="color:#444;">{_esc(u.get("company") or "")}</span> '
+            f'<span style="color:#666;">— {pretty_u(u["date"])}</span></li>'
+            for u in upcoming)
+        upcoming_html = (
+            '<div style="margin:16px 0 4px;padding-top:12px;border-top:1px solid #e5e5e5;">'
+            '<p style="margin:0 0 6px;font-weight:700;font-size:13px;color:#0b3d91;">'
+            '🗓 Reporting in the week ahead</p>'
+            '<ul style="margin:0 0 6px;padding-left:20px;'
+            'font:13px -apple-system,Helvetica,Arial,sans-serif;color:#333;">'
+            f'{items}</ul>'
+            '<p style="margin:0;color:#999;font-size:11px;">Expected dates from Yahoo — '
+            'unconfirmed quarters can still shift.</p></div>')
+
+    if not cards and not upcoming_html:
         return ""
+    subtitle = ('Your holdings that reported since the last email — three takeaways from '
+                "each company's earnings release.") if cards else \
+               ('No holdings reported since the last email — here is what is coming up.')
     header = (
         '<div style="font:13px -apple-system,Helvetica,Arial,sans-serif;'
         'margin:0 0 22px;padding:16px 16px 4px;border:2px solid #1f6feb33;'
         'border-radius:10px;background:#fbfdff;">'
         '<p style="margin:0 0 4px;font-weight:800;font-size:16px;color:#0b3d91;">'
         '📊 Quarterly Earnings</p>'
-        '<p style="margin:0 0 12px;color:#666;">Your holdings that reported since the '
-        'last email — three takeaways from each company\'s earnings release.</p>'
+        f'<p style="margin:0 0 12px;color:#666;">{subtitle}</p>'
     )
     footer = (
         f'<p style="margin:2px 0 4px;color:#888;font-size:12px;">Bullets summarized from '
@@ -3143,7 +3200,7 @@ def _render_earnings_html(rows: list) -> str:
         f'analyst data · see all your picks on the '
         f'<a href="{site}" style="color:#888;">site</a>.</p></div>'
     )
-    return header + "".join(cards) + footer
+    return header + "".join(cards) + upcoming_html + footer
 
 
 def _inject_earnings(html: str, block: str) -> str:
