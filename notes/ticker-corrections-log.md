@@ -6,10 +6,11 @@ GENERATED — rebuilt from the `ticker_reviews` table on every pipeline run. Do 
 - **Held (no match)** — not a real ticker and no confident match found; stored as `????` for review.
 - **Flagged (wrong company)** — the symbol is a *different* real company; held as `????` (never auto-remapped, since the company name could be the wrong half).
 
-_88 correction(s) recorded._
+_89 correction(s) recorded._
 
 | Episode | Model said | Company | Action | Result | Reported? |
 |---------|-----------|---------|--------|--------|-----------|
+| 2026-11-11 | `TGB` | Taseko Mines | Flagged (wrong company) | is Trekor Metals Limited | yes |
 | 2026-11-05 | `DD` | DuPont | Flagged (wrong company) | is DuPont de Nemours, Inc. | yes |
 | 2026-11-05 | `NXT` | Nextracker | Flagged (wrong company) | is Nextpower Inc. | yes |
 | 2026-11-05 | `QNTY` | Qnity Electronics | Remapped | → `Q` | yes |
