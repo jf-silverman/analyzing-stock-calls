@@ -1008,6 +1008,13 @@
           "segment": "opening_commentary",
           "note": "CEO Jensen Wong's alleged China-spy affair and election results rejecting data centers make the stock 'less attractive' even though the underlying business remains strong.",
           "closing_price": 168.89
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Jensen Huang's possible ouster over a scandal threatens the leadership behind the stock, though Cramer's trust hasn't sold given continued AI data-center demand; he worries a Huang-less Nvidia is one many won't want to hold.",
+          "closing_price": 173.73
         }
       ],
       "sector": "Technology",
@@ -5041,6 +5048,13 @@
           "segment": "caller_qa",
           "note": "Online sports betting has become too crowded and capital-intensive to keep customers; time to move on despite liking the CEO.",
           "closing_price": 24.74
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer agrees competition is withering the sports-betting space and says he can no longer recommend any gambling stocks.",
+          "closing_price": 19.64
         }
       ],
       "sector": "Consumer Cyclical",
@@ -5934,6 +5948,13 @@
           "segment": "opening_commentary",
           "note": "Grouped with other neocloud-adjacent debt-financed data-center builders facing new regulatory headwinds post-election.",
           "closing_price": 115.16
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Shares rose after CFO Hillary Maxon's bullish data-center build-out commentary, reinforcing confidence in the AI infrastructure trade.",
+          "closing_price": 128.38
         }
       ],
       "sector": "Technology",
@@ -7483,6 +7504,20 @@
           "segment": "lightning_round",
           "note": "CEO is fantastic; divesting the low-multiple commodity orthopedics business should improve the growth profile.",
           "closing_price": 270.56
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Named as a safer alternative to Nvidia amid uncertainty over Jensen Huang's status.",
+          "closing_price": 280.41
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Suggested as a lower-risk, long-term growth alternative for the caller's 10-year-old grandson's portfolio instead of more Energy Transfer.",
+          "closing_price": 280.41
         }
       ],
       "sector": "Healthcare",
@@ -8605,6 +8640,13 @@
           "segment": "in_depth_analysis",
           "note": "Strong revenue beat undercut by a dilutive $97.5B equity financing plan tied to a slightly raised 2026 capex range.",
           "closing_price": 614.99
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy_on_pullback",
+          "segment": "caller_qa",
+          "note": "Caller bought ahead of earnings and got burned; Cramer likes Meta long-term but would wait for a cheaper entry given how large the stock is.",
+          "closing_price": 628.77
         }
       ],
       "sector": "Communication Services",
@@ -12520,6 +12562,13 @@
           "segment": "closing_commentary",
           "note": "Part of the staples group catching a bid from falling input costs after years of going nowhere.",
           "closing_price": 168.66
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Also suggested as a safer growth alternative for the caller's grandson instead of adding more Energy Transfer.",
+          "closing_price": 167.67
         }
       ],
       "sector": "Consumer Defensive",
@@ -13011,6 +13060,13 @@
           "segment": "lightning_round",
           "note": "Grouped with Okta and Palo Alto as all well-run; caller's choice.",
           "closing_price": 216.9
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Named as a preferred cloud-security holding over Netskope.",
+          "closing_price": 229.06
         }
       ],
       "sector": "Technology",
@@ -15317,6 +15373,13 @@
           "segment": "lightning_round",
           "note": "Grouped with Okta and CrowdStrike as all well-run; caller's choice.",
           "closing_price": 313.84
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Named alongside CrowdStrike as a preferred cloud-security play over Netskope.",
+          "closing_price": 334.47
         }
       ],
       "sector": "Technology",
@@ -15614,6 +15677,13 @@
           "segment": "opening_commentary",
           "note": "Offers a good return and is Cramer's secondary energy pick for the caller alongside Cheniere.",
           "closing_price": 20.41
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer tells the caller to buy more for his own position, but for his young grandson's long-horizon portfolio prefers safer growth names instead of adding more.",
+          "closing_price": 19.45
         }
       ],
       "sector": "Energy",
@@ -15974,6 +16044,12 @@
           "sentiment": "wait_hold_neutral",
           "segment": "in_depth_analysis",
           "note": "Critical test for the whole AI trade; reported valuation talk has fallen to the $1-1.25 trillion range from an earlier $2 trillion target amid slowing growth."
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Despite heavy non-GAAP adjustments and a roughly $900 billion infrastructure spending commitment, Cramer is \"intrigued\" by Anthropic's growth ahead of its IPO."
         }
       ],
       "sector": "Healthcare",
@@ -18478,6 +18554,14 @@
           "segment": "opening_commentary",
           "note": "Noted bears were 'mauling' the stock amid the broader AI-infrastructure selloff.",
           "closing_price": 175.4
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer says Palantir is worth $200 and isn't there yet after an excellent quarter under CEO Alex Karp.",
+          "price_target": 200,
+          "closing_price": 172.4
         }
       ],
       "sector": "Technology",
@@ -23048,6 +23132,13 @@
           "segment": "opening_commentary",
           "note": "Neocloud debt costs have gotten sky-high; needs to explain how it pays off expensive bonds without more debt issuance.",
           "closing_price": 46.4
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "CEO Michael Intrador says compute demand is 10x oversubscribed through 2027-2028, debt risk has eased via customer-prepayment financing, and older Nvidia GPUs are being recontracted at 20-50% premiums as leases roll off; stock jumped 25% on the news.",
+          "closing_price": 60.77
         }
       ],
       "sector": "Technology",
@@ -23677,6 +23768,14 @@
           "segment": "in_depth_analysis",
           "note": "Burger King crushing at 8.6% US/Canada comps (beat 6.2%), +13% adj op income; but Tim Hortons 0.1% comps (missed), Popeyes down 5.1%. Stock at 18x forward; Patrick Doyle turnaround in progress despite parent dragging it down.",
           "closing_price": 73.33
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "Shares are rangebound below $81-82 resistance; a confirmed breakout above that level could open the door to triple digits, per Lang.",
+          "price_target": 82,
+          "closing_price": 76.66
         }
       ],
       "sector": "Consumer Cyclical",
@@ -27092,6 +27191,18 @@
           "sentiment": "buy",
           "segment": "lightning_round",
           "note": "Sold off badly today at 21x earnings, creating a good opportunity; Cramer likes CEO Dan Shugar's thinking as the way to play green energy initiatives from the new Congress."
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "caller_qa",
+          "note": "Under new CEO Charlie Morrison (ex-Wingstop), Cramer sees inexpensive value relative to aggressive US and international (London) expansion plans despite a disappointing initial quarter."
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Speculative copper play that should benefit as data centers continue relying on copper wiring before any shift to fiber."
         }
       ],
       "sector": "",
@@ -30748,6 +30859,13 @@
           "segment": "interview",
           "note": "Discussed as Danny Meyer's proof that a 'juicy, terrific hamburger' concept could scale into a 700-unit public company; interview focused on culture and his new book, not a trade call.",
           "closing_price": 58.68
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Lang sees the May earnings gap finally filling within weeks, implying roughly 25% upside; Cramer is growing less cautious on a stock he's long viewed as expensive.",
+          "closing_price": 75.04
         }
       ],
       "sector": "Consumer Cyclical",
@@ -32715,6 +32833,13 @@
           "segment": "opening_commentary",
           "note": "Olive Garden is a gold mine and the $11 special is very good, though Cramer prefers Brinker.",
           "closing_price": 209.28
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "caller_qa",
+          "note": "Cramer calls Darden \"absolutely terrific\" on Olive Garden value and says the stock still has room to run despite its recent spike.",
+          "closing_price": 228.94
         }
       ],
       "sector": "Consumer Cyclical",
@@ -36137,6 +36262,13 @@
           "segment": "opening_commentary",
           "note": "Grouped with P&G as a staple with staying power.",
           "closing_price": 97.43
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Also named as a safer alternative to Nvidia amid the Jensen Huang scandal.",
+          "closing_price": 98.0
         }
       ],
       "sector": "Consumer Defensive",
@@ -37841,6 +37973,14 @@
           "segment": "interview",
           "note": "Transformed from generic copycat to CNS/specialty leader; ADTO peak sales tripled; Ajovy migraine growing 30% YoY. Seven innovation milestones 2026 including long-acting alanzapine. Francis embracing risk; 2026 inflection year.",
           "closing_price": 33.21
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "CEO Richard Francis's turnaround has taken the stock from $9 to above $43, with new drugs in schizophrenia, bipolar, migraine and Tourette's expected to add $6-7 billion in annual sales by 2030.",
+          "price_level": 43,
+          "closing_price": 43.24
         }
       ],
       "sector": "Healthcare",
@@ -39574,6 +39714,15 @@
           "segment": "lightning_round",
           "note": "Missed a quarter without a good explanation and has heavy short interest; pass given persistent food inflation.",
           "closing_price": 258.14
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "in_depth_analysis",
+          "note": "Technician Bob Lang's favorite restaurant chart, up 74% off September lows with a bullish MACD signal pointing toward $200 then $250; Cramer himself remains skeptical of the name.",
+          "price_target": 250,
+          "price_level": 167,
+          "closing_price": 166.73
         }
       ],
       "sector": "Consumer Cyclical",
@@ -40668,6 +40817,12 @@
           "sentiment": "caution_concern",
           "segment": "in_depth_analysis",
           "note": "Just raised funding at a $1.25 trillion valuation but reportedly secured only $11 billion of a $30 billion target, a warning sign on AI-lab investor demand."
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "wait_hold_neutral",
+          "segment": "in_depth_analysis",
+          "note": "Revenue growth accelerated in Q3 but the company remains deeply unprofitable, with a -109% adjusted operating margin, well behind Anthropic on profitability."
         }
       ],
       "sector": "",
@@ -43084,6 +43239,13 @@
           "segment": "opening_commentary",
           "note": "China GDP disappointing (4.4%) but remain patient; down on dip; still best way to play China long-term; hold existing position.",
           "closing_price": 117.49
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "The only Chinese stock Cramer would consider buying right now, though weak Chinese consumer spending keeps it from being a favorite.",
+          "closing_price": 101.52
         }
       ],
       "sector": "Consumer Cyclical",
@@ -44541,6 +44703,13 @@
           "segment": "lightning_round",
           "note": "Regional bank expanding presence and shareholder value; attractive valuation at 13x earnings multiple.",
           "closing_price": 54.98
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Inexpensive Louisiana bank stock amid regional consolidation; Cramer encourages buying despite a modest yield.",
+          "closing_price": 53.99
         }
       ]
     },
@@ -47864,6 +48033,13 @@
           "segment": "lightning_round",
           "note": "Views cybersecurity leadership as a two-horse race, leaving newer entrants like Netskope out of favor.",
           "closing_price": 23.99
+        },
+        {
+          "date": "2026-11-11",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer sees no need for another cloud security platform when CrowdStrike and Palo Alto Networks already dominate the space.",
+          "closing_price": 22.37
         }
       ]
     },
