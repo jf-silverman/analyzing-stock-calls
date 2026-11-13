@@ -1015,6 +1015,14 @@
           "segment": "opening_commentary",
           "note": "Jensen Huang's possible ouster over a scandal threatens the leadership behind the stock, though Cramer's trust hasn't sold given continued AI data-center demand; he worries a Huang-less Nvidia is one many won't want to hold.",
           "closing_price": 173.73
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "CEO Jensen Huang's disgraced resignation isn't a financial scandal \u2014 cash-rich balance sheet and trusted interim CEO Colette Kress stabilize the story \u2014 but Cramer is trimming an oversized position given unknown investigation fallout and export-control risk.",
+          "price_level": 166,
+          "closing_price": 166.19
         }
       ],
       "sector": "Technology",
@@ -15124,6 +15132,13 @@
           "segment": "opening_commentary",
           "note": "CEO Steve Cahillane, who created value at Kellanova, is selling the Maxwell House coffee business to cut debt ahead of an investor day Cramer expects to be a positive catalyst.",
           "closing_price": 24.61
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "New CEO is reinvesting heavily and innovating around core brands rather than splitting the company, giving Cramer confidence in a multi-year turnaround similar to his prior Kellogg call.",
+          "closing_price": 24.48
         }
       ],
       "sector": "Consumer Defensive",
@@ -16050,6 +16065,12 @@
           "sentiment": "mild_buy",
           "segment": "in_depth_analysis",
           "note": "Despite heavy non-GAAP adjustments and a roughly $900 billion infrastructure spending commitment, Cramer is \"intrigued\" by Anthropic's growth ahead of its IPO."
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Strong cash position and AI productivity gains are offset by regulatory/liability risk and a very thin initial float; Cramer fears a hot open followed by a SpaceX-style fade as lockups expire."
         }
       ],
       "sector": "Healthcare",
@@ -22549,6 +22570,13 @@
           "segment": "opening_commentary",
           "note": "Suspended its dividend as the stock collapsed from $94 to $30 amid the housing-driven appliance slump.",
           "closing_price": 30.68
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Weak appliance demand, inflation, and housing softness are pressuring sales and margins despite cost-cutting plans; Cramer, a shareholder, thinks the CEO should be replaced given the size of the decline.",
+          "closing_price": 28.91
         }
       ],
       "sector": "Consumer Cyclical",
@@ -24724,6 +24752,13 @@
           "note": "Stock down from 438 to 185 but was at 135 a year ago, suggesting more downside; Cramer would only buy a quarter position now and wait for a better entry.",
           "price_level": 185,
           "closing_price": 185.2
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Cramer's favorite semiconductor-capital-equipment name; believes the pullback has created a good entry point given its best-in-class IP position.",
+          "closing_price": 233.78
         }
       ],
       "sector": "Technology",
@@ -27203,6 +27238,13 @@
           "sentiment": "buy",
           "segment": "lightning_round",
           "note": "Speculative copper play that should benefit as data centers continue relying on copper wiring before any shift to fiber."
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Record year, rising dividend, and low valuation; Cramer called it a 'great piece of paper' and said to buy more if the yield reaches 6%.",
+          "price_level": 62
         }
       ],
       "sector": "",
@@ -33585,6 +33627,13 @@
           "segment": "lightning_round",
           "note": "Fantastic stock; in right industry (energy/land); inexpensive valuation. Cramer club profiled it. Positioned for higher energy prices and land appreciation.",
           "closing_price": 366.1
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cramer has soured on oil names generally and passes on this one.",
+          "closing_price": 281.18
         }
       ],
       "sector": "Energy",
@@ -33673,6 +33722,13 @@
           "segment": "opening_commentary",
           "note": "Stock had a parabolic move into Nov. 6 earnings; Cramer wants it to come in before buying \u2014 'we don't buy parabolic moves.'",
           "closing_price": 198.85
+        },
+        {
+          "date": "2026-11-12",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Personalized melanoma cancer vaccine paired with Keytruda showed a 42% efficacy improvement with durability growing over time, plus a reformulated lower-side-effect COVID vaccine and FDA filing targeted by year-end.",
+          "closing_price": 231.35
         }
       ],
       "sector": "Healthcare",
@@ -49144,6 +49200,30 @@
           "sentiment": "buy",
           "segment": "lightning_round",
           "note": "Well-run gaming company trading cheap versus peers; Cramer thinks it can go higher despite some recent wobble."
+        }
+      ]
+    },
+    "CVLT": {
+      "company": "Commvault",
+      "mentions": [
+        {
+          "date": "2026-11-12",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer liked the CEO's case for the data-recovery stock despite its big run.",
+          "closing_price": 166.16
+        }
+      ]
+    },
+    "BFAM": {
+      "company": "Bright Horizons",
+      "mentions": [
+        {
+          "date": "2026-11-12",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cheap valuation likely reflects coming earnings weakness; Cramer says don't mess with it.",
+          "closing_price": 52.79
         }
       ]
     }
