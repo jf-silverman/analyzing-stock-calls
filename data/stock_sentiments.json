@@ -1023,6 +1023,13 @@
           "note": "CEO Jensen Huang's disgraced resignation isn't a financial scandal \u2014 cash-rich balance sheet and trusted interim CEO Colette Kress stabilize the story \u2014 but Cramer is trimming an oversized position given unknown investigation fallout and export-control risk.",
           "price_level": 166,
           "closing_price": 166.19
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Jensen Huang's ouster amid a China back-door chip scandal and personal-conduct allegations spooked the market, but Cramer expects interim CEO Colette Kress to give a balanced, non-hyperbolic earnings update tomorrow night rather than spark further selling.",
+          "closing_price": 156.14
         }
       ],
       "sector": "Technology",
@@ -3712,6 +3719,13 @@
           "segment": "lightning_round",
           "note": "Top oil company pick with the best buyback, dividend, and CEO (Mike Wirth) amid higher oil prices.",
           "closing_price": 212.61
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Cramer's favorite large-cap oil stock, up 43% YTD on higher oil prices under CEO Mike Wirth.",
+          "closing_price": 217.14
         }
       ],
       "sector": "Energy",
@@ -4484,6 +4498,13 @@
           "segment": "in_depth_analysis",
           "note": "Favorite soda stock after a volume-driven beat-and-raise quarter and strong innovation pipeline like Fairlife protein milk.",
           "closing_price": 94.08
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Up 43% YTD under a new CEO Cramer likes; buy some here and add more if it comes in.",
+          "closing_price": 99.48
         }
       ],
       "sector": "Consumer Defensive",
@@ -6569,6 +6590,13 @@
           "segment": "opening_commentary",
           "note": "Rally driven by hopes an AI data-center slowdown eases DRAM costs, plus T-Mobile's new discounted iPhone Duo bundle.",
           "closing_price": 349.51
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Best-performing mega-cap tech this year by avoiding heavy AI capex, now the world's largest company at over $5T market cap.",
+          "closing_price": 352.78
         }
       ],
       "sector": "Technology",
@@ -10688,6 +10716,14 @@
           "segment": "opening_commentary",
           "note": "Benefiting alongside Walmart from lower gas prices and rates.",
           "closing_price": 1040.55
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "New $30 special dividend and buyback reinforce a long-term buy-and-hold thesis; history shows outperformance in the year after each prior special dividend.",
+          "price_level": 1100,
+          "closing_price": 1113.74
         }
       ],
       "sector": "Consumer Defensive",
@@ -12131,6 +12167,13 @@
           "segment": "opening_commentary",
           "note": "Down from a $160 recommendation to $90 after a Google algorithm change hurt traffic; Cramer still calls it a valuable company but offered no new actionable call.",
           "closing_price": 93.81
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Google's algorithm change cut into Reddit's traffic, echoing (though less severely) what happened to TheStreet.com in the past.",
+          "closing_price": 92.87
         }
       ],
       "sector": "Communication Services",
@@ -13075,6 +13118,13 @@
           "segment": "lightning_round",
           "note": "Named as a preferred cloud-security holding over Netskope.",
           "closing_price": 229.06
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Up 90% with CEO George Kurtz doing a remarkable job; Cramer's charitable trust holds a large position and trimmed other names rather than this one.",
+          "closing_price": 223.21
         }
       ],
       "sector": "Technology",
@@ -16071,6 +16121,12 @@
           "sentiment": "caution_concern",
           "segment": "in_depth_analysis",
           "note": "Strong cash position and AI productivity gains are offset by regulatory/liability risk and a very thin initial float; Cramer fears a hot open followed by a SpaceX-style fade as lockups expire."
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Going public this week in what could be the largest IPO ever; Cramer notes the windfall is concentrated among early VC/insider investors, not everyday retail investors."
         }
       ],
       "sector": "Healthcare",
@@ -17326,6 +17382,13 @@
           "segment": "opening_commentary",
           "note": "Stock fell again on fears it's losing PC share to AMD, not just facing a weak PC market.",
           "closing_price": 59.97
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "CEO insider buying wasn't reassuring to Cramer since he'd also bought near $95 before the stock cratered; feels the company hasn't told the full story.",
+          "closing_price": 55.47
         }
       ],
       "sector": "Technology",
@@ -21960,6 +22023,13 @@
           "segment": "in_depth_analysis",
           "note": "Q3 miss and a disappointing multi-year free-cash-flow outlook tanked shares over 10%, but record $612B commercial backlog and $101B defense backlog argue sellers will be 'wrong for 200 points.'",
           "closing_price": 168.18
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Down 21% after another bad launch, but Cramer is doubling down, citing a huge backlog and improving management under Kelly Ortberg as a multi-year investment.",
+          "closing_price": 165.22
         }
       ],
       "sector": "Industrials",
@@ -22698,6 +22768,13 @@
           "segment": "lightning_round",
           "note": "Can't recommend: the stock prices in one rate hike, not multiple, and rate hikes are the worst thing for mortgage lenders.",
           "closing_price": null
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "High-multiple mortgage name hurt by rates now, but could become a winner once the Fed starts cutting.",
+          "closing_price": 13.75
         }
       ],
       "sector": "Financial Services",
@@ -27245,6 +27322,12 @@
           "segment": "opening_commentary",
           "note": "Record year, rising dividend, and low valuation; Cramer called it a 'great piece of paper' and said to buy more if the yield reaches 6%.",
           "price_level": 62
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Decent quarter aside, the company is losing too much money for Cramer to endorse right now."
         }
       ],
       "sector": "",
@@ -27532,6 +27615,13 @@
           "segment": "lightning_round",
           "note": "Agreed with the implicit 'no speculation' warning on this satellite-telecom name; avoid.",
           "closing_price": 43.07
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Too many competing broadband networks and no profitability make it a hard stock to own right now.",
+          "closing_price": 28.58
         }
       ],
       "sector": "Technology",
@@ -31574,6 +31664,13 @@
           "segment": "in_depth_analysis",
           "note": "Revenue miss but EPS beat with net interest margin finally stabilizing; charitable trust upgraded the stock on this pullback.",
           "closing_price": 80.9
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Trades at just 11x earnings under CEO Charlie Scharf \u2014 incredibly cheap.",
+          "closing_price": 84.84
         }
       ],
       "sector": "Financial Services",
@@ -32673,6 +32770,13 @@
           "segment": "closing_commentary",
           "note": "Swung wildly on fears Democrats would cap credit-card rates, echoing a failed Trump rate-cap attempt in January; shouldn't have moved much either way.",
           "closing_price": 206.31
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Carries more credit risk than pure processors like Visa/Mastercard; Cramer trimmed the position and wants to buy it back on further weakness.",
+          "closing_price": 193.22
         }
       ],
       "sector": "Financial Services",
@@ -40339,6 +40443,13 @@
           "segment": "in_depth_analysis",
           "note": "Revenue growth is largely from renting compute to Google and Anthropic, making its Nvidia purchases dependent on Anthropic's ability to pay.",
           "closing_price": 143.09
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Cited alongside Anthropic and OpenAI as a trillion-dollar-plus private company whose pre-IPO gains flow mainly to the super-rich, widening wealth inequality.",
+          "closing_price": 137.36
         }
       ],
       "sector": "Industrials",
@@ -40879,6 +40990,12 @@
           "sentiment": "wait_hold_neutral",
           "segment": "in_depth_analysis",
           "note": "Revenue growth accelerated in Q3 but the company remains deeply unprofitable, with a -109% adjusted operating margin, well behind Anthropic on profitability."
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "wait_hold_neutral",
+          "segment": "closing_commentary",
+          "note": "Referenced as a potential future mega-IPO alongside Anthropic and SpaceX, underscoring unequal access to early-stage wealth creation."
         }
       ],
       "sector": "",
@@ -40943,6 +41060,13 @@
           "segment": "opening_commentary",
           "note": "First positive recommendation in 17+ years after strong earnings; Cramer likes ADM and Tyson as a pair; companies transformed fundamentally.",
           "closing_price": 56.2
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "mild_buy",
+          "segment": "opening_commentary",
+          "note": "Beef business inflecting higher, making it one of the staple names benefiting from the rotation out of tech.",
+          "closing_price": 63.95
         }
       ],
       "sector": "Consumer Defensive",
@@ -44385,6 +44509,13 @@
           "segment": "caller_qa",
           "note": "Likes the last quarter and year, but flags it as a 'churn stock' similar to SoFi; deferred detailed view.",
           "closing_price": 17.16
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "mild_buy",
+          "segment": "lightning_round",
+          "note": "Missed the quarter slightly but isn't expensive; Cramer likes CEO David Risher and wouldn't mind taking a stake.",
+          "closing_price": 16.84
         }
       ],
       "sector": "Technology",
@@ -49177,6 +49308,13 @@
           "segment": "lightning_round",
           "note": "Cramer admits he doesn't know the wildfire-suppression name well enough to comment.",
           "closing_price": 30.72
+        },
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Sole US Forest Service aerial-retardant supplier through 2030 with sticky base-readiness fees; Q3 beat on sales and EBITDA, with a growing military fire-alarm business adding upside.",
+          "closing_price": 29.43
         }
       ]
     },
@@ -49224,6 +49362,18 @@
           "segment": "lightning_round",
           "note": "Cheap valuation likely reflects coming earnings weakness; Cramer says don't mess with it.",
           "closing_price": 52.79
+        }
+      ]
+    },
+    "BRK-B": {
+      "company": "Berkshire Hathaway",
+      "mentions": [
+        {
+          "date": "2026-11-16",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "All-time highs driven by Apple, Coca-Cola and Chevron gains plus a ~$378B cash pile that gives Berkshire optionality to buy aggressively in a downturn.",
+          "closing_price": 592.85
         }
       ]
     }
