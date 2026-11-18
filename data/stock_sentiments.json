@@ -1030,6 +1030,20 @@
           "segment": "opening_commentary",
           "note": "Jensen Huang's ouster amid a China back-door chip scandal and personal-conduct allegations spooked the market, but Cramer expects interim CEO Colette Kress to give a balanced, non-hyperbolic earnings update tomorrow night rather than spark further selling.",
           "closing_price": 156.14
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Cramer has turned lukewarm and told followers to lighten up amid board turmoil over Jensen Huang's ouster, but calls the stock 'ever cheap' and says focus should shift to fundamentals.",
+          "closing_price": 155.46
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Interim CEO Colette Kress raised FY28 revenue growth guidance to 75% and expanded total buyback authorization to $277B, easing fears over guarantee exposure and customer concentration.",
+          "closing_price": 155.46
         }
       ],
       "sector": "Technology",
@@ -1272,6 +1286,15 @@
           "segment": "closing_commentary",
           "note": "Rallied 76 points off its October low; a big Travel Trust holding benefiting from tools/appliance demand.",
           "closing_price": 351.0
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "strong_buy",
+          "segment": "in_depth_analysis",
+          "note": "Q3 beat and share gains in a depressed housing market set up a long-term run to $500; Cramer would be buying the post-earnings dip if not restricted.",
+          "price_target": 500,
+          "price_level": 339,
+          "closing_price": 339.01
         }
       ],
       "sector": "Consumer Cyclical",
@@ -3983,6 +4006,13 @@
           "segment": "lightning_round",
           "note": "Down for the year after a long uptrend finally gives an entry opportunity Cramer likes.",
           "closing_price": 332.72
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Semiconductor capital equipment maker didn't clear Wall Street's elevated bar for upside surprises.",
+          "closing_price": 349.23
         }
       ],
       "sector": "Technology",
@@ -11882,6 +11912,13 @@
           "segment": "caller_qa",
           "note": "Stock looks washed out after a five-year, 70%+ decline; Cramer would buy rather than bet against it, seeing downside near 34-35 versus upside toward 45.",
           "closing_price": 39.12
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "caution_concern",
+          "segment": "in_depth_analysis",
+          "note": "Analyst meeting disappointed and failed to show enough progress under CEO Elliott Hill; Cramer has lost conviction after being burned previously and needs more work before calling a bottom.",
+          "closing_price": 35.85
         }
       ],
       "sector": "Consumer Cyclical",
@@ -12174,6 +12211,13 @@
           "segment": "lightning_round",
           "note": "Google's algorithm change cut into Reddit's traffic, echoing (though less severely) what happened to TheStreet.com in the past.",
           "closing_price": 92.87
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Stock hurt by a change in how it receives traffic from Google, not a broad market issue.",
+          "closing_price": 94.48
         }
       ],
       "sector": "Communication Services",
@@ -14855,6 +14899,13 @@
           "note": "Likes CEO Matt Murphy and the underlying company, but calls it currently a 'broken stock'; recommends buying some now and scaling in further on weakness.",
           "price_level": 150,
           "closing_price": 154.39
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Market hates a recent acquisition the company made, weighing on the stock.",
+          "closing_price": 148.74
         }
       ],
       "sector": "Technology",
@@ -16127,6 +16178,12 @@
           "sentiment": "wait_hold_neutral",
           "segment": "closing_commentary",
           "note": "Going public this week in what could be the largest IPO ever; Cramer notes the windfall is concentrated among early VC/insider investors, not everyday retail investors."
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "buy",
+          "segment": "closing_commentary",
+          "note": "Cramer expects tomorrow's IPO to be lucrative, arguing the market underappreciates Anthropic's real productivity story versus its doomer AI-risk messaging."
         }
       ],
       "sector": "Healthcare",
@@ -25957,6 +26014,15 @@
           "segment": "in_depth_analysis",
           "note": "Preferred alongside Vertiv over newer, less-proven data-center infrastructure names like Acceleration Holdings.",
           "closing_price": 428.31
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "buy_on_pullback",
+          "segment": "in_depth_analysis",
+          "note": "Cramer likes the grid-upgrade opportunity more than AI data centers but wants shares below $300 (from a $478 high) before adding to an already full position.",
+          "price_target": 300,
+          "price_level": 337,
+          "closing_price": 337.11
         }
       ],
       "sector": "Industrials",
@@ -28137,6 +28203,13 @@
           "segment": "caller_qa",
           "note": "Trades as a high-multiple bank proxy; won't rally meaningfully until bank stocks broadly recover, which isn't happening now.",
           "closing_price": 14.3
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Higher interest rates have quelled loan demand, pressuring shares.",
+          "closing_price": 14.28
         }
       ],
       "sector": "Financial Services",
@@ -40450,6 +40523,14 @@
           "segment": "closing_commentary",
           "note": "Cited alongside Anthropic and OpenAI as a trillion-dollar-plus private company whose pre-IPO gains flow mainly to the super-rich, widening wealth inequality.",
           "closing_price": 137.36
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Cramer calls it a uniquely long-term holding he'd want his kids to own; today's price levels won't matter in 10-15 years.",
+          "price_level": 140,
+          "closing_price": 141.7
         }
       ],
       "sector": "Industrials",
@@ -48049,6 +48130,13 @@
           "segment": "interview",
           "note": "25% EPS beat with raised holiday guidance despite tariffs; return-to-office demand, the Windows 11 refresh cycle, and resurgent China gaming sales are driving a technical breakout.",
           "closing_price": 120.69
+        },
+        {
+          "date": "2026-11-17",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Resilient business growing share in gaming and video-conferencing hardware even as PC units decline 20%, with record margins.",
+          "closing_price": 99.26
         }
       ]
     },
@@ -49374,6 +49462,30 @@
           "segment": "in_depth_analysis",
           "note": "All-time highs driven by Apple, Coca-Cola and Chevron gains plus a ~$378B cash pile that gives Berkshire optionality to buy aggressively in a downturn.",
           "closing_price": 592.85
+        }
+      ]
+    },
+    "TH": {
+      "company": "Target Hospitality",
+      "mentions": [
+        {
+          "date": "2026-11-17",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Company isn't profitable despite a favorable data-center demand backdrop; Cramer takes a pass.",
+          "closing_price": 12.14
+        }
+      ]
+    },
+    "BATRA": {
+      "company": "Atlanta Braves Holdings",
+      "mentions": [
+        {
+          "date": "2026-11-17",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Not Cramer's preferred type of growth stock, but he concedes it's performed fine and should continue to do okay.",
+          "closing_price": 56.33
         }
       ]
     }
