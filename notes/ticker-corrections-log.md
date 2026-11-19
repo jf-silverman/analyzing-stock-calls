@@ -6,10 +6,11 @@ GENERATED — rebuilt from the `ticker_reviews` table on every pipeline run. Do 
 - **Held (no match)** — not a real ticker and no confident match found; stored as `????` for review.
 - **Flagged (wrong company)** — the symbol is a *different* real company; held as `????` (never auto-remapped, since the company name could be the wrong half).
 
-_91 correction(s) recorded._
+_92 correction(s) recorded._
 
 | Episode | Model said | Company | Action | Result | Reported? |
 |---------|-----------|---------|--------|--------|-----------|
+| 2026-11-18 | `Q` | Quinty | Flagged (wrong company) | is Qnity Electronics, Inc. | yes |
 | 2026-11-16 | `BRK.B` | Berkshire Hathaway | Remapped | → `BRK-B` | yes |
 | 2026-11-16 | `IREN` | Iris Energy | Flagged (wrong company) | is IREN LIMITED | yes |
 | 2026-11-11 | `TGB` | Taseko Mines | Flagged (wrong company) | is Trekor Metals Limited | yes |
