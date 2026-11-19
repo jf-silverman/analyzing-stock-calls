@@ -1044,6 +1044,13 @@
           "segment": "interview",
           "note": "Interim CEO Colette Kress raised FY28 revenue growth guidance to 75% and expanded total buyback authorization to $277B, easing fears over guarantee exposure and customer concentration.",
           "closing_price": 155.46
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Fundamentals and interim CEO commentary were strong, but the stock is directionless without a permanent CEO; market has effectively 'voted it off the island' until the leadership search resolves.",
+          "closing_price": 150.96
         }
       ],
       "sector": "Technology",
@@ -5621,6 +5628,13 @@
           "note": "Travel Trust already banked its 'home run' and won't chase after today's pop; would reconsider buying only if shares retreat to the high 70s/80s.",
           "price_target": 80,
           "closing_price": 112.13
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Preferred fiber-optic-connection play over Amphenol at this point.",
+          "closing_price": 108.15
         }
       ],
       "sector": "Technology",
@@ -10072,6 +10086,13 @@
           "segment": "opening_commentary",
           "note": "Benefits if fewer data centers lower future build costs, aligning with its capex-discipline strategy.",
           "closing_price": 555.8
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Azure's $100B+ run rate and 48% growth confirm the AI buildout thesis; Cramer calls Microsoft his charitable trust's largest position.",
+          "closing_price": 508.29
         }
       ],
       "sector": "Technology",
@@ -12443,6 +12464,13 @@
           "segment": "opening_commentary",
           "note": "One of only three major CPU makers; the agentic AI market is big enough to support all of them.",
           "closing_price": 283.33
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Worth owning if CEO Rene Haas can secure extra foundry capacity from TSMC to beat estimates.",
+          "closing_price": 182.76
         }
       ],
       "sector": "Technology",
@@ -15496,6 +15524,13 @@
           "segment": "lightning_round",
           "note": "Named alongside CrowdStrike as a preferred cloud-security play over Netskope.",
           "closing_price": 334.47
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "strong_buy",
+          "segment": "interview",
+          "note": "Blowout quarter across every product line plus a strategically savvy Applied Compute acquisition extend the platformization story; core travel-trust holding.",
+          "closing_price": 339.92
         }
       ],
       "sector": "Technology",
@@ -16184,6 +16219,12 @@
           "sentiment": "buy",
           "segment": "closing_commentary",
           "note": "Cramer expects tomorrow's IPO to be lucrative, arguing the market underappreciates Anthropic's real productivity story versus its doomer AI-risk messaging."
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Used as the emblem of FOMO-driven IPO demand pulling capital away from proven cash-flow winners; Cramer's tone is satirical about the rush, not an explicit endorsement."
         }
       ],
       "sector": "Healthcare",
@@ -25482,6 +25523,13 @@
           "segment": "lightning_round",
           "note": "Good company; recently pulled back a little; overlooked amid Corning Glass momentum; like the opportunity.",
           "closing_price": 128.03
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cramer passed on giving a direct call, redirecting the fiber-optic-connectivity theme to Corning instead.",
+          "closing_price": 76.33
         }
       ],
       "sector": "Technology",
@@ -27394,6 +27442,12 @@
           "sentiment": "sell_avoid",
           "segment": "lightning_round",
           "note": "Decent quarter aside, the company is losing too much money for Cramer to endorse right now."
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "strong_buy",
+          "segment": "lightning_round",
+          "note": "Vastly misunderstood as a data-center-only play; supplies materials across all of semiconductors, and Cramer's trust holds a full position it wishes it could add to."
         }
       ],
       "sector": "",
@@ -28080,6 +28134,13 @@
           "segment": "interview",
           "note": "Chili's 10% comps on top of a 22% prior-year comp, a full-year guidance raise, and expanding restaurant-level margins make this a standout consumer story.",
           "closing_price": 219.9
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "buy",
+          "segment": "opening_commentary",
+          "note": "Restaurant input prices are finally coming down; Cramer likes Brinker even at current levels.",
+          "closing_price": 203.43
         }
       ],
       "sector": "Consumer Cyclical",
@@ -28865,6 +28926,13 @@
           "segment": "lightning_round",
           "note": "Neutron delay to 2027 and recent sell-off present a great opportunity to exit, not add.",
           "closing_price": 55.25
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Has gotten cheap enough to like as a speculative rocket-sector play alongside SpaceX.",
+          "closing_price": 53.07
         }
       ],
       "sector": "Industrials",
@@ -31071,6 +31139,13 @@
           "segment": "in_depth_analysis",
           "note": "Lang sees the May earnings gap finally filling within weeks, implying roughly 25% upside; Cramer is growing less cautious on a stock he's long viewed as expensive.",
           "closing_price": 75.04
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "sell_avoid",
+          "segment": "opening_commentary",
+          "note": "Trading at 60x earnings is too rich for a multi-decade hold; Cramer tells the caller to take a pass.",
+          "closing_price": 74.45
         }
       ],
       "sector": "Consumer Cyclical",
@@ -45888,6 +45963,13 @@
           "segment": "lightning_round",
           "note": "A large convertible bond issuance has spooked investors; Cramer prefers Cloudflare over Akamai here.",
           "closing_price": 83.71
+        },
+        {
+          "date": "2026-11-18",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Large new contract with Anthropic (up to $20.6B total) and insider buying by the CFO support pulling the trigger despite the stock's recent pullback.",
+          "closing_price": 91.7
         }
       ]
     },
