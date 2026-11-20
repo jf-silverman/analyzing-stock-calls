@@ -1051,6 +1051,13 @@
           "segment": "opening_commentary",
           "note": "Fundamentals and interim CEO commentary were strong, but the stock is directionless without a permanent CEO; market has effectively 'voted it off the island' until the leadership search resolves.",
           "closing_price": 150.96
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Jensen Huang's resignation and the resulting leadership uncertainty are driving the stock down and dragging the broader market with it.",
+          "closing_price": 145.98
         }
       ],
       "sector": "Technology",
@@ -2298,6 +2305,13 @@
           "segment": "opening_commentary",
           "note": "Take-or-pay contracts with data center customers give some revenue visibility despite neocloud credit risk; free to launch a large buyback starting December 9th.",
           "closing_price": 656.39
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy_on_pullback",
+          "segment": "caller_qa",
+          "note": "Admits his bullish call was mistimed, but the stock is incredibly cheap at ~3x earnings with multi-year business locked in; wants to add on further weakness.",
+          "closing_price": 690.44
         }
       ],
       "sector": "Technology",
@@ -7243,6 +7257,13 @@
           "segment": "in_depth_analysis",
           "note": "Chart has formed a bearish death cross, a warning sign Cramer flags without an outright sell call.",
           "closing_price": 278.99
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "in_depth_analysis",
+          "note": "Larry Williams' technical and fundamental models both flag an attractive setup \u2014 cheap valuation plus heavy professional accumulation historically precedes rallies.",
+          "closing_price": 272.66
         }
       ],
       "sector": "Communication Services",
@@ -14934,6 +14955,13 @@
           "segment": "opening_commentary",
           "note": "Market hates a recent acquisition the company made, weighing on the stock.",
           "closing_price": 148.74
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Combination with Lumentum is even more powerful than the standalone businesses; recent stock weakness is multiple compression, not fundamentals.",
+          "closing_price": 138.47
         }
       ],
       "sector": "Technology",
@@ -16225,6 +16253,13 @@
           "sentiment": "caution_concern",
           "segment": "opening_commentary",
           "note": "Used as the emblem of FOMO-driven IPO demand pulling capital away from proven cash-flow winners; Cramer's tone is satirical about the rush, not an explicit endorsement."
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "caution_concern",
+          "segment": "opening_commentary",
+          "note": "Record IPO valued the AI lab at $2 trillion, but shares already fell from a $115 high to $97 on day one; Cramer thinks it's not done sliding.",
+          "price_level": 97
         }
       ],
       "sector": "Healthcare",
@@ -16474,6 +16509,15 @@
           "segment": "opening_commentary",
           "note": "One of the data-center-adjacent names that had held up better than most but has started weakening in the recent selloff.",
           "closing_price": 316.91
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy_on_pullback",
+          "segment": "caller_qa",
+          "note": "One of the few names that can be ridden through this selloff; Cramer would buy on a pullback from 312 down to 250.",
+          "price_target": 250,
+          "price_level": 312,
+          "closing_price": 312.54
         }
       ],
       "sector": "Technology",
@@ -21529,6 +21573,13 @@
           "segment": "opening_commentary",
           "note": "AI-disruption fears look overblown; investor day could spark a rebound similar to ServiceNow and Salesforce.",
           "closing_price": 321.57
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "mild_buy",
+          "segment": "interview",
+          "note": "Light Q2 guide is a deliberate tax-season pricing strategy rather than weakness; Mailchimp sale proceeds fund an accelerated buyback, which Cramer likes.",
+          "closing_price": 310.02
         }
       ],
       "sector": "Technology",
@@ -21921,6 +21972,13 @@
           "segment": "lightning_round",
           "note": "Breaking out; CEO Len Schleifer executing well; forward PE 18-19, PEG ~1.6, strong pipeline; Cramer bought for charitable trust alongside Amgen.",
           "closing_price": 767.85
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Cramer prefers this Alnylam partner, calling it a better-working biotech name right now.",
+          "closing_price": 923.34
         }
       ],
       "sector": "Healthcare",
@@ -25177,6 +25235,15 @@
           "segment": "interview",
           "note": "Cramer's preferred buy-now-pay-later name delivered record GMV growth and profitability with a confident holiday outlook; selloff pressure isn't a referendum on the business.",
           "closing_price": 69.66
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy_on_pullback",
+          "segment": "lightning_round",
+          "note": "Great conference call and numbers too good to ignore; Cramer gives a scaled buy plan \u2014 25 shares at 56, 25 at 50, 50 at 45 if it gets there.",
+          "price_target": 45,
+          "price_level": 56,
+          "closing_price": 56.91
         }
       ],
       "sector": "Financial Services",
@@ -32226,6 +32293,13 @@
           "segment": "closing_commentary",
           "note": "Combination with Marvell's custom semis creates key data-center 'connective tissue,' though near-term deal uncertainty argues for patience on entry.",
           "closing_price": 684.4
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "interview",
+          "note": "Stock got cheaper even as business improved \u2014 beat-and-raise quarter, margins moving into the 50s, and products sold out into 2029.",
+          "closing_price": 535.15
         }
       ],
       "sector": "Technology",
@@ -32533,6 +32607,13 @@
           "segment": "opening_commentary",
           "note": "Expected to highlight its weight-loss drug rival to Lilly's and cholesterol drug Repatha as growth drivers.",
           "closing_price": 466.01
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Named alongside Regeneron and Vertex as a biotech currently working better than Alnylam.",
+          "closing_price": 438.82
         }
       ],
       "sector": "Healthcare",
@@ -37536,6 +37617,13 @@
           "segment": "lightning_round",
           "note": "Robotic process automation for mundane tasks never resonated with Cramer; still too expensive despite bounce.",
           "closing_price": 12.89
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "sell_avoid",
+          "segment": "lightning_round",
+          "note": "Cheap stock but no catalyst \u2014 Cramer passes.",
+          "closing_price": 11.23
         }
       ],
       "sector": "Technology",
@@ -37718,6 +37806,13 @@
           "segment": "lightning_round",
           "note": "Very strong company; wish bought for Trust earlier; excellent CEO; solid buy.",
           "closing_price": 441.2
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "Named alongside Regeneron and Amgen as a biotech currently working better than Alnylam.",
+          "closing_price": 520.66
         }
       ],
       "sector": "Healthcare",
@@ -40606,6 +40701,13 @@
           "note": "Cramer calls it a uniquely long-term holding he'd want his kids to own; today's price levels won't matter in 10-15 years.",
           "price_level": 140,
           "closing_price": 141.7
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "opening_commentary",
+          "note": "Mentioned only as a hyperscaler set to receive over $3 billion per month in Anthropic compute spending; no direct recommendation.",
+          "closing_price": 138.43
         }
       ],
       "sector": "Industrials",
@@ -47982,6 +48084,13 @@
           "segment": "in_depth_analysis",
           "note": "Athleta athletic division down 12% in sales, 11% same-store sales. Long turnaround project; market penalizes these. At 9x earnings, no compelling upside without turnaround proof.",
           "closing_price": 21.56
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "interview",
+          "note": "Likes the Old Navy recovery and new Athleta leadership, but wants to give the turnaround a couple of months before recommending the stock.",
+          "closing_price": 18.79
         }
       ]
     },
@@ -48875,6 +48984,13 @@
           "segment": "lightning_round",
           "note": "Complex process-control-solutions company; wants to do more homework before giving a real call.",
           "closing_price": 294.53
+        },
+        {
+          "date": "2026-11-19",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "Good company at a 47x PE that's going lower because the Fed fighting inflation is compressing expensive growth multiples.",
+          "closing_price": 195.93
         }
       ]
     },
@@ -49568,6 +49684,42 @@
           "segment": "lightning_round",
           "note": "Not Cramer's preferred type of growth stock, but he concedes it's performed fine and should continue to do okay.",
           "closing_price": 56.33
+        }
+      ]
+    },
+    "CDRE": {
+      "company": "Cadre Holdings",
+      "mentions": [
+        {
+          "date": "2026-11-19",
+          "sentiment": "buy",
+          "segment": "lightning_round",
+          "note": "So cheap he can't go against it; likes the defense/mission-critical positioning despite recent selling.",
+          "closing_price": 30.56
+        }
+      ]
+    },
+    "NEO": {
+      "company": "NeoGenomics",
+      "mentions": [
+        {
+          "date": "2026-11-19",
+          "sentiment": "caution_concern",
+          "segment": "lightning_round",
+          "note": "A $2 stock the caller is underwater on; Cramer says it's fine to hold only if you can stomach losing it all since it can't go below zero.",
+          "closing_price": 15.09
+        }
+      ]
+    },
+    "ALNY": {
+      "company": "Alnylam Pharmaceuticals",
+      "mentions": [
+        {
+          "date": "2026-11-19",
+          "sentiment": "wait_hold_neutral",
+          "segment": "lightning_round",
+          "note": "Cheap at ~7.6x earnings with strong trial data, but Cramer admits he doesn't fully get the story and prefers peers.",
+          "closing_price": 147.82
         }
       ]
     }
